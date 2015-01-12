@@ -1,0 +1,2 @@
+Running test 1 with list size = 1000000, num. operations = 100000000
+./test.sh: line 4:  2964 Terminated              TestList 1000000 100000000

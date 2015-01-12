@@ -1,0 +1,93 @@
+execve("./Loader", ["Loader"], [/* 61 vars */]) = 0
+uname({sys="Linux", node="kohinoor.boisestate.edu", ...}) = 0
+brk(0)                                  = 0x8049b90
+open("/etc/ld.so.preload", O_RDONLY)    = -1 ENOENT (No such file or directory)
+open("i686/mmx/libdl.so.2", O_RDONLY)   = -1 ENOENT (No such file or directory)
+open("i686/libdl.so.2", O_RDONLY)       = -1 ENOENT (No such file or directory)
+open("mmx/libdl.so.2", O_RDONLY)        = -1 ENOENT (No such file or directory)
+open("libdl.so.2", O_RDONLY)            = -1 ENOENT (No such file or directory)
+open("/home/amit/lib/i686/mmx/libdl.so.2", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat64("/home/amit/lib/i686/mmx", 0xbfffe360) = -1 ENOENT (No such file or directory)
+open("/home/amit/lib/i686/libdl.so.2", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat64("/home/amit/lib/i686", 0xbfffe360) = -1 ENOENT (No such file or directory)
+open("/home/amit/lib/mmx/libdl.so.2", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat64("/home/amit/lib/mmx", 0xbfffe360) = -1 ENOENT (No such file or directory)
+open("/home/amit/lib/libdl.so.2", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat64("/home/amit/lib", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+open("./i686/mmx/libdl.so.2", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("./i686/libdl.so.2", O_RDONLY)     = -1 ENOENT (No such file or directory)
+open("./mmx/libdl.so.2", O_RDONLY)      = -1 ENOENT (No such file or directory)
+open("./libdl.so.2", O_RDONLY)          = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=101773, ...}) = 0
+old_mmap(NULL, 101773, PROT_READ, MAP_PRIVATE, 3, 0) = 0x40013000
+close(3)                                = 0
+open("/lib/libdl.so.2", O_RDONLY)       = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0\260\30"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0755, st_size=11728, ...}) = 0
+old_mmap(NULL, 11300, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x4002c000
+mprotect(0x4002e000, 3108, PROT_NONE)   = 0
+old_mmap(0x4002e000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x1000) = 0x4002e000
+close(3)                                = 0
+open("i686/mmx/libc.so.6", O_RDONLY)    = -1 ENOENT (No such file or directory)
+open("i686/libc.so.6", O_RDONLY)        = -1 ENOENT (No such file or directory)
+open("mmx/libc.so.6", O_RDONLY)         = -1 ENOENT (No such file or directory)
+open("libc.so.6", O_RDONLY)             = -1 ENOENT (No such file or directory)
+open("/home/amit/lib/libc.so.6", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("./i686/mmx/libc.so.6", O_RDONLY)  = -1 ENOENT (No such file or directory)
+open("./i686/libc.so.6", O_RDONLY)      = -1 ENOENT (No such file or directory)
+open("./mmx/libc.so.6", O_RDONLY)       = -1 ENOENT (No such file or directory)
+open("./libc.so.6", O_RDONLY)           = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0hr\1\000"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0755, st_size=1344152, ...}) = 0
+old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x4002f000
+old_mmap(NULL, 1207648, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40030000
+mprotect(0x4014e000, 36192, PROT_NONE)  = 0
+old_mmap(0x4014e000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0x11e000) = 0x4014e000
+old_mmap(0x40153000, 15712, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x40153000
+close(3)                                = 0
+munmap(0x40013000, 101773)              = 0
+brk(0)                                  = 0x8049b90
+brk(0x8049bc0)                          = 0x8049bc0
+brk(0x804a000)                          = 0x804a000
+open("./Hello.so", O_RDONLY)            = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0 \6\0\000"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5543, ...}) = 0
+getcwd("/home/amit/classes/cs453/lab/dll/crudeHack", 128) = 43
+old_mmap(NULL, 6508, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40013000
+mprotect(0x40014000, 2412, PROT_NONE)   = 0
+old_mmap(0x40014000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0) = 0x40014000
+close(3)                                = 0
+open("./temp.so", O_RDONLY)             = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0 \6\0\000"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5543, ...}) = 0
+brk(0x804b000)                          = 0x804b000
+getcwd("/home/amit/classes/cs453/lab/dll/crudeHack", 128) = 43
+old_mmap(NULL, 6508, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40015000
+mprotect(0x40016000, 2412, PROT_NONE)   = 0
+old_mmap(0x40016000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0) = 0x40016000
+close(3)                                = 0
+open("./Goodbye.so", O_RDONLY)          = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0\3\0\1\0\0\0 \6\0\000"..., 1024) = 1024
+fstat64(3, {st_mode=S_IFREG|0644, st_size=5583, ...}) = 0
+getcwd("/home/amit/classes/cs453/lab/dll/crudeHack", 128) = 43
+old_mmap(NULL, 6496, PROT_READ|PROT_EXEC, MAP_PRIVATE, 3, 0) = 0x40017000
+mprotect(0x40018000, 2400, PROT_NONE)   = 0
+old_mmap(0x40018000, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED, 3, 0) = 0x40018000
+close(3)                                = 0
+open("./libHello.dll", O_RDONLY)        = 3
+read(3, "MZ\220\0\3\0\0\0\4\0\0\0\377\377\0\0\270\0\0\0\0\0\0\0"..., 1024) = 1024
+close(3)                                = 0
+fstat64(1, {st_mode=S_IFREG|0644, st_size=5530, ...}) = 0
+old_mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x40019000
+write(2, "Windows Dll Open: ./libHello.dll"..., 53Windows Dll Open: ./libHello.dll: invalid ELF header
+) = 53
+munmap(0x40013000, 6508)                = 0
+munmap(0x40017000, 6496)                = 0
+write(1, "8049bc8 8049ef8 \nHello 1 World!\n"..., 478049bc8 8049ef8 
+Hello 1 World!
+Hello 1 World!
+) = 47
+munmap(0x40019000, 4096)                = 0
+_exit(0)                                = ?

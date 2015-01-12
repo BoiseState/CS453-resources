@@ -1,0 +1,27 @@
+[amit@kohinoor gdb]: gcc -g faulty1.c -o faulty1
+[amit@kohinoor gdb]: faulty1
+Segmentation fault (core dumped)
+[amit@kohinoor gdb]: gdb faulty1
+
+GNU gdb 5.0rh-5 Red Hat Linux 7.1
+Copyright 2001 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "i386-redhat-linux"...
+
+(gdb) run
+Starting program: /home/amit/classes/cs242/lab/C-examples/gdb/faulty1 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x080485d7 in main (argc=1, argv=0xbffff37c) at faulty1.c:35
+33			C[i] = 1;
+(gdb) where
+#0  0x080485d7 in main (argc=1, argv=0xbffff37c) at faulty1.c:35
+#1  0x40047306 in __libc_start_main (main=0x80484c0 <main>, argc=1, ubp_av=0xbffff37c, 
+    init=0x8048328 <_init>, fini=0x8048630 <_fini>, rtld_fini=0x4000d2dc <_dl_fini>, 
+    stack_end=0xbffff36c) at ../sysdeps/generic/libc-start.c:129
+(gdb) quit
+The program is running.  Exit anyway? (y or n) y
+[amit@kohinoor gdb]: exit

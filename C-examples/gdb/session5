@@ -1,0 +1,69 @@
+
+[amit@kohinoor gdb]: gdb testlists
+
+GNU gdb 5.0rh-5 Red Hat Linux 7.1
+Copyright 2001 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.
+There is absolutely no warranty for GDB.  Type "show warranty" for details.
+This GDB was configured as "i386-redhat-linux"...
+
+(gdb) b PrintList 
+Breakpoint 1 at 0x8048692: file lists.c, line 28.
+(gdb) r 100
+Starting program: /home/amit/classes/cs242/lab/C-examples/gdb/testlists 100
+
+Breakpoint 1, PrintList (L=0x8049f20) at lists.c:28
+28		int count = 0;
+(gdb) l
+23		return list;
+24	}
+25	
+26	void PrintList(NodePtr L)
+27	{
+28		int count = 0;
+29		while (L) {
+30			printf(" %d -->",L->item);
+31			L = L->next;
+32			count++;
+(gdb) l
+33		}
+34	    printf(" NULL \n");
+35	}
+36	 
+37			
+38	
+(gdb) n
+29		while (L) {
+(gdb) n
+30			printf(" %d -->",L->item);
+(gdb) n
+31			L = L->next;
+(gdb) n
+32			count++;
+(gdb) n
+33		}
+(gdb) n
+30			printf(" %d -->",L->item);
+(gdb) info breakpoints
+Num Type           Disp Enb Address    What
+1   breakpoint     keep y   0x08048692 in PrintList at lists.c:28
+	breakpoint already hit 1 time
+(gdb) b 32
+Breakpoint 2 at 0x80486c2: file lists.c, line 32.
+(gdb) cond 2 (count == 50)
+(gdb) c
+Continuing.
+
+Breakpoint 2, PrintList (L=0x8049bf0) at lists.c:32
+32			count++;
+(gdb) p count
+$1 = 50
+(gdb) p L
+$2 = (struct node *) 0x8049bf0
+(gdb) p *L
+$3 = {item = 52, next = 0x8049be0}
+(gdb) quit
+The program is running.  Exit anyway? (y or n) y
+[amit@kohinoor gdb]: exit
