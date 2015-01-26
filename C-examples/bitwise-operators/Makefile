@@ -19,9 +19,9 @@
 
 
 
-# The following are macros: a defintion on one line with an equal 
-# to sign. The CC macro is used to define the C compiler and the 
-# macro CFLAGS defines the default set of options or flags used 
+# The following are macros: a defintion on one line with an equal
+# to sign. The CC macro is used to define the C compiler and the
+# macro CFLAGS defines the default set of options or flags used
 # with the C compiler.
 CC=gcc
 CFLAGS=-Wall -Wconversion -g
@@ -33,25 +33,25 @@ CFLAGS=-Wall -Wconversion -g
 # into a file with a .o extension. The macro $< just
 # supplies the name of the file (without the extension)
 # that invoked this rule.
-.c.o: 
+.c.o:
 	$(CC) $(CFLAGS) -c $<
 
 # The following is a dependency or a rule line. It has the
 # name of the rule followed by a colon. After the colon are listed
-# other rules that this rule depends upon. Following the rules line 
+# other rules that this rule depends upon. Following the rules line
 # are one or more command lines that must start with a TAB character.
-all: getbits bitmanip shift-overflow pack
+all: getbits bitmanip shift-overflow pack simple
 
 # Another rule below. This depends upon the rule hello.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
 # the .c.o rule above to locate the hello.c file and builds the hello.o
 # using the .c.o rule.
-getbits: getbits.o bitmanip.o shift-overflow.o pack.o
+getbits: getbits.o bitmanip.o shift-overflow.o pack.o simple.o
 	$(CC) $(CFLAGS) $< -o $@
 
 # A rule most that all Makefiles should have. This one removes
-# any .o files and other undesirables that are  lying around and 
-# the executable hello and leaves only the source. Useful for running 
+# any .o files and other undesirables that are  lying around and
+# the executable hello and leaves only the source. Useful for running
 # before submitting a program!
 clean:
-	/bin/rm -f *.o getbits bitmanip shift-overflow a.out core pack
+	/bin/rm -f *.o getbits bitmanip shift-overflow a.out core pack simple
