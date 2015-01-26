@@ -26,22 +26,22 @@ void visualize(unsigned int x)
 }
 
 int main(void){
-    unsigned char red = 255;   // 1111 1111 
+    unsigned char red = 255;   // 1111 1111
     unsigned char green = 135; // 1000 0111
-    unsigned char blue = 111;  // 0110 1111  
+    unsigned char blue = 111;  // 0110 1111
     unsigned char alpha = 100; // 0110 0100
-    
+
     unsigned int result = 0;
     result=pack(red, green, blue, alpha);
     unpackWithShift(result);
     unpackWithMask(result);
-    
+
     return 0;
 }
 
-unsigned int pack(unsigned char red, 
-                  unsigned char green, 
-                  unsigned char blue, 
+unsigned int pack(unsigned char red,
+                  unsigned char green,
+                  unsigned char blue,
                   unsigned char alpha)
 {
     printf("Pack red=%u, green=%u, blue=%u, alpha=%u\n",red,green,blue,alpha);
@@ -52,7 +52,7 @@ unsigned int pack(unsigned char red,
     /* result = result<<24;  */
 
     // pack it here
-    
+
     return result;
 }
 

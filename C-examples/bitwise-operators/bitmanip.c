@@ -18,28 +18,28 @@ int main(int argc, char *argv[])
 
     unsigned int number = (unsigned int) atoi(argv[1]);
     int i = atoi(argv[2]);
-    
+
     printf("Number: %d (0x%x)\n", number, number);
     printf("Modifying bit: %d\n", i);
-    
+
     // Check if bit i is set
     unsigned int result = isBitISet(number, i);
-    printResult(i, number, result);  
-    
+    printResult(i, number, result);
+
     // Set it
     number = setBit(number, i);
-    
+
     // Make sure it was set
     result = isBitISet(number, i);
-    printResult(i, number, result);  
-    
+    printResult(i, number, result);
+
     // Clear bit
     number = clearBit(number, i);
 
     // Make sure it was cleared
     result = isBitISet(number, i);
-    printResult(i, number, result); 
-    
+    printResult(i, number, result);
+
     return 0;
 }
 
@@ -65,7 +65,7 @@ void printResult(int i, unsigned int num, unsigned int isSet)
 
 /**
  * Check if the ith bit of ch is set (e.g. 1).
- * 
+ *
  * Returns > 0 if the bit is set, 0 if it is not set.
  */
 unsigned int isBitISet(unsigned int ch, int i)
