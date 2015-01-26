@@ -8,7 +8,7 @@ void err_sys(char *msg);
 
 int main(int argc, char **argv)
 {
-    pid_t pids[4], pid;
+    pid_t  pids[4], pid;
     int i, status;
 
     for (i=0; i<4; i++) {
@@ -19,6 +19,7 @@ int main(int argc, char **argv)
 		/* perror("execlp failed"); */
         } else if (pid > 0) {
 		pids[i] = pid;
+		printf("pids[%d] is %d\n",i,pids[i]);
         } else {
 		err_sys("fork error");
         }
