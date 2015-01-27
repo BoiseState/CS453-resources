@@ -1,6 +1,6 @@
 #!/bin/bash
 # Test script for the endian conversion file
-# 
+#
 # Author: Marissa Schmidt
 #         Spring 2014
 #-------------------------------------------------------------------------
@@ -9,7 +9,7 @@
 EXE=endian
 
 # test input and output files
-TESTDIR=testdata
+TESTDIR=./testdata
 TESTDATA=$TESTDIR/test.in
 EXPECTED=$TESTDIR/test.out
 
