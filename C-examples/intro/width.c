@@ -5,8 +5,6 @@
 
 int main(int argc, char *argv[])
 {
-	
-	
 	printf("size of char = %ld \n", sizeof(char));
 	printf("size of short = %ld  \n", sizeof(short));
 	printf("size of unsigned short  = %ld  \n", sizeof(unsigned short));
@@ -15,7 +13,6 @@ int main(int argc, char *argv[])
 	printf("size of long = %ld  \n", sizeof(long));
 	printf("size of unsigned long = %ld  \n", sizeof(unsigned long));
 	printf("size of float = %ld  \n", sizeof(float));
-	printf("size of long float = %ld  \n", sizeof(float));
 	printf("size of double = %ld  \n", sizeof(double));
 	printf("size of long double = %ld  \n", sizeof(long double));
 	return 0;
