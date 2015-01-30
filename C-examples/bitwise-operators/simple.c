@@ -11,8 +11,8 @@
  */
 int main(int argc, char *argv[])
 {
-	unsigned int x = 0x0000FFFF; //00000000 00000000 00000000 11111111
-	unsigned int y = 0xFF00FF00; //11111111 00000000 00000000 00000000
+	unsigned int x = 0x0000FFFF; //00000000 00000000 111111111 1111111
+	unsigned int y = 0xFF00FF00; //11111111 00000000 11111111 00000000
 
 	unsigned int z = 0;
 
