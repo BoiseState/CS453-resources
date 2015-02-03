@@ -31,7 +31,7 @@ int main(void){
     unsigned char blue = 111;  // 0110 1111
     unsigned char alpha = 100; // 0110 0100
 
-    unsigned int result = 0;
+    unsigned int result = 0;// 1111 1111 | 1000 0111 | 0110 1111 | 0110 0100
     result=pack(red, green, blue, alpha);
     unpackWithShift(result);
     unpackWithMask(result);
