@@ -1,26 +1,18 @@
+CC=gcc
+CFLAGS=-Wall -g
 
-all: 
-	cd files-processes; make
-	cd threads; make
-	cd C-examples/; make 
-	cd plugins; make
-	cd shell-scripts; make
-	cd pipes-fifos; make
+#This executes the command "ls" and then assigns 
+#the value to the variable DIR
+DIRS=$(shell ls -d */)
 
+#This is the first rule in the file so it is the 
+#rule that make will execute if you do not give 
+#it an explicit target
+all: build
 
-zipfile:
-	cd plugins; make clean
-	cd C-examples; make clean
-	cd files-processes/; make  clean
-	cd threads; make  clean
-	zip -x "*/.svn*" -x "*/.project" -x "*/.classpath" -r lab.zip processes-files/ threads/ plugins/ C-examples/ 
-	zip -x "*/.svn*" -r mswin.zip ms-windows/
+#The default build command. 
+build: 
+	@$(foreach dir, $(DIRS), $(MAKE) -C $(dir) && ) true
 
-	
 clean:
-	cd files-processes; make  clean
-	cd threads; make  clean
-	cd plugins; make clean
-	cd C-examples; make clean
-	cd shell-scripts; make clean
-	cd pipes-fifos; make clean
+	@$(foreach dir, $(DIRS), $(MAKE) -C $(dir) clean && ) true	
