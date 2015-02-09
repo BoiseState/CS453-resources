@@ -1,11 +1,10 @@
-
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <common.h>
+//WE can use the < > notation on Node.h and List.h
+//because we set the include directory in the Makefile
 #include <Node.h>
 #include <List.h>
-
+//Object.h is in THIS directory so we will use quotes
 #include "Object.h"
 
 const int NUM_TESTS = 7;
@@ -27,17 +26,17 @@ void print_stats(int *tests)
   printf(" ========================\n");
 }
 
-void runRandomTests(int count, unsigned int seed, int n, ListPtr list)
+void runRandomTests(int count, unsigned int seed, int n, struct list* list)
 {
   int i;
   int test;
-  NodePtr node;
-  ObjectPtr job;
-  ObjectPtr searchJob;
+  struct node* node;
+  struct object* job;
+  struct object* searchJob;
   int *tests;
 
   tests = (int *) malloc(sizeof(int)*NUM_TESTS);
-  for (i=0; i<NUM_TESTS; i++) 
+  for (i=0; i<NUM_TESTS; i++)
     tests[i]=0;
   srandom(seed);
   for (i=0; i<count; i++) {
@@ -94,15 +93,15 @@ void runRandomTests(int count, unsigned int seed, int n, ListPtr list)
 }
 
 int main(int argc, char **argv)
-{	
+{
   int i;
   int n;
   int count;
   unsigned int seed=0;
 
-  ObjectPtr job;
-  NodePtr node;
-  ListPtr list;
+  struct object* job;
+  struct node* node;
+  struct list* list;
 
   if (argc < 2) {
     fprintf(stderr, "Usage: %s <list size> [<test size=list size>] [<seed>] \n",argv[0]);
@@ -118,8 +117,7 @@ int main(int argc, char **argv)
   }
 
   list = createList(equals, toString, freeObject);
-  for (i=0; i<n; i++)
-    {
+  for (i=0; i<n; i++) {
       job = createObject(i, "args");
       node = createNode(job);
       addAtFront(list, node);

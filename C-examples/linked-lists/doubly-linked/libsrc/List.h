@@ -1,4 +1,3 @@
-
 /*
 	List.h: Defines the interface for a doubly-linked list.
 */
@@ -6,21 +5,15 @@
 #ifndef __LIST_H
 #define __LIST_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "common.h"
 #include "Node.h"
-
-typedef struct list List;
-typedef struct list * ListPtr;
 
 struct list {
   int size;
-  NodePtr head;
-  NodePtr tail;
-  Boolean (*equals)(const void *, const void *);
+  struct node *head;
+  struct node *tail;
+  int (*equals)(const void *, const void *);
   char * (*toString)(const void *);
-  void (*freeObject)(const void *);
+  void (*freeObject)(void *);
 };
 
 /* prototypes of public methods */
@@ -31,17 +24,17 @@ struct list {
  *
  * @return a pointer to the allocated list.
  */
-ListPtr createList(Boolean (*equals)(const void *, const void *), 
-                   char * (*toString)(const void *),
-		           void (*freeObject)(const void *));
+struct list* createList(int (*equals)(const void *, const void *),
+		        char * (*toString)(const void *),
+		        void (*freeObject)(void *));
 
 /**
- * Frees all elements of the given list and the <code>ListPtr</code> itself. 
+ * Frees all elements of the given list and the <code>struct *list</code> itself.
  * Does nothing if L is <code>NULL</code>.
  *
  * @param L a pointer to a <code>List</code>.
  */
-void freeList(const ListPtr L);
+void freeList(const struct list *list);
 
 /**
  * Returns the size of the given list.
@@ -49,7 +42,7 @@ void freeList(const ListPtr L);
  * @param L a pointer to a <code>List</code>.
  * @return The current size of the list.
  */
-int getSize(const ListPtr L);
+int getSize(const struct list *list);
 
 /**
  * Checks if the list is empty.
@@ -57,7 +50,7 @@ int getSize(const ListPtr L);
  * @param  L a pointer to a <code>List</code>.
  * @return true if the list is empty; false otherwise.
  */
-Boolean isEmpty(const ListPtr L);
+int isEmpty(const struct list *list);
 
 /**
  * Adds a node to the front of the list. After this method is called,
@@ -68,7 +61,7 @@ Boolean isEmpty(const ListPtr L);
  * @param list a pointer to a <code>List</code>.
  * @param node a pointer to the node to add.
  */
-void addAtFront(ListPtr list, NodePtr node);
+void addAtFront(struct list *list, struct node *node);
 
 /**
  * Adds a node to the rear of the list. After this method is called,
@@ -79,7 +72,7 @@ void addAtFront(ListPtr list, NodePtr node);
  * @param list a pointer to a <code>List</code>.
  * @param node a pointer to the node to add.
  */
-void addAtRear(ListPtr list, NodePtr node);
+void addAtRear(struct list *list, struct node *node);
 
 /**
  * Removes the node from the front of the list (the head node) and returns
@@ -89,7 +82,7 @@ void addAtRear(ListPtr list, NodePtr node);
  * @param list a pointer to a <code>List</code>.
  * @return a pointer to the node that was removed.
  */
-NodePtr removeFront(ListPtr list);
+struct node* removeFront(struct list *list);
 
 /**
  * Removes the node from the rear of the list (the tail node) and returns
@@ -99,18 +92,18 @@ NodePtr removeFront(ListPtr list);
  * @param list a pointer to a <code>List</code>.
  * @return a pointer to the node that was removed.
  */
-NodePtr removeRear(ListPtr list);
+struct node* removeRear(struct list *list);
 
 /**
  * Removes the node pointed to by the given node pointer from the list and returns
- * the pointer to it. Assumes that the node is a valid node in the list. If the node 
- * pointer is NULL, the function will do nothing and return NULL. 
+ * the pointer to it. Assumes that the node is a valid node in the list. If the node
+ * pointer is NULL, the function will do nothing and return NULL.
  *
  * @param list a pointer to a <code>List</code>.
  * @param node a pointer to the node to remove.
  * @return a pointer to the node that was removed.
  */
-NodePtr removeNode(ListPtr list, NodePtr node);
+struct node* removeNode(struct list *list, struct node *node);
 
 /**
  * Searches the list for a node with the given key and returns the pointer to the
@@ -118,24 +111,24 @@ NodePtr removeNode(ListPtr list, NodePtr node);
  *
  * @param list a pointer to a <code>List</code>.
  * @param the object to search for.
- * @return a pointer to the node that was found. Or <code>NULL</code> if a node with the given key is not 
+ * @return a pointer to the node that was found. Or <code>NULL</code> if a node with the given key is not
  * found or the list is <code>NULL</code> or empty.
  */
-NodePtr search(const ListPtr list, const void * obj);
+struct node* search(const struct list *list, const void *obj);
 
 /**
  * Reverses the order of the given list.
  *
  * @param list a pointer to a <code>List</code>.
  */
-void reverseList(ListPtr L);
+void reverseList(struct list *list);
 
 /**
  * Prints the list.
  *
  * @param list a pointer to a <code>List</code>.
  */
-void printList(const ListPtr L);
+void printList(const struct list* list);
 
 
 #endif /* __LIST_H */

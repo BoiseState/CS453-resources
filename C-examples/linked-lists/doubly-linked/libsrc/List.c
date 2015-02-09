@@ -1,25 +1,13 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "List.h"
 
-/*
-
-	list.c 
-		Contains functions to manipulate a doubly-linked list.
- 
-*/
-
-
-/* private methods */
-static void print(const NodePtr node, char * (*toString)(const void *));
-
-ListPtr createList(Boolean (*equals)(const void *,const void *), 
-                   char * (*toString)(const void *),
-		   void (*freeObject)(const void *))
+struct list * createList(int (*equals)(const void *,const void *),
+			 char * (*toString)(const void *),
+			 void (*freeObject)(void *))
 {
-	ListPtr list;
-	list = (ListPtr) malloc(sizeof(List));
+	struct list *list;
+	list = (struct list *) malloc(sizeof(struct list));
 	list->size = 0;
 	list->head = NULL;
 	list->tail = NULL;
@@ -29,32 +17,28 @@ ListPtr createList(Boolean (*equals)(const void *,const void *),
 	return list;
 }
 
-void freeList(const ListPtr list)
+void freeList(const struct list *list)
 {
 }
 
-int getSize(const ListPtr list)
+int getSize(const struct list *list)
 {
-	return list->size;
+	return 0;
 }
 
-Boolean isEmpty(const ListPtr list)
+int isEmpty(const struct list *list)
 {
-	if (list->size == 0)
-		return TRUE;
-	else
-		return FALSE;
+	return list->size == 0;
 }
 
-void addAtFront(ListPtr list, NodePtr node)
+void addAtFront(struct list *list, struct node *node)
 {
 	if (list == NULL) return;
 	if (node == NULL) return;
 	list->size++;
 	node->next = list->head;
 	node->prev = NULL;
-	if (list->head == NULL)
-	{
+	if (list->head == NULL) {
 		list->head = node;
 		list->tail = node;
 	} else {
@@ -63,46 +47,42 @@ void addAtFront(ListPtr list, NodePtr node)
 	}
 }
 
-void addAtRear(ListPtr list, NodePtr node)
+void addAtRear(struct list *list, struct node *node)
 {
 }
 
-NodePtr removeFront(ListPtr list)
+struct node* removeFront(struct list *list)
 {
 	return NULL;
 }
 
-NodePtr removeRear(ListPtr list)
+struct node* removeRear(struct list *list)
 {
 	return NULL;
 }
 
-NodePtr removeNode(ListPtr list, NodePtr node)
+struct node* removeNode(struct list *list, struct node *node)
 {
 	return NULL;
 }
 
-NodePtr search(const ListPtr list, const void *obj)
+struct node* search(const struct list *list, const void *obj)
 {
 	return NULL;
 }
 
-void reverseList(ListPtr list)
+void reverseList(struct list *list)
 {
 }
 
-void printList(const ListPtr list)
+void printList(const struct list *list)
 {
-	if (list) print(list->head, list->toString);
-}
-
-static void print(const NodePtr node, char * (*toString)(const void *))
-{
+	if (!list) return; //list was null!!
 	int count = 0;
 	char *output;
-        NodePtr temp = node;
+	struct node *temp = list->head;
 	while (temp) {
-		output = (*toString)(temp->obj);
+		output = list->toString(temp->obj);
 		printf(" %s -->",output);
 		free(output);
 		temp = temp->next;
@@ -110,9 +90,5 @@ static void print(const NodePtr node, char * (*toString)(const void *))
 		if ((count % 6) == 0)
 			printf("\n");
 	}
-    printf(" NULL \n");
+	printf(" NULL \n");
 }
- 
-
-		
-

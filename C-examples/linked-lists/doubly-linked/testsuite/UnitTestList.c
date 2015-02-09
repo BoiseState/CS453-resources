@@ -7,18 +7,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "common.h"
 #include "Object.h"
 #include "Node.h"
 #include "List.h"
 
-/* 
+/*
  * macro to mimic the functionality of assert() from <assert.h>. The difference is that this version doesn't exit the program entirely.
  * It will just break out of the current function (or test case in this context).
  */
-#define myassert(expr) if(!(expr)){ fprintf(stderr, "\t[assertion failed] %s: %s\n", __PRETTY_FUNCTION__, __STRING(expr)); return FALSE; }
+#define myassert(expr) if(!(expr)){ fprintf(stderr, "\t[assertion failed] %s: %s\n", __PRETTY_FUNCTION__, __STRING(expr)); return 0; }
 
-ListPtr testlist;
+struct list *testlist;
 
 int testCount = 0;
 int passCount = 0;
