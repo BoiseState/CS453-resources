@@ -1,11 +1,11 @@
-
 #ifndef STRING_TOKENIZER_H
 #define STRING_TOKENIZER_H
 
 #include <string>
+#include <string.h> //for strtok
 using namespace std;
 
-class StringTokenizer 
+class StringTokenizer
 {
 	private:
 		string inputStr;

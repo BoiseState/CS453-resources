@@ -3,7 +3,7 @@ CFLAGS=-Wall -g
 
 #This executes the command "ls" and then assigns 
 #the value to the variable DIR
-DIRS=$(shell ls)
+DIRS=$(shell ls -d */)
 
 #This is the first rule in the file so it is the 
 #rule that make will execute if you do not give 
