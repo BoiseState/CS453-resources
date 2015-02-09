@@ -1,15 +1,12 @@
 
 all: subdirs
 
-subdirs: 
-	cd bad; make
-	cd almost-generic; make
-	cd generic-with-library; make
-	cd generic; make
+subdirs:
+	cd buggy-list; make
+	cd singly-linked; make
+	cd doubly-linked; make
 
 clean:
-	cd bad; make clean
-	cd almost-generic; make clean
-	cd generic-with-library/; make clean
-	cd generic; make clean
-	
+	cd buggy-list; make clean
+	cd singly-linked; make clean
+	cd doubly-linked; make clean
