@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "SinglyLinkedList.h"
 
-
 int main(int argc, char **argv)
 {
 	int i;
 	int n;
-	NodePtr list, node;
+	struct node *list;
+	struct node *node;
 
 	if (argc != 2) {
 		fprintf(stderr, "Usage: %s <list size> \n",argv[0]);
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 
 	list = NULL;
 	for (i=0; i<n; i++) {
-		node = (NodePtr) malloc(sizeof(Node));
+		node = (struct node*) malloc(sizeof(struct node));
 		if (node == NULL) {
 			printf("Error allocating node for linked list\n");
 			exit(1);
@@ -26,14 +26,10 @@ int main(int argc, char **argv)
 		list = addAtFront(list, node);
 	}
 
-	if (n <= 10)
-		printList(list);
-	else
-		printf("List too long...not printing.\n");
+	printList(list);
 
 	list=reverseList(list);
 	printList(list);
-
 
 	return 0;
 }

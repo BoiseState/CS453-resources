@@ -1,52 +1,46 @@
-
-/* C-examples/singlyLinkedList/SinglyLinkedList.c */
-
-/**
-
-	SinglyLinkedList.c
-		Contains a basic set of functions to manipulate a linked list.
- 
+/*
+ * SinglyLinkedList.c
+ * Contains a basic set of functions to manipulate a linked list.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "SinglyLinkedList.h"
 
-NodePtr addAtFront(NodePtr L, NodePtr node)
+struct node *addAtFront(struct node *head, struct node *node)
 {
-	if (node == NULL) return L;
-	if (L == NULL) {
-		L = node;
+	if (node == NULL) return head;
+	if (head == NULL) {
+		head = node;
 		node->next = NULL;
 	} else {
-		node->next = L;
-		L = node;
+		node->next = head;
+		head = node;
 	}
-	return L;
+	return head;
 }
 
 
-NodePtr reverseList(NodePtr L)
+struct node* reverseList(struct node *head)
 {
-	NodePtr list = NULL;
-	while (L) {
-		NodePtr tmp = L;
-		L = L->next;
+	struct node *list = NULL;
+	while (head) {
+		struct node *tmp = head;
+		head = head->next;
 		tmp->next = list;
-
 		list = tmp;
 	}
 	return list;
 }
 
 
-void printList(NodePtr L)
+void printList(struct node *head)
 {
-	while (L) {
-		printf(" %d -->",L->item);
-		L = L->next;
+	while (head) {
+		printf(" %d -->",head->item);
+		head = head->next;
 	}
-    printf(" NULL \n");
+	printf(" NULL \n");
 }
-		
+
 
