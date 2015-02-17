@@ -1,6 +1,7 @@
 public class Bar{
 	private String state;
 
+
 	public Bar(String state){
 		this.state = state;
 	}
