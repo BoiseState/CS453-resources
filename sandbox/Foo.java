@@ -1,5 +1,4 @@
 public class Foo{
-
 	private String state;
 
 	public Foo(String state){
@@ -10,10 +9,4 @@ public class Foo{
 	public String toString(){
 		return "Foo " + state;
 	}
-
-	@Override
-	public boolean equals(Object obj){
-		return false;
-	}
-
 }

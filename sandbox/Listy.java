@@ -1,4 +1,8 @@
 import java.util.*;
+
+/**
+ * @brief Example code to show a similar list in Java
+ */
 public class Listy{
 
 	public static void main(String foo[]){
@@ -9,6 +13,7 @@ public class Listy{
 		//addFront(mylist, b);
 		mylist.add(b);
 		b = new Bar("2");
+		//addFront(mylist, b);
 		mylist.add(b);
 
 		for(Bar b1: mylist){
