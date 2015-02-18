@@ -1,7 +1,6 @@
 public class Bar{
 	private String state;
 
-
 	public Bar(String state){
 		this.state = state;
 	}
@@ -10,10 +9,4 @@ public class Bar{
 	public String toString(){
 		return "Bar " + state;
 	}
-
-	@Override
-	public boolean equals(Object obj){
-		return false;
-	}
-
 }

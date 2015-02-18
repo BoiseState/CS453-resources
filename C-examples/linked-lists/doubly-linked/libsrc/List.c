@@ -17,7 +17,7 @@ struct list * createList(int (*equals)(const void *,const void *),
 	return list;
 }
 
-void freeList(const struct list *list)
+void freeList(struct list *list)
 {
 }
 

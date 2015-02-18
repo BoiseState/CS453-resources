@@ -30,16 +30,16 @@ struct list* createList(int (*equals)(const void *, const void *),
 
 /**
  * Frees all elements of the given list and the <code>struct *list</code> itself.
- * Does nothing if L is <code>NULL</code>.
+ * Does nothing if list is <code>NULL</code>.
  *
- * @param L a pointer to a <code>List</code>.
+ * @param list a pointer to a <code>List</code>.
  */
-void freeList(const struct list *list);
+void freeList(struct list *list);
 
 /**
  * Returns the size of the given list.
  *
- * @param L a pointer to a <code>List</code>.
+ * @param list a pointer to a <code>List</code>.
  * @return The current size of the list.
  */
 int getSize(const struct list *list);
@@ -47,7 +47,7 @@ int getSize(const struct list *list);
 /**
  * Checks if the list is empty.
  *
- * @param  L a pointer to a <code>List</code>.
+ * @param  list a pointer to a <code>List</code>.
  * @return true if the list is empty; false otherwise.
  */
 int isEmpty(const struct list *list);
