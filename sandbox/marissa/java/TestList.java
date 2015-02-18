@@ -8,6 +8,9 @@ public class TestList
 
 		dogList.printList();
 
+		dogList.reverseList();
+		dogList.printList();
+
 		List<Job> jobList = new List<Job>();
 		jobList.addAtFront(new Job(0, "ls", null));
 		jobList.addAtFront(new Job(1, "cd", new String[] {"~"}));

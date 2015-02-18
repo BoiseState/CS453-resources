@@ -22,24 +22,22 @@ public class List<T extends Comparable<T>>
 			Node<T> node = new Node<T>(element);
 			node.setNext(head);
 			head = node;
-			System.out.println(node.getNext());
 		}
 		size++;
 	}
 
-	public Node<T> searchList(T element)
+	public void reverseList()
 	{
-		if(head == null) return null;
-		if(element == null) return null;
+		Node<T> front = null;
 		Node<T> curr = head;
 		while(curr != null)
 		{
-			if(curr.getElement().compareTo(element) == 0)
-				return curr;
+			Node<T> temp = curr;
 			curr = curr.getNext();
+			temp.setNext(front);
+			front = temp;
 		}
-		return null;
-
+		head = front;
 	}
 
 	public void printList()
@@ -50,5 +48,6 @@ public class List<T extends Comparable<T>>
 			System.out.printf("%s --> ", curr);
 			curr = curr.getNext();
 		}
+		System.out.println("\n");
 	}
 }
