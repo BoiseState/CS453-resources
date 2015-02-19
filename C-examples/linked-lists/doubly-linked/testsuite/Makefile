@@ -14,11 +14,11 @@ all: $(PROGS)
 RandomTestList: RandomTestList.o Object.o
 	$(CC) $(CFLAGS) -o $@ $^  $(LFLAGS)
 
-SimpleTestList: SimpleTestList.o 
+SimpleTestList: SimpleTestList.o
 	$(CC) $(CFLAGS) -o $@ SimpleTestList.o   $(LFLAGS)
 
 UnitTestList: UnitTestList.o Object.o
 	$(CC) $(CFLAGS) -o $@ $^   $(LFLAGS)
 
 clean:
-	rm --force list *.o $(PROGS)
+	rm -f list *.o $(PROGS)
