@@ -1,33 +1,41 @@
-#ifndef LIST_H
-#define LIST_H
-
+#ifndef __LIST_H
+#define __LIST_H
 
 #include "Node.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 struct list {
 	int size;
-	struct node *head;
+	struct node* head;
 };
-
 
 /**
  * Constructor
  */
-struct list *createList();
+struct list* createList();
 
 /**
  * Destructor
  */
-void freeList(struct list *list);
+void freeList(struct list* list);
 
 /**
- * Add to front
+ * Add to front.
  */
-void addAtFront(struct list *list, int element);
+void addAtFront(struct list* list, struct node* node);
 
-void printList(struct list *list);
+/**
+ * Remove from front.
+ */
+struct node* removeFront(struct list* list);
 
+/**
+ * Searches for the specified object.
+ */
+struct node* searchList(struct list* list, void* object);
 
-#endif
+/**
+ * Prints the contents of the list.
+ */
+void printList(struct list* list);
+
+#endif /* __LIST_H */
