@@ -6,14 +6,14 @@
 
 #define MAX_KEY_DIGITS 4
 
-struct object {
-	int key;
-	char *data;
+struct dog {
+	int id;
+	char *name;
 };
 
-struct object* createObject (const int, const char *);
+struct dog* createDog (const int, const char *);
 char *toString(const void *);
-void freeObject(const void *);
+void freeDog(const void *);
 int equals(const void *, const void *);
 
 

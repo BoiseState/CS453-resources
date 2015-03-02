@@ -1,7 +1,6 @@
 #include "Object.h"
 #include <string.h>
 
-
 struct object* createObject(const int key, const char *data)
 {
 	struct object* newObject = (struct object*) malloc (sizeof(struct object));
@@ -30,7 +29,7 @@ char *toString(const void *obj)
 	return temp;
 }
 
-void freeObject(void *obj)
+void freeObject(const void *obj)
 {
 	struct object* myobj = (struct object*) obj;
 	if (myobj == NULL) return;

@@ -9,20 +9,17 @@
 
 int main(int argc, char *argv[])
 {
-	Address addr1 = createAddress("Moo Shoo", "123 Main Street", "Boise", 
-                                      "Idaho", 83701);
-	
-	//Address addr1 = createAddress("Moo Shoo", "123 Main Street", "Boise", 
-        //                              "Idaho", 83701, printMultiLine);
+	Address addr1 = createAddress("Moo Shoo", "123 Main Street", "Boise",
+                                      "Idaho", 83701, printOneLine);
+
+	Address addr2 = createAddress("Hee Haw", "123 Main Street", "Boise",
+                                      "Idaho", 83701, NULL);
 
 
 	/* uses the default printMultiLine */
 	printf("%s\n", (*addr1->toString)(addr1));
-	/* alternate form in C99: printf("%s\n", addr1->toString(addr1));*/
 
-	addr1->toString = printOneLine;
-
-	printf("%s\n", (*addr1->toString)(addr1));
+	printf("%s\n", (*addr2->toString)(addr2));
 
 	return 0;
 }

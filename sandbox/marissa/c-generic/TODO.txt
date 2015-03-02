@@ -1,7 +1,0 @@
-1. Show Makefile
-2. Add at front accepts a node instead of int (finish ListTest.c)
-3. Run valgrind on current list.
-4. Write some unit tests for add at front.
-5. Finish non-generic List.c
-6. Make it generic.
-

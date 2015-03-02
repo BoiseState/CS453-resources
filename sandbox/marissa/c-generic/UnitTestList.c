@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* #include "Object.h" */
+#include "Object.h"
 #include "Node.h"
 #include "List.h"
 
@@ -41,8 +41,8 @@ void printTestResult(char* testName, int passed)
 
 struct node *createTestNode(int jobid)
 {
-	/* struct object * job = createObject(jobid, "cmd args"); */
-	struct node *node = createNode(1);
+	struct object * job = createObject(jobid, "cmd args");
+	struct node *node = createNode(job);
 	return node;
 }
 
@@ -50,7 +50,7 @@ int addAtFrontToNullListTest()
 {
 	struct node *node = createTestNode(1);
 	addAtFront(NULL, node);
-	freeNode(node);
+	freeNode(node, testlist->freeObject);
 	return 1;
 }
 
@@ -106,8 +106,11 @@ int nullNodeTest()
 
 int searchNullListTest()
 {
-	struct node *found = searchList(NULL, 1);
+	struct object *job = createObject(1, "");
+	struct node *found = searchList(NULL, job);
 	myassert(found == NULL);
+
+	freeObject(job); // clean up after ourselves because we didn't add it to the list.
 	return 1;
 }
 
@@ -137,8 +140,7 @@ int searchListFound()
 void beforeTest(char* testName)
 {
 	printTestInfo(testName, "Running...");
-	/* testlist = createList(equals, toString, freeObject); */
-	testlist = createList();
+	testlist = createList(equals, toString, freeObject);
 	testCount++;
 }
 void afterTest(char* testName, int result)

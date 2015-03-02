@@ -18,12 +18,13 @@ struct address {
 	char *state;
 	int zip;
 
-	char * (*toString)(Address);
+	char * (*toString)(struct address *);
 };
 
-Address createAddress(char *, char *, char *, char *, int);
-//Address createAddress(char *, char *, char *, char *, int, char * (*toString)(Address));
+Address createAddress(char *, char *, char *, char *, int,
+		char *(*printAddress)(struct address *));
 char *printMultiLine(Address);
 char *printOneLine(Address);
+char *printDefault(Address);
 
 #endif /* ADDRESS_H */

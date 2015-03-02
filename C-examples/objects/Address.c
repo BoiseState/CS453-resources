@@ -9,10 +9,8 @@ static int getLength(Address this)
 				strlen(this->city)+strlen(this->state)+4+5+10;
 }
 
-//Address createAddress(char *name, char *streetAddress, char *city,
-//                      char *state, int zip, char * (*toString)(Address))
 Address createAddress(char *name, char *streetAddress, char *city,
-                      char *state, int zip)
+                      char *state, int zip, char *(*printAddress)(struct address *))
 {
 	Address temp = (Address) malloc(sizeof(address));
 	temp->name = (char *) malloc(sizeof(char)*(strlen(name)+1));
@@ -24,8 +22,10 @@ Address createAddress(char *name, char *streetAddress, char *city,
 	strcpy(temp->city, city);
 	strcpy(temp->state, state);
 	temp->zip = zip;
-	temp->toString = printMultiLine;
-	//temp->toString = toString;
+	if(printAddress == NULL)
+		temp->toString = printDefault;
+	else
+		temp->toString = printAddress;
 	return temp;
 }
 
@@ -35,7 +35,7 @@ char *printMultiLine(Address this)
 	char * temp = (char *) malloc(sizeof(char)*len);
 	snprintf(temp, len, "%s\n%s\n%s, %s, %d\n", this->name,
 				this->streetAddress, this->city, this->state, this->zip);
-	return temp; 
+	return temp;
 }
 
 char *printOneLine(Address this)
@@ -44,6 +44,20 @@ char *printOneLine(Address this)
 	char * temp = (char *) malloc(sizeof(char)*len);
 	snprintf(temp, len, "%s, %s, %s, %s %d\n", this->name,
 				this->streetAddress, this->city, this->state, this->zip);
-	return temp; 
+	return temp;
 }
+
+char *printDefault(Address address)
+{
+	return "default";
+}
+
+
+
+
+
+
+
+
+
 

@@ -20,7 +20,7 @@ int foobar2(int x) {
 
 void fun(int (*fn)(int)) {
 	int result;
-	
+
 	result = (*fn) (5);
 }
 
@@ -42,6 +42,13 @@ int main(int argc, char **argv)
 	}
 	count = atoi(argv[1]);
 	seed = atoi(argv[2]);
+
+
+	int (*functionPtr)(int) = foobar2;
+
+	fun(functionPtr);
+
+
 
 	srandom(seed);
 	for (i=0; i<count; i++) {
