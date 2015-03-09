@@ -1,21 +1,20 @@
-
 CC=gcc
-CFLAGS=-Wall -g -O -MMD
+CFLAGS=-Wall -g -O -I. -MMD
+PROGS=SimpleTestList SimpleTestListTwo UnitTestList
+OBJS=List.o Node.o
 
-all: ListTest ListTestTwo UnitTestList
+all: $(PROGS)
 
-ListTest: ListTest.o List.o Node.o Object.o
-	$(CC) $(CFLAGS)  $^  -o $@
+SimpleTestList: SimpleTestList.o $(OBJS) Object.o
+	$(CC) $(CFLAGS) -o $@ $^
 
-ListTestTwo: ListTestTwo.o List.o Node.o Dog.o
-	$(CC) $(CFLAGS)  $^  -o $@
+SimpleTestListTwo: SimpleTestListTwo.o $(OBJS) Dog.o
+	$(CC) $(CFLAGS) -o $@ $^
 
-
-UnitTestList: UnitTestList.o List.o Node.o Object.o
-	$(CC) $(CFLAGS)  $^  -o $@
-
-clean:
-	/bin/rm -f *.o ListTest ListTestTwo UnitTestList *.d
-	/bin/rm -fr docs doxygen.log
+UnitTestList: UnitTestList.o $(OBJS) Object.o
+	$(CC) $(CFLAGS) -o $@ $^
 
 -include *.d
+
+clean:
+	/bin/rm -f *.o *.d $(PROGS)
