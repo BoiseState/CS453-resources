@@ -2,7 +2,6 @@
  * WordObj.h
  *
  */
-
 #ifndef WORDOBJ_H_
 #define WORDOBJ_H_
 #include <stdlib.h>
@@ -24,6 +23,6 @@ struct word
 WordObjPtr createWordObj(const char *word, const unsigned long int frequency);
 char *toString(const void * obj);
 void freeWordObj(const void * obj);
-Boolean equals(const void * obj1, const void * obj2);
+int equals(const void * obj1, const void * obj2);
 
 #endif /* WORDOBJ_H_ */
