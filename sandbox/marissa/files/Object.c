@@ -20,12 +20,15 @@ int equals(const void *obj, const void *other)
 char *toString(const void *obj)
 {
 	struct object* myobj = (struct object*) obj;
-	char *temp;
-	int max_data = strlen(myobj->data)+1;
-	max_data += MAX_KEY_DIGITS;
-	temp = (char *)malloc(max_data);
+
+	// calculate and allocate enough space for output string
+	int max_data_len = strlen(myobj->data)+1;
+	max_data_len += MAX_KEY_DIGITS;
+	max_data_len += 3; // for [] and space
+	char *temp = (char *) malloc(sizeof(char) * max_data_len);
+
 	//print into our buffer safely
-	snprintf(temp, max_data, "[%d] %s", myobj->key, myobj->data);
+	snprintf(temp, max_data_len, "[%d] %s", myobj->key, myobj->data);
 	return temp;
 }
 

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_KEY_DIGITS 4
+#define MAX_KEY_DIGITS 10
 
 struct object {
 	int key;

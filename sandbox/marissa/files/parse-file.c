@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 			count++;
 			// save word
 			word = createObject(count, nextWord);
-			//printf("%s\n", toString(word));
-			printf("%s\n",nextWord);
+			printf("%s\n", toString(word));
+			/* printf("%s\n",nextWord); */
 
 			// get the next token.
 			nextWord = strtok(NULL, delimiters);
