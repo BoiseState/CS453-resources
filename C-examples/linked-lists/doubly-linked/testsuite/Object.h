@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_KEY_DIGITS 4
+
+#define MAX_KEY_DIGITS 10 /* max digits in an int */
+
 struct object {
 	int key;
 	char *data;
