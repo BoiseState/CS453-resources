@@ -1,12 +1,23 @@
 #!/bin/bash
 
-case $# in
-0|1) echo "Usage " $(basename $0) " <oldext> <newext>"; exit 1;;
-esac
+if [ $# -le 1 ]
+then
+	echo "Usage " $(basename $0) " <oldext> <newext>"
+	exit 1
+fi
 
-for f in *.$1
+#case $# in
+#0|1)
+#	echo "Usage " $(basename $0) " <oldext> <newext>"
+#	exit 1
+#esac
+
+oldext=$1
+newext=$2
+
+for f in *.$oldext
 do
   echo $f
-  base=$(basename $f .$1)
-  mv $f $base.$2
+  base=$(basename $f .$oldext)
+  mv $f $base.$newext
 done
