@@ -18,6 +18,6 @@ newext=$2
 for f in *.$oldext
 do
   echo $f
-  base=$(basename $f .$oldext)
+  base=$(basename $f .$oldext) # e.g. f1.cpp => f1
   mv $f $base.$newext
 done
