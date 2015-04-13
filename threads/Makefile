@@ -6,7 +6,8 @@ LFLAGS=-lpthread
 
 
 PROGS=thread-hello-world thread-better-hello-world thread-cp thread-test seq-sum thread-sum\
-	  thread-ex thread-ids bad-bank-balance safe-bank-balance random_r
+	  thread-ex thread-ids bad-bank-balance safe-bank-balance safe-bank-balance-starvation\
+	  random_r
 
 all: $(PROGS) subdirs
 
@@ -43,6 +44,9 @@ bad-bank-balance: bad-bank-balance.o
 
 safe-bank-balance: safe-bank-balance.o
 	$(CC) $(CFLAGS) -o $@ safe-bank-balance.o $(LFLAGS)
+
+safe-bank-balance-starvation: safe-bank-balance-starvation.o
+	$(CC) $(CFLAGS) -o $@ safe-bank-balance-starvation.o $(LFLAGS)
 
 random_r: random_r.o
 	$(CC) $(CFLAGS) -o $@ random_r.o $(LFLAGS)
