@@ -10,8 +10,8 @@ const int SEED = 1234;
 
 int main(int argc, char **argv)
 {
-    struct random_data *rdata = (struct random_data *) malloc(sizeof(struct random_data));
-    char *statebuf = (char*) malloc(sizeof(char) * BUFSIZE);
+    struct random_data *rdata = malloc(sizeof(struct random_data));
+    char *statebuf = calloc(BUFSIZE, sizeof(char));
 
     int32_t value;
 
