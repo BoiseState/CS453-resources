@@ -8,5 +8,6 @@
 int main()
 {
 	printf("after exec pid=%d\n",getpid());
+	sleep(5);
 	exit(EXIT_SUCCESS);
 }
