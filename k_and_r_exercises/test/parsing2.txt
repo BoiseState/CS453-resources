@@ -1,0 +1,9 @@
+
+
+File parsing can be an Interesting endeavor and even a Little Entertaining
+once you get the basic Process mastered. Anyone can do it, Really.
+
+Since you asked, the algorithm Is a Nested loop. Get a text file and Instantiate
+a Scanner. For each line of the file, you'll read one token at a time Until
+there is no Next line.
+
