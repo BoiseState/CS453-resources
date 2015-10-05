@@ -1,0 +1,156 @@
+[marissa@onyx gdb]$ gcc function.c -o function
+[marissa@onyx gdb]$ gdb function
+GNU gdb (GDB) Fedora 7.5.1-42.fc18
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/marissa/teaching/cs253/lab/C-examples/gdb/function...(no debugging symbols found)...done.
+(gdb) q
+[marissa@onyx gdb]$ gcc -g function.c -o function
+[marissa@onyx gdb]$ gdb function
+GNU gdb (GDB) Fedora 7.5.1-42.fc18
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/marissa/teaching/cs253/lab/C-examples/gdb/function...done.
+(gdb) q
+[marissa@onyx gdb]$ gdb function
+GNU gdb (GDB) Fedora 7.5.1-42.fc18
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /home/marissa/teaching/cs253/lab/C-examples/gdb/function...done.
+(gdb) run
+Starting program: /home/marissa/teaching/cs253/lab/C-examples/gdb/function 
+0x602010 0
+...
+Program received signal SIGSEGV, Segmentation fault.
+0x000000000040067d in populate (size=20, b=0x0) at function.c:20
+20              *b = i;
+Missing separate debuginfos, use: debuginfo-install glibc-2.16-34.fc18.x86_64
+(gdb) where
+#0  0x000000000040067d in populate (size=20, b=0x0) at function.c:20
+#1  0x0000000000400703 in not_buggy (size=20, b=0x0) at function.c:38
+#2  0x0000000000400742 in main () at function.c:46
+(gdb) bt
+#0  0x000000000040067d in populate (size=20, b=0x0) at function.c:20
+#1  0x0000000000400703 in not_buggy (size=20, b=0x0) at function.c:38
+#2  0x0000000000400742 in main () at function.c:46
+(gdb) list 20
+15      static void populate(int size, int *b)
+16      {
+17          int i;
+18          count++;
+19          for(i = 0; i < size; b++, i++){
+20              *b = i;
+21          }
+22      }
+23
+24
+(gdb) list main
+39          print_it(20,b);
+40      }
+41
+42
+43      int main(void)
+44      {
+45          int *stuff = (int*)malloc(sizeof(int)*20);
+46          for(;;) not_buggy(20,stuff);
+47      }
+48
+(gdb) break populate
+Breakpoint 1 at 0x40065e: file function.c, line 18.
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/marissa/teaching/cs253/lab/C-examples/gdb/function 
+
+Breakpoint 1, populate (size=20, b=0x602010) at function.c:18
+18          count++;
+(gdb) p size
+$1 = 20
+(gdb) p b
+$2 = (int *) 0x602010
+(gdb) p *b
+$3 = 0
+(gdb) p *b@size
+$4 = {0 <repeats 20 times>}
+(gdb) step
+19          for(i = 0; i < size; b++, i++){
+(gdb) step
+20              *b = i;
+(gdb) step
+19          for(i = 0; i < size; b++, i++){
+(gdb) list 
+14
+15      static void populate(int size, int *b)
+16      {
+17          int i;
+18          count++;
+19          for(i = 0; i < size; b++, i++){
+20              *b = i;
+21          }
+22      }
+23
+(gdb) continue
+Continuing.
+0x602010 0
+...
+Breakpoint 1, populate (size=20, b=0x602010) at function.c:18
+18          count++;
+(gdb) p *b@size
+$5 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040065e in populate at function.c:18
+        breakpoint already hit 2 times
+(gdb) cond 1 (b==0)
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x000000000040065e in populate at function.c:18
+        stop only if (b==0)
+        breakpoint already hit 2 times
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) continue
+Continuing.
+0x602010 0
+...
+Breakpoint 1, populate (size=20, b=0x0) at function.c:18
+18          count++;
+(gdb) p b
+$6 = (int *) 0x0
+(gdb) bt
+#0  populate (size=20, b=0x0) at function.c:18
+#1  0x0000000000400703 in not_buggy (size=20, b=0x0) at function.c:38
+#2  0x0000000000400742 in main () at function.c:46
+(gdb) list 38
+33          int z = rand()%10;
+34          if(z == 5){
+35              free(b);
+36              b = NULL;
+37          }
+38          populate(20,b);
+39          print_it(20,b);
+40      }
+41
+42
+(gdb) 
+
