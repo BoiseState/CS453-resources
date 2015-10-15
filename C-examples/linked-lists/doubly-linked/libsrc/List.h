@@ -106,12 +106,13 @@ struct node* removeRear(struct list *list);
 struct node* removeNode(struct list *list, struct node *node);
 
 /**
- * Searches the list for a node with the given key and returns the pointer to the
- * found node.
+ * Searches the list for a node with the given obj and returns the pointer to the
+ * found node. The search method should call the equals function pointer that was 
+ * provided by the user of this library.
  *
  * @param list a pointer to a <code>List</code>.
  * @param the object to search for.
- * @return a pointer to the node that was found. Or <code>NULL</code> if a node with the given key is not
+ * @return a pointer to the node that was found. Or <code>NULL</code> if a node with the given obj was not
  * found or the list is <code>NULL</code> or empty.
  */
 struct node* search(const struct list *list, const void *obj);
