@@ -32,7 +32,7 @@ generic-list-lib:
 	cd $(GENERIC_LIST_DIR)/libsrc; make install
 
 libclean:
-	cd $(GENERIC_LIST_DIR)/libsrc; make clean
+	cd $(GENERIC_LIST_DIR); make clean
 	/bin/rm -fr $(LDIR) $(IDIR)
 
 
