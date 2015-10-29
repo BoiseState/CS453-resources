@@ -1,39 +1,28 @@
-#Builds both the single threaded version
-#and the multi threaded version
-all: ring ring_mt
+INSTALL=.
+LIB=$(INSTALL)/lib
+INCLUDE=$(INSTALL)/include
 
-#Buils both the single threaded and multi threaded
-#test suite 
-test: test_suit test_suit_mt
+#Builds the single threaded version
+#We will extend this rule in the next homework
+#to build both the single and multi-threaded version
+all: test-code
 
 #Build the single threaded version
-ring:	
+#and then copy over the build artifacts
+ring:
 	cd src; make
+	mv src/libring.so $(LIB)
+	cp src/ring.h $(INCLUDE)
 
-#Builds the multi threaded version
-ring_mt:
-	cd src; make mt
-
-#Installs the single threaded version
-#NOTE: In a real project this would install
-#      into your system lib path
-install:
-	cd src; make install
-
-#Installs the single threaded version
-#NOTE: In a real project this would install
-#      into your system lib path
-install_mt:
-	cd src; make install_mt
-
-#Build the single threaded test suite
-test_suit:
+#First build all the dependencies then build
+#the test code and copy the tester to the top level
+test-code: ring
 	cd test; make
-
-#Build the multi threaded test suite
-test_suit_mt:
-	cd test; make mt
+	mv test/grader .
 
 clean:
+	rm -f lib/*.so
+	rm -f include/*.h
+	rm -f grader
 	cd src; make clean
 	cd test; make clean

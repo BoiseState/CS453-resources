@@ -1,24 +1,8 @@
-
-INSTALL=..
-INCLUDE=$(INSTALL)/include -I.
-LIBS=$(INSTALL)/lib
-LFLAGS=-L$(LIBS) -lmylib
-CC=gcc
-CFLAGS=-Wall -g  -I$(INCLUDE)
-
-PROGS=RandomTestList SimpleTestList UnitTestList
-
-all: $(PROGS)
-
-
-RandomTestList: RandomTestList.o Object.o
-	$(CC) $(CFLAGS) -o $@ $^  $(LFLAGS)
-
-SimpleTestList: SimpleTestList.o
-	$(CC) $(CFLAGS) -o $@ SimpleTestList.o   $(LFLAGS)
-
-UnitTestList: UnitTestList.o Object.o
-	$(CC) $(CFLAGS) -o $@ $^   $(LFLAGS)
+#Lets keep this Makefile as simple as possible
+#build the grader from the file test.c
+grader:
+	gcc -Wall -Wextra -o grader test.c -L../lib/ -lring
 
 clean:
-	rm -f list *.o $(PROGS)
+	rm -f *.o
+	rm -f grader
