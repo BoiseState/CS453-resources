@@ -20,8 +20,8 @@ else
 	exit 1
 fi
 
-#Check to make sure we created the log file 
-if [ -x "ring.log" ]; then
+#Check to make sure we created the log file
+if [ -e "ring.log" ]; then
     echo "Created a log file"
 else
     echo "HW6: FAIL - Did not create the log file" >> $dest
