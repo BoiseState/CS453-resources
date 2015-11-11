@@ -39,8 +39,11 @@ void log_msg(char *entry)
  * Right now this is just printing to the console. We want to change this to 
  * write to a file (log_name) and we want to use signals to trigger the logging
  * event
+ *
+ * This method should write all the current entries to disk. We will use 
+ * the constant log_name as the name of the file.
  */
-void dump_buffer()
+static void dump_buffer()
 {
   int i;
   for(i =0;i<MAX_LOG_ENTRY;i++){

@@ -27,11 +27,5 @@ void init_buffer();
  */
 void log_msg(char *entry);
 
-/*
- * This method should write all the current entries to disk. We will use 
- * the constant log_name as the name of the file.
- */
-void dump_buffer();
-
 #define RING_H
 #endif
