@@ -24,12 +24,6 @@ int main(void)
   log_msg("Error: we tried to make foo when we needed bar  ... oops that was a pretty crazy thing to do");
   log_msg("Error: failed 6");
   log_msg("Error: shutdown");
-  /* We can uncomment the line below for testing. However
-   * we want to a signal from the OS to trigger a buffer 
-   * If you want to test this manually you will need to 
-   * temporarily change dump_buffer to a public method
-   * */
-  //dump_buffer();
 
   //sleep for (alarm_interval + 1) seconds to ensure that the
   //signal has fired and we have written out our file
