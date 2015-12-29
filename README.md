@@ -1,11 +1,14 @@
 # CS253-lab
-Student Materials for CS253
+Student Materials for CS253 - Introduction to Systems programming. 
+
+All code in this repository may be used in your programming 
+projects with appropriate citation.
 
 
 Note: 
 
-* All programs were tested under Fedora Linux operating system.  They should
-  work under any POSIX system (and Mac OS X) but no guarantees!
-
+* All programs are configured to build on Linux
+* Mac OSX is not currently supported due to differences in how 
+libraries are build
 * The programs for MS Windows were all tested under Windows 7.
 
