@@ -5,18 +5,16 @@
 #define STATE_LEN 8
 
 void* random_printer(void *ptr);
-int  main()
-{
-     pthread_t thread1, thread2;
-     pthread_create(&thread1, NULL, random_printer,(void*)1);
-     pthread_create(&thread2, NULL, random_printer, (void*)2);
-     pthread_join(thread1, NULL);
-     pthread_join(thread2, NULL);
-     exit(0);
+int  main() {
+    pthread_t thread1, thread2;
+    pthread_create(&thread1, NULL, random_printer,(void*)1);
+    pthread_create(&thread2, NULL, random_printer, (void*)2);
+    pthread_join(thread1, NULL);
+    pthread_join(thread2, NULL);
+    exit(0);
 }
 
-void* random_printer(void *ptr)
-{
+void* random_printer(void *ptr) {
     //get the seed that was passed into the thread
     int seed = (size_t)ptr;
     //create our random_data buff on the stack
@@ -29,7 +27,7 @@ void* random_printer(void *ptr)
     initstate_r(seed,statebuf,STATE_LEN,&buff);
     printf("%p\n",&buff);
     int i;
-    for(i=0;i<10000;i++ ){
+    for(i=0; i<10000; i++ ) {
         //get our random numbers.
         random_r(&buff,&result);
         printf("%d\n",result);

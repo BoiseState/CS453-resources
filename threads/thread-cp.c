@@ -1,9 +1,9 @@
- 
-/* 
+
+/*
  * A simple attempt to the synchronization problem that works for
  * most cases but is not guaranteed to work.
- * 
- */ 
+ *
+ */
 #include <sys/types.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -35,35 +35,34 @@ int flag=READ;
 void *reader(void *);
 void *writer(void *);
 
-  
-int main(int argc, char *argv[])
-{
+
+int main(int argc, char *argv[]) {
     pthread_t thread1, thread2;
 
     if (argc != 4) {
-		fprintf(stderr,"Usage: %s <buffer size> <src> <dest>\n", argv[0]);
-		exit(EX_USAGE);
-	}		
-	
-	bufsize = atoi(argv[1]);
-	if (bufsize > MAX_BUF_SIZE) {
-		fprintf(stderr,"Error: %s: max. buffer size is MAX_BUF_SIZE\n",argv[0]);
-		exit(EX_USAGE);
-	}	
+        fprintf(stderr,"Usage: %s <buffer size> <src> <dest>\n", argv[0]);
+        exit(EX_USAGE);
+    }
+
+    bufsize = atoi(argv[1]);
+    if (bufsize > MAX_BUF_SIZE) {
+        fprintf(stderr,"Error: %s: max. buffer size is MAX_BUF_SIZE\n",argv[0]);
+        exit(EX_USAGE);
+    }
 
     src = open(argv[2], O_RDONLY);
     if (src < 0) exit(EX_NOINPUT);
     dst = creat(argv[3], MODE);
     if (dst < 0) exit(EX_CANTCREAT);
-	
-	/* create the reader and writer threads */
+
+    /* create the reader and writer threads */
 
     pthread_create(&thread1, NULL, reader, (void*) NULL);
     pthread_create(&thread2, NULL, writer, (void*) NULL);
 
-	/* the main program (i.e. the heavyweight parent process) waits
-	 * for the threads to finish.
-	 */ 
+    /* the main program (i.e. the heavyweight parent process) waits
+     * for the threads to finish.
+     */
     pthread_join(thread1, NULL);
     pthread_join(thread2, NULL);
 
@@ -71,27 +70,26 @@ int main(int argc, char *argv[])
     close(dst);
     exit(EXIT_SUCCESS);
 }
-  
 
-/* 
- * reader(): The function reader() is the entire reader thread. It 
+
+/*
+ * reader(): The function reader() is the entire reader thread. It
  * synchronizes with the writer thread, which execute the writer() function.
- */ 
-void *reader(void *arg)
-{
+ */
+void *reader(void *arg) {
     printf("Reader thread, file = %d\n",src);
     fflush(stdout);
     while (1) {
-        if (flag == READ) {  
+        if (flag == READ) {
             in = read(src, buf, bufsize);
-#ifdef DEBUG			
+#ifdef DEBUG
             printf("read %d character\n",in);
-			fflush(stdout);
+            fflush(stdout);
 #endif
             flag = WRITE;
-        	if (in <= 0) break;
-        }       
-		/*usleep(10000); // 1/100th sec*/
+            if (in <= 0) break;
+        }
+        /*usleep(10000); // 1/100th sec*/
     }
     pthread_exit(0);
 }
@@ -99,24 +97,23 @@ void *reader(void *arg)
 
 
 /*
- * 
+ *
  * writer(): The main function for the writer thread.
- */ 
-void *writer(void *arg) 
-{
+ */
+void *writer(void *arg) {
     printf("Writer thread, file = %d\n",dst);
     fflush(stdout);
     while (1) {
         if (flag == WRITE) {
             out = write(dst, buf, in);
-#ifdef DEBUG			
+#ifdef DEBUG
             printf("wrote %d character\n",out);
-			fflush(stdout);
+            fflush(stdout);
 #endif
             flag = READ;
-        	if (out <= 0) break;
-        }   
-		/*usleep(10000); // 1/100th sec*/
+            if (out <= 0) break;
+        }
+        /*usleep(10000); // 1/100th sec*/
     }
     pthread_exit(0);
 }

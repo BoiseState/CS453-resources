@@ -9,11 +9,10 @@
 
 struct rlimit rlim;
 
-int main()
-{
-	getrlimit(RLIMIT_NPROC, &rlim);
-	printf("Current number of processes = %d\n", (int) rlim.rlim_cur);
-	printf("Maximum number of processes = %d\n", (int) rlim.rlim_max);
-	exit(EXIT_SUCCESS);
+int main() {
+    getrlimit(RLIMIT_NPROC, &rlim);
+    printf("Current number of processes = %d\n", (int) rlim.rlim_cur);
+    printf("Maximum number of processes = %d\n", (int) rlim.rlim_max);
+    exit(EXIT_SUCCESS);
 }
 

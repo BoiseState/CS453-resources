@@ -8,10 +8,8 @@ unsigned int setBit(unsigned int, int);
 unsigned int clearBit(unsigned int, int);
 void printResult(int, unsigned int, unsigned int);
 
-int main(int argc, char *argv[])
-{
-    if(argc != 3)
-    {
+int main(int argc, char *argv[]) {
+    if(argc != 3) {
         printf("Usage: %s <number> <bit index>\n", argv[0]);
         return 0;
     }
@@ -51,14 +49,10 @@ int main(int argc, char *argv[])
  * @param num The number that we are printing the result for.
  * @param isSet The result we got.
  */
-void printResult(int i, unsigned int num, unsigned int isSet)
-{
-    if(isSet == 0)
-    {
+void printResult(int i, unsigned int num, unsigned int isSet) {
+    if(isSet == 0) {
         printf("Bit %d is NOT set (0x%x)\n", i, num);
-    }
-    else
-    {
+    } else {
         printf("Bit %d is set (0x%x)\n", i, num);
     }
 }
@@ -68,8 +62,7 @@ void printResult(int i, unsigned int num, unsigned int isSet)
  *
  * Returns > 0 if the bit is set, 0 if it is not set.
  */
-unsigned int isBitISet(unsigned int ch, int i)
-{
+unsigned int isBitISet(unsigned int ch, int i) {
     unsigned int mask = 1U << i;
     return mask & ch;
 }
@@ -79,8 +72,7 @@ unsigned int isBitISet(unsigned int ch, int i)
  *
  * Returns ch with the ith bit set to 1.
  */
-unsigned int setBit(unsigned int ch, int i)
-{
+unsigned int setBit(unsigned int ch, int i) {
     unsigned int mask = 1U << i;
     return mask | ch;
 }
@@ -91,7 +83,6 @@ unsigned int setBit(unsigned int ch, int i)
  *
  * Returns ch with the ith bit set to 0;
  */
-unsigned int clearBit(unsigned int ch, int i)
-{
+unsigned int clearBit(unsigned int ch, int i) {
     return 0;
 }

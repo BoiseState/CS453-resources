@@ -9,23 +9,21 @@
 
 void ourhandler(int signo);
 
-int main()
-{
-	printf("Try to stop me...I dare you!\n");
-	fflush(stdout);
+int main() {
+    printf("Try to stop me...I dare you!\n");
+    fflush(stdout);
 
-	signal(SIGTSTP, ourhandler); // CTRL+Z
-	signal(SIGINT, ourhandler);  // CTRL+C
+    signal(SIGTSTP, ourhandler); // CTRL+Z
+    signal(SIGINT, ourhandler);  // CTRL+C
 
-	while(1); // run forever
+    while(1); // run forever
 
-	exit(EXIT_SUCCESS);
+    exit(EXIT_SUCCESS);
 }
 
 /**
  * Ignores CTRL+C and CTRL+Z (and prints an annoying message).
  */
-void ourhandler(int signo)
-{
-	printf("Haha! You can't stop me with signal %s!!\n", strsignal(signo));
+void ourhandler(int signo) {
+    printf("Haha! You can't stop me with signal %s!!\n", strsignal(signo));
 }

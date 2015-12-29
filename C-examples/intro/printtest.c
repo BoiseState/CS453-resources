@@ -2,7 +2,7 @@
 
 
 
-int main(void){
+int main(void) {
     float pi = 113.14159f;
     printf("Testing the formatting of printf\n");
     printf("Original question from quiz\n");

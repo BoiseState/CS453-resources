@@ -4,13 +4,12 @@
  */
 
 int main() {
-	int c; //character	
-	while ((c=getchar()) != EOF) {
-		if (c == ' ' || c == '\n' || c =='\t') {
-			putchar('\n');	
-		}
-		else  
-			putchar(c);
-	}
-	return 0;
+    int c; //character
+    while ((c=getchar()) != EOF) {
+        if (c == ' ' || c == '\n' || c =='\t') {
+            putchar('\n');
+        } else
+            putchar(c);
+    }
+    return 0;
 }

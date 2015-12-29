@@ -8,30 +8,29 @@
 */
 #define MAXWORD = 30;
 //extern int count;
-int main(){
-	int c;
-	int count = 0;
-	while ((c=getchar()) != EOF) {
-	       if (c != '\n' && c != '\t'&& c != ' ') {
-			putchar(c);
-			++count;
-		}
-	       else {
-		putchar(':');
-		printHisto(count);
-		count = 0;
-	       }
-	}
-	return (0);
+int main() {
+    int c;
+    int count = 0;
+    while ((c=getchar()) != EOF) {
+        if (c != '\n' && c != '\t'&& c != ' ') {
+            putchar(c);
+            ++count;
+        } else {
+            putchar(':');
+            printHisto(count);
+            count = 0;
+        }
+    }
+    return (0);
 }
 
 int printHisto(int num) {
-	int i;
-	for (i = 0; i < num; ++i) {
-		putchar('*');
-	}
-	putchar('\n');
-	return (0);
+    int i;
+    for (i = 0; i < num; ++i) {
+        putchar('*');
+    }
+    putchar('\n');
+    return (0);
 }
 
 

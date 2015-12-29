@@ -1,13 +1,11 @@
 #include <stdio.h>
 
-void message1()
-{
-  printf("Hello ");
+void message1() {
+    printf("Hello ");
 }
 
-void message2()
-{
-  printf("World!\n");
+void message2() {
+    printf("World!\n");
 }
 
 

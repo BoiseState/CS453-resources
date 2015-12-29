@@ -8,41 +8,39 @@
 #include "List.h"
 
 
-int main(int argc, char **argv)
-{	
-	int i;
-	int n;
-	NodePtr node;
-	JobPtr job;
-	ListPtr list;
-	char *saveFile;
+int main(int argc, char **argv) {
+    int i;
+    int n;
+    NodePtr node;
+    JobPtr job;
+    ListPtr list;
+    char *saveFile;
 
-	if (argc < 2) {
-		fprintf(stderr, "Usage: %s <list size> [<checkpoint file>] \n",argv[0]);
-		exit(1);
-	}
-	n = atoi(argv[1]);
-	saveFile = NULL;
-	if (argc == 3) {
-		saveFile = argv[2];
-	}
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <list size> [<checkpoint file>] \n",argv[0]);
+        exit(1);
+    }
+    n = atoi(argv[1]);
+    saveFile = NULL;
+    if (argc == 3) {
+        saveFile = argv[2];
+    }
 
-	list = createList();
-	for (i=0; i<n; i++)
-	{
-		job = createJob(i, "cmd args");
-		node = createNode(job);
-		addAtFront(list, node);
-	}
+    list = createList();
+    for (i=0; i<n; i++) {
+        job = createJob(i, "cmd args");
+        node = createNode(job);
+        addAtFront(list, node);
+    }
 
-	if (!saveFile) printList(list);
-	printList(list);
+    if (!saveFile) printList(list);
+    printList(list);
 
-	if (saveFile) {
-		printf("checkpointing to file %s\n", saveFile);
-		checkpointList(list, saveFile);
-	}
+    if (saveFile) {
+        printf("checkpointing to file %s\n", saveFile);
+        checkpointList(list, saveFile);
+    }
 
-	exit(0);
+    exit(0);
 }
 

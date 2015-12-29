@@ -1,40 +1,36 @@
 #include "Job.h"
 
 
-JobPtr createJob(int jobid, char *info)
-{
-	JobPtr newJob = (JobPtr) malloc (sizeof(Job));
-	newJob->jobid = jobid;
-	newJob->info = (char *) malloc(sizeof(char)*(strlen(info)+1));
-	strcpy(newJob->info, info); 
-	newJob->infoSize = strlen(info)+1;
-	return newJob;
+JobPtr createJob(int jobid, char *info) {
+    JobPtr newJob = (JobPtr) malloc (sizeof(Job));
+    newJob->jobid = jobid;
+    newJob->info = (char *) malloc(sizeof(char)*(strlen(info)+1));
+    strcpy(newJob->info, info);
+    newJob->infoSize = strlen(info)+1;
+    return newJob;
 }
 
-char *toString(JobPtr job)
-{
-	char *temp;
-	temp = (char *)malloc(sizeof(char)*(job->infoSize)+MAXPID_DIGITS+4);
-	sprintf(temp, "[%d] %s", job->jobid, job->info);
-	return temp;
+char *toString(JobPtr job) {
+    char *temp;
+    temp = (char *)malloc(sizeof(char)*(job->infoSize)+MAXPID_DIGITS+4);
+    sprintf(temp, "[%d] %s", job->jobid, job->info);
+    return temp;
 }
 
-void freeJob(JobPtr job)
-{
+void freeJob(JobPtr job) {
 
 }
 
-int getJobSize(JobPtr job)
-{
-	int size = 0;
-	size = sizeof(int) + sizeof(int) +  job->infoSize;
-	return size;
+int getJobSize(JobPtr job) {
+    int size = 0;
+    size = sizeof(int) + sizeof(int) +  job->infoSize;
+    return size;
 }
 
 
 /*
 Function name: checkpointJob
-Description: WARNING! Writes a checkpoint for a Job structure to  an output 
+Description: WARNING! Writes a checkpoint for a Job structure to  an output
 			stream without any checks. The idea is that some higher level
 			class (like List or Node) would call this function after having
 			checked for the file output stream to be set properly. We also
@@ -47,11 +43,10 @@ Description: WARNING! Writes a checkpoint for a Job structure to  an output
 
 
 */
-void checkpointJob(JobPtr job, FILE *fout)
-{
-	fwrite(&(job->jobid), sizeof(int), 1, fout);
-	fwrite(&(job->infoSize), sizeof(int), 1, fout);
-	fwrite(job->info, job->infoSize, 1, fout);
+void checkpointJob(JobPtr job, FILE *fout) {
+    fwrite(&(job->jobid), sizeof(int), 1, fout);
+    fwrite(&(job->infoSize), sizeof(int), 1, fout);
+    fwrite(job->info, job->infoSize, 1, fout);
 }
 
 /*
@@ -85,16 +80,15 @@ Description: WARNING! Reads from a binary input stream to rsrtore a Job
 	Output:   ---> a pointer to the restored Job structure
 	Side Effects: None outside of the Job structure
 */
-JobPtr restoreJob(FILE *fin)
-{
-	int jobid;
-	int infoSize;
-	JobPtr job;
+JobPtr restoreJob(FILE *fin) {
+    int jobid;
+    int infoSize;
+    JobPtr job;
 
-	fread(&jobid, sizeof(int), 1, fin);
-	fread(&infoSize, sizeof(int), 1, fin);
-	job = createJob(jobid, "");
-	job->info = (char *) malloc(sizeof(char)*infoSize);
-	fread(job->info, infoSize, 1, fin);
-	return job;
+    fread(&jobid, sizeof(int), 1, fin);
+    fread(&infoSize, sizeof(int), 1, fin);
+    job = createJob(jobid, "");
+    job->info = (char *) malloc(sizeof(char)*infoSize);
+    fread(job->info, infoSize, 1, fin);
+    return job;
 }

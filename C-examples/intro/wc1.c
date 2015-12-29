@@ -4,22 +4,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-	long nc;
+int main(int argc, char *argv[]) {
+    long nc;
 
-	nc = 0;
-	while (getchar() != EOF ) {
-		nc++;
-	}
-	printf("%ld\n", nc);
-	return 0;
+    nc = 0;
+    while (getchar() != EOF ) {
+        nc++;
+    }
+    printf("%ld\n", nc);
+    return 0;
 }
 
 
 /* An alternate way of writing the above */
 /*
- int main() 
+ int main()
  {
  	double nc;
 

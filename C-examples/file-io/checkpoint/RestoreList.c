@@ -9,21 +9,20 @@
 #include "List.h"
 
 
-int main(int argc, char **argv)
-{	
-	ListPtr list;
-	char *saveFile;
+int main(int argc, char **argv) {
+    ListPtr list;
+    char *saveFile;
 
-	if (argc != 2) {
-			fprintf(stderr, "Usage: %s <checkpoint file> \n",argv[0]);
-			exit(1);
-	}
-	saveFile =argv[1];
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <checkpoint file> \n",argv[0]);
+        exit(1);
+    }
+    saveFile =argv[1];
 
-	list = restoreList(saveFile);
-	if (list) {
-		printList(list);
-	}
-	exit(0);
+    list = restoreList(saveFile);
+    if (list) {
+        printList(list);
+    }
+    exit(0);
 }
 

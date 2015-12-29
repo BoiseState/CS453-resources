@@ -4,26 +4,24 @@
 /**
  * constructor
  */
-struct node* createNode(void *object)
-{
-	struct node *node = (struct node *) malloc(sizeof(struct node));
-	node->object = object;
-	node->next = NULL;
+struct node* createNode(void *object) {
+    struct node *node = (struct node *) malloc(sizeof(struct node));
+    node->object = object;
+    node->next = NULL;
 
-	return node;
+    return node;
 }
 
 /**
  * Destructor
  */
-void freeNode(struct node* node, void (*freeObject)(const void *))
-{
-	if(node == NULL) return;
-	if(node->object != NULL)
-		(*freeObject)(node->object); // make sure to dereference the function
-	free(node);
+void freeNode(struct node* node, void (*freeObject)(const void *)) {
+    if(node == NULL) return;
+    if(node->object != NULL)
+        (*freeObject)(node->object); // make sure to dereference the function
+    free(node);
 
-	node = NULL;
+    node = NULL;
 }
 
 /**
@@ -31,15 +29,14 @@ void freeNode(struct node* node, void (*freeObject)(const void *))
  * This needs to be fixed. We want to store the reference
  * the toString method in the list structure.
  */
-void printNode(struct node* node, char *(toString)(const void *))
-{
-	if(node == NULL) return;
-	if(node->object == NULL) return;
+void printNode(struct node* node, char *(toString)(const void *)) {
+    if(node == NULL) return;
+    if(node->object == NULL) return;
 
-	char *objstr = (*toString)(node->object); // make sure to dereference the function
-	printf("%s", objstr);
+    char *objstr = (*toString)(node->object); // make sure to dereference the function
+    printf("%s", objstr);
 
-	// There is a memory leak here!! We need to free the objstr
-	// after we print it.
-	//free(objstr);
+    // There is a memory leak here!! We need to free the objstr
+    // after we print it.
+    //free(objstr);
 }

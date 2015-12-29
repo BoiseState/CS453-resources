@@ -9,29 +9,27 @@
 
 /* count number of characters, words and lines in the standard input */
 
-int main(int argc, char *argv[])
-{
-	int c;
-   	long nc, nw, nl;
-	int state;
+int main(int argc, char *argv[]) {
+    int c;
+    long nc, nw, nl;
+    int state;
 
-	state = OUT;
-	nl = nw = nc = 0;
-	while ((c = getchar()) != EOF ) {
-	        nc++;
-	        if (c == '\n') {
-                        nl++;
-                }
+    state = OUT;
+    nl = nw = nc = 0;
+    while ((c = getchar()) != EOF ) {
+        nc++;
+        if (c == '\n') {
+            nl++;
+        }
 
-                if (c == ' ' || c == '\n' || c == '\t') {
-	                state = OUT;
-                }
-                else if (state == OUT) {
-		        state = IN;
-		        nw++;
-	        }
-	}
+        if (c == ' ' || c == '\n' || c == '\t') {
+            state = OUT;
+        } else if (state == OUT) {
+            state = IN;
+            nw++;
+        }
+    }
 
-	printf("nl: %ld nw: %ld nc: %ld\n", nl, nw, nc);
-	return 0;
+    printf("nl: %ld nw: %ld nc: %ld\n", nl, nw, nc);
+    return 0;
 }

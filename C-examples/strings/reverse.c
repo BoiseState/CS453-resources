@@ -5,21 +5,21 @@
 /*
  * Simple function to reverse a string using indexes
  */
-void reverse(char foo[]){
+void reverse(char foo[]) {
     int f = 0;
     int b = strlen(foo)-1;
     char tmp = ' ';
-    while(f < b){
+    while(f < b) {
         tmp = foo[f];
         foo[f] = foo[b];
         foo[b] = tmp;
-        f++;b--;
+        f++;
+        b--;
     }
 }
 
-int main(int argc, char *argv[])
-{
-    if(argc !=2){
+int main(int argc, char *argv[]) {
+    if(argc !=2) {
         printf("usage: %s <string>\n",argv[0]);
         exit(EXIT_SUCCESS);
     }

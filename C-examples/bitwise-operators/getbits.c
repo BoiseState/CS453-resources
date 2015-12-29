@@ -5,18 +5,17 @@
 
 unsigned int getbits(unsigned int, unsigned int, unsigned int);
 
-int main(int argc, char *argv[])
-{
-	unsigned int x, n, p, result;
+int main(int argc, char *argv[]) {
+    unsigned int x, n, p, result;
 
-	if (argc != 4) {
-		fprintf(stderr, "Usage: %s <x> <position> <field-width>\n", argv[0]);
-		return 1;
-	} else {
-		x = (unsigned int) atoi(argv[1]);
-		p = (unsigned int) atoi(argv[2]);
-		n = (unsigned int) atoi(argv[3]);
-	}
+    if (argc != 4) {
+        fprintf(stderr, "Usage: %s <x> <position> <field-width>\n", argv[0]);
+        return 1;
+    } else {
+        x = (unsigned int) atoi(argv[1]);
+        p = (unsigned int) atoi(argv[2]);
+        n = (unsigned int) atoi(argv[3]);
+    }
 
     result = getbits(x, p, n);
     printf("x = %d 0x%X result: %d 0x%X\n", x, x, result, result);
@@ -36,8 +35,7 @@ int main(int argc, char *argv[])
  *  Expected result = 00000011 = 3
  *
  */
-unsigned int getbits(unsigned int x, unsigned int p, unsigned int n)
-{
+unsigned int getbits(unsigned int x, unsigned int p, unsigned int n) {
     return (x >> (p+1-n)) & ~(~0U << n);
 }
 

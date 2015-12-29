@@ -5,8 +5,7 @@
 // Determines max value of a and b
 #define max(a,b) ((a)>(b) ? (a) : (b))
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     double dSmall = 2, dBig = 100;
     int iSmall = 2, iBig = 100;
     char cSmall = 'a', cBig = 'z';

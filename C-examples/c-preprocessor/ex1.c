@@ -15,42 +15,41 @@
 
 /* count number of characters, words and lines in the standard input */
 
-int main(int argc, char *argv[])
-{
-	char c;
-   	long nc, nw, nl;	
-	int state;
+int main(int argc, char *argv[]) {
+    char c;
+    long nc, nw, nl;
+    int state;
 
-	state = OUT;
-	nl = nw = nc = 0;
-	while ((c = getchar()) != EOF ) {
+    state = OUT;
+    nl = nw = nc = 0;
+    while ((c = getchar()) != EOF ) {
 #ifdef DEBUG
-		printf("c=%c\n",c);
+        printf("c=%c\n",c);
 #endif
 #if DEBUG==1
-               printf("level 1");
+        printf("level 1");
 #endif
-		nc++;
+        nc++;
 #ifdef DEBUG
-		printf("nc=%ld\n",nc);
+        printf("nc=%ld\n",nc);
 #endif
-		if (c == '\n') {
-			nl++;
+        if (c == '\n') {
+            nl++;
 #ifdef DEBUG
-			printf("nl=%ld\n",nl);
+            printf("nl=%ld\n",nl);
 #endif
-		}
-		if (c == ' ' || c == '\n' || c == '\t')
-			state = OUT;
-		else if (state == OUT) {
-				state = IN;
-				nw++;
+        }
+        if (c == ' ' || c == '\n' || c == '\t')
+            state = OUT;
+        else if (state == OUT) {
+            state = IN;
+            nw++;
 #ifdef DEBUG
-				printf("nw=%ld\n",nw);
+            printf("nw=%ld\n",nw);
 #endif
-		}
-	}
+        }
+    }
 
-	printf("%ld %ld %ld\n", nl, nw, nc);
-	exit(0);
+    printf("%ld %ld %ld\n", nl, nw, nc);
+    exit(0);
 }

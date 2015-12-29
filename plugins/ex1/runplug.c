@@ -22,50 +22,47 @@ void *handle;           /* handle of shared library */
 void (*function)(void); /* pointer to the plug-in function */
 const char *dlError;    /* error string */
 
-int main(int argc, char **argv)
-{
-  char buf[MAX_BUF];
-  char plugName[MAX_BUF];
+int main(int argc, char **argv) {
+    char buf[MAX_BUF];
+    char plugName[MAX_BUF];
 
-  while (1)
-  {
-    /* get plug-in name */
-    printf("Enter plugin name (exit to exit): ");
-    fgets(buf, MAX_BUF, stdin);
-    buf[strlen(buf)-1] = '\0';       /* change \n to \0 */
-    sprintf(plugName, "./%s", buf);  /* start from current dir */
+    while (1) {
+        /* get plug-in name */
+        printf("Enter plugin name (exit to exit): ");
+        fgets(buf, MAX_BUF, stdin);
+        buf[strlen(buf)-1] = '\0';       /* change \n to \0 */
+        sprintf(plugName, "./%s", buf);  /* start from current dir */
 
-    /* checks for exit */
-    if (!strcmp(plugName, "./exit"))
-      return 0;
+        /* checks for exit */
+        if (!strcmp(plugName, "./exit"))
+            return 0;
 
-    /* open a library */
-    handle = dlopen(plugName, RTLD_LAZY);
-    if ((dlError = dlerror()))
-    {
-      printf("Opening Error: %s\n", dlError);
-      continue;
+        /* open a library */
+        handle = dlopen(plugName, RTLD_LAZY);
+        if ((dlError = dlerror())) {
+            printf("Opening Error: %s\n", dlError);
+            continue;
+        }
+
+        /* loads the plugin function */
+        function = dlsym( handle, "plugin");
+        if ((dlError = dlerror()))
+            printf("Loading Error: %s\n", dlError);
+
+        /* execute the function */
+        (*function)(); /* function() */
+        if ((dlError = dlerror()))
+            printf("Execution Error: %s\n", dlError);
+        /*sleep(10);*/
+        (*function)();
+        if ((dlError = dlerror()))
+            printf("Execution Error: %s\n", dlError);
+
+        /* close library 1 */
+        dlclose(handle);
+        if ((dlError = dlerror()))
+            printf("Closing Error: %s\n", dlError);
     }
 
-    /* loads the plugin function */
-    function = dlsym( handle, "plugin");
-    if ((dlError = dlerror()))
-      printf("Loading Error: %s\n", dlError);
-
-    /* execute the function */
-    (*function)(); /* function() */
-    if ((dlError = dlerror()))
-      printf("Execution Error: %s\n", dlError);
-	/*sleep(10);*/
-    (*function)();
-    if ((dlError = dlerror()))
-      printf("Execution Error: %s\n", dlError);
-
-    /* close library 1 */
-    dlclose(handle);
-    if ((dlError = dlerror()))
-      printf("Closing Error: %s\n", dlError);
-  }
-
-  return 0;
+    return 0;
 }

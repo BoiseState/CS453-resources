@@ -7,21 +7,20 @@
 
 /* print Fahrentehit - Celcius table
  * for fahr = 0, 20, ..., 300 */
-main()
-{
-        int fahr, celcius;
-        int lower, upper, step;
+main() {
+    int fahr, celcius;
+    int lower, upper, step;
 
-        lower = 0;
-        upper = 300;
-        step = 20;
+    lower = 0;
+    upper = 300;
+    step = 20;
 
-        fahr = upper;
-        printf("Fahrenheit Celcius\n"); 
-        while (fahr >= lower) {
-                celcius = 5 * (fahr -32)/9;
-                printf("%3d%12d\n", fahr, celcius);
-                fahr = fahr - step;
-        }
+    fahr = upper;
+    printf("Fahrenheit Celcius\n");
+    while (fahr >= lower) {
+        celcius = 5 * (fahr -32)/9;
+        printf("%3d%12d\n", fahr, celcius);
+        fahr = fahr - step;
+    }
 }
 
