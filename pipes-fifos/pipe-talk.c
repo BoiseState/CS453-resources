@@ -36,12 +36,13 @@ char *responses[] = {"Please tell me more.",
                     };
 const int RESPONSE_LENGTH = 21;
 const int TALK_LENGTH = 10;
-int	pipe_parent[2], pipe_child[2];
-char	line[MAXLINE];
+int pipe_parent[2], pipe_child[2];
+char    line[MAXLINE];
 
 
-int main(void) {
-    pid_t	pid;
+int main(void)
+{
+    pid_t   pid;
 
     if (pipe(pipe_parent) < 0)
         err_sys("pipe error");
@@ -51,11 +52,11 @@ int main(void) {
     if ((pid = fork()) < 0)
         err_sys("fork error");
 
-    else if (pid > 0) {		/* parent */
+    else if (pid > 0) {     /* parent */
         close(pipe_parent[0]); /* close read end of pipe */
         close(pipe_child[1]); /* close write end of pipe */
         do_parent();
-    } else {				/* child */
+    } else {                /* child */
         close(pipe_parent[1]); /* close write end of pipe */
         close(pipe_child[0]); /* close read end of pipe */
         do_child();
@@ -67,7 +68,8 @@ int main(void) {
 /**
  * The parent process for the chat session.
  */
-static void do_parent() {
+static void do_parent()
+{
     int index, i;
     srandom(getpid());
     while (TRUE) {
@@ -97,7 +99,8 @@ static void do_parent() {
 /**
  * The child process for the chat session.
  */
-static void do_child() {
+static void do_child()
+{
     int index, i;
     srandom(getpid());
     while (TRUE) {

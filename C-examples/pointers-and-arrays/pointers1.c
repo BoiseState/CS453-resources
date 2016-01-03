@@ -10,7 +10,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int x = 1, y = 2 ;
     int *ip;  /* ip is a pointer to an int */
     int *iq;  /* iq is another pointer to an int */

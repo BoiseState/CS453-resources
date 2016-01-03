@@ -28,7 +28,8 @@ char *filepath;
 
 /* #define DEBUG 1 */
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     if(argc != 3) {
         printUsage(argv[0], NULL, NULL);
     } else {
@@ -67,7 +68,8 @@ int main(int argc, char **argv) {
  * For self-organizing, move the word to the front of the when
  * it is found.
  */
-void processWord(struct list *list, char *word) {
+void processWord(struct list *list, char *word)
+{
     word = toLower(word);
 #ifdef DEBUG
     printf("processWord: %s\n", word);
@@ -94,27 +96,31 @@ void processWord(struct list *list, char *word) {
     }
 }
 
-char *toLower(char *word) {
+char *toLower(char *word)
+{
     int i;
     for(i=0; i < strlen(word) + 1; i++)
         word[i] = tolower(word[i]);
     return word;
 }
 
-void printDebug(struct list *list, WordObjPtr wordObj) {
+void printDebug(struct list *list, WordObjPtr wordObj)
+{
     printf("================\n");
     printWordObj(wordObj);
     printf("----------------\n");
     printList(list);
 }
 
-void printWordObj(WordObjPtr wordObj) {
+void printWordObj(WordObjPtr wordObj)
+{
     char *toPrint = toString(wordObj);
     printf("%s\n", toPrint);
     free(toPrint);
 }
 
-void printUsage(char *progname, char *invalid, char *info) {
+void printUsage(char *progname, char *invalid, char *info)
+{
     printf("%s: {%s|%s} <textfile>", progname, FLAG_ORGANIZED, FLAG_STD);
     if(invalid) {
         printf("\n\tInvalid argument: %s", invalid);
@@ -126,7 +132,8 @@ void printUsage(char *progname, char *invalid, char *info) {
     exit(1);
 }
 
-void parseCommandArgs(char **argv) {
+void parseCommandArgs(char **argv)
+{
     if(strncmp(FLAG_ORGANIZED, argv[1], strlen(FLAG_ORGANIZED)+1) == 0) {
         isOrganized = true;
 #ifdef DEBUG

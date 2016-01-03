@@ -6,7 +6,8 @@
 /*
  * Demonstrates address arithmetic for different pointer types.
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int a = 10;
     void *ptr = &a;
 

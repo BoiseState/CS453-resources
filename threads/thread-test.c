@@ -15,7 +15,8 @@ void *run(void *);
 
 #define MAX 10000
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int i, status;
     int count = 0;
     pthread_t *tids = (pthread_t *) malloc (sizeof(pthread_t) * MAX);
@@ -39,7 +40,8 @@ int main(int argc, char *argv[]) {
 }
 
 
-void *run(void *arg) {
+void *run(void *arg)
+{
     printf("This is  thread id = %X\n",pthread_self());
     sleep(30);
     pthread_exit(NULL);

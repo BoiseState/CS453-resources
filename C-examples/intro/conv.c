@@ -10,7 +10,8 @@
  *
  */
 
-int main() {
+int main()
+{
     int m = 0;
     long n = 10000000000;
     float x = 0;

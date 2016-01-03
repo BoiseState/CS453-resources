@@ -3,7 +3,8 @@
 
 #define MAXLEN 128
 
-char *toString(RecordPtr record) {
+char *toString(RecordPtr record)
+{
     char *buffer;
 
     buffer = (char *) malloc(sizeof(char) * MAXLEN);

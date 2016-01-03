@@ -12,7 +12,8 @@
 
 void *run(void *);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     pthread_t merlot, pinot, cabernet;
 
     pthread_create(&merlot, NULL, run, (void*) "merlot");
@@ -27,7 +28,8 @@ int main(int argc, char *argv[]) {
 }
 
 
-void *run(void *arg) {
+void *run(void *arg)
+{
     char *name = (char *)arg;
     int i;
     for (i=0; i<500000; i++) {

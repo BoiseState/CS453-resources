@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "Loader.h"
 
-int main() {
+int main()
+{
     fMessage fMsg[NMESSAGES];
     //  Open the desired libraries.
     HANDLE hHello   = dlopen("./Hello.so", RTLD_LAZY);

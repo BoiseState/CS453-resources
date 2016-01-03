@@ -7,7 +7,8 @@
 const int MAX_LINE_LENGTH = 2048;
 const char *delimiters = " 0123456789\t;{}()[].#<>\n\r+-/%*\"^~&=!|:\\?,";
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     FILE *fin;
 
     // Read file name from command line

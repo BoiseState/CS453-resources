@@ -7,8 +7,8 @@
 #define MAX_KEY_DIGITS 10
 
 struct object {
-	int key;
-	char *data;
+    int key;
+    char *data;
 };
 
 struct object* createObject (const int, const char *);

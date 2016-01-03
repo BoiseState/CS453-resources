@@ -1,7 +1,8 @@
-#include	"common.h"
+#include    "common.h"
 
 
-int main(void) {
+int main(void)
+{
     pid_t pid;
     int fifo1, fifo2;
     int status;
@@ -23,7 +24,7 @@ int main(void) {
     if ((pid = fork()) < 0)
         err_sys("fork error");
 
-    else if (pid > 0) {		/* parent */
+    else if (pid > 0) {     /* parent */
         fifo1 = open("fifo-request", O_RDONLY);
         fifo2 = open("fifo-reply", O_WRONLY);
         read(fifo1, request, PIPE_BUF);
@@ -34,7 +35,7 @@ int main(void) {
             strcpy(reply, "Hello child!");
         write(fifo2, reply, strlen(reply));
 
-    } else {				/* child */
+    } else {                /* child */
         fifo1 = open("fifo-request", O_WRONLY);
         fifo2 = open("fifo-reply", O_RDONLY);
         strcpy(request, "I need some money!");

@@ -10,7 +10,8 @@ int total = 1;
 
 static int f4(int); /* private function */
 
-int f1(int x, double z) {
+int f1(int x, double z)
+{
     static int counter=0;
 
     counter++;
@@ -19,13 +20,15 @@ int f1(int x, double z) {
     return (x*z);
 }
 
-static int f4(int x) {
+static int f4(int x)
+{
     return 2*x;
 }
 
 int subtotal = 0;
 
-void f3() {
+void f3()
+{
     total += 10;
     subtotal = total;
     if (total < 100)
@@ -34,7 +37,8 @@ void f3() {
 
 
 
-int main (int argc, char **argv) {
+int main (int argc, char **argv)
+{
     int m;
     double z;
     int x;

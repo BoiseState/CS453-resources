@@ -21,7 +21,8 @@ pthread_t *tids;
 int numThreads;
 int count;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
 
     if (argc < 2) {
@@ -52,7 +53,8 @@ int main(int argc, char **argv) {
     exit(0);
 }
 
-void *threadMain(void *arg) {
+void *threadMain(void *arg)
+{
     int i;
     int amount;
 

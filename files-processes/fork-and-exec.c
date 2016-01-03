@@ -13,7 +13,8 @@ void err_sys(char *msg);
  * Builds google search url to be passed as argument when launching
  * google-chrome.
  */
-char *buildQueryUrl(char *term) {
+char *buildQueryUrl(char *term)
+{
     char *searchUrl= "https://www.google.com/search?q=";
     char *query = malloc(sizeof(char) * (strlen(searchUrl)+1 + strlen(term)+1));
     strcpy(query, searchUrl);
@@ -21,12 +22,13 @@ char *buildQueryUrl(char *term) {
     return query;
 }
 
-int main(int argc, char *argv[]) {
-    pid_t	pid;
+int main(int argc, char *argv[])
+{
+    pid_t   pid;
 
     if ((pid = fork()) < 0) {
         err_sys("fork error");
-    } else if (pid == 0) {	/* child */
+    } else if (pid == 0) {  /* child */
         if(argc == 1) {
             execlp("./print-pid","print-pid",(char *) NULL);
         } else if(argc == 2) {
@@ -50,7 +52,8 @@ int main(int argc, char *argv[]) {
     exit(EXIT_SUCCESS);
 }
 
-void err_sys(char *msg) {
+void err_sys(char *msg)
+{
     fprintf(stderr, msg);
     fflush(NULL); /* flush all output streams */
     exit(EXIT_FAILURE); /* exit abnormally */

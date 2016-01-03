@@ -11,9 +11,9 @@ typedef struct node Node;
 typedef struct node * NodePtr;
 
 struct node {
-	JobPtr data;
-	NodePtr next;
-	NodePtr prev;
+    JobPtr data;
+    NodePtr next;
+    NodePtr prev;
 };
 
 NodePtr createNode (JobPtr data);

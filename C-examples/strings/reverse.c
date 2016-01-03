@@ -5,7 +5,8 @@
 /*
  * Simple function to reverse a string using indexes
  */
-void reverse(char foo[]) {
+void reverse(char foo[])
+{
     int f = 0;
     int b = strlen(foo)-1;
     char tmp = ' ';
@@ -18,7 +19,8 @@ void reverse(char foo[]) {
     }
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     if(argc !=2) {
         printf("usage: %s <string>\n",argv[0]);
         exit(EXIT_SUCCESS);

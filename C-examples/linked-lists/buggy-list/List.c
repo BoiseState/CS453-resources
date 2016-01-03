@@ -5,8 +5,8 @@
 
 /*
 
-	list.c
-		Contains functions to manipulate a doubly-linked list.
+    list.c
+        Contains functions to manipulate a doubly-linked list.
 
 */
 
@@ -18,7 +18,8 @@ static void print(NodePtr node);
 
 
 
-ListPtr createList() {
+ListPtr createList()
+{
     ListPtr list = (ListPtr) malloc(sizeof(List));
     list->size = 0;
     list->head = NULL;
@@ -26,18 +27,21 @@ ListPtr createList() {
     return list;
 }
 
-int getSize(ListPtr L) {
+int getSize(ListPtr L)
+{
     return L->size;
 }
 
-Boolean isEmpty(ListPtr L) {
+Boolean isEmpty(ListPtr L)
+{
     if (L->size == 0)
         return TRUE;
     else
         return FALSE;
 }
 
-void addAtFront(ListPtr list, NodePtr node) {
+void addAtFront(ListPtr list, NodePtr node)
+{
     if (list == NULL) return;
     if (node == NULL) return;
     list->size++;
@@ -52,40 +56,49 @@ void addAtFront(ListPtr list, NodePtr node) {
     }
 }
 
-void addAtRear(ListPtr list, NodePtr node) {
+void addAtRear(ListPtr list, NodePtr node)
+{
 }
 
-NodePtr removeFront(ListPtr list) {
+NodePtr removeFront(ListPtr list)
+{
     return NULL;
 }
 
-NodePtr removeRear(ListPtr list) {
+NodePtr removeRear(ListPtr list)
+{
     return NULL;
 }
 
-NodePtr removeNode(ListPtr list, NodePtr node) {
+NodePtr removeNode(ListPtr list, NodePtr node)
+{
     return NULL;
 }
 
-NodePtr search(ListPtr list, int key) {
+NodePtr search(ListPtr list, int key)
+{
     return NULL;
 }
 
-void reverseList(ListPtr L) {
+void reverseList(ListPtr L)
+{
     L->tail = L->head;
     L->head  = reverse (L->head);
 }
 
-static NodePtr reverse(NodePtr L) {
+static NodePtr reverse(NodePtr L)
+{
     /* finish this function */
     return NULL;
 }
 
-void printList(ListPtr L) {
+void printList(ListPtr L)
+{
     if (L) print(L->head);
 }
 
-static void print(NodePtr node) {
+static void print(NodePtr node)
+{
     int count = 0;
     char *buf;
 
@@ -102,7 +115,8 @@ static void print(NodePtr node) {
 }
 
 
-void freeList(ListPtr L) {
+void freeList(ListPtr L)
+{
 }
 
 

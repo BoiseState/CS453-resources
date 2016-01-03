@@ -3,7 +3,8 @@
 
 static long int numRecords(FILE *);
 
-RecordPtr extBinarySearch(FILE *dataFile, unsigned long int key) {
+RecordPtr extBinarySearch(FILE *dataFile, unsigned long int key)
+{
     /* the search window is low..high if we view the dataFile as an
        array of record strutures */
     long int low = 0;
@@ -42,7 +43,8 @@ RecordPtr extBinarySearch(FILE *dataFile, unsigned long int key) {
 
 
 
-RecordPtr extLinearSearch(FILE *dataFile, unsigned long int key) {
+RecordPtr extLinearSearch(FILE *dataFile, unsigned long int key)
+{
     long int i = 0;
     long int count = 0;
     long int pos = 0; /* offset into the file, in bytes */
@@ -66,7 +68,8 @@ RecordPtr extLinearSearch(FILE *dataFile, unsigned long int key) {
 
 
 
-static long int numRecords(FILE *dataFile) {
+static long int numRecords(FILE *dataFile)
+{
     long int count = 0;
 
     /* figure out the size of the file in bytes */

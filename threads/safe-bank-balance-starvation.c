@@ -33,7 +33,8 @@ int good = 0;
  * the account's mutex.
  * @param balance The starting balance of the account.
  */
-struct account *createAccount(double balance) {
+struct account *createAccount(double balance)
+{
     myacct = (struct account *) malloc(sizeof(struct account));
     myacct->balance = balance;
     pthread_mutex_init(&(myacct->mutex), NULL);
@@ -43,18 +44,21 @@ struct account *createAccount(double balance) {
 /**
  * Deposits the specified amount into the account.
  */
-void deposit(struct account *acct, double amount) {
+void deposit(struct account *acct, double amount)
+{
     acct->balance += amount;
 }
 
 /**
  * Withdraws the specified amount from the account.
  */
-void withdraw(struct account *acct, double amount) {
+void withdraw(struct account *acct, double amount)
+{
     acct->balance -= amount;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
     int *value;
 
@@ -110,7 +114,8 @@ int main(int argc, char **argv) {
  * a value < 1, then it will sleep for 30 seconds to simulate a user
  * starting a transaction, but not ending it.
  */
-void *run(void *ptr) {
+void *run(void *ptr)
+{
     int id = *((int *)ptr);
     char filename[80];
     FILE *fp;
@@ -137,7 +142,8 @@ void *run(void *ptr) {
 /**
  * Starves the other threads from depositing if this thread goes to sleep.
  */
-void badSession(int id, FILE *fp) {
+void badSession(int id, FILE *fp)
+{
     double amount;
 
     /* This is not a good place to lock! */
@@ -157,7 +163,8 @@ void badSession(int id, FILE *fp) {
  * Other threads can continue depositing if this thread goes to sleep. This
  * is good.
  */
-void goodSession(int id, FILE *fp) {
+void goodSession(int id, FILE *fp)
+{
     double amount;
 
     while(fscanf(fp, "%lf", &amount) != EOF) {

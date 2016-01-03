@@ -33,7 +33,8 @@ DWORD WINAPI reader(LPVOID);
 DWORD WINAPI writer(LPVOID);
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     LPHANDLE hThread1, hThread2;
     DWORD dwThreadID1, dwThreadID2;
     DWORD dwExitStatus;
@@ -64,12 +65,12 @@ int main(int argc, char *argv[]) {
     /* create the reader and writer threads */
 
     hThread1 = CreateThread(
-                   NULL,							// Security Descriptor (handle not inheritable)
-                   0,								// initial stack size (default)
-                   reader,						// thread function
-                   NULL,							// thread argument
-                   0,								// creation option (run immediately)
-                   &dwThreadID1				// thread identifier
+                   NULL,                            // Security Descriptor (handle not inheritable)
+                   0,                               // initial stack size (default)
+                   reader,                      // thread function
+                   NULL,                            // thread argument
+                   0,                               // creation option (run immediately)
+                   &dwThreadID1             // thread identifier
                );
 
     if (! hThread1) {
@@ -78,12 +79,12 @@ int main(int argc, char *argv[]) {
     }
 
     hThread2 = CreateThread(
-                   NULL,							// Security Descriptor (handle not inheritable)
-                   0,								// initial stack size (default)
-                   writer,						// thread function
-                   NULL,							// thread argument
-                   0,								// creation option (run immediately)
-                   &dwThreadID2				// thread identifier
+                   NULL,                            // Security Descriptor (handle not inheritable)
+                   0,                               // initial stack size (default)
+                   writer,                      // thread function
+                   NULL,                            // thread argument
+                   0,                               // creation option (run immediately)
+                   &dwThreadID2             // thread identifier
                );
 
     if (! hThread2) {
@@ -104,17 +105,18 @@ int main(int argc, char *argv[]) {
     ExitProcess(0);
 }
 
-DWORD WINAPI reader(LPVOID arg) {
+DWORD WINAPI reader(LPVOID arg)
+{
     char *tmp;
 
     printf("Reader thread, file = %d\n",src->_file);
     fflush(stdout);
     while (1) {
         in = fread(
-                 readbuffer,		// Storage location for data
-                 1,					// Item size in bytes
-                 bufsize,			// Maximum number of items to be read
-                 src				// Pointer to FILE structure
+                 readbuffer,        // Storage location for data
+                 1,                 // Item size in bytes
+                 bufsize,           // Maximum number of items to be read
+                 src                // Pointer to FILE structure
              );
         readStarted=TRUE;
         printf("read %d character\n",in);
@@ -132,16 +134,16 @@ DWORD WINAPI reader(LPVOID arg) {
 /*
 void reader(void)
 {
-	char *tmp;
+    char *tmp;
 
     printf("Reader thread, file = %d\n",src);
     fflush(stdout);
     while (1) {
         in = read(src, readbuffer, bufsize);
-		readStarted=TRUE;
+        readStarted=TRUE;
         printf("read %d character\n",in);
         if (!(flag)) {
-			tmp = readbuffer; readbuffer=writebuffer; writebuffer=tmp;
+            tmp = readbuffer; readbuffer=writebuffer; writebuffer=tmp;
             flag = TRUE;
         }
         if (in <= 0) break;
@@ -150,7 +152,8 @@ void reader(void)
 }
 */
 
-DWORD WINAPI writer(LPVOID arg) {
+DWORD WINAPI writer(LPVOID arg)
+{
     char *tmp;
 
     printf("Writer thread, file = %d\n",dst->_file);
@@ -160,10 +163,10 @@ DWORD WINAPI writer(LPVOID arg) {
 
     while (1) {
         out = fwrite(
-                  writebuffer,	// Pointer to data to be written
-                  1,					// Item size in bytes
-                  in,				// Maximum number of items to be written
-                  dst				// Pointer to FILE structure
+                  writebuffer,  // Pointer to data to be written
+                  1,                    // Item size in bytes
+                  in,               // Maximum number of items to be written
+                  dst               // Pointer to FILE structure
               );
         printf("wrote %d character\n",out);
         if (flag) {
@@ -180,18 +183,18 @@ DWORD WINAPI writer(LPVOID arg) {
 /*
 void writer(void)
 {
-	char *tmp;
+    char *tmp;
 
     printf("Writer thread, file = %d\n",dst);
     fflush(stdout);
 
-	while (!readStarted);
+    while (!readStarted);
 
     while (1) {
         out = write(dst, writebuffer, in);
         printf("wrote %d character\n",out);
         if (flag) {
-			tmp = readbuffer; readbuffer=writebuffer; writebuffer=tmp;
+            tmp = readbuffer; readbuffer=writebuffer; writebuffer=tmp;
             flag = FALSE;
         }
         if (out <= 0) break;

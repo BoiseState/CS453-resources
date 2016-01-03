@@ -12,17 +12,17 @@ typedef struct address address;
 typedef struct address * Address;
 
 struct address {
-	char *name;
-	char *streetAddress;
-	char *city;
-	char *state;
-	int zip;
+    char *name;
+    char *streetAddress;
+    char *city;
+    char *state;
+    int zip;
 
-	char * (*toString)(struct address *);
+    char * (*toString)(struct address *);
 };
 
 Address createAddress(char *, char *, char *, char *, int,
-		char *(*printAddress)(struct address *));
+                      char *(*printAddress)(struct address *));
 char *printMultiLine(Address);
 char *printOneLine(Address);
 char *printDefault(Address);

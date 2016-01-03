@@ -5,7 +5,8 @@
 #define STATE_LEN 8
 
 void* random_printer(void *ptr);
-int  main() {
+int  main()
+{
     pthread_t thread1, thread2;
     pthread_create(&thread1, NULL, random_printer,(void*)1);
     pthread_create(&thread2, NULL, random_printer, (void*)2);
@@ -14,7 +15,8 @@ int  main() {
     exit(0);
 }
 
-void* random_printer(void *ptr) {
+void* random_printer(void *ptr)
+{
     //get the seed that was passed into the thread
     int seed = (size_t)ptr;
     //create our random_data buff on the stack

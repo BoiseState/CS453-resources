@@ -6,7 +6,8 @@
 
 #define SIZE 5
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     // one dimensional arrays
     int A[SIZE];
     int *B;

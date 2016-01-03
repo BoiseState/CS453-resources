@@ -13,7 +13,8 @@
 
 #define none   "\033[0m"        /* to flush the previous property */
 
-int main(void) {
+int main(void)
+{
     printf("\n");
     printf("%sHello, %sworld!%s\n", red, blue, none);
     printf("%sHello%s, %sworld!\n", green, none, cyan);

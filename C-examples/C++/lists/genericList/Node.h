@@ -7,27 +7,27 @@
 
 /*
 
-	A class to represent one node in a linked list of phone records.
+    A class to represent one node in a linked list of phone records.
 */
 template<class T> class Node
 {
-	private:
-		T *data;
-		Node *next;
-		
-	public:
-		Node(T *obj);
+private:
+    T *data;
+    Node *next;
 
-		void setData(T *obj);
+public:
+    Node(T *obj);
 
-		T *getData();
+    void setData(T *obj);
 
-		string toString();
+    T *getData();
 
-		void setNext(Node *nextPtr);
+    string toString();
 
-		Node *getNext();
-		
+    void setNext(Node *nextPtr);
+
+    Node *getNext();
+
 };//Node
 
 #endif //NODE_H

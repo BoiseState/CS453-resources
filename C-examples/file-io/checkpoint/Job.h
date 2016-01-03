@@ -14,9 +14,9 @@ typedef struct job  Job;
 typedef struct job * JobPtr;
 
 struct job {
-	int jobid;
-	int infoSize;
-	char *info;
+    int jobid;
+    int infoSize;
+    char *info;
 };
 
 JobPtr createJob (int, char *);

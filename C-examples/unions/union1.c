@@ -16,7 +16,8 @@ struct data {
 };
 
 
-void printData(struct data value) {
+void printData(struct data value)
+{
     switch (value.storedType) {
     case INT:
         printf("ival = %d \n", value.data.ival);
@@ -31,7 +32,8 @@ void printData(struct data value) {
 }
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 
     struct data myCloset;
 

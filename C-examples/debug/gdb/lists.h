@@ -10,8 +10,8 @@ typedef struct node *  NodePtr;
 typedef int ItemType;
 
 struct node {
-	ItemType item;
-	NodePtr  next;
+    ItemType item;
+    NodePtr  next;
 };
 
 
@@ -19,4 +19,4 @@ struct node {
 NodePtr ReverseList(NodePtr L);
 void PrintList(NodePtr L);
 
-#endif /* __LISTS_H */ 
+#endif /* __LISTS_H */

@@ -11,7 +11,8 @@
 
 */
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     if (argc != 4) {
         fprintf(stderr, "Usage: %s <string> <int> <float>\n", argv[0]);
         return 1;

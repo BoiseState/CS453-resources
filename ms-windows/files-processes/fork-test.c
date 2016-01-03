@@ -7,7 +7,8 @@ void ErrSys(char *szMsg);
 #define MAXNUM 2000
 #define BUFFER_SIZE 512
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     STARTUPINFO si;
     PROCESS_INFORMATION pi;
     DWORD dwChildID = 0;
@@ -62,20 +63,21 @@ int main(int argc, char *argv[]) {
 }
 
 
-void ErrSys(char *szMsg) {
+void ErrSys(char *szMsg)
+{
     LPVOID lpMsgBuf;
 
     // Try to format the error message from the last failed call (returns # of TCHARS in message -- 0 if failed)
     if (FormatMessage(
-                FORMAT_MESSAGE_ALLOCATE_BUFFER |					// source and processing options
+                FORMAT_MESSAGE_ALLOCATE_BUFFER |                    // source and processing options
                 FORMAT_MESSAGE_FROM_SYSTEM |
                 FORMAT_MESSAGE_IGNORE_INSERTS,
-                NULL,														// message source
-                GetLastError(),										// message identifier
-                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),	// language identifier (Default language)
-                (LPTSTR) &lpMsgBuf,									// message buffer
-                0,															// maximum size of message buffer (ignored with FORMAT_MESSAGE_ALLOCATE_BUFFER set)
-                NULL														// array of message inserts
+                NULL,                                                       // message source
+                GetLastError(),                                     // message identifier
+                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),  // language identifier (Default language)
+                (LPTSTR) &lpMsgBuf,                                 // message buffer
+                0,                                                          // maximum size of message buffer (ignored with FORMAT_MESSAGE_ALLOCATE_BUFFER set)
+                NULL                                                        // array of message inserts
             )
        ) {
         // Display the formatted string.

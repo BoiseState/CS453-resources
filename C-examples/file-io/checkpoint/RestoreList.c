@@ -9,7 +9,8 @@
 #include "List.h"
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     ListPtr list;
     char *saveFile;
 

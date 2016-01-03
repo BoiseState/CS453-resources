@@ -1,9 +1,11 @@
 #include <stdio.h>
 
-void message1() {
+void message1()
+{
     printf("Goodbye ");
 }
 
-void message2() {
+void message2()
+{
     printf("Cruel World!\n");
 }

@@ -22,7 +22,8 @@ void *handle;           /* handle of shared library */
 void (*function)(void); /* pointer to the plug-in function */
 const char *dlError;    /* error string */
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     char buf[MAX_BUF];
     char plugName[MAX_BUF];
 

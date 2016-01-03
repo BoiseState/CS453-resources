@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int c;
 
     /* The parentheses around c = getchar() are required because

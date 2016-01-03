@@ -5,8 +5,8 @@
 
 /*
 
-	list.c
-		Contains functions to manipulate a doubly-linked list.
+    list.c
+        Contains functions to manipulate a doubly-linked list.
 
 */
 
@@ -18,7 +18,8 @@ static void print(NodePtr node);
 
 
 
-ListPtr createList() {
+ListPtr createList()
+{
     ListPtr list = (ListPtr) malloc(sizeof(List));
     list->size = 0;
     list->head = NULL;
@@ -26,18 +27,21 @@ ListPtr createList() {
     return list;
 }
 
-int getSize(ListPtr L) {
+int getSize(ListPtr L)
+{
     return L->size;
 }
 
-Boolean isEmpty(ListPtr L) {
+Boolean isEmpty(ListPtr L)
+{
     if (L->size == 0)
         return TRUE;
     else
         return FALSE;
 }
 
-void addAtFront(ListPtr list, NodePtr node) {
+void addAtFront(ListPtr list, NodePtr node)
+{
     if (list == NULL) return;
     if (node == NULL) return;
     list->size++;
@@ -52,37 +56,46 @@ void addAtFront(ListPtr list, NodePtr node) {
     }
 }
 
-void addAtRear(ListPtr list, NodePtr node) {
+void addAtRear(ListPtr list, NodePtr node)
+{
 }
 
-NodePtr removeFront(ListPtr list) {
+NodePtr removeFront(ListPtr list)
+{
     return NULL;
 }
 
-NodePtr removeRear(ListPtr list) {
+NodePtr removeRear(ListPtr list)
+{
     return NULL;
 }
 
-NodePtr removeNode(ListPtr list, NodePtr node) {
+NodePtr removeNode(ListPtr list, NodePtr node)
+{
     return NULL;
 }
 
-NodePtr search(ListPtr list, int key) {
+NodePtr search(ListPtr list, int key)
+{
     return NULL;
 }
 
-void reverseList(ListPtr L) {
+void reverseList(ListPtr L)
+{
 }
 
-static NodePtr reverse(NodePtr L) {
+static NodePtr reverse(NodePtr L)
+{
     return NULL;
 }
 
-void printList(ListPtr L) {
+void printList(ListPtr L)
+{
     if (L) print(L->head);
 }
 
-static void print(NodePtr node) {
+static void print(NodePtr node)
+{
     char *output;
 
     while (node) {
@@ -95,21 +108,23 @@ static void print(NodePtr node) {
 }
 
 
-void freeList(ListPtr L) {
+void freeList(ListPtr L)
+{
 }
 
 
 /**
-	Checkpoint the whole list to disk so we can restore it later.
-	@param list     a pointer to a list that needs to be checkpointed
-	@paramsaveFile  pathename of the checkpoint file
+    Checkpoint the whole list to disk so we can restore it later.
+    @param list     a pointer to a list that needs to be checkpointed
+    @paramsaveFile  pathename of the checkpoint file
 
-	@return TRUE if checkpointing succeeds, FALSE otherwise
+    @return TRUE if checkpointing succeeds, FALSE otherwise
 */
 
 #define MAX_MSG_LENGTH 1024
 
-Boolean checkpointList(ListPtr list, char *saveFile) {
+Boolean checkpointList(ListPtr list, char *saveFile)
+{
     NodePtr node;
     FILE *fout;
     char errmsg[MAX_MSG_LENGTH];
@@ -140,15 +155,16 @@ Boolean checkpointList(ListPtr list, char *saveFile) {
 
 
 /**
-	Restore the whole list from disk. This will only work if the
+    Restore the whole list from disk. This will only work if the
     list was saved with the checkpointList function. If you modify
-	the checkpointList function, then this function would need to be
-	modified as well.
-	@param saveFile  pathename of the checkpoint file
-	@param list      a pointer to the restored list
+    the checkpointList function, then this function would need to be
+    modified as well.
+    @param saveFile  pathename of the checkpoint file
+    @param list      a pointer to the restored list
 */
 
-ListPtr restoreList(char *saveFile) {
+ListPtr restoreList(char *saveFile)
+{
     int size;
     FILE *fin;
     ListPtr list;

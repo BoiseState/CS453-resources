@@ -5,7 +5,8 @@
 
 void *load_library(void *);
 
-int main() {
+int main()
+{
     char *hHello = "./Hello.so";
     char *hCopyOfHello = "./CopyOfHello.so";
 
@@ -18,7 +19,8 @@ int main() {
     pthread_join(tCopyOfHello, NULL);
 }
 
-void* load_library(void *libRef) {
+void* load_library(void *libRef)
+{
     int exitcode = 0, i;
     fMessage fMsg[NMESSAGES];
 

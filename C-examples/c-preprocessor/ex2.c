@@ -7,7 +7,8 @@
  * Full list of identifying strings for various operating systems can be found at
  * http://sourceforge.net/p/predef/wiki/OperatingSystems/
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 #ifdef _WIN32
     printf("Welcome to MS Windows ( I rule!).\n");
 #elif __linux__

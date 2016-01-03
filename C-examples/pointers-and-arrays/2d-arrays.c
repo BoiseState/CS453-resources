@@ -7,7 +7,8 @@
 
 #define SIZE 5
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i,j;
     int n = 10;
     int ***X;

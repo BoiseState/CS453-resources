@@ -5,11 +5,11 @@
 #define __OURHDR_H
 
 /* function prototyes */
-int f1(int, double); 
+int f1(int, double);
 void f2(int);
 void f3(void);
 
-extern int total; 
+extern int total;
 
 
 #endif /* __OURHDR_H */

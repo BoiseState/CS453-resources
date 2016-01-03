@@ -2,7 +2,8 @@
 
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     unsigned char maxc = 255;
 
     unsigned char c = maxc << 1;

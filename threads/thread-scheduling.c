@@ -12,7 +12,8 @@
 #include <math.h>
 
 
-main() {
+main()
+{
     pthread_t thread1, thread2;
     void compute_until_hell_freezes();
 
@@ -26,7 +27,8 @@ main() {
     exit(0);
 }
 
-void compute_until_hell_freezes() {
+void compute_until_hell_freezes()
+{
     int i;
     double tmp;
 

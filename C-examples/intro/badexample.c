@@ -7,7 +7,8 @@
    and the last one a double
 */
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int i;
 
     if (argc != 5) {

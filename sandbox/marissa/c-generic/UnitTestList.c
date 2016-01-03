@@ -25,11 +25,13 @@ struct list *testlist;
 int testCount = 0;
 int passCount = 0;
 
-void printTestInfo(char* testName, char *info) {
+void printTestInfo(char* testName, char *info)
+{
     fprintf(stdout, "%s - %s\n", testName, info);
 }
 
-void printTestResult(char* testName, int passed) {
+void printTestResult(char* testName, int passed)
+{
     if(passed) {
         fprintf(stdout, "%s - %s\n\n", "[PASSED]", testName);
     } else {
@@ -37,20 +39,23 @@ void printTestResult(char* testName, int passed) {
     }
 }
 
-struct node *createTestNode(int jobid) {
+struct node *createTestNode(int jobid)
+{
     struct object * job = createObject(jobid, "cmd args");
     struct node *node = createNode(job);
     return node;
 }
 
-int addAtFrontToNullListTest() {
+int addAtFrontToNullListTest()
+{
     struct node *node = createTestNode(1);
     addAtFront(NULL, node);
     freeNode(node, testlist->freeObject);
     return 1;
 }
 
-int addAtFrontWithNoNodes() {
+int addAtFrontWithNoNodes()
+{
     struct node *node = createTestNode(1);
     addAtFront(testlist, node);
     myassert(testlist->size == 1);
@@ -59,7 +64,8 @@ int addAtFrontWithNoNodes() {
     return 1;
 }
 
-int addAtFrontWithOneNode() {
+int addAtFrontWithOneNode()
+{
     struct node *node = createTestNode(1);
     addAtFront(testlist, node);
     myassert(testlist->size == 1);
@@ -74,27 +80,32 @@ int addAtFrontWithOneNode() {
     return 1;
 }
 
-int addAtRearWithNoNodes() {
+int addAtRearWithNoNodes()
+{
     printTestInfo("addAtRearWithNoNodes", "(not implemented)");
     return 0;
 }
 
-int addAtRearWithOneNode() {
+int addAtRearWithOneNode()
+{
     printTestInfo("addAtRearWithOneNode", "(not implemented)");
     return 0;
 }
 
-int removeFromListWithOneNode() {
+int removeFromListWithOneNode()
+{
     printTestInfo("removeFromListWithOneNode", "(not implemented)");
     return 0;
 }
 
-int nullNodeTest() {
+int nullNodeTest()
+{
     printTestInfo("nullNodeTest", "(not implemented)");
     return 0;
 }
 
-int searchNullListTest() {
+int searchNullListTest()
+{
     struct object *job = createObject(1, "");
     struct node *found = searchList(NULL, job);
     myassert(found == NULL);
@@ -103,15 +114,18 @@ int searchNullListTest() {
     return 1;
 }
 
-int searchEmptyListTest() {
+int searchEmptyListTest()
+{
     return 1;
 }
 
-int searchListNotFound() {
+int searchListNotFound()
+{
     return 1;
 }
 
-int searchListFound() {
+int searchListFound()
+{
     return 1;
 }
 
@@ -123,12 +137,14 @@ int searchListFound() {
 
 
 
-void beforeTest(char* testName) {
+void beforeTest(char* testName)
+{
     printTestInfo(testName, "Running...");
     testlist = createList(equals, toString, freeObject);
     testCount++;
 }
-void afterTest(char* testName, int result) {
+void afterTest(char* testName, int result)
+{
     printTestResult(testName, result);
     freeList(testlist);
     passCount += result;
@@ -137,7 +153,8 @@ void afterTest(char* testName, int result) {
  * TODO: Write your test functions here
  */
 
-void runUnitTests() {
+void runUnitTests()
+{
     int result;
     char *testName;
 
@@ -190,7 +207,8 @@ void runUnitTests() {
     fprintf(stdout, "Failed: %d\n", testCount - passCount);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     runUnitTests();
     exit(0);
 }

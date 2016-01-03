@@ -10,14 +10,15 @@ void err_sys(char *msg);
 
 #define MAXNUM 20000
 
-int main(void) {
-    pid_t	pid;
+int main(void)
+{
+    pid_t   pid;
     int i;
 
     for (i=0; i<MAXNUM; i++) {
         if ((pid = fork()) < 0) {
             err_sys("fork error");
-        } else if (pid == 0) {	/* ith child */
+        } else if (pid == 0) {  /* ith child */
             sleep(20);
             exit(EXIT_SUCCESS);
         }
@@ -27,7 +28,8 @@ int main(void) {
 }
 
 
-void err_sys(char *msg) {
+void err_sys(char *msg)
+{
     fprintf(stderr, msg);
     /* or use perror() function */
     if (errno == EAGAIN)

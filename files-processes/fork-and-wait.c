@@ -11,8 +11,9 @@
 void childs_play();
 void err_sys(char *msg);
 
-int main(void) {
-    pid_t	pid;
+int main(void)
+{
+    pid_t   pid;
 
     if ((pid = fork()) < 0) {
         err_sys("fork error");
@@ -37,7 +38,8 @@ int main(void) {
     exit(EXIT_SUCCESS);
 }
 
-void childs_play() {
+void childs_play()
+{
 #ifdef DEBUG
     sleep(3);
 #endif
@@ -49,7 +51,8 @@ void childs_play() {
 #endif
 }
 
-void err_sys(char *msg) {
+void err_sys(char *msg)
+{
     fprintf(stderr, msg);
     fflush(NULL); /* flush all output streams */
     exit(EXIT_FAILURE); /* exit abnormally */

@@ -2,7 +2,8 @@
 #include "Node.h"
 
 
-NodePtr createNode(JobPtr data) {
+NodePtr createNode(JobPtr data)
+{
     NodePtr newNode = (NodePtr) malloc (sizeof(Node));
     newNode->next = NULL;
     newNode->prev = NULL;
@@ -10,6 +11,7 @@ NodePtr createNode(JobPtr data) {
     return newNode;
 }
 
-void freeNode (NodePtr node) {
+void freeNode (NodePtr node)
+{
 }
 

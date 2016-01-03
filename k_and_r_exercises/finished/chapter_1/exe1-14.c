@@ -5,7 +5,8 @@
 
 #define MAX_CHAR 127 //ASCII total number of characters
 
-int main() {
+int main()
+{
     int c; //character
     int character_set [MAX_CHAR];
 
@@ -26,7 +27,8 @@ int main() {
  *Cleans array by assigning 0's to each element of array.
  *
  */
-void cleanArray(int array[]) {
+void cleanArray(int array[])
+{
     int index;
     for (index = 0; index < MAX_CHAR; index ++) {
         array[index] = 0;
@@ -38,7 +40,8 @@ void cleanArray(int array[]) {
  * @args array
  * Prints the frequencies of each character in the array.
  */
-void printOutput(int array[]) {
+void printOutput(int array[])
+{
     int index;
     for (index = 0; index < MAX_CHAR; index ++) {
         if (array[index] != 0) {

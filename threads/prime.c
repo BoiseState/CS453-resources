@@ -7,7 +7,8 @@
 #define FALSE 0
 
 
-int prime(long long x) {
+int prime(long long x)
+{
     long long i;
     long long sqrtx = ceil(sqrt(x));
 
@@ -19,7 +20,8 @@ int prime(long long x) {
 }
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 
     long long n;
     long long sqrtn;

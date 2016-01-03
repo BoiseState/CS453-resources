@@ -8,8 +8,8 @@
  * Linked list node
  */
 struct node {
-	int item;
-	struct node *next;
+    int item;
+    struct node *next;
 };
 
 /**

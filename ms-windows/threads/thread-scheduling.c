@@ -9,36 +9,37 @@
 #include <math.h>
 
 
-int main() {
+int main()
+{
     LPHANDLE phThread1, phThread2, phThread3;
     DWORD dwThreadID1, dwThreadID2, dwThreadID3;
     DWORD WINAPI ComputeUntilHellAlmostFreezes(LPVOID);
 
     phThread1 = CreateThread(
-                    NULL,								// Security Descriptor (handle not inheritable)
-                    0,									// initial stack size (default)
-                    ComputeUntilHellAlmostFreezes,	// thread function
-                    NULL,								// thread argument
-                    0,									// creation option (run immediately)
-                    &dwThreadID1					// thread identifier
+                    NULL,                               // Security Descriptor (handle not inheritable)
+                    0,                                  // initial stack size (default)
+                    ComputeUntilHellAlmostFreezes,  // thread function
+                    NULL,                               // thread argument
+                    0,                                  // creation option (run immediately)
+                    &dwThreadID1                    // thread identifier
                 );
 
     phThread2 = CreateThread(
-                    NULL,								// Security Descriptor (handle not inheritable)
-                    0,									// initial stack size (default)
-                    ComputeUntilHellAlmostFreezes,	// thread function
-                    NULL,								// thread argument
-                    0,									// creation option (run immediately)
-                    &dwThreadID2					// thread identifier
+                    NULL,                               // Security Descriptor (handle not inheritable)
+                    0,                                  // initial stack size (default)
+                    ComputeUntilHellAlmostFreezes,  // thread function
+                    NULL,                               // thread argument
+                    0,                                  // creation option (run immediately)
+                    &dwThreadID2                    // thread identifier
                 );
 
     phThread3 = CreateThread(
-                    NULL,								// Security Descriptor (handle not inheritable)
-                    0,									// initial stack size (default)
-                    ComputeUntilHellAlmostFreezes,	// thread function
-                    NULL,								// thread argument
-                    0,									// creation option (run immediately)
-                    &dwThreadID3					// thread identifier
+                    NULL,                               // Security Descriptor (handle not inheritable)
+                    0,                                  // initial stack size (default)
+                    ComputeUntilHellAlmostFreezes,  // thread function
+                    NULL,                               // thread argument
+                    0,                                  // creation option (run immediately)
+                    &dwThreadID3                    // thread identifier
                 );
 
 
@@ -49,7 +50,8 @@ int main() {
     ExitProcess(0);
 }
 
-DWORD WINAPI ComputeUntilHellAlmostFreezes(LPVOID arg) {
+DWORD WINAPI ComputeUntilHellAlmostFreezes(LPVOID arg)
+{
     int i;
     double tmp;
 

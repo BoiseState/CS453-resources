@@ -13,15 +13,15 @@ const char* log_name = "ring.log";
 const int alarm_interval = 2;
 
 /*
- * Initialize our buffer for use. We must call this function 
- * before calling log_msg to ensure all the memory has been 
+ * Initialize our buffer for use. We must call this function
+ * before calling log_msg to ensure all the memory has been
  * allocated and is ready to use.
  */
 void init_buffer();
 
 /*
- * Add entry into our ring buffer. We can assume that entry is a 
- * properly terminated string. However we can NOT assume that 
+ * Add entry into our ring buffer. We can assume that entry is a
+ * properly terminated string. However we can NOT assume that
  * entry is less than MAX_STRING_LENGTH so we must be careful
  * when copying our data.
  */

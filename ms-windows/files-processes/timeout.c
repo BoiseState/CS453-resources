@@ -20,7 +20,8 @@ void Error(char *msg, char *arg);
 void CALLBACK onAlarm(PVOID lpParam, BOOLEAN timerOrWait);
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     void Error(char *msg, char *arg);
     int sec=10, i;
     STARTUPINFO si;
@@ -59,16 +60,16 @@ int main(int argc, char *argv[]) {
     // Run command
     /* Start the child process */
     if ( ! CreateProcess(
-                NULL,		// No module name (use command line)
-                szBuff,	// Command line
-                NULL,		// Process handle not inheritable
-                NULL,		// Thread handle not inheritable.
-                FALSE,	// Set handle inheritance to FALSE.
-                0,			// No creation flags.
-                NULL,		// Use parent's environment block.
-                NULL,		// Use parent's starting directory.
-                &si,		// Pointer to STARTUPINFO structure.
-                &pi )	// Pointer to PROCESS_INFORMATION struct
+                NULL,       // No module name (use command line)
+                szBuff, // Command line
+                NULL,       // Process handle not inheritable
+                NULL,       // Thread handle not inheritable.
+                FALSE,  // Set handle inheritance to FALSE.
+                0,          // No creation flags.
+                NULL,       // Use parent's environment block.
+                NULL,       // Use parent's starting directory.
+                &si,        // Pointer to STARTUPINFO structure.
+                &pi )   // Pointer to PROCESS_INFORMATION struct
        ) {
         Error( "CreateProcess failed for %s.", szBuff );
     }
@@ -87,7 +88,8 @@ int main(int argc, char *argv[]) {
 
 
 // Error function for parent process
-void Error(char *msg, char *arg) {
+void Error(char *msg, char *arg)
+{
     fprintf(stderr, msg, arg);
     fprintf(stderr,"\n");
 
@@ -98,7 +100,8 @@ void Error(char *msg, char *arg) {
 /**
 Callback function for the alarm. Delete the timer and terminate all child processes.
 */
-void CALLBACK onAlarm(PVOID lpParam, BOOLEAN timerOrWait) {
+void CALLBACK onAlarm(PVOID lpParam, BOOLEAN timerOrWait)
+{
     DeleteTimerQueueTimer(NULL, hTimer, NULL);
     printf("Received alarm!\n");
     TerminateProcess(hChildProc, CHILD_PROC_TERMINATION_CODE);

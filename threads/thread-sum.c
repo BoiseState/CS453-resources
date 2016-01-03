@@ -13,7 +13,8 @@ int result[2]; /* partial sums arrays */
 
 float report_cpu_time();
 
-int  main( int argc, char **argv) {
+int  main( int argc, char **argv)
+{
     int i;
     long sum;
     float start_time, total_time;
@@ -45,7 +46,8 @@ int  main( int argc, char **argv) {
     exit(EXIT_SUCCESS);
 }
 
-void *partial_sum(void *ptr) {
+void *partial_sum(void *ptr)
+{
     char *message;
     int sum;
     int i;

@@ -19,7 +19,8 @@ double getMilliseconds();
  * @param n - The number of searches to conduct
  * @param searchType - The type of search BINARY or LINEAR
  */
-void conduct_random_searches(FILE *dataFile, long int n, int searchType) {
+void conduct_random_searches(FILE *dataFile, long int n, int searchType)
+{
     long int i;
     unsigned long int key;
     Record *record;
@@ -54,14 +55,16 @@ void conduct_random_searches(FILE *dataFile, long int n, int searchType) {
 }
 
 
-void print_usage(int argc, char **argv) {
+void print_usage(int argc, char **argv)
+{
     fprintf(stderr, "Usage: %s <data file name> <number of searches> [binary|linear]\n", program);
     exit(1);
 }
 
 
 
-int main (int argc, char **argv) {
+int main (int argc, char **argv)
+{
     int n;
     long int count;
     FILE *dataFile;

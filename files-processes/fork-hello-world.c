@@ -10,8 +10,9 @@ void err_sys(char *msg);
 
 /* #define DEBUG 1 */
 
-int main(void) {
-    pid_t	pid;
+int main(void)
+{
+    pid_t   pid;
     char *message1 = "Goodbye";
     char *message2 = "World";
 
@@ -21,7 +22,7 @@ int main(void) {
 
     if ((pid = fork()) < 0) {
         err_sys("fork error");
-    } else if (pid == 0) {	/* first child */
+    } else if (pid == 0) {  /* first child */
         print_message_function(message1);
 #if DEBUG
         sleep(2);
@@ -36,7 +37,7 @@ int main(void) {
     /* parent continues and creates another child */
     if ((pid = fork()) < 0) {
         err_sys("fork error");
-    } else if (pid == 0) {	/* second child */
+    } else if (pid == 0) {  /* second child */
         print_message_function(message2);
         printf("\n");
 #if DEBUG
@@ -51,14 +52,16 @@ int main(void) {
     exit(EXIT_SUCCESS);
 }
 
-void print_message_function( void *ptr ) {
+void print_message_function( void *ptr )
+{
     char *message;
     message = (char *) ptr;
     printf("%s ", message);
     fflush(NULL);
 }
 
-void err_sys(char *msg) {
+void err_sys(char *msg)
+{
     fprintf(stderr, msg);
     fflush(NULL); /* flush all output streams */
     exit(EXIT_FAILURE); /* exit abnormally */

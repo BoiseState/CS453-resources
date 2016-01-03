@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-void plugin(void) {
+void plugin(void)
+{
     printf("This is the second plug-in\n");
 }
 

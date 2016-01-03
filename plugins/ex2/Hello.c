@@ -1,10 +1,12 @@
 #include <stdio.h>
 
-void message1() {
+void message1()
+{
     printf("Hello ");
 }
 
-void message2() {
+void message2()
+{
     printf("World!\n");
 }
 

@@ -13,7 +13,8 @@ struct record {
 
 const int MAX_KEY = 1000000;
 
-void generate_file(int n, unsigned int seed, FILE *fout) {
+void generate_file(int n, unsigned int seed, FILE *fout)
+{
     int i;
     struct record *next;
 
@@ -31,7 +32,8 @@ void generate_file(int n, unsigned int seed, FILE *fout) {
     free(next);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int n;
     unsigned int seed;
     FILE *fout;

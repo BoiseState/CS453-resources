@@ -16,7 +16,8 @@ int main(int argc, char * argv[]);
 #define BUF_SIZE 4194304
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int src, dst, in, out;
     char buf[BUF_SIZE];
     int bufsize;

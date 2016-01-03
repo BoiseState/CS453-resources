@@ -6,10 +6,12 @@
  * @author Aza Tulepbergenov
  */
 
-int main() {
+int main()
+{
 }
 
-void reverse(char s[]) {
+void reverse(char s[])
+{
     int i;
     int c; //character
     for (i = MAXLINE; i >= 0 && (c=getchar()) != EOF && c!='\n'; i++)

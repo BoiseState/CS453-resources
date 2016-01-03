@@ -7,7 +7,8 @@ static struct {
     char log[MAX_LOG_ENTRY][MAX_STRING_LENGTH];
 } buff;
 
-void init_buffer() {
+void init_buffer()
+{
     printf("Initialize the ring buffer\n");
     int i;
     for(i =0; i<MAX_LOG_ENTRY; i++) {
@@ -15,7 +16,8 @@ void init_buffer() {
     }
 }
 
-void log_msg(char *entry) {
+void log_msg(char *entry)
+{
     printf("Adding log entry into buffer\n");
     int idx = buff.curr % MAX_LOG_ENTRY;
     strncpy(buff.log[idx],entry,MAX_STRING_LENGTH);
@@ -41,7 +43,8 @@ void log_msg(char *entry) {
  * This method should write all the current entries to disk. We will use
  * the constant log_name as the name of the file.
  */
-static void dump_buffer() {
+static void dump_buffer()
+{
     int i;
     for(i =0; i<MAX_LOG_ENTRY; i++) {
         printf("log %d: %s\n",i, buff.log[i]);

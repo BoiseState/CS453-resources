@@ -4,7 +4,8 @@
  */
 
 /*Special characters include blank, tabs and newline chars.*/
-int main() {
+int main()
+{
     int tabs, empty, newlines, c;
     tabs = empty = newlines = 0;
     while ((c=getchar()) != EOF) {

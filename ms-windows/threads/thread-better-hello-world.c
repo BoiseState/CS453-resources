@@ -3,19 +3,20 @@
 
 DWORD WINAPI PrintMessageFunction( LPVOID ptr );
 
-int  main() {
+int  main()
+{
     char *szMessage1 = "Goodbye";
     char *szMessage2 = "World";
     LPHANDLE hThread1, hThread2;
     DWORD dwThreadID1, dwThreadID2;
 
     hThread1 = CreateThread(
-                   NULL,							// Security Descriptor (handle not inheritable)
-                   0,								// initial stack size (default)
-                   PrintMessageFunction,	// thread function
-                   szMessage1,					// thread argument
-                   0,								// creation option (run immediately)
-                   &dwThreadID1				// thread identifier
+                   NULL,                            // Security Descriptor (handle not inheritable)
+                   0,                               // initial stack size (default)
+                   PrintMessageFunction,    // thread function
+                   szMessage1,                  // thread argument
+                   0,                               // creation option (run immediately)
+                   &dwThreadID1             // thread identifier
                );
 
     if (! hThread1) {
@@ -24,12 +25,12 @@ int  main() {
     }
 
     hThread2 = CreateThread(
-                   NULL,							// Security Descriptor (handle not inheritable)
-                   0,								// initial stack size (default)
-                   PrintMessageFunction,	// thread function
-                   szMessage2,					// thread argument
-                   0,								// creation option (run immediately)
-                   &dwThreadID2				// thread identifier
+                   NULL,                            // Security Descriptor (handle not inheritable)
+                   0,                               // initial stack size (default)
+                   PrintMessageFunction,    // thread function
+                   szMessage2,                  // thread argument
+                   0,                               // creation option (run immediately)
+                   &dwThreadID2             // thread identifier
                );
 
     if (! hThread2) {
@@ -43,7 +44,8 @@ int  main() {
     ExitProcess(0);
 }
 
-DWORD WINAPI PrintMessageFunction( LPVOID ptr ) {
+DWORD WINAPI PrintMessageFunction( LPVOID ptr )
+{
     char *szMessage;
     szMessage = (char *) ptr;
     printf("%s ", szMessage);

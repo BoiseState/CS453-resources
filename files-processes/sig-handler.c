@@ -9,7 +9,8 @@
 
 void ourhandler(int signo);
 
-int main() {
+int main()
+{
     printf("Try to stop me...I dare you!\n");
     fflush(stdout);
 
@@ -24,6 +25,7 @@ int main() {
 /**
  * Ignores CTRL+C and CTRL+Z (and prints an annoying message).
  */
-void ourhandler(int signo) {
+void ourhandler(int signo)
+{
     printf("Haha! You can't stop me with signal %s!!\n", strsignal(signo));
 }

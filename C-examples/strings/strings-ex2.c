@@ -7,7 +7,8 @@
 
 const int MAX_LENGTH = 1024;
 
-int main() {
+int main()
+{
     char *token;
     char *save;
     char *s;

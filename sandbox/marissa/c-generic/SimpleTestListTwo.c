@@ -4,7 +4,8 @@
 // We want to completely decouple our dog from our
 // list implementation.
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     // allocates a new list.
     struct list *list = createList(equals, toString, freeDog);
     struct node *node;

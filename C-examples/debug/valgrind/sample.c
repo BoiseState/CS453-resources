@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 100
-int main() {
+int main()
+{
     int i, sum = 0;
     int *a = malloc(SIZE);
     for(i=0; i<SIZE; ++i) sum += a[i];

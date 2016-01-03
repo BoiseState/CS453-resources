@@ -11,7 +11,8 @@ const int NUM_TESTS = 7;
 /*const int DEBUG = 2;*/
 const int DEBUG = 0;
 
-void print_stats(int *tests) {
+void print_stats(int *tests)
+{
     printf(" ========================\n");
     printf(" Function  #invocations\n");
     printf(" ========================\n");
@@ -25,7 +26,8 @@ void print_stats(int *tests) {
     printf(" ========================\n");
 }
 
-void runRandomTests(int count, unsigned int seed, int n, struct list* list) {
+void runRandomTests(int count, unsigned int seed, int n, struct list* list)
+{
     int i;
     int test;
     struct node* node;
@@ -90,7 +92,8 @@ void runRandomTests(int count, unsigned int seed, int n, struct list* list) {
     free(tests);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
     int n;
     int count;

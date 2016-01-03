@@ -4,7 +4,8 @@
 #define BUF_SIZE 65536
 #define DEBUG 1
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     char buffer[BUF_SIZE];
     int bufsize;
     DWORD dwShareMode = 0;

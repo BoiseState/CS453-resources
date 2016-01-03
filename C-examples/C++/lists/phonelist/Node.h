@@ -4,25 +4,25 @@
 
 /*
 
-	A class to represent one node in a linked list of phone records.
+    A class to represent one node in a linked list of phone records.
 */
 class Node
 {
-	private:
-		PhoneRecord *data;
-		Node *next;
-		
-	public:
-		Node(PhoneRecord *obj);
+private:
+    PhoneRecord *data;
+    Node *next;
 
-		void setData(PhoneRecord *obj);
+public:
+    Node(PhoneRecord *obj);
 
-		PhoneRecord *getData();
+    void setData(PhoneRecord *obj);
 
-		string toString();
+    PhoneRecord *getData();
 
-		void setNext(Node *nextPtr);
+    string toString();
 
-		Node *getNext();
-		
+    void setNext(Node *nextPtr);
+
+    Node *getNext();
+
 };//Node

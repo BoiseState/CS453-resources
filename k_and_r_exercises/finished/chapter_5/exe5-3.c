@@ -4,7 +4,8 @@
 
 char* strcatModif(char *s, char *t);
 
-int main(int argc, char ** argv) {
+int main(int argc, char ** argv)
+{
 
     if (argc != 3) {
         printf("Usage: ./foo -s1 -s2");
@@ -17,7 +18,8 @@ int main(int argc, char ** argv) {
     return 0;
 }
 
-char* strcatModif(char *s, char *t) {
+char* strcatModif(char *s, char *t)
+{
 
     char * temp = (char *) malloc(strlen(s) + strlen(t) + 1);
 

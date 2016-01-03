@@ -3,7 +3,8 @@
 /*@author Aza Tulepbergenov
  */
 
-int main() {
+int main()
+{
     int c; //character
     while ((c=getchar()) != EOF) {
         if (c == ' ' || c == '\n' || c =='\t') {

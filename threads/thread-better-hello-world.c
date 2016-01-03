@@ -6,7 +6,8 @@
 
 void *print_message_function( void *ptr );
 
-int  main() {
+int  main()
+{
     pthread_t thread1, thread2;
     char *message1 = "Goodbye";
     char *message2 = "World";
@@ -22,7 +23,8 @@ int  main() {
     exit(0);
 }
 
-void *print_message_function( void *ptr ) {
+void *print_message_function( void *ptr )
+{
     char *message;
     message = (char *) ptr;
     printf("%s ", message);

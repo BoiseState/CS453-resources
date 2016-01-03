@@ -3,20 +3,20 @@
 
 class List
 {
-	private:
-		Node * head;
-	public:
-		List();
+private:
+    Node * head;
+public:
+    List();
 
-		bool isEmpty();
+    bool isEmpty();
 
-		void print();
+    void print();
 
-		void insertAtFront(PhoneRecord *obj);
+    void insertAtFront(PhoneRecord *obj);
 
-		void insertAtRear(PhoneRecord *obj);
+    void insertAtRear(PhoneRecord *obj);
 
-		Node *removeFirst();
+    Node *removeFirst();
 
-		Node *removeLast();
+    Node *removeLast();
 };

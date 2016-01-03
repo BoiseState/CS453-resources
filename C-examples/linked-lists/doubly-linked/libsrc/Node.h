@@ -5,9 +5,9 @@
 #include <stdlib.h>
 
 struct node {
-	void *obj;
-	struct node *next;
-	struct node *prev;
+    void *obj;
+    struct node *next;
+    struct node *prev;
 };
 
 struct node* createNode (void *obj);

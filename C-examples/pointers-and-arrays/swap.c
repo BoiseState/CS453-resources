@@ -8,7 +8,8 @@ void swap(int *, int *);
  *
  * @author marissa
  */
-int main() {
+int main()
+{
     int x = 3;
     int y = 5;
     printf("x: %d, y:%d\n", x, y);
@@ -39,7 +40,8 @@ int main() {
  * This doesn't work! We are passing in a copy of the int variable, so
  * we are only updating the local copies.
  */
-void swap_wrong(int x, int y) {
+void swap_wrong(int x, int y)
+{
     int tmp = x;
     x = y;
     y = tmp;
@@ -52,7 +54,8 @@ void swap_wrong(int x, int y) {
  * scope of this function. This means the values will remain changed when we
  * return from the function call.
  */
-void swap(int *px, int *py) {
+void swap(int *px, int *py)
+{
     int tmp = *px;
     *px = *py;
     *py = tmp;

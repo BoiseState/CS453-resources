@@ -13,7 +13,8 @@ gcc threads-hello-world.c -lpthread
 
 void *run( void *ptr );
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i, n;
     int *value;
     pthread_t *tid;
@@ -36,7 +37,8 @@ int main(int argc, char **argv) {
     exit(EXIT_SUCCESS);
 }
 
-void *run(void *ptr) {
+void *run(void *ptr)
+{
     printf("I am thread %d with thread id %X\n", *(int *)ptr, (unsigned int) pthread_self());
     pthread_exit(NULL);
 }

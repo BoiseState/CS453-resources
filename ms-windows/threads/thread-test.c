@@ -6,19 +6,20 @@ DWORD WINAPI Run(LPVOID arg);
 
 #define MAX 20000
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     LPHANDLE hThread[MAX];
     DWORD dwThreadIDs[MAX];
     int i;
 
     for (i=0; i<MAX; i++) {
         hThread[i] = CreateThread(
-                         NULL,						// Security Descriptor (handle not inheritable)
-                         0,							// initial stack size (default)
-                         Run,						// thread function
-                         NULL,						// thread argument
-                         0,							// creation option (run immediately)
-                         &dwThreadIDs[i]		// thread identifier
+                         NULL,                      // Security Descriptor (handle not inheritable)
+                         0,                         // initial stack size (default)
+                         Run,                       // thread function
+                         NULL,                      // thread argument
+                         0,                         // creation option (run immediately)
+                         &dwThreadIDs[i]        // thread identifier
                      );
         if (hThread[i] == NULL) {
             printf("Error in creating thread. Bailing out!\n");
@@ -36,7 +37,8 @@ int main(int argc, char *argv[]) {
     ExitProcess(0);
 }
 
-DWORD WINAPI Run(LPVOID arg) {
+DWORD WINAPI Run(LPVOID arg)
+{
     Sleep(10000);
     printf("This is  thread id = %d\n", GetCurrentThreadId());
 

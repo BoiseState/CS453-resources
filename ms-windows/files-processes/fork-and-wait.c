@@ -7,7 +7,8 @@
 void ChildsPlay();
 void ErrSys(char *szMsg);
 
-int main ( int argc, char *argv[] ) {
+int main ( int argc, char *argv[] )
+{
     STARTUPINFO si1;
     PROCESS_INFORMATION pi;
     DWORD dwChildID = 0;
@@ -71,11 +72,13 @@ int main ( int argc, char *argv[] ) {
     ExitProcess(0);
 }
 
-void ChildsPlay() {
+void ChildsPlay()
+{
     printf("Hey, I need some money! \n");
 }
 
-void ErrSys(char *szMsg) {
+void ErrSys(char *szMsg)
+{
     fprintf(stderr, szMsg);
     fflush(NULL); /* flush all output streams */
     ExitProcess(1); /* exit abnormally */

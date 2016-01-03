@@ -7,16 +7,16 @@ using namespace std;
 
 class StringTokenizer
 {
-	private:
-		string inputStr;
-		string delimiter;
-		char *s;
-		const char* delim;
-		char * token;
-		int tokenLength;
-	public:
-		StringTokenizer(string inString, string delimiter);
-		string *nextToken();
+private:
+    string inputStr;
+    string delimiter;
+    char *s;
+    const char* delim;
+    char * token;
+    int tokenLength;
+public:
+    StringTokenizer(string inString, string delimiter);
+    string *nextToken();
 };
 
 #endif //STRING_TOKENIZER_H

@@ -8,7 +8,8 @@
  * gcc -Wall -o cp1 cp1.c
  * cp1 < file1 > file1.copy
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     int c;  // why is this int and not char?
 
     c = getchar();

@@ -6,7 +6,8 @@
 #include <stdlib.h>
 
 
-void strlist(int n, ...) {
+void strlist(int n, ...)
+{
     va_list ap;
     char *s;
 
@@ -22,7 +23,8 @@ void strlist(int n, ...) {
 
 
 
-int main() {
+int main()
+{
 
 
     printf("Calling with three arguments\n");

@@ -36,7 +36,8 @@ void *reader(void *);
 void *writer(void *);
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     pthread_t thread1, thread2;
 
     if (argc != 4) {
@@ -76,7 +77,8 @@ int main(int argc, char *argv[]) {
  * reader(): The function reader() is the entire reader thread. It
  * synchronizes with the writer thread, which execute the writer() function.
  */
-void *reader(void *arg) {
+void *reader(void *arg)
+{
     printf("Reader thread, file = %d\n",src);
     fflush(stdout);
     while (1) {
@@ -100,7 +102,8 @@ void *reader(void *arg) {
  *
  * writer(): The main function for the writer thread.
  */
-void *writer(void *arg) {
+void *writer(void *arg)
+{
     printf("Writer thread, file = %d\n",dst);
     fflush(stdout);
     while (1) {

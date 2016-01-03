@@ -4,7 +4,8 @@
 #include "lists.h"
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
     int n;
     NodePtr L, prev, list;

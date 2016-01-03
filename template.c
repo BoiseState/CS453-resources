@@ -26,6 +26,7 @@ SOFTWARE.
  * Email : johndoe@u.boisestate.edu
  */
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 }
 

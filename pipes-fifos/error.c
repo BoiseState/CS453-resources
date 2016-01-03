@@ -1,18 +1,19 @@
 
-#include	<errno.h>		/* for definition of errno */
-#include	<stdarg.h>		/* ANSI C header file */
-#include	"common.h"
+#include    <errno.h>       /* for definition of errno */
+#include    <stdarg.h>      /* ANSI C header file */
+#include    "common.h"
 
-static void	err_doit(int, const char *, va_list);
+static void err_doit(int, const char *, va_list);
 
-char	*pname = NULL;		/* caller can set this from argv[0] */
+char    *pname = NULL;      /* caller can set this from argv[0] */
 
 /* Nonfatal error related to a system call.
  * Print a message and return. */
 
 void
-err_ret(const char *fmt, ...) {
-    va_list		ap;
+err_ret(const char *fmt, ...)
+{
+    va_list     ap;
 
     va_start(ap, fmt);
     err_doit(1, fmt, ap);
@@ -24,8 +25,9 @@ err_ret(const char *fmt, ...) {
  * Print a message and terminate. */
 
 void
-err_sys(const char *fmt, ...) {
-    va_list		ap;
+err_sys(const char *fmt, ...)
+{
+    va_list     ap;
 
     va_start(ap, fmt);
     err_doit(1, fmt, ap);
@@ -37,22 +39,24 @@ err_sys(const char *fmt, ...) {
  * Print a message, dump core, and terminate. */
 
 void
-err_dump(const char *fmt, ...) {
-    va_list		ap;
+err_dump(const char *fmt, ...)
+{
+    va_list     ap;
 
     va_start(ap, fmt);
     err_doit(1, fmt, ap);
     va_end(ap);
-    abort();		/* dump core and terminate */
-    exit(1);		/* shouldn't get here */
+    abort();        /* dump core and terminate */
+    exit(1);        /* shouldn't get here */
 }
 
 /* Nonfatal error unrelated to a system call.
  * Print a message and return. */
 
 void
-err_msg(const char *fmt, ...) {
-    va_list		ap;
+err_msg(const char *fmt, ...)
+{
+    va_list     ap;
 
     va_start(ap, fmt);
     err_doit(0, fmt, ap);
@@ -64,8 +68,9 @@ err_msg(const char *fmt, ...) {
  * Print a message and terminate. */
 
 void
-err_quit(const char *fmt, ...) {
-    va_list		ap;
+err_quit(const char *fmt, ...)
+{
+    va_list     ap;
 
     va_start(ap, fmt);
     err_doit(0, fmt, ap);
@@ -77,17 +82,18 @@ err_quit(const char *fmt, ...) {
  * Caller specifies "errnoflag". */
 
 static void
-err_doit(int errnoflag, const char *fmt, va_list ap) {
-    int		errno_save;
-    char	buf[MAXLINE];
+err_doit(int errnoflag, const char *fmt, va_list ap)
+{
+    int     errno_save;
+    char    buf[MAXLINE];
 
-    errno_save = errno;		/* value caller might want printed */
+    errno_save = errno;     /* value caller might want printed */
     vsprintf(buf, fmt, ap);
     if (errnoflag)
         sprintf(buf+strlen(buf), ": %s", strerror(errno_save));
     strcat(buf, "\n");
-    fflush(stdout);		/* in case stdout and stderr are the same */
+    fflush(stdout);     /* in case stdout and stderr are the same */
     fputs(buf, stderr);
-    fflush(NULL);		/* flushes all stdio output streams */
+    fflush(NULL);       /* flushes all stdio output streams */
     return;
 }

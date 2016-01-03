@@ -3,20 +3,20 @@
 
 class List
 {
-	private:
-		Node * head;
-	public:
-		List();
+private:
+    Node * head;
+public:
+    List();
 
-		bool isEmpty();
+    bool isEmpty();
 
-		void print();
+    void print();
 
-		void insertAtFront(char *obj);
+    void insertAtFront(char *obj);
 
-		void insertAtRear(char *obj);
+    void insertAtRear(char *obj);
 
-		Node *removeFirst();
+    Node *removeFirst();
 
-		Node *removeLast();
+    Node *removeLast();
 };

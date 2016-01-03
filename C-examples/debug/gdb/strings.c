@@ -5,7 +5,8 @@
 
 #define MAXLEN 256
 
-int main() {
+int main()
+{
     char *r = "winnie";
     char *s;
     char q[MAXLEN];

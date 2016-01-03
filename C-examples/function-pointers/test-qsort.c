@@ -11,16 +11,17 @@
  * int is considered to be respectively less than, equal to, or greater
  * than the second.
  */
-int compareInt(const void *x, const void *y) {
+int compareInt(const void *x, const void *y)
+{
     return ((*(int *)x) - (*(int *)y));
 
     /* the statement above produces the same result as the following */
     /*
-    	int *i = (int *)x;
-    	int *j = (int *)y;
-    	if (*i == *j) return 0;
-    	if (*i < *j) return -1;
-    	if (*i > *j) return +1;
+        int *i = (int *)x;
+        int *j = (int *)y;
+        if (*i == *j) return 0;
+        if (*i < *j) return -1;
+        if (*i > *j) return +1;
     */
 }
 
@@ -37,7 +38,8 @@ struct student {
  * id is considered to be respectively less than, equal to, or greater
  * than the second.
  */
-int compareId(const void *x, const void *y) {
+int compareId(const void *x, const void *y)
+{
     int key1, key2;
     key1 = ((struct student *)x)->id;
     key2 = ((struct student *)y)->id;
@@ -45,7 +47,8 @@ int compareId(const void *x, const void *y) {
     /* return (((struct student *)x)->id - ((struct student *)y)->id); */
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int n;
     int i;
     int *array;

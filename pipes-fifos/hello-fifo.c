@@ -1,14 +1,15 @@
-#include	"common.h"
+#include    "common.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 
 
-int main(void) {
-    int		n;
-    pid_t	pid;
-    char	line[MAXLINE];
+int main(void)
+{
+    int     n;
+    pid_t   pid;
+    char    line[MAXLINE];
     int fifo;
     int status;
 
@@ -20,11 +21,11 @@ int main(void) {
     if ((pid = fork()) < 0)
         err_sys("fork error");
 
-    else if (pid > 0) {		/* parent */
+    else if (pid > 0) {     /* parent */
         fifo = open("fifo1", O_WRONLY);
         write(fifo, "hello world\n", 12);
 
-    } else {				/* child */
+    } else {                /* child */
         fifo = open("fifo1", O_RDONLY);
         n = read(fifo, line, MAXLINE);
         printf("child read %d characters from the parent in the pipe: %s", n, line);

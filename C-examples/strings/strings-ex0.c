@@ -11,7 +11,8 @@
 
 #define MAXLEN 100
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     char s0[] = "magma";
     char *s1 = "volcano";
     char s2[MAXLEN];

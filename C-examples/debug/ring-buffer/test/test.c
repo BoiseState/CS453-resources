@@ -8,7 +8,8 @@
 //this file around.
 #include "../include/ring.h"
 
-int main(void) {
+int main(void)
+{
 
     init_buffer();
     /*Add in a bunch of entries*/

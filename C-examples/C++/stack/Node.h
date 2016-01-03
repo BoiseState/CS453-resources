@@ -4,25 +4,25 @@ using namespace std;
 
 /*
 
-	A class to represent one node in a linked list of phone records.
+    A class to represent one node in a linked list of phone records.
 */
 class Node
 {
-	private:
-		char *data;
-		Node *next;
-		
-	public:
-		Node(char *obj);
+private:
+    char *data;
+    Node *next;
 
-		void setData(char *obj);
+public:
+    Node(char *obj);
 
-		char *getData();
+    void setData(char *obj);
 
-		string toString();
+    char *getData();
 
-		void setNext(Node *nextPtr);
+    string toString();
 
-		Node *getNext();
-		
+    void setNext(Node *nextPtr);
+
+    Node *getNext();
+
 };//Node

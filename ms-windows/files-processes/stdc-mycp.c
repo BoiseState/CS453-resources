@@ -4,7 +4,8 @@
 #define BUF_SIZE 65536
 #define DEBUG 1
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     FILE *src, *dst;
     size_t in, out;
     char buf[BUF_SIZE];
@@ -31,10 +32,10 @@ int main(int argc, char *argv[]) {
 
     while (1) {
         in = fread(
-                 buf,			// Storage location for data
-                 1,				// Item size in bytes
-                 bufsize,		// Maximum number of items to be read
-                 src			// Pointer to FILE structure
+                 buf,           // Storage location for data
+                 1,             // Item size in bytes
+                 bufsize,       // Maximum number of items to be read
+                 src            // Pointer to FILE structure
              );
         if (0 == in)
             break;
@@ -43,10 +44,10 @@ int main(int argc, char *argv[]) {
 #endif
 
         out = fwrite(
-                  buf,		// Pointer to data to be written
-                  1,			// Item size in bytes
-                  in,		// Maximum number of items to be written
-                  dst		// Pointer to FILE structure
+                  buf,      // Pointer to data to be written
+                  1,            // Item size in bytes
+                  in,       // Maximum number of items to be written
+                  dst       // Pointer to FILE structure
               );
         if (0 == out)
             break;

@@ -1,9 +1,10 @@
-#include	"common.h"
+#include    "common.h"
 
 void cleanup(int) ;
 void resume(int) ;
 
-int main(void) {
+int main(void)
+{
     int fifo1, fifo2;
     int status;
     char *request, *reply;
@@ -60,7 +61,8 @@ int main(void) {
 }
 
 
-void cleanup(int signo) {
+void cleanup(int signo)
+{
     printf("\nfifo-server: cleaning up....\n");
     unlink("fifo-request");
     unlink("fifo-reply");
@@ -68,7 +70,8 @@ void cleanup(int signo) {
 }
 
 
-void resume(int signo) {
+void resume(int signo)
+{
     printf("Caught SIGPIPE!\n");
 }
 

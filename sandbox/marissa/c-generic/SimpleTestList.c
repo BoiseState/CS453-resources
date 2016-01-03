@@ -4,7 +4,8 @@
 // We want to completely decouple our object from our
 // list implementation.
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     // allocates a new list.
     struct list *list = createList(equals, toString, freeObject);
     struct node *node;

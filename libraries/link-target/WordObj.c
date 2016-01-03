@@ -1,6 +1,7 @@
 #include "WordObj.h"
 
-WordObjPtr createWordObj(const char *word, const unsigned long int frequency) {
+WordObjPtr createWordObj(const char *word, const unsigned long int frequency)
+{
     WordObjPtr wordObj = (WordObjPtr) malloc(sizeof(WordObj));
     wordObj->frequency = frequency;
     wordObj->word = (char *) malloc(sizeof(char) * (strlen(word) + 1));
@@ -8,7 +9,8 @@ WordObjPtr createWordObj(const char *word, const unsigned long int frequency) {
     return wordObj;
 }
 
-char *toString(const void *obj) {
+char *toString(const void *obj)
+{
     WordObjPtr wordObj = (WordObjPtr) obj;
 
     int maxLength = strlen(wordObj->word) + 2 + MAX_FREQ_DIGITS;
@@ -19,13 +21,15 @@ char *toString(const void *obj) {
     return returnString;
 }
 
-void freeWordObj(void *obj) {
+void freeWordObj(void *obj)
+{
     WordObjPtr wordObj = (WordObjPtr) obj;
     free(wordObj->word);
     free(wordObj);
 }
 
-int equals(const void *obj1, const void *obj2) {
+int equals(const void *obj1, const void *obj2)
+{
     WordObjPtr wordObj1 = (WordObjPtr) obj1;
     WordObjPtr wordObj2 = (WordObjPtr) obj2;
 

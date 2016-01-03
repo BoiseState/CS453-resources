@@ -1,11 +1,12 @@
 
 /* ch2/print-buffer-sizes.c */
 
-#include	"ourhdr.h"
-void	pr_stdio(const char *, FILE *);
+#include    "ourhdr.h"
+void    pr_stdio(const char *, FILE *);
 
-int main(void) {
-    FILE	*fp;
+int main(void)
+{
+    FILE    *fp;
 
     fputs("enter any character\n", stdout);
     if (getchar() == EOF)
@@ -24,7 +25,8 @@ int main(void) {
     exit(EXIT_SUCCESS);
 }
 
-void pr_stdio(const char *name, FILE *fp) {
+void pr_stdio(const char *name, FILE *fp)
+{
     printf("stream = %s, ", name);
     /* following is nonportable to non Linux systems */
     printf(", buffer size = %ld\n", fp->_IO_buf_end - fp->_IO_buf_base);

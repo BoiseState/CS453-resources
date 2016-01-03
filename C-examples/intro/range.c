@@ -4,7 +4,8 @@
 #include <float.h>
 
 
-int main () {
+int main ()
+{
     printf("%25s %25s %25s\n", "Type", "Min", "Max");
 
     printf("%25s %25d %25d\n", "char", CHAR_MIN, CHAR_MAX);

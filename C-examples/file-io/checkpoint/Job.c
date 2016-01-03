@@ -1,7 +1,8 @@
 #include "Job.h"
 
 
-JobPtr createJob(int jobid, char *info) {
+JobPtr createJob(int jobid, char *info)
+{
     JobPtr newJob = (JobPtr) malloc (sizeof(Job));
     newJob->jobid = jobid;
     newJob->info = (char *) malloc(sizeof(char)*(strlen(info)+1));
@@ -10,18 +11,21 @@ JobPtr createJob(int jobid, char *info) {
     return newJob;
 }
 
-char *toString(JobPtr job) {
+char *toString(JobPtr job)
+{
     char *temp;
     temp = (char *)malloc(sizeof(char)*(job->infoSize)+MAXPID_DIGITS+4);
     sprintf(temp, "[%d] %s", job->jobid, job->info);
     return temp;
 }
 
-void freeJob(JobPtr job) {
+void freeJob(JobPtr job)
+{
 
 }
 
-int getJobSize(JobPtr job) {
+int getJobSize(JobPtr job)
+{
     int size = 0;
     size = sizeof(int) + sizeof(int) +  job->infoSize;
     return size;
@@ -31,56 +35,58 @@ int getJobSize(JobPtr job) {
 /*
 Function name: checkpointJob
 Description: WARNING! Writes a checkpoint for a Job structure to  an output
-			stream without any checks. The idea is that some higher level
-			class (like List or Node) would call this function after having
-			checked for the file output stream to be set properly. We also
-			don't check for no space left to write the file...
-	Input: job  ---> a pointer to a Job structure that needs to be checkpointed
-		   fout ---> output file stream
+            stream without any checks. The idea is that some higher level
+            class (like List or Node) would call this function after having
+            checked for the file output stream to be set properly. We also
+            don't check for no space left to write the file...
+    Input: job  ---> a pointer to a Job structure that needs to be checkpointed
+           fout ---> output file stream
 
-	Output: none
-	Side Effects: writes to  a specified output stream
+    Output: none
+    Side Effects: writes to  a specified output stream
 
 
 */
-void checkpointJob(JobPtr job, FILE *fout) {
+void checkpointJob(JobPtr job, FILE *fout)
+{
     fwrite(&(job->jobid), sizeof(int), 1, fout);
     fwrite(&(job->infoSize), sizeof(int), 1, fout);
     fwrite(job->info, job->infoSize, 1, fout);
 }
 
 /*
-	a different way of checkpointing...
+    a different way of checkpointing...
 
 void checkpointJob(JobPtr job, FILE *fout)
 {
-	int size;
-	void *buffer;
+    int size;
+    void *buffer;
 
-	size = getJobSize(job);
-	buffer = (void *) malloc(sizeof(char)*size);
-	memcpy(buffer, &(job->jobid), sizeof(int));
-	memcpy(buffer+sizeof(int), &(job->infoSize), sizeof(int));
-	memcpy(buffer+sizeof(int)+sizeof(int), job->info, job->infoSize);
-	fwrite(buffer, size, 1, fout);
-	free(buffer);
+    size = getJobSize(job);
+    buffer = (void *) malloc(sizeof(char)*size);
+    memcpy(buffer, &(job->jobid), sizeof(int));
+    memcpy(buffer+sizeof(int), &(job->infoSize), sizeof(int));
+    memcpy(buffer+sizeof(int)+sizeof(int), job->info, job->infoSize);
+    fwrite(buffer, size, 1, fout);
+    free(buffer);
 }
 */
 
 /*
 Function name: restoreJob
 Description: WARNING! Reads from a binary input stream to rsrtore a Job
- 			structure. The idea is that some higher level
-			class (like List or Node) would call this function after having
-			checked for the file input stream to be set properly. We
-			don't check for EOF or other errors at this level.
+            structure. The idea is that some higher level
+            class (like List or Node) would call this function after having
+            checked for the file input stream to be set properly. We
+            don't check for EOF or other errors at this level.
 
-	Input: fin ---> binary input stream
+    Input: fin ---> binary input stream
 
-	Output:   ---> a pointer to the restored Job structure
-	Side Effects: None outside of the Job structure
+    Output:   ---> a pointer to the restored Job structure
+    Side Effects: None outside of the Job structure
 */
-JobPtr restoreJob(FILE *fin) {
+JobPtr restoreJob(FILE *fin)
+{
     int jobid;
     int infoSize;
     JobPtr job;

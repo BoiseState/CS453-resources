@@ -1,7 +1,8 @@
-#include	"common.h"
+#include    "common.h"
 
 
-int main(void) {
+int main(void)
+{
     int fifo1, fifo2;
     char *request, *reply;
     int count, status;

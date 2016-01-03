@@ -12,7 +12,8 @@ struct node {
  *
  * @param n the node to print
  */
-void printNode(struct node* n) {
+void printNode(struct node* n)
+{
     printf("data=%d\n", n->data);
 }
 
@@ -24,14 +25,16 @@ void printNode(struct node* n) {
  *
  * @return the allocated node
  */
-struct node * createNode(int data) {
+struct node * createNode(int data)
+{
     struct node *tmp =  malloc(sizeof(struct node));
     tmp->data = data;
     tmp->next = NULL;
     return tmp;
 }
 
-int main (int foo, char *bar[]) {
+int main (int foo, char *bar[])
+{
     //Create a node to represent the "head" of the list
     struct node *head =  createNode(-1);
     //Pointer to use for moving through the list

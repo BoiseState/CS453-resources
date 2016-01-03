@@ -14,7 +14,8 @@ int *results;
 long max;
 long n;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
     int *value;
     pthread_t *tid;
@@ -39,7 +40,8 @@ int main(int argc, char **argv) {
     exit(EXIT_SUCCESS);
 }
 
-void *run(void *ptr) {
+void *run(void *ptr)
+{
     long i;
     int id = *(int *) ptr;
     long answer = id;

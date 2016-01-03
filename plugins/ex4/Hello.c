@@ -12,18 +12,21 @@
 
 int x = 1;
 
-void message1() {
+void message1()
+{
     printf("[%X] Hello World! \n", pthread_self());
 }
 
 /* message2 and 3 demonstrate that */
-void message2() {
+void message2()
+{
     printf("[%X] I can count to three!! %d", pthread_self(),x);
     x++;
     printf(" %d\n", x);
 }
 
-void message3() {
+void message3()
+{
     x++;
     printf("[%X] and %d!!\n", pthread_self(),x);
 }

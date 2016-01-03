@@ -13,7 +13,8 @@ gcc threads-hello-world.c -lpthread
 
 void *print_message_function( void *ptr );
 
-int  main() {
+int  main()
+{
     pthread_t thread1, thread2;
     char *message1 = "Goodbye";
     char *message2 = "World";
@@ -26,7 +27,8 @@ int  main() {
     exit(EXIT_SUCCESS);
 }
 
-void *print_message_function(void *ptr) {
+void *print_message_function(void *ptr)
+{
     char *message;
     message = (char *) ptr;
     printf("%s ", message);

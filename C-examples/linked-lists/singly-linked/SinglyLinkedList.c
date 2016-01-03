@@ -7,7 +7,8 @@
 #include <stdlib.h>
 #include "SinglyLinkedList.h"
 
-struct node *addAtFront(struct node *head, struct node *node) {
+struct node *addAtFront(struct node *head, struct node *node)
+{
     if (node == NULL) return head;
     if (head == NULL) {
         head = node;
@@ -20,7 +21,8 @@ struct node *addAtFront(struct node *head, struct node *node) {
 }
 
 
-struct node* reverseList(struct node *head) {
+struct node* reverseList(struct node *head)
+{
     struct node *list = NULL;
     while (head) {
         struct node *tmp = head;
@@ -32,7 +34,8 @@ struct node* reverseList(struct node *head) {
 }
 
 
-void printList(struct node *head) {
+void printList(struct node *head)
+{
     while (head) {
         printf(" %d -->",head->item);
         head = head->next;

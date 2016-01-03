@@ -15,7 +15,8 @@ char *progname;
 
 static void onalarm(int signo);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     void error(char *msg, char *arg);
     int sec=10; /* default timeout */
     int status;
@@ -46,11 +47,13 @@ int main(int argc, char *argv[]) {
     exit(WEXITSTATUS(status));
 }
 
-static void onalarm(int signo) { /* kill child process when alarm arives */
+static void onalarm(int signo)   /* kill child process when alarm arives */
+{
     kill(pid, SIGKILL);
 }
 
-void error(char *msg, char *arg) {
+void error(char *msg, char *arg)
+{
     fprintf(stderr, msg, arg);
     fprintf(stderr,"\n");
     exit(EX_SOFTWARE);

@@ -13,7 +13,8 @@
 const int MAX_LENGTH = 1024;
 const int MAX_TOKENS = 100;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     char *nextToken;
     char *save;
     char *s;

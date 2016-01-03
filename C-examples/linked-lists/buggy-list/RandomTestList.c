@@ -13,7 +13,8 @@ const int NUM_TESTS = 6;
 const int DEBUG = 0;
 
 
-void runRandomTests(int count, unsigned int seed, int n, ListPtr list) {
+void runRandomTests(int count, unsigned int seed, int n, ListPtr list)
+{
     int i;
     int test;
     NodePtr node;
@@ -59,7 +60,8 @@ void runRandomTests(int count, unsigned int seed, int n, ListPtr list) {
     }
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
     int n;
     int count;

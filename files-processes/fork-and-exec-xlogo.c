@@ -6,7 +6,8 @@
 
 void err_sys(char *msg);
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     pid_t  pids[4], pid;
     int i, status;
 
@@ -30,7 +31,8 @@ int main(int argc, char **argv) {
     exit(0);
 }
 
-void err_sys(char *msg) {
+void err_sys(char *msg)
+{
     fprintf(stderr, msg);
     fflush(NULL); /* flush all output streams */
     exit(EXIT_FAILURE); /* exit abnormally */

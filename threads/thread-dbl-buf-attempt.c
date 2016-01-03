@@ -37,7 +37,8 @@ void reader(void);
 void writer(void);
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     pthread_t thread1, thread2;
 
     if (argc != 4) {
@@ -72,7 +73,8 @@ int main(int argc, char *argv[]) {
     exit(0);
 }
 
-void reader(void) {
+void reader(void)
+{
     char *tmp;
 
     printf("Reader thread, file = %d\n",src);
@@ -92,7 +94,8 @@ void reader(void) {
     pthread_exit(0);
 }
 
-void writer(void) {
+void writer(void)
+{
     char *tmp;
 
     printf("Writer thread, file = %d\n",dst);

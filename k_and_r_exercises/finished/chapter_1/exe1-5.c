@@ -7,7 +7,8 @@
 
 /* print Fahrentehit - Celcius table
  * for fahr = 0, 20, ..., 300 */
-main() {
+main()
+{
     int fahr, celcius;
     int lower, upper, step;
 

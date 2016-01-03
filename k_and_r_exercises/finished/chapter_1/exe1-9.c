@@ -2,7 +2,8 @@
 /*
  * @author Aza Tulepbergenov
  */
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int c;
     int again = 0; //0 if blank space is not encountered; 1 otherwise.
     while ((c=getchar()) != EOF) {

@@ -10,14 +10,15 @@ void err_sys(char *msg);
 void run_child();
 void run_grandchild();
 
-int main(void) {
+int main(void)
+{
     pid_t pid;
 
     printf("original process, pid = %d\n", getpid());
 
     if ((pid = fork()) < 0) {
         err_sys("fork error");
-    } else if (pid == 0) {	/* child */
+    } else if (pid == 0) {  /* child */
         run_child();
     }
 
@@ -31,14 +32,15 @@ int main(void) {
     exit(EXIT_SUCCESS);
 }
 
-void run_child() {
-    pid_t	pid;
+void run_child()
+{
+    pid_t   pid;
 
     printf("child = %d, parent = %d\n", getpid(), getppid());
 
     if ((pid = fork()) < 0) {
         err_sys("fork error");
-    } else if (pid == 0) {	/* grandchild */
+    } else if (pid == 0) {  /* grandchild */
         run_grandchild();
     }
 
@@ -49,12 +51,14 @@ void run_child() {
     exit(EXIT_SUCCESS); /* the child can now exit */
 }
 
-void run_grandchild() {
+void run_grandchild()
+{
     printf("grandchild = %d, parent = %d\n", getpid(), getppid());
     exit(EXIT_SUCCESS);
 }
 
-void err_sys(char *msg) {
+void err_sys(char *msg)
+{
     fprintf(stderr, msg);
     fflush(NULL); /* flush all output streams */
     exit(EXIT_FAILURE); /* exit abnormally */

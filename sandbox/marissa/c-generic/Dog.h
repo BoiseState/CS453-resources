@@ -7,8 +7,8 @@
 #define MAX_KEY_DIGITS 4
 
 struct dog {
-	int id;
-	char *name;
+    int id;
+    char *name;
 };
 
 struct dog* createDog (const int, const char *);

@@ -1,5 +1,5 @@
 /*
-	List.h: Defines the interface for a doubly-linked list.
+    List.h: Defines the interface for a doubly-linked list.
 */
 
 #ifndef __LIST_H
@@ -8,12 +8,12 @@
 #include "Node.h"
 
 struct list {
-  int size;
-  struct node *head;
-  struct node *tail;
-  int (*equals)(const void *, const void *);
-  char * (*toString)(const void *);
-  void (*freeObject)(void *);
+    int size;
+    struct node *head;
+    struct node *tail;
+    int (*equals)(const void *, const void *);
+    char * (*toString)(const void *);
+    void (*freeObject)(void *);
 };
 
 /* prototypes of public methods */
@@ -25,8 +25,8 @@ struct list {
  * @return a pointer to the allocated list.
  */
 struct list* createList(int (*equals)(const void *, const void *),
-		        char * (*toString)(const void *),
-		        void (*freeObject)(void *));
+                        char * (*toString)(const void *),
+                        void (*freeObject)(void *));
 
 /**
  * Frees all elements of the given list and the <code>struct *list</code> itself.
@@ -107,7 +107,7 @@ struct node* removeNode(struct list *list, struct node *node);
 
 /**
  * Searches the list for a node with the given obj and returns the pointer to the
- * found node. The search method should call the equals function pointer that was 
+ * found node. The search method should call the equals function pointer that was
  * provided by the user of this library.
  *
  * @param list a pointer to a <code>List</code>.

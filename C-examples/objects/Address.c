@@ -3,13 +3,15 @@
 
 #include "Address.h"
 
-static int getLength(Address this) {
+static int getLength(Address this)
+{
     return strlen(this->name)+strlen(this->streetAddress)+
            strlen(this->city)+strlen(this->state)+4+5+10;
 }
 
 Address createAddress(char *name, char *streetAddress, char *city,
-                      char *state, int zip, char *(*printAddress)(struct address *)) {
+                      char *state, int zip, char *(*printAddress)(struct address *))
+{
     Address temp = (Address) malloc(sizeof(address));
     temp->name = (char *) malloc(sizeof(char)*(strlen(name)+1));
     temp->streetAddress = (char *) malloc(sizeof(char)*(strlen(streetAddress)+1));
@@ -27,7 +29,8 @@ Address createAddress(char *name, char *streetAddress, char *city,
     return temp;
 }
 
-char *printMultiLine(Address this) {
+char *printMultiLine(Address this)
+{
     int len = getLength(this);
     char * temp = (char *) malloc(sizeof(char)*len);
     snprintf(temp, len, "%s\n%s\n%s, %s, %d\n", this->name,
@@ -35,7 +38,8 @@ char *printMultiLine(Address this) {
     return temp;
 }
 
-char *printOneLine(Address this) {
+char *printOneLine(Address this)
+{
     int len = getLength(this);
     char * temp = (char *) malloc(sizeof(char)*len);
     snprintf(temp, len, "%s, %s, %s, %s %d\n", this->name,
@@ -43,7 +47,8 @@ char *printOneLine(Address this) {
     return temp;
 }
 
-char *printDefault(Address address) {
+char *printDefault(Address address)
+{
     return "default";
 }
 

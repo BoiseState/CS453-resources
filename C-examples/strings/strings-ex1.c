@@ -10,7 +10,8 @@
 
 /*char c = '\0';*/
 
-int main() {
+int main()
+{
     char *r = "winnie";
     char *s;
     char q[MAXLEN];

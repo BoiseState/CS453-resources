@@ -15,7 +15,8 @@
 
 /* count number of characters, words and lines in the standard input */
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     char c;
     long nc, nw, nl;
     int state;

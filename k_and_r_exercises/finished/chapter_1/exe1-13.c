@@ -8,7 +8,8 @@
 */
 #define MAXWORD = 30;
 //extern int count;
-int main() {
+int main()
+{
     int c;
     int count = 0;
     while ((c=getchar()) != EOF) {
@@ -24,7 +25,8 @@ int main() {
     return (0);
 }
 
-int printHisto(int num) {
+int printHisto(int num)
+{
     int i;
     for (i = 0; i < num; ++i) {
         putchar('*');

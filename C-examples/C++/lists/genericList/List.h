@@ -4,22 +4,22 @@
 
 template <class myType> class List
 {
-	private:
-		Node<myType> * head;
-	public:
-		List();
+private:
+    Node<myType> * head;
+public:
+    List();
 
-		bool isEmpty();
+    bool isEmpty();
 
-		void print();
+    void print();
 
-		void insertAtFront(myType *obj);
+    void insertAtFront(myType *obj);
 
-		void insertAtRear(myType *obj);
+    void insertAtRear(myType *obj);
 
-		Node<myType> *removeFirst();
+    Node<myType> *removeFirst();
 
-		Node<myType> *removeLast();
+    Node<myType> *removeLast();
 };
 
 #endif //LIST_H

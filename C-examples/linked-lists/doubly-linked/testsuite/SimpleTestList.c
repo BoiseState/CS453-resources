@@ -3,13 +3,15 @@
 #include <List.h>
 #include <Node.h>
 
-int equals(const void *obj, const void *other) {
+int equals(const void *obj, const void *other)
+{
     int *o1 = (int *) obj;
     int *o2 = (int *) other;
     return *o1 == *o2;
 }
 
-char *toString(const void *obj) {
+char *toString(const void *obj)
+{
     int *object = (int *) obj;
     const int MAX_DIGITS = 10; /* maximum digits in an int */
     char *buf;
@@ -18,11 +20,13 @@ char *toString(const void *obj) {
     return buf;
 }
 
-void freeObject(void *obj) {
+void freeObject(void *obj)
+{
     free(obj);
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i, n;
     struct list *list;
     struct node *node;

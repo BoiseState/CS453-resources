@@ -1,11 +1,12 @@
 #include <windows.h>
 #include <stdio.h>
-#include	"error.h"
+#include    "error.h"
 
-void	pr_stdio(const char *, FILE *);
+void    pr_stdio(const char *, FILE *);
 
-int main(void) {
-    FILE	*fp;
+int main(void)
+{
+    FILE    *fp;
 
     fputs("enter any character\n", stdout);
     if (getchar() == EOF)
@@ -25,7 +26,8 @@ int main(void) {
     ExitProcess(0);
 }
 
-void pr_stdio(const char *name, FILE *fp) {
+void pr_stdio(const char *name, FILE *fp)
+{
     printf("stream = %s, ", name);
     printf("_bufsiz = %d, _base = %d, _cnt = %d\n", fp->_bufsiz, fp->_base, fp->_cnt);
 }

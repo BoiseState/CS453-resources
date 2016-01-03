@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "SinglyLinkedList.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int i;
     int n;
     struct node *list;

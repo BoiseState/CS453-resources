@@ -5,8 +5,8 @@
 #include <stdio.h>
 
 struct node {
-	void *object;
-	struct node* next;
+    void *object;
+    struct node* next;
 };
 
 /**

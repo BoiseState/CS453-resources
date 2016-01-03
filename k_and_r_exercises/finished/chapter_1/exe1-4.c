@@ -3,7 +3,8 @@
  *@author K & R
  *modified by Aza Tulepbergenov.
 */
-main() {
+main()
+{
     float fahr, celcius;
     int lower, upper, step;
 

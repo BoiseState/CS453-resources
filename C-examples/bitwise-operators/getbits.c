@@ -5,7 +5,8 @@
 
 unsigned int getbits(unsigned int, unsigned int, unsigned int);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     unsigned int x, n, p, result;
 
     if (argc != 4) {
@@ -35,7 +36,8 @@ int main(int argc, char *argv[]) {
  *  Expected result = 00000011 = 3
  *
  */
-unsigned int getbits(unsigned int x, unsigned int p, unsigned int n) {
+unsigned int getbits(unsigned int x, unsigned int p, unsigned int n)
+{
     return (x >> (p+1-n)) & ~(~0U << n);
 }
 

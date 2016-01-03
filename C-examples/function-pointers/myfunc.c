@@ -4,12 +4,14 @@
 static const int MAX = 10;
 
 
-void usage(char** argv) {
+void usage(char** argv)
+{
     fprintf(stderr,"%s <a = ascending | b = descending>\n",argv[0]);
     exit(0);
 }
 
-void ascend(void *a, void *b) {
+void ascend(void *a, void *b)
+{
     int *first = (int*) a;
     int *second = (int*) b;
     int tmp =0;
@@ -21,7 +23,8 @@ void ascend(void *a, void *b) {
 
 }
 
-void descend(void *a, void *b) {
+void descend(void *a, void *b)
+{
     int *first = (int*) a;
     int *second = (int*) b;
     int tmp =0;
@@ -32,7 +35,8 @@ void descend(void *a, void *b) {
     }
 }
 
-void charAscend(void *a, void *b) {
+void charAscend(void *a, void *b)
+{
     char *first = (char*) a;
     char *second = (char*) b;
     char tmp =0;
@@ -44,7 +48,8 @@ void charAscend(void *a, void *b) {
 
 }
 
-void charDescend(void *a, void *b) {
+void charDescend(void *a, void *b)
+{
     char *first = (char*) a;
     char *second = (char*) b;
     char tmp =0;
@@ -55,7 +60,8 @@ void charDescend(void *a, void *b) {
     }
 }
 
-void sort(void *base ,size_t size, int len, void (*swp)(void*, void*)) {
+void sort(void *base ,size_t size, int len, void (*swp)(void*, void*))
+{
     int i, j;
     for(i = 0; i< len ; i++) {
         for(j = i + 1; j<len ; j++) {
@@ -66,7 +72,8 @@ void sort(void *base ,size_t size, int len, void (*swp)(void*, void*)) {
 
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
 
     if(argc != 2) {
         usage(argv);

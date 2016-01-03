@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include <sysexits.h>
 
-int main(void) {
+int main(void)
+{
     return 0;
 }

@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     printf("size of char = %ld \n", sizeof(char));
     printf("size of short = %ld  \n", sizeof(short));
     printf("size of unsigned short  = %ld  \n", sizeof(unsigned short));

@@ -18,7 +18,8 @@ void printStats();
 
 int count, correct;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     int maxLen = 33;
     char *sVal;
     int randVal;
@@ -73,14 +74,16 @@ int main(int argc, char **argv) {
     exit(EXIT_SUCCESS);
 }
 
-void printUsage(char *progName) {
+void printUsage(char *progName)
+{
     fprintf(stdout, "%s usage: %s <test time> [seed value] [ending power range]\n", progName, progName);
     fprintf(stdout, "\ntest time == 0, no time limit\n");
     fprintf(stdout, "seed value < 1, random seed based on time of day\n");
     fprintf(stdout, "ending power range = n, value between 2^0 .. 2^(n-1)\n");
 }
 
-void onAlarm(int signo) {
+void onAlarm(int signo)
+{
     fprintf(stdout, "\n\n------TIME UP! put down your pencils------\n");
     sleep(1);
     printStats();
@@ -88,7 +91,8 @@ void onAlarm(int signo) {
     kill(getpid(), SIGINT);
 }
 
-void printStats() {
+void printStats()
+{
     if (count > 0)
         fprintf(stdout, "\ncorrect answers: %d of %d for %d%%\n\n", correct, count, (int)(((float)correct/(float)count)*100));
     else

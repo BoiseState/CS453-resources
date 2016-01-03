@@ -16,7 +16,8 @@ void *push_env();
 
 /*****************************************************************************
  * NewException() */
-Exception *NewException() {
+Exception *NewException()
+{
     Exception *e=(Exception *)malloc(sizeof(Exception));
     if (e == NULL) fatal("NewException(): out of memory.");
     return e;
@@ -24,14 +25,16 @@ Exception *NewException() {
 
 /*****************************************************************************
  * PrintStackTrace() */
-void PrintStackTrace(Exception *e) {
+void PrintStackTrace(Exception *e)
+{
     /* TODO: Really print the stack trace. */
     printf("%s\n", e->error);
 }/*PrintStackTrace()*/
 
 /*****************************************************************************
  * throw() */
-void throw(char *errmsg) {
+void throw(char *errmsg)
+{
     if (env_index == 0) {
         fprintf(stderr, "throw(%s)\n\t This exception is uncaught.\n", errmsg);
         exit(1);
@@ -41,14 +44,16 @@ void throw(char *errmsg) {
 
 /*****************************************************************************
  * fatal() */
-void fatal(char *msg) {
+void fatal(char *msg)
+{
     fprintf(stderr, msg);
     exit(1);
 }/*fatal()*/
 
 /*****************************************************************************
  * push_env() */
-void *push_env() {
+void *push_env()
+{
     if (env_index >= STACK_SIZE)
         fatal("Exception: push_env(): stack overflow");
     return (void *)env_stack[env_index++];
@@ -56,7 +61,8 @@ void *push_env() {
 
 /*****************************************************************************
  * pop_env() */
-void *pop_env() {
+void *pop_env()
+{
     if (env_index == 0)
         fatal("Exception: pop_env(): stack underflow");
     return (void *)env_stack[--env_index];
@@ -64,7 +70,8 @@ void *pop_env() {
 
 /*****************************************************************************
  * main() */
-int main(int argc, char **args) {
+int main(int argc, char **args)
+{
     Exception *e1=NewException();
     Exception *e2=NewException();
 

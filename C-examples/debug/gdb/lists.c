@@ -5,13 +5,14 @@
 
 /*
 
-	lists.c
-		Contains functions to manipulate a linked list.
+    lists.c
+        Contains functions to manipulate a linked list.
 
  */
 
 
-NodePtr ReverseList(NodePtr L) {
+NodePtr ReverseList(NodePtr L)
+{
     NodePtr list = NULL;
     while (L != NULL) {
         NodePtr tmp = L;
@@ -22,7 +23,8 @@ NodePtr ReverseList(NodePtr L) {
     return list;
 }
 
-void PrintList(NodePtr L) {
+void PrintList(NodePtr L)
+{
     int count = 0;
     while (L) {
         printf(" %d -->",L->item);

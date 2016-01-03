@@ -4,20 +4,20 @@
 #include "Node.h"
 
 struct list {
-	int size;
-	struct node* head;
+    int size;
+    struct node* head;
 
-	int (*equals)(const void *, const void *);
-	char *(*toString)(const void *);
-	void (*freeObject)(const void *);
+    int (*equals)(const void *, const void *);
+    char *(*toString)(const void *);
+    void (*freeObject)(const void *);
 };
 
 /**
  * Constructor
  */
 struct list* createList(int (*equals)(const void *, const void *),
-		char *(*toString)(const void *),
-		void (*freeObject)(const void *));
+                        char *(*toString)(const void *),
+                        void (*freeObject)(const void *));
 
 /**
  * Destructor

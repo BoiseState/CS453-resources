@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     long nc;
 
     nc = 0;
@@ -20,10 +21,10 @@ int main(int argc, char *argv[]) {
 /*
  int main()
  {
- 	double nc;
+    double nc;
 
-	for (nc = 0; getchar() != EOF; ++nc)
-		;
-	printf("%.0f\n", nc);
+    for (nc = 0; getchar() != EOF; ++nc)
+        ;
+    printf("%.0f\n", nc);
  }
 */

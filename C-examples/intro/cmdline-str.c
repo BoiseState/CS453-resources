@@ -11,7 +11,8 @@
  */
 void printUsage(char[]);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     if(argc < 5) {
         printUsage(argv[0]);
     }
@@ -53,7 +54,8 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void printUsage(char prog[]) {
+void printUsage(char prog[])
+{
     printf("Usage: %s -i <int between %u-%u> -s <string>\n", prog, 0,
            UINT_MAX);
     exit(1);

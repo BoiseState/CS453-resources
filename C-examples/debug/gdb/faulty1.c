@@ -12,7 +12,8 @@
 int *B;
 int *C;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     // one dimensional arrays
     int A[100];
     int *B;

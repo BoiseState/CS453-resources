@@ -1,6 +1,6 @@
 
 /*
-	List.h: Defines the interface for a doubly-linked list.
+    List.h: Defines the interface for a doubly-linked list.
 */
 
 #ifndef __LIST_H
@@ -15,9 +15,9 @@ typedef struct list List;
 typedef struct list * ListPtr;
 
 struct list {
-	int size;
-	NodePtr head;
-	NodePtr tail;
+    int size;
+    NodePtr head;
+    NodePtr tail;
 };
 
 /* prototypes of public methods */
@@ -45,4 +45,4 @@ void printList(ListPtr L);
 Boolean checkpointList(ListPtr list, char *saveFile);
 ListPtr restoreList(char *saveFile);
 
-#endif /* __LIST_H */ 
+#endif /* __LIST_H */

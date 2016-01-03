@@ -2,12 +2,14 @@
 
 int x;
 
-void message1() {
+void message1()
+{
     x++;
     printf("Hello %d ", x);
 }
 
-void message2() {
+void message2()
+{
     printf("World!\n");
 }
 

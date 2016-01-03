@@ -15,10 +15,9 @@
 typedef struct word WordObj;
 typedef struct word *WordObjPtr;
 
-struct word
-{
-	char *word;
-	unsigned long int frequency;
+struct word {
+    char *word;
+    unsigned long int frequency;
 };
 
 WordObjPtr createWordObj(const char *, const unsigned long int);

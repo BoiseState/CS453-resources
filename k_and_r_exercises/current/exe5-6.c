@@ -13,7 +13,8 @@
 char* getlineWithPointers(char* s);
 int atoiWithPointers(char* s);
 
-int main(int argc, char ** argv) {
+int main(int argc, char ** argv)
+{
 
     /*Testing getline()****************************/
     printf("*****Testing getline()*****\n");
@@ -47,7 +48,8 @@ int main(int argc, char ** argv) {
 * Note, it is reponsibility of a caller to this function to malloc and free
 * memory.
 */
-char* getlineWithPointers(char* s) {
+char* getlineWithPointers(char* s)
+{
     int c, i;
     char* temp;
     temp = s;
@@ -69,7 +71,8 @@ char* getlineWithPointers(char* s) {
 /**
 * Converts s to integer.
 */
-int atoiWithPointers(char* s) {
+int atoiWithPointers(char* s)
+{
 
     int i, n, sign;
     char* temp = s;

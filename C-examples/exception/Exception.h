@@ -6,28 +6,27 @@
  * The exception handling uses the try/throw/catch interface.  Here is an
  * example of what a try block should look like:
  *
- * 	Exception *e=NewException();
- *	
- *	try(e)
- *	{
- *		printf("Throwing an exception...\n");
- *		throw("Error: BARF!");
- *		printf("Should never be here!");
- *	}
- *	catch
- *	{
- *		printf("Exception caught.\n");
- *		printStackTrace(e);
- *	}
+ *  Exception *e=NewException();
+ *
+ *  try(e)
+ *  {
+ *      printf("Throwing an exception...\n");
+ *      throw("Error: BARF!");
+ *      printf("Should never be here!");
+ *  }
+ *  catch
+ *  {
+ *      printf("Exception caught.\n");
+ *      printStackTrace(e);
+ *  }
  *
  */
 
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
-typedef struct Exception_tag
-{
-	char *error;
+typedef struct Exception_tag {
+    char *error;
 } Exception;
 
 extern Exception *NewException();

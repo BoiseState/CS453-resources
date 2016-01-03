@@ -4,7 +4,8 @@
 
 struct list * createList(int (*equals)(const void *,const void *),
                          char * (*toString)(const void *),
-                         void (*freeObject)(void *)) {
+                         void (*freeObject)(void *))
+{
     struct list *list;
     list = (struct list *) malloc(sizeof(struct list));
     list->size = 0;
@@ -16,18 +17,22 @@ struct list * createList(int (*equals)(const void *,const void *),
     return list;
 }
 
-void freeList(struct list *list) {
+void freeList(struct list *list)
+{
 }
 
-int getSize(const struct list *list) {
+int getSize(const struct list *list)
+{
     return 0;
 }
 
-int isEmpty(const struct list *list) {
+int isEmpty(const struct list *list)
+{
     return list->size == 0;
 }
 
-void addAtFront(struct list *list, struct node *node) {
+void addAtFront(struct list *list, struct node *node)
+{
     if (list == NULL) return;
     if (node == NULL) return;
     list->size++;
@@ -42,29 +47,36 @@ void addAtFront(struct list *list, struct node *node) {
     }
 }
 
-void addAtRear(struct list *list, struct node *node) {
+void addAtRear(struct list *list, struct node *node)
+{
 }
 
-struct node* removeFront(struct list *list) {
+struct node* removeFront(struct list *list)
+{
     return NULL;
 }
 
-struct node* removeRear(struct list *list) {
+struct node* removeRear(struct list *list)
+{
     return NULL;
 }
 
-struct node* removeNode(struct list *list, struct node *node) {
+struct node* removeNode(struct list *list, struct node *node)
+{
     return NULL;
 }
 
-struct node* search(const struct list *list, const void *obj) {
+struct node* search(const struct list *list, const void *obj)
+{
     return NULL;
 }
 
-void reverseList(struct list *list) {
+void reverseList(struct list *list)
+{
 }
 
-void printList(const struct list *list) {
+void printList(const struct list *list)
+{
     if (!list) return; //list was null!!
     int count = 0;
     char *output;

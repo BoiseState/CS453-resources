@@ -2,7 +2,8 @@
 /*
  * @author Aza Tulepbergenov.
  */
-main() {
+main()
+{
     printf("%d\n", getchar() != EOF);
 }
 

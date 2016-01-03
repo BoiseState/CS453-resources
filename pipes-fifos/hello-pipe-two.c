@@ -1,8 +1,9 @@
 #include "common.h"
 #include <sys/wait.h>
 
-int main(void) {
-    int	  n, fd[2], i, status;
+int main(void)
+{
+    int   n, fd[2], i, status;
     pid_t pid;
     char  line[MAXLINE];
 

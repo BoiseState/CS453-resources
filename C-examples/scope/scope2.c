@@ -9,7 +9,8 @@
 
 /*int total = 203920392;*/
 
-void f2(int x) {
+void f2(int x)
+{
     total += x;
 }
 

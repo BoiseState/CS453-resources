@@ -29,7 +29,8 @@ DWORD WINAPI reader(LPVOID);
 DWORD WINAPI writer(LPVOID);
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     HANDLE hThread1, hThread2;
     DWORD dwThreadID1, dwThreadID2;
 
@@ -55,12 +56,12 @@ int main(int argc, char *argv[]) {
     /* create the reader and writer threads */
 
     hThread1 = CreateThread(
-                   NULL,							// Security Descriptor (handle not inheritable)
-                   0,								// initial stack size (default)
-                   reader,						// thread function
-                   NULL,							// thread argument
-                   0,								// creation option (run immediately)
-                   &dwThreadID1				// thread identifier
+                   NULL,                            // Security Descriptor (handle not inheritable)
+                   0,                               // initial stack size (default)
+                   reader,                      // thread function
+                   NULL,                            // thread argument
+                   0,                               // creation option (run immediately)
+                   &dwThreadID1             // thread identifier
                );
 
     if (! hThread1) {
@@ -69,12 +70,12 @@ int main(int argc, char *argv[]) {
     }
 
     hThread2 = CreateThread(
-                   NULL,							// Security Descriptor (handle not inheritable)
-                   0,								// initial stack size (default)
-                   writer,						// thread function
-                   NULL,							// thread argument
-                   0,								// creation option (run immediately)
-                   &dwThreadID2				// thread identifier
+                   NULL,                            // Security Descriptor (handle not inheritable)
+                   0,                               // initial stack size (default)
+                   writer,                      // thread function
+                   NULL,                            // thread argument
+                   0,                               // creation option (run immediately)
+                   &dwThreadID2             // thread identifier
                );
 
     if (! hThread2) {
@@ -100,17 +101,18 @@ int main(int argc, char *argv[]) {
  * reader(): The function reader() is the entire reader thread. It
  * synchronizes with the writer thread, which execute the writer() function.
  */
-DWORD WINAPI reader(LPVOID arg) {
+DWORD WINAPI reader(LPVOID arg)
+{
     printf("Reader thread, file = %d\n", src->_file);
     fflush(stdout);
 
     while (1) {
         if (flag == READ) {
             in = fread(
-                     buf,			// Storage location for data
-                     1,				// Item size in bytes
-                     bufsize,		// Maximum number of items to be read
-                     src			// Pointer to FILE structure
+                     buf,           // Storage location for data
+                     1,             // Item size in bytes
+                     bufsize,       // Maximum number of items to be read
+                     src            // Pointer to FILE structure
                  );
 #ifdef DEBUG
             printf("read %d character\n", in);
@@ -130,17 +132,18 @@ DWORD WINAPI reader(LPVOID arg) {
  *
  * writer(): The main function for the writer thread.
  */
-DWORD WINAPI writer(LPVOID arg) {
+DWORD WINAPI writer(LPVOID arg)
+{
     printf("Writer thread, file = %d\n",dst->_file);
     fflush(stdout);
 
     while (1) {
         if (flag == WRITE) {
             out = fwrite(
-                      buf,		// Pointer to data to be written
-                      1,			// Item size in bytes
-                      in,		// Maximum number of items to be written
-                      dst		// Pointer to FILE structure
+                      buf,      // Pointer to data to be written
+                      1,            // Item size in bytes
+                      in,       // Maximum number of items to be written
+                      dst       // Pointer to FILE structure
                   );
 #ifdef DEBUG
             printf("wrote %d character\n", out);

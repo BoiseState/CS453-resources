@@ -4,18 +4,19 @@
 
 DWORD WINAPI Run(LPVOID threadData);
 
-void main(int argc, char *argv[]) {
+void main(int argc, char *argv[])
+{
     LPHANDLE hMerlot, hPinot, hCabernet;
     DWORD dwThreadIdMerlot, dwThreadIdPinot, dwThreadIdCabernet;
     DWORD dwExitStatus;
 
     hMerlot = CreateThread(
-                  NULL,						// Security Descriptor (handle not inheritable)
-                  0,							// initial stack size (default)
-                  Run,						// thread function
-                  "merlot",				// thread argument
-                  0,							// creation option (run immediately)
-                  &dwThreadIdMerlot		// thread identifier
+                  NULL,                     // Security Descriptor (handle not inheritable)
+                  0,                            // initial stack size (default)
+                  Run,                      // thread function
+                  "merlot",             // thread argument
+                  0,                            // creation option (run immediately)
+                  &dwThreadIdMerlot     // thread identifier
               );
 
     if (! hMerlot) {
@@ -24,12 +25,12 @@ void main(int argc, char *argv[]) {
     }
 
     hPinot = CreateThread(
-                 NULL,						// Security Descriptor (handle not inheritable)
-                 0,							// initial stack size (default)
-                 Run,						// thread function
-                 "pinot",					// thread argument
-                 0,							// creation option (run immediately)
-                 &dwThreadIdPinot		// thread identifier
+                 NULL,                      // Security Descriptor (handle not inheritable)
+                 0,                         // initial stack size (default)
+                 Run,                       // thread function
+                 "pinot",                   // thread argument
+                 0,                         // creation option (run immediately)
+                 &dwThreadIdPinot       // thread identifier
              );
 
     if (! hPinot) {
@@ -38,12 +39,12 @@ void main(int argc, char *argv[]) {
     }
 
     hCabernet = CreateThread(
-                    NULL,						// Security Descriptor (handle not inheritable)
-                    0,							// initial stack size (default)
-                    Run,						// thread function
-                    "cabernet",				// thread argument
-                    0,							// creation option (run immediately)
-                    &dwThreadIdCabernet		// thread identifier
+                    NULL,                       // Security Descriptor (handle not inheritable)
+                    0,                          // initial stack size (default)
+                    Run,                        // thread function
+                    "cabernet",             // thread argument
+                    0,                          // creation option (run immediately)
+                    &dwThreadIdCabernet     // thread identifier
                 );
 
     if (! hCabernet) {
@@ -60,7 +61,8 @@ void main(int argc, char *argv[]) {
 }
 
 
-DWORD WINAPI Run(LPVOID threadData) {
+DWORD WINAPI Run(LPVOID threadData)
+{
     char *szName = (char *)threadData;
     int i;
 
