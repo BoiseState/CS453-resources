@@ -1,0 +1,11 @@
+
+
+To build, use
+
+make
+
+
+Notes:
+	-This version only works with one log file. You will need
+	 to extend it to use multiple files first before attempting
+	 a multi-threaded version.

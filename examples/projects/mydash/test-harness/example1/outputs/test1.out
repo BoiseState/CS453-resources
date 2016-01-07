@@ -1,0 +1,8 @@
+dash>total 132
+-rwxrwxr-x    1 amit     amit       117864 Mar 12 10:27 dash.test
+drwxrwxr-x    2 amit     amit         4096 Mar 12 10:42 inputs
+drwxrwxr-x    2 amit     amit         4096 Mar 12 10:43 outputs
+-rwxr-xr-x    1 amit     amit          456 Mar 12 10:43 test.sh
+dash>[0] 21547
+dash>[0] Running  sleep 10 &
+dash>

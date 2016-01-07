@@ -1,0 +1,28 @@
+
+From the Linux Device Drivers by Rubini and Corbet (O'Reilly).
+
+Unless  otherwise stated, the  source code distributed  with this book
+can   be  redistributed in source    or  binary form   so  long  as an
+acknowledgment  appears in derived source   files. The citation should
+list that the code comes from BOOK  by AUTHOR, published by O'Reilly &
+Associates.  This  code is under copyright and  cannot be  included in
+any other book, publication, or educational product without permission
+from O'Reilly &  Associates. No warranty  is attached; we  cannot take
+responsibility for errors or fitness for use.
+
+
+Note  that   although everything here  is  designed  to allow building
+binary modules, I'm strongly against this practice. All software in my
+opinion should be  free (in the  sense  of freedom). Every Linux  user
+should acknowledge the importance of the GPL and should use it for any
+new software.
+
+Enjoy
+/alessandro
+
+The examples example1, example2, example3 and example4 are by Amit Jain. 
+They are released under the same rules as stated above. The examples in
+the folder hello are from the Linux Device Drivers by Rubini and Corbet (O'Reilly)
+but were modified by Amit Jain. 
+
+amit

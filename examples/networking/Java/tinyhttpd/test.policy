@@ -1,0 +1,7 @@
+/* AUTOMATICALLY GENERATED ON Wed Feb 12 17:01:04 MST 2003*/
+/* DO NOT EDIT */
+
+grant codeBase "file:/home/amit/classes/cs498/www/examples/net/securetinyhttpd" {
+  permission java.net.SocketPermission "*:1200-1250", "accept, connect, listen, resolve";
+};
+

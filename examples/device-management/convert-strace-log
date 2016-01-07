@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# take output from strace -r -T and convert it into a data file
+# with +ve numbers for user compute time and -ve numbers for time
+# spent in system call
+
+case $# in
+0) echo 'Usage: ' $0 ' <strace log file name>'; exit 1;;
+esac
+
+cat $1 | awk '{print $1, " ",  $NF}' | sed 's/<//g'| sed 's/>//g' |
+awk '{printf( "%f \n-%f\n", $1, $2)}' > data

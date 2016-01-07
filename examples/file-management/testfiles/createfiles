@@ -1,0 +1,10 @@
+#!/bin/sh
+
+i=0
+while true
+do 
+ touch $i
+ i=$[i+1]
+ usleep 1000
+ echo $i
+done

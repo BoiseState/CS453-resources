@@ -1,0 +1,206 @@
+#!/bin/sh
+#Test Harness                              Author: Ben Noland
+#Updated 5/6/04
+#written for compilers
+
+tstdir='tests'	#directory for the tests
+pgnm='dash'  	#name of the program being tested
+
+r=0  		#return value, returns 0 if no differences ever between
+
+runTest() #params $1=program, $2=testname
+{
+   	#copy old files over if they exist else create folders new and old
+  	if [ -e $2/new_in ]
+	then
+	cp $2/new_in 	$2/old_in
+ 	cp $2/new_out 	$2/old_out 
+   	cp $2/new_error	$2/old_error   
+  	fi
+
+   	#Run test with input. Send output to new_out and errors to new_error
+  	$1 < $2/in > $2/new_out 2>$2/new_error
+
+	cp $2/in $2/new_in	#copy input to new/in
+
+	#begin testing for differences between old and new
+  	if [ ! -e $2/old_in ]  #if no old files
+  	then
+  	echo "New Test: $2 (no old files for comparison)"
+	r=1
+	return	
+  	fi
+
+	#compare new and old files
+	check $2/new_in 	$2/old_in
+	check $2/new_out 	$2/old_out
+	check $2/new_error 	$2/old_error
+}
+
+#compares the two params and sets r = 1 if different
+check() # $1=file1 $2=file2
+{
+	diff -q $1 $2
+	if [ $? = 1 ]
+	then
+	r=1
+	fi
+	return
+}
+
+#removes all test results, only saves in files.
+clean()
+{
+	for d in $tstdir/*	#for all dirs
+	do
+		rm -f $d/new* $d/old*	 
+	done
+	echo "cleaned"
+	exit
+}
+#replaces all new test output with oldtest out
+revert()
+{
+	for d in $tstdir/*	#for all dirs
+	do
+        if [ $d != "$tstdir/CVS" ] && [ $d != "$tstdir/cvstodo" ] && [ $d != "$tstdir/cvstodo.old" ]
+        then
+            mv $d/old_in $d/new_in	 
+            mv $d/old_out $d/new_out	 
+            mv $d/old_error $d/new_error	 
+        fi
+	done
+	echo "reverted"
+	exit
+}
+
+#edit test $1
+edit()#$1 is test to be edited
+{
+	vim $tstdir/$1/in
+	exit
+}
+
+#view test $1
+view()
+{
+	clear
+	echo
+	echo "---------------------------------"
+	echo "--------------input--------------"
+	cat $tstdir/$1/new_in
+	echo "--------------output--------------"
+	cat $tstdir/$1/new_out
+	echo "--------------error--------------"
+	cat $tstdir/$1/new_error
+	echo "--------------done---------------"
+	echo "---------------------------------"
+	echo	
+	exit
+}
+
+#creates a new test called $1. If $2 is given $1 will be a copy of $2
+mktest()
+{
+	mkdir -p $tstdir/$1
+	if [ ${#} = 2 ]	
+	then
+	cp $tstdir/$2/in $tstdir/$1/in
+	fi
+	vim $tstdir/$1/in
+    echo "cvs add $tstdir/$1" >> tests/cvstodo
+    echo "cvs add $tstdir/$1/in" >> tests/cvstodo
+
+	exit
+}
+
+#runs all the tests in tstdir
+runtests()#	$1 is program being tested
+{
+	for d in $tstdir/*	#for all files
+	do
+		if [ -d $d ]	#if its a directory only
+		then
+            if [ $d != "$tstdir/CVS" ]
+            then
+                runTest $1 $d	#then run the test 
+            fi
+		fi
+	done
+	exit $r
+}
+
+#main part starts here.
+
+if [ ${#} = 0 ]
+then
+runtests $pgnm
+fi
+
+if [ ${#} -gt 3 ]
+then
+echo "invalid parameters, type $0 -h for help"
+exit
+fi
+
+if [ $1 = "-c" ]
+then
+clean
+fi
+
+if [ $1 = "-r" ]
+then
+revert
+fi
+
+if [ $1 = "-cvs" ]
+then
+    bash < $tstdir/cvstodo
+    mv $tstdir/cvstodo $tstdir/cvstodo.old
+    exit
+fi
+
+if [ $1 = "-h" ]
+then
+echo "usage   $0       or      $0 <OPTION>" 
+echo "the options are"
+echo "-c   					: cleanup tests"
+echo "-e <TESTNAME>  				: edit a test"
+echo "-v <TESTNAME>  				: view a test"
+echo "-m <NEWTESTNAME> [<COPIED TEST>]	: create a new test"
+echo "-h 					: show this dialog"
+exit
+fi
+
+if [ ${#} = 1 ] #if only 1 parameter, then error
+then
+echo "invalid parameters, type $0 -h for help"
+exit
+fi
+
+if [ ${#} = 3 ]
+then
+if [ $1 = "-m" ]
+then
+mktest $2 $3
+else
+echo "invalid parameters, type $0 -h for help"
+exit
+fi
+fi
+
+
+if [ $1 = "-e" ]
+then
+edit $2
+fi
+
+if [ $1 = "-v" ]
+then
+view $2
+fi
+
+if [ $1 = "-m" ]
+then
+mktest $2 $3
+fi

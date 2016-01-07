@@ -1,0 +1,798 @@
+Testing with  2 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 20000.000000
+
+
+Testing with  3 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 30000.000000
+
+
+Testing with  4 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 40000.000000
+
+
+Testing with  5 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 50000.000000
+
+
+Testing with  6 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 60000.000000
+
+
+Testing with  7 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 70000.000000
+
+
+Testing with  8 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 80000.000000
+
+
+Testing with  9 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 90000.000000
+
+
+Testing with  10 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 100000.000000
+
+
+Testing with  11 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 110000.000000
+
+
+Testing with  12 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 120000.000000
+
+
+Testing with  13 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 130000.000000
+
+
+Testing with  14 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 140000.000000
+
+
+Testing with  15 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 150000.000000
+
+
+Testing with  16 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 160000.000000
+
+
+Testing with  20 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 200000.000000
+
+
+Testing with  24 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 240000.000000
+
+
+Testing with  28 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 280000.000000
+
+
+Testing with  32 threads and 10000 operations per thread.
+---- Test 1 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 2 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 3 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 4 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 5 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 6 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 7 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 8 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 9 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+---- Test 10 ----
+initial balance = 0.000000
+final balance = 320000.000000
+
+

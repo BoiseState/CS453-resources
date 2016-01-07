@@ -1,0 +1,68 @@
+#
+#An incomplete list of test cases
+#
+
+#####Test1
+exit
+#####
+
+
+#####Test2
+<Ctrl>-d
+#####
+
+
+#####Test3
+#test for blank commands
+
+
+exit
+#####
+
+#####Test4
+dash -v
+#####
+
+
+#####Test5
+export DASH_PROMPT="myprompt:"
+dash
+exit
+#####
+
+
+#####Test6
+ls
+date
+ls -l -t -t -l
+exit
+#####
+
+
+#####Test7
+vim
+gvim
+exit
+
+
+#####Test8
+cd
+pwd
+cd /tmp
+pwd
+cd /home/amit/workspace/dash/dash-src/
+pwd
+cd jfdkjfdjfd
+exit
+#####
+
+#####Test9
+sleep 2 &
+sleep 2&
+#wait for 2 secs
+<enter>
+exit
+#####
+
+
+

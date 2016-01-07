@@ -1,0 +1,7 @@
+regular files  =  206050, 85.20 %
+directories    =   14395,  5.95 %
+block special  =   11423,  4.72 %
+char special   =    2862,  1.18 %
+FIFOs          =       2,  0.00 %
+symbolic links =    7092,  2.93 %
+sockets        =      19,  0.01 %

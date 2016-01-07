@@ -1,0 +1,26 @@
+
+
+Build the interposer library using the Makefile.
+
+make
+
+Then use the following to use it to intercept the standard C library read function.
+
+LD_LIBRARY_PATH=. LD_PRELOAD=libread1.so test-read  README
+
+Then also test it using the test-read program.
+
+
+The first read example was taken from (but modified and added to):
+
+http://www.lostwebsite.net/2010/01/ld_preload-fun/
+
+
+The second example shows how to interpose and then continue calling the
+original library call. To try it, use
+
+
+LD_PRELOAD=libread2.so testread   README
+
+
+

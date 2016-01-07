@@ -1,0 +1,8 @@
+#!/bin/sh
+case $# in
+0) echo 'Usage: '`basename $0`' <Gutenberg text file>'; exit 1;;
+esac
+
+cat $1 |  sed '1,/\*END\*/d' | tr -cs "A-Za-z'" "[\012*]" | sed "/^'$/d" | tr A-Z a-z | wc -l
+
+

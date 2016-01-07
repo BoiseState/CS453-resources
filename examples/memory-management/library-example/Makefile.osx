@@ -1,0 +1,61 @@
+# Modified 11/1/2011 by Ross Butler for OS X compatibility.
+
+# enable one of these, which will be used if OSTYPE hasn't been exported
+OSTYPE ?= darwin11
+#OSTYPE ?= linux-gnu
+
+# the name of the libraray (i.e., the mylib in libmylib.so)
+LIBRARY_BASENAME = mylib
+
+# library installation directory
+INSTALL_LIB = .
+
+# the include directory for building the object files
+INCLUDE=.
+
+# platform-dependent names, tools, and flags
+ifeq ($(OSTYPE),darwin11)
+	# --- OS X Lion (10.7) and XCode 4 ---
+	LIBRARY_NAME = lib$(LIBRARY_BASENAME).dylib
+	CC = gcc-4.2
+	LD = gcc-4.2
+	# According to the gcc man page, "-fPIC is the default on Darwin and Mac OS X."
+	CFLAGS = -Wall -g -fno-common -I$(INCLUDE)/
+	LDFLAGS = -dynamiclib -install_name $(INSTALL_LIB)/$@
+else ifeq ($(OSTYPE),linux-gnu)
+	# --- Linux ---
+	LIBRARY_NAME = lib$(LIBRARY_BASENAME).so
+	CC = gcc
+	LD = ld
+	CFLAGS = -Wall -g -fPIC -I$(INCLUDE)/
+	LDFLAGS = -shared
+endif
+
+#CC=gcc
+#LIBFLAGS=-I. -shared -fPIC
+#CFLAGS=-I. -Wall -shared -fPIC
+#LIBS=-lmylib
+LIBOBJS=f1.o f2.o f3.o
+
+#all: libmylib.so libmylib.a  test1
+
+all: $(LIBRARY_NAME) lib$(LIBRARY_BASENAME).a test1
+
+#libmylib.so: $(LIBOBJS)
+#	$(LD) $(LIBFLAGS) -o $@ $?
+
+# rule to make the shared library
+$(LIBRARY_NAME): $(LIBOBJS)
+	$(LD) -o $@ $(LIBOBJS) $(LDFLAGS)
+
+libmylib.a: $(LIBOBJS)
+	$(AR)  rcv $@ $(LIBOBJS)
+	ranlib $@
+
+
+test1: test1.c
+	$(CC) -Wall -I. -L. test1.c -lmylib -o $@
+
+clean:
+#	rm -f *.o libmylib.so a.out core test1
+	rm -f *.o $(LIBRARY_NAME) lib$(LIBRARY_BASENAME).a a.out core test1

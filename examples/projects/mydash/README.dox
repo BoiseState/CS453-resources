@@ -1,0 +1,50 @@
+
+/**
+
+@mainpage
+
+@author you you
+
+
+<pre>
+
+
+README.dox      This file
+doxygen-config  Sample config file for doxygen
+error.c         Error handling code used in class examples
+loop.ca         Simple infinite loop program that doesn't use significant resources
+Makefile        Build file for this example folder
+TestCases       An incomplete list of test cases
+test-harness/   An example (incomplete) test harness for the dash project
+test-readline.c Example file on how to use auto completion with readline library
+valgrind.supp   Example suppression file for valgrind to avoid lots of spurious error messages about the readline library
+
+Readline
+--------
+
+See example file test-readline.c.
+
+Valgrind
+--------
+
+
+Use valgrind as follows
+
+valgrind --leak-check=yes --suppressions=valgrind.supp dash
+
+You will need the suppression file valgrind.supp that suppresses errors from
+the readline library so you can focus on issues emanating from your code.
+
+Documentation
+-------------
+
+Generate documentation using doxygen tool. Use 
+
+make dox
+
+to trigger doxygen. Use the sample doxygen-config file for using with your
+project. Note that, just like javadocs, you can use any HTML tags in your
+comments. All javadoc tags and comments are supported by doxygen.
+</pre>
+
+*/
