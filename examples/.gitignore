@@ -100,6 +100,7 @@ memory-management/semdemo
 memory-management/semrm
 memory-management/simple-malloc/simple-malloc-random-test
 memory-management/simple-malloc/simple-malloc-test
+memory-management/test.s
 memory-management/types
 networking/C/misc/byteorder
 networking/C/misc/testrcmd
