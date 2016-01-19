@@ -1,7 +1,7 @@
 #Project XXX
 
-* Author: Shane Panter
-* Class: CS253 Section 1
+* Author: Your Name
+* Class: CS253 Section x
 
 ##Overview:
 
