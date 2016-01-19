@@ -3,7 +3,7 @@
 * Author: Your Name
 * Class: CS253 Section x
 
-##Overview:
+##Overview
 
 Concisely explain what the program does. If this exceeds a couple of
 sentences, you're going too far. Generally you should be pulling this
