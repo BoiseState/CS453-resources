@@ -1,4 +1,4 @@
-#Homework XXX
+#Project XXX
 
 * Author: Shane Panter
 * Class: CS253 Section 1
