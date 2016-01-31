@@ -37,7 +37,7 @@ struct list* createList(int (*equals)(const void *, const void *),
 void freeList(struct list *list);
 
 /**
- * Returns the size of the given list.
+ * Returns the size of the given list. Returns 0 if the list is <code>NULL</code>.
  *
  * @param list a pointer to a <code>List</code>.
  * @return The current size of the list.
