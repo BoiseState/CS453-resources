@@ -2,9 +2,9 @@
 CC=gcc
 CFLAGS=-Wall -g -O -MMD
 
-all: SimpleTest dox
+all: SimpleTest
 
-SimpleTest: SimpleTest.o SinglyLinkedList.o 
+SimpleTest: SimpleTest.o SinglyLinkedList.o
 	$(CC) $(CFLAGS)  $^  -o $@
 
 dox:
