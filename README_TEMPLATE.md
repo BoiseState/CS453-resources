@@ -18,6 +18,13 @@ delivering a library, where does it need to be installed or how do you
 use it? Is this an executable, if so how can a user get up to speed as
 fast as possible.
 
+##Testing
+
+This section should detail how you tested your code. Simply stating 
+"I ran it a few times and it seems to work" is not sufficient. Your 
+testing needs to be detailed here or even better, this section should 
+just point the user at the appropriate unit/system tests that you wrote.
+
 ##Discussion
 
 Discuss the issues you encountered during programming (development)
