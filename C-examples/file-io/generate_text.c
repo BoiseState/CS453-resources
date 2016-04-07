@@ -40,9 +40,9 @@ static void generate_file(int n, unsigned int seed, FILE *fout)
     srand(seed); /* set starting seed for random num. generator */
 
     for (i = 0; i < n; i++) {
-	next = create_random_record();
+        next = create_random_record();
         print_record(fout, next);
-	free(next);
+        free(next);
     }
 }
 
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     fout = fopen(filename, "w");
     if (!fout) {
         perror(filename);
-	exit(errno);
+        exit(errno);
     }
 
     /* generate and write random entries (plain text) */
