@@ -28,7 +28,7 @@ int main()
     signal(SIGTSTP, ourhandler);   // CTRL+Z
     signal(SIGINT, ourhandler);    // CTRL+C
     signal(SIGWINCH, ourhandler);  // Resize the window
-    signal(SIGKILL, ourhandler);   // kill <pid>
+    signal(SIGKILL, ourhandler);   // kill <pid> ... try it. Does it do anything?
     signal(SIGALRM, onalarm);      // Timer/alarm
     alarm(5);                      // Set the timer for 5 secs
 

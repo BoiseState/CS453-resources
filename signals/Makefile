@@ -3,14 +3,14 @@ CC=gcc
 CFLAGS= -g   -Wall
 #CFLAGS= -O  -Wall
 
-PROGS=sig-handler timeout
+PROGS=sig-handler wake-up
 
 all: $(PROGS)
 
 sig-handler: sig-handler.o
 	$(CC) $(CFLAGS) -o $@ $<
 
-repeat: repeat.o
+wake-up: wake-up.o
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
