@@ -2,25 +2,25 @@
 #include "Node.h"
 
 
-NodePtr createNode(JobPtr data)
+struct node * createNode(struct job * data)
 {
-    NodePtr newNode = (NodePtr) malloc (sizeof(Node));
+    struct node * newNode = (struct node *) malloc (sizeof(struct node));
     newNode->next = NULL;
     newNode->prev = NULL;
     newNode->data = data;
     return newNode;
 }
 
-void freeNode(NodePtr node)
+void freeNode(struct node * node)
 {
 }
 
-JobPtr getData(NodePtr node)
+struct job * getData(struct node * node)
 {
     return node->data;
 }
 
-int getDataSize(NodePtr node)
+int getDataSize(struct node * node)
 {
     return getJobSize(node->data);
 }
@@ -40,7 +40,7 @@ Description: WARNING! Writes a checkpoint for a Node structure to  an output
 
 */
 
-void checkpointNode(NodePtr node, FILE *fout)
+void checkpointNode(struct node *node, FILE *fout)
 {
     checkpointJob(node->data, fout);
 }
@@ -60,10 +60,10 @@ Description: WARNING! Reads from a binary input stream to rsrtore a Node
     Output:   ---> a pointer to the restored Node structure
     Side Effects: None outside of the Node structure
 */
-NodePtr restoreNode(FILE *fin)
+struct node * restoreNode(FILE *fin)
 {
-    NodePtr node;
-    JobPtr data;
+    struct node * node;
+    struct job * data;
 
     data = restoreJob(fin);
     node = createNode(data);
