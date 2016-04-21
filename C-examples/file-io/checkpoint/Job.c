@@ -1,9 +1,9 @@
 #include "Job.h"
 
 
-JobPtr createJob(int jobid, char *info)
+struct job * createJob(int jobid, char *info)
 {
-    JobPtr newJob = (JobPtr) malloc (sizeof(Job));
+    struct job * newJob = (struct job *) malloc (sizeof(Job));
     newJob->jobid = jobid;
     newJob->info = (char *) malloc(sizeof(char)*(strlen(info)+1));
     strcpy(newJob->info, info);
@@ -11,7 +11,7 @@ JobPtr createJob(int jobid, char *info)
     return newJob;
 }
 
-char *toString(JobPtr job)
+char *toString(struct job * job)
 {
     char *temp;
     temp = (char *)malloc(sizeof(char)*(job->infoSize)+MAXPID_DIGITS+4);
@@ -19,12 +19,12 @@ char *toString(JobPtr job)
     return temp;
 }
 
-void freeJob(JobPtr job)
+void freeJob(struct job * job)
 {
 
 }
 
-int getJobSize(JobPtr job)
+int getJobSize(struct job * job)
 {
     int size = 0;
     size = sizeof(int) + sizeof(int) +  job->infoSize;
@@ -47,7 +47,7 @@ Description: WARNING! Writes a checkpoint for a Job structure to  an output
 
 
 */
-void checkpointJob(JobPtr job, FILE *fout)
+void checkpointJob(struct job *job, FILE *fout)
 {
     fwrite(&(job->jobid), sizeof(int), 1, fout);
     fwrite(&(job->infoSize), sizeof(int), 1, fout);
@@ -57,7 +57,7 @@ void checkpointJob(JobPtr job, FILE *fout)
 /*
     a different way of checkpointing...
 
-void checkpointJob(JobPtr job, FILE *fout)
+void checkpointJob(struct job * job, FILE *fout)
 {
     int size;
     void *buffer;
@@ -85,11 +85,11 @@ Description: WARNING! Reads from a binary input stream to rsrtore a Job
     Output:   ---> a pointer to the restored Job structure
     Side Effects: None outside of the Job structure
 */
-JobPtr restoreJob(FILE *fin)
+struct job *restoreJob(FILE *fin)
 {
     int jobid;
     int infoSize;
-    JobPtr job;
+    struct job * job;
 
     fread(&jobid, sizeof(int), 1, fin);
     fread(&infoSize, sizeof(int), 1, fin);

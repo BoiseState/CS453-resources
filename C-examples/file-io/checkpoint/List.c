@@ -13,34 +13,37 @@
 
 /* private methods */
 
-static NodePtr reverse(NodePtr L);
-static void print(NodePtr node);
+static struct node * reverse(struct node * L);
+static void print(struct node * node);
 
-
-
-ListPtr createList()
+struct list * createList()
 {
-    ListPtr list = (ListPtr) malloc(sizeof(List));
+    struct list * list = (struct list *) malloc(sizeof(struct list));
     list->size = 0;
     list->head = NULL;
     list->tail = NULL;
     return list;
 }
 
-int getSize(ListPtr L)
+int getSize(struct list * L)
 {
-    return L->size;
+    if(L == NULL) {
+        return 0;
+    } else {
+        return L->size;
+    }
 }
 
-Boolean isEmpty(ListPtr L)
+Boolean isEmpty(struct list * L)
 {
-    if (L->size == 0)
+    if (L == NULL || L->size == 0) {
         return TRUE;
-    else
+    } else {
         return FALSE;
+    }
 }
 
-void addAtFront(ListPtr list, NodePtr node)
+void addAtFront(struct list * list, struct node * node)
 {
     if (list == NULL) return;
     if (node == NULL) return;
@@ -56,45 +59,45 @@ void addAtFront(ListPtr list, NodePtr node)
     }
 }
 
-void addAtRear(ListPtr list, NodePtr node)
+void addAtRear(struct list * list, struct node * node)
 {
 }
 
-NodePtr removeFront(ListPtr list)
-{
-    return NULL;
-}
-
-NodePtr removeRear(ListPtr list)
+struct node * removeFront(struct list * list)
 {
     return NULL;
 }
 
-NodePtr removeNode(ListPtr list, NodePtr node)
+struct node * removeRear(struct list * list)
 {
     return NULL;
 }
 
-NodePtr search(ListPtr list, int key)
+struct node * removeNode(struct list * list, struct node * node)
 {
     return NULL;
 }
 
-void reverseList(ListPtr L)
-{
-}
-
-static NodePtr reverse(NodePtr L)
+struct node * search(struct list * list, int key)
 {
     return NULL;
 }
 
-void printList(ListPtr L)
+void reverseList(struct list * L)
+{
+}
+
+static struct node * reverse(struct node * L)
+{
+    return NULL;
+}
+
+void printList(struct list * L)
 {
     if (L) print(L->head);
 }
 
-static void print(NodePtr node)
+static void print(struct node * node)
 {
     char *output;
 
@@ -108,7 +111,7 @@ static void print(NodePtr node)
 }
 
 
-void freeList(ListPtr L)
+void freeList(struct list * L)
 {
 }
 
@@ -123,17 +126,18 @@ void freeList(ListPtr L)
 
 #define MAX_MSG_LENGTH 1024
 
-Boolean checkpointList(ListPtr list, char *saveFile)
+Boolean checkpointList(struct list *list, char *saveFile)
 {
-    NodePtr node;
+    struct node *node;
     FILE *fout;
     char errmsg[MAX_MSG_LENGTH];
 
-    if (list == NULL) return TRUE;
-    if (isEmpty(list)) return TRUE;
-    if (saveFile == NULL) return FALSE;
-    if (strlen(saveFile) == 0) return FALSE;
+    if (list == NULL) { return TRUE; }
+    if (isEmpty(list)) { return TRUE; }
+    if (saveFile == NULL) { return FALSE; }
+    if (strlen(saveFile) == 0) { return FALSE; }
 
+    /* Open the file for writing */
     fout = fopen(saveFile, "w");
     if (!fout) {
         sprintf(errmsg, "checkpointList: %s",saveFile);
@@ -141,8 +145,11 @@ Boolean checkpointList(ListPtr list, char *saveFile)
         return FALSE;
     }
 
+    /* First, write out the number of nodes we will be outputting so
+     * we know how many to read back in. */
     fwrite(&(list->size), sizeof(int), 1, fout);
 
+    /* Then, write out the nodes (starting with the rail in this case) */
     node = list->tail;
     while (node) {
         checkpointNode(node, fout);
@@ -163,16 +170,18 @@ Boolean checkpointList(ListPtr list, char *saveFile)
     @param list      a pointer to the restored list
 */
 
-ListPtr restoreList(char *saveFile)
+struct list *restoreList(char *saveFile)
 {
     int size;
     FILE *fin;
-    ListPtr list;
-    NodePtr node;
+    struct list *list;
+    struct node *node;
     char errmsg[MAX_MSG_LENGTH];
 
-    if (saveFile == NULL) return NULL;
-    if (strlen(saveFile) == 0) return NULL;
+    if (saveFile == NULL) { return NULL; }
+    if (strlen(saveFile) == 0) { return NULL; }
+
+    /* Open the file for reading */
     fin = fopen(saveFile, "r");
     if (!fin) {
         sprintf(errmsg, "restoreList: %s",saveFile);
@@ -180,11 +189,13 @@ ListPtr restoreList(char *saveFile)
         return NULL;
     }
 
+    /* First, figure out how many nodes we wrote */
     fread(&size, sizeof(int), 1, fin);
-    if (size <= 0) return NULL;
+    if (size <= 0) { return NULL; }
     printf("restore: list size = %d\n", size);
-    list = createList();
 
+    /* Now, re-create the list */
+    list = createList();
     while (size > 0) {
         node = restoreNode(fin);
         addAtFront(list, node);

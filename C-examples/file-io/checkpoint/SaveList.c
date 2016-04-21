@@ -12,9 +12,9 @@ int main(int argc, char **argv)
 {
     int i;
     int n;
-    NodePtr node;
-    JobPtr job;
-    ListPtr list;
+    struct node * node;
+    struct job * job;
+    struct list * list;
     char *saveFile;
 
     if (argc < 2) {
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
         addAtFront(list, node);
     }
 
-    if (!saveFile) printList(list);
+    /* if (!saveFile) printList(list); */
     printList(list);
 
     if (saveFile) {

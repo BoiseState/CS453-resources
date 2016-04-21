@@ -11,14 +11,14 @@
 
 int main(int argc, char **argv)
 {
-    ListPtr list;
+    struct list * list;
     char *saveFile;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <checkpoint file> \n",argv[0]);
         exit(1);
     }
-    saveFile =argv[1];
+    saveFile = argv[1];
 
     list = restoreList(saveFile);
     if (list) {
