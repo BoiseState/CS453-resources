@@ -32,5 +32,5 @@
 # Vim stuff
 *.sw[a-p]
 
-#Mac crap
+# Mac stuff
 .DS_Store
