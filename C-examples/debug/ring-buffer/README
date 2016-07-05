@@ -1,8 +1,23 @@
 To run the test programs you will need to set the paths to find the library:
 
+```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
+```
 
 Then run the test programs as follows:
-test/run_test //runs the single threaded version
-test/run_test_mt //runs the multi threaded version
 
+```
+./grader
+```
+
+Or the run.sh script will set the path for you and execute valgrind:
+
+```
+./run.sh
+```
+
+To run the autograder before submitting, run:
+
+```
+./backpack.sh
+```

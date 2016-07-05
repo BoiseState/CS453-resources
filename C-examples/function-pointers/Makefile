@@ -19,12 +19,12 @@
 
 
 
-# The following are macros: a defintion on one line with an equal 
-# to sign. The CC macro is used to define the C compiler and the 
-# macro CFLAGS defines the default set of options or flags used 
+# The following are macros: a defintion on one line with an equal
+# to sign. The CC macro is used to define the C compiler and the
+# macro CFLAGS defines the default set of options or flags used
 # with the C compiler.
 CC=gcc
-CFLAGS=-Wall -g  
+CFLAGS=-Wall -g
 
 # Recognize files with .c and .o extensions
 .SUFFIXES: .o .c
@@ -33,14 +33,14 @@ CFLAGS=-Wall -g
 # into a file with a .o extension. The macro $< just
 # supplies the name of the file (without the extension)
 # that invoked this rule.
-.c.o: 
+.c.o:
 	$(CC) $(CFLAGS) -c $<
 
 # The following is a dependency or a rule line. It has the
 # name of the rule followed by a colon. After the colon are listed
-# other rules that this rule depends upon. Following the rules line 
+# other rules that this rule depends upon. Following the rules line
 # are one or more command lines that must start with a TAB character.
-all: fun-with-fns test-qsort myfunc
+all: fun-with-fns test-qsort myfunc funkyfun
 
 # Another rule below. This depends upon the rule hello.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
@@ -55,10 +55,13 @@ test-qsort: test-qsort.o
 myfunc: myfunc.o
 	$(CC) $(CFLAGS) $< -o $@
 
+funkyfun: funkyfun.o funky.o
+	$(CC) $(CFLAGS) $^ -o $@
+
 
 # A rule most that all Makefiles should have. This one removes
-# any .o files and other undesirables that are  lying around and 
-# the executable hello and leaves only the source. Useful for running 
+# any .o files and other undesirables that are  lying around and
+# the executable hello and leaves only the source. Useful for running
 # before submitting a program!
 clean:
-	/bin/rm -f *.o test-qsort fun-with-fns myfunc a.out core
+	/bin/rm -f *.o test-qsort fun-with-fns myfunc funkyfun a.out core

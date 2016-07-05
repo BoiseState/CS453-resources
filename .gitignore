@@ -32,9 +32,8 @@
 # Vim stuff
 *.sw[a-p]
 
-#Mac crap
+# Mac stuff
 .DS_Store
-
 #
 C-examples/intro/cmdline
 C-examples/intro/cmdline-str

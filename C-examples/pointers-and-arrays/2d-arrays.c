@@ -1,6 +1,4 @@
-
 /* C-examples/arrays-and-pointers/2d-arrays.c */
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,33 +9,26 @@ int main(int argc, char **argv)
 {
     int i,j;
     int n = 10;
-    int ***X;
+    int **table;
 
+    /* Allocate memory for the 2-dimensional array */
+    table = (int **) malloc(n * sizeof(int *));
+    for(i = 0; i < n; i++) {
+        table[i] = (int *) malloc(n * sizeof(int));
+    }
 
-    X = (int ***) malloc(n * sizeof(int **));
-    for (i=0; i<n; i++) {
-        X[i] = (int **) malloc(n * sizeof(int *));
-        for(j = 0; j <n; j++) {
-            X[i][j] = (int *) malloc(n *sizeof(int));
+    /* Initialize the 2-dimensional array */
+    for(i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            table[i][j] = i * j;
         }
     }
 
-    // initialize the 2-dimensional array
-    int k;
-    for (i=0; i<n; i++)
-        for (j=0; j<n; j++)
-            for(k =0; k < n; k++)
-                X[i][j][k] = i;
-
-
-    // delete the 2-dimensional array X
-    for (i=0; i<n; i++) {
-        for(j=0; j<n; j++) {
-            free(X[i][j]);
-        }
-        free(X[i]);
+    /* Free the 2-dimensional array */
+    for(i = 0; i < n; i++) {
+        free(table[i]);
     }
-    free(X);
+    free(table);
 
     return 0;
 }
