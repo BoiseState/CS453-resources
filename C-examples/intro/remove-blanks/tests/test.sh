@@ -2,7 +2,7 @@
 
 for f in test?
 do
-	remove-blanks < $f > $f.out
+	../remove-blanks < $f > $f.out
 	echo "processing input " $f
 done
 

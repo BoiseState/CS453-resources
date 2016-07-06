@@ -18,16 +18,28 @@ int main(int argc, char *argv[])
 
     c = getchar();
     while (c != EOF ) {
-		if (c == ' ') {
-			if (state == BLANK_RUN) { 
-				//skip printing
-			} else { //state == NOT_IN_BLANK_RUN || state == START
+		if (state == NOT_IN_BLANK_RUN) { 
+			if (c != ' ') {
+				putchar(c);
+			} else { // c == ' '
 				putchar(c);
 				state = BLANK_RUN;
 			}
-		} else {  //(c != ' ')
-			putchar(c);
-			state = NOT_IN_BLANK_RUN;
+		} else if (state == BLANK_RUN) {
+			if (c != ' ') {
+				putchar(c);
+				state = NOT_IN_BLANK_RUN;
+			} else { // c == ' '
+				// print nothing as we eat up the blanks
+			}
+		} else if (state == START) {
+			if (c != ' ') {
+				putchar(c);
+				state = NOT_IN_BLANK_RUN;
+			} else { // c == ' '
+				putchar(c);
+				state = BLANK_RUN;
+			}
 		}
 
         c = getchar();
