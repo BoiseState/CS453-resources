@@ -43,7 +43,7 @@ PROGS=helloworld wc1 wc2 wc3 cp1 cp2 cmdline width range count-digits\
 # name of the rule followed by a colon. After the colon are listed
 # other rules that this rule depends upon. Following the rules line 
 # are one or more command lines that must start with a TAB character.
-all: $(PROGS)
+all: $(PROGS) subdirs
 
 # Another rule below. This depends upon the rule helloworld.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
@@ -90,9 +90,14 @@ static: static.o
 
 cmdline-str: cmdline-str.o
 	$(CC) $(CFLAGS) $< -o $@
+
+subdirs:
+	cd remove-blanks/; make
+
 # A rule most Makefiles should have. This one removes
 # any .o files and other unwanted files that are lying around and 
 # the executables and leaves only the source. Useful for running 
 # before submitting a program!
 clean:
 	/bin/rm -f *.o $(PROGS) a.out core
+	cd remove-blanks/; make clean
