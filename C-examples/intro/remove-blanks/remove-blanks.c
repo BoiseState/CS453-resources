@@ -11,10 +11,11 @@
 #define BLANK_RUN 1
 #define NOT_IN_BLANK_RUN 2
 
+int state =  START;
+
 int main(int argc, char *argv[])
 {
     int c;  
-	int state =  START;
 
     c = getchar();
     while (c != EOF ) {
