@@ -39,7 +39,7 @@ CFLAGS=-Wall -g
 # name of the rule followed by a colon. After the colon are listed
 # other rules that this rule depends upon. Following the rules line 
 # are one or more command lines that must start with a TAB character.
-all: scope
+all: scope subdirs
 
 # Another rule below. This depends upon the rule hello.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
@@ -48,9 +48,13 @@ all: scope
 scope: scope1.o scope2.o ourhdr.h
 	$(CC) $(CFLAGS) scope1.o scope2.o  -o $@
 
+subdirs:
+	cd calculator/; make
+
 # A rule most that all Makefiles should have. This one removes
 # any .o files and other undesirables that are  lying around and 
 # the executable hello and leaves only the source. Useful for running 
 # before submitting a program!
 clean:
 	/bin/rm -f *.o scope  a.out core
+	cd calculator/; make clean
