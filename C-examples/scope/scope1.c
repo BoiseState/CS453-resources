@@ -8,55 +8,44 @@
 
 int total = 1;
 
-static int f4(int); /* private function */
-
-int f1(int x, double z)
+void f1(int x, double z)
 {
     static int counter=0;
 
     counter++;
-    printf("counter in f1() = %d\n", counter);
-    x += f4((int) z);
-    return (x*z);
+    printf("\ncounter in f1() = %d\n", counter);
+	total = x + z;
 }
-
-static int f4(int x)
-{
-    return 2*x;
-}
-
-int subtotal = 0;
 
 void f3()
 {
     total += 10;
-    subtotal = total;
-    if (total < 100)
-        total = f1(total, 1.5);
 }
 
 
 
 int main (int argc, char **argv)
 {
-    int m;
+    int n;
     double z;
-    int x;
 
     if (argc != 3) {
         fprintf(stderr,"Usage: %s <int> <double> \n",argv[0]);
-        exit(1); //exit and return unsuccessful status to the shell
+        return 1; //exit and return unsuccessful status to the shell
     }
-    m = atoi(argv[1]);
+    n = atoi(argv[1]);
     z = atof(argv[2]);
 
-    x = f1(m, z);
-    f2(m);
+	printf("\nCalling f1 in scope1.c\n");
+    f1(n, z);
+	printf("\ntotal in scope1.c = %d passing n = %d to f2 in scope2.c\n", total, n);
+    f2(n);
+	printf("\ntotal in scope1.c after calling f2 from scope2.c = %d\n", total);
     f3();
-    x = x + f1(m,z);
+	printf("\ntotal in scope1.c = %d after calling f3 from scope1.c\n", total);
+	printf("\nCalling f1 the second time in scope1.c\n");
+    f1(n, z);
+	printf("\ntotal in scope1.c = %d after calling f1 the second time\n\n", total);
 
-    printf("total = %d\n",total);
-    printf("subtotal = %d\n",subtotal);
-
-    exit(0); // exit and return successful status back to the shell
+    return 0; // exit and return successful status back to the shell
 }

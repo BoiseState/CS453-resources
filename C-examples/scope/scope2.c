@@ -11,6 +11,8 @@
 
 void f2(int x)
 {
+	printf("\nIn function f2 (from scope2.c): total = %d\n", total);
     total += x;
+	printf("\ntotal in scope2 after addition = %d\n", total);
 }
 
