@@ -28,6 +28,9 @@
 *.x86_64
 *.hex
 
+#Eclipse stuff
+*.cproject
+*.project
 
 # Vim stuff
 *.sw[a-p]

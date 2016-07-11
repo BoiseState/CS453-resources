@@ -1,139 +1,69 @@
-[amit@dslamit gdb]$ gdb strings
-GNU gdb 5.3-22mdk (Mandrake Linux)
-Copyright 2002 Free Software Foundation, Inc.
+
+[amit@kohinoor gdb]: gdb testlists
+
+GNU gdb 5.0rh-5 Red Hat Linux 7.1
+Copyright 2001 Free Software Foundation, Inc.
 GDB is free software, covered by the GNU General Public License, and you are
 welcome to change it and/or distribute copies of it under certain conditions.
 Type "show copying" to see the conditions.
 There is absolutely no warranty for GDB.  Type "show warranty" for details.
-This GDB was configured as "i586-mandrake-linux-gnu"...
-(gdb) break main
-Breakpoint 1 at 0x8048513: file strings.c, line 10.
-(gdb) run
-Starting program: /home/amit/C-examples/gdb/strings 
+This GDB was configured as "i386-redhat-linux"...
 
-Breakpoint 1, main () at strings.c:10
-10		char *r = "winnie";
-(gdb) break 41
-Breakpoint 2 at 0x8048620: file strings.c, line 41.
-(gdb) list 41
-36			printf("r > s (lexicographically)\n");
-37		
+(gdb) b PrintList 
+Breakpoint 1 at 0x8048692: file lists.c, line 28.
+(gdb) r 100
+Starting program: /home/amit/classes/cs242/lab/C-examples/gdb/testlists 100
+
+Breakpoint 1, PrintList (L=0x8049f20) at lists.c:28
+28		int count = 0;
+(gdb) l
+23		return list;
+24	}
+25	
+26	void PrintList(NodePtr L)
+27	{
+28		int count = 0;
+29		while (L) {
+30			printf(" %d -->",L->item);
+31			L = L->next;
+32			count++;
+(gdb) l
+33		}
+34	    printf(" NULL \n");
+35	}
+36	 
+37			
 38	
-39	
-40		
-41		free(s);
-42		s = (char *) malloc(sizeof(char)*MAXLEN);
-43		strcpy(s, " tigger pooh abracadabra woo ;; woo & choo choo");
-44	
-45		/* save a copy because strtok will eat it up */
-(gdb) display s
-1: s = 0xbfffef88 "¨ïÿ¿÷ç\003@\001"
-(gdb) continue
-Continuing.
-String r = winnie length of r = 6
-r = winnie s = tiggerwinnie q = winnie 
-r > s (lexicographically)
-
-Breakpoint 2, main () at strings.c:41
-41		free(s);
-1: s = 0x8049b38 "tiggerwinnie"
-(gdb)  n
-42		s = (char *) malloc(sizeof(char)*MAXLEN);
-1: s = 0x8049b38 "tiggerwinnie"
-(gdb)  n
-43		strcpy(s, " tigger pooh abracadabra woo ;; woo & choo choo");
-1: s = 0x8049b38 "tiggerwinnie"
-(gdb)  n
-46		save = (char *) malloc(sizeof(char)*(strlen(s)+1));
-1: s = 0x8049b38 " tigger pooh abracadabra woo ;; woo & choo choo"
-(gdb) list 71
-66		token = strsep(&s, " ;"); /* use space as a delimiter */
-67	
-68	
-69		while (token != NULL)
-70		{
-71			printf("next token = %s\n", token);
-72			token = strsep(&s,  " ;");
-73		}
-74		exit(0);
-75		
-(gdb) break 71
-Breakpoint 3 at 0x8048773: file strings.c, line 71.
-(gdb)  continue
-Continuing.
-starting to tokenize the string:  tigger pooh abracadabra woo ;; woo & choo choo 
-next token = tigger
-next token = pooh
-next token = abracadabra
-next token = woo
-next token = ;;
-next token = woo
-next token = &
-next token = choo
-next token = choo
-starting to tokenize the string:  tigger pooh abracadabra woo ;; woo & choo choo 
-
-Breakpoint 3, main () at strings.c:71
-71			printf("next token = %s\n", token);
-1: s = 0x8049b39 "tigger pooh abracadabra woo ;; woo & choo choo"
-(gdb) p token
-$1 = 0x8049b38 ""
-(gdb) continue
-Continuing.
-next token = 
-
-Breakpoint 3, main () at strings.c:71
-71			printf("next token = %s\n", token);
-1: s = 0x8049b40 "pooh abracadabra woo ;; woo & choo choo"
+(gdb) n
+29		while (L) {
+(gdb) n
+30			printf(" %d -->",L->item);
+(gdb) n
+31			L = L->next;
+(gdb) n
+32			count++;
+(gdb) n
+33		}
+(gdb) n
+30			printf(" %d -->",L->item);
 (gdb) info breakpoints
 Num Type           Disp Enb Address    What
-1   breakpoint     keep y   0x08048513 in main at strings.c:10
+1   breakpoint     keep y   0x08048692 in PrintList at lists.c:28
 	breakpoint already hit 1 time
-2   breakpoint     keep y   0x08048620 in main at strings.c:41
-	breakpoint already hit 1 time
-3   breakpoint     keep y   0x08048773 in main at strings.c:71
-	breakpoint already hit 2 times
-(gdb) continue
+(gdb) b 32
+Breakpoint 2 at 0x80486c2: file lists.c, line 32.
+(gdb) cond 2 (count == 50)
+(gdb) c
 Continuing.
-next token = tigger
 
-Breakpoint 3, main () at strings.c:71
-71			printf("next token = %s\n", token);
-1: s = 0x8049b45 "abracadabra woo ;; woo & choo choo"
-(gdb)  continue
-Continuing.
-next token = pooh
-
-Breakpoint 3, main () at strings.c:71
-71			printf("next token = %s\n", token);
-1: s = 0x8049b51 "woo ;; woo & choo choo"
-(gdb) info breakpoints
-Num Type           Disp Enb Address    What
-1   breakpoint     keep y   0x08048513 in main at strings.c:10
-	breakpoint already hit 1 time
-2   breakpoint     keep y   0x08048620 in main at strings.c:41
-	breakpoint already hit 1 time
-3   breakpoint     keep y   0x08048773 in main at strings.c:71
-	breakpoint already hit 4 times
-(gdb) delete 3
-(gdb) info breakpoints
-Num Type           Disp Enb Address    What
-1   breakpoint     keep y   0x08048513 in main at strings.c:10
-	breakpoint already hit 1 time
-2   breakpoint     keep y   0x08048620 in main at strings.c:41
-	breakpoint already hit 1 time
-(gdb) continue
-Continuing.
-next token = abracadabra
-next token = woo
-next token = 
-next token = 
-next token = 
-next token = woo
-next token = &
-next token = choo
-next token = choo
-
-Program exited normally.
-(gdb)  quit
-[amit@dslamit gdb]$ exit
+Breakpoint 2, PrintList (L=0x8049bf0) at lists.c:32
+32			count++;
+(gdb) p count
+$1 = 50
+(gdb) p L
+$2 = (struct node *) 0x8049bf0
+(gdb) p *L
+$3 = {item = 52, next = 0x8049be0}
+(gdb) quit
+The program is running.  Exit anyway? (y or n) y
+[amit@kohinoor gdb]: exit
