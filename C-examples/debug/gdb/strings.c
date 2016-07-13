@@ -11,7 +11,7 @@ int main()
     char *s;
     char q[MAXLEN];
     int stat;
-    char *delimiter = " ";
+    char *delimiter = " ;";
     char *token;
     char *save;
     char *copy;
