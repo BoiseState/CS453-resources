@@ -1,4 +1,7 @@
 
+Doubly-linked Lists {#mainpage}
+===================
+
 To run the test programs you will need to set the paths to find the library:
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib
