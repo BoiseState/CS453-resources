@@ -37,6 +37,11 @@
 
 # Mac stuff
 .DS_Store
+
+# Eclipse stuff
+*.cproject
+*.project
+
 #
 C-examples/intro/cmdline
 C-examples/intro/cmdline-str
