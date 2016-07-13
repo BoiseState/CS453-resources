@@ -66,4 +66,4 @@ reverse: reverse.o
 # the executable hello and leaves only the source. Useful for running 
 # before submitting a program!
 clean:
-	/bin/rm -f *.o reverse strings-ex1 strings-ex2 strings-ex3 string-ex4  a.out core
+	/bin/rm -f *.o reverse strings-ex1 strings-ex2 strings-ex3 strings-ex4  a.out core
