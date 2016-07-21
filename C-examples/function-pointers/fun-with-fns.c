@@ -17,7 +17,7 @@ int f1(int x)
 
 int f2(int x)
 {
-    printf("f3: I have been invoked!!!! x=%d\n",x*3);
+    printf("f2: I have been invoked!!!! x=%d\n",x*3);
     return x;
 }
 
