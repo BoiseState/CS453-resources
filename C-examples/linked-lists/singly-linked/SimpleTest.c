@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 
     list = NULL;
     for (i=0; i<n; i++) {
-        node = (struct node*) malloc(sizeof(struct node));
+        node = (struct node *) malloc(sizeof(struct node));
         if (node == NULL) {
             printf("Error allocating node for linked list\n");
             exit(1);
