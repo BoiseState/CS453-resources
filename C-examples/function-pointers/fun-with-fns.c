@@ -3,21 +3,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int foobar0(int x)
+int f0(int x)
 {
-    printf("I have been invoked!!!! x=%d\n",x);
+    printf("f0: I have been invoked!!!! x=%d\n",x);
     return x;
 }
 
-int foobar1(int x)
+int f1(int x)
 {
-    printf("I have been invoked!!!! x=%d\n",x*2);
+    printf("f1: I have been invoked!!!! x=%d\n",x*2);
     return x;
 }
 
-int foobar2(int x)
+int f2(int x)
 {
-    printf("I have been invoked!!!! x=%d\n",x*3);
+    printf("f2: I have been invoked!!!! x=%d\n",x*3);
     return x;
 }
 
@@ -36,9 +36,9 @@ int main(int argc, char **argv)
     int seed;
     int (*names[3])(int);
 
-    names[0] = foobar0;
-    names[1] = foobar1;
-    names[2] = foobar2;
+    names[0] = f0;
+    names[1] = f1;
+    names[2] = f2;
 
     if (argc != 3) {
         fprintf(stderr,"Usage %s: <count> <seed> \n",argv[0]);
@@ -47,12 +47,9 @@ int main(int argc, char **argv)
     count = atoi(argv[1]);
     seed = atoi(argv[2]);
 
-
-    int (*functionPtr)(int) = foobar2;
+    int (*functionPtr)(int) = f2;
 
     fun(functionPtr);
-
-
 
     srandom(seed);
     for (i=0; i<count; i++) {
