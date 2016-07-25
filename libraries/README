@@ -1,9 +1,0 @@
-
-To build on Linux, use
-
-make
-
-To build on a Mac use: 
-
-make -f Makefile.osx
-
