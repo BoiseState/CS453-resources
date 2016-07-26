@@ -1,3 +1,4 @@
+
 INSTALL=..
 LIB=$(INSTALL)/lib
 INCLUDE=$(INSTALL)/include
@@ -5,11 +6,9 @@ CC=gcc
 CFLAGS=-Wall -g -fPIC -shared -I$(INCLUDE)/
 LFLAGS=-L$(LIB) -lmylib
 
-
 LIBOBJS=List.o Node.o
 
 all: libs
-
 
 libs: libmylib.so  libmylib.a
 
@@ -19,7 +18,6 @@ libmylib.so: $(LIBOBJS)
 libmylib.a: $(LIBOBJS)
 	$(AR)  rcv $@ $(LIBOBJS)
 	ranlib $@
-
 
 install: libs
 	cp  List.h $(INCLUDE)/
