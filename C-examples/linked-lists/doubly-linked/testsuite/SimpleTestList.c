@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     struct node *node;
     int *object;
 
-    n=1000;
+    n=10;
     list = createList(equals, toString, freeObject);
     for (i=0; i<n; i++) {
         object = (int *) malloc(sizeof(int));
