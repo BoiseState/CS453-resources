@@ -14,7 +14,7 @@ RandomTestList: RandomTestList.o Object.o
 	$(CC) $(CFLAGS) -o $@ $^  $(LFLAGS)
 
 SimpleTestList: SimpleTestList.o
-	$(CC) $(CFLAGS) -o $@ SimpleTestList.o   $(LFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^   $(LFLAGS)
 
 UnitTestList: UnitTestList.o Object.o
 	$(CC) $(CFLAGS) -o $@ $^   $(LFLAGS)
