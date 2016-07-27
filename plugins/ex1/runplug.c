@@ -55,7 +55,7 @@ int main(int argc, char **argv)
         if ((dlError = dlerror()))
             printf("Execution Error: %s\n", dlError);
         /*sleep(10);*/
-        (*function)();
+        /*(*function)();*/
         if ((dlError = dlerror()))
             printf("Execution Error: %s\n", dlError);
 
