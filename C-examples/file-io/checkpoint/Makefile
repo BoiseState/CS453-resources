@@ -13,4 +13,4 @@ RestoreList: RestoreList.o List.o Node.o Job.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm --force *.o SaveList RestoreList  *.d
+	rm --force *.o SaveList RestoreList  *.d list.bin

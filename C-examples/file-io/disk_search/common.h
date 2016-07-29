@@ -7,8 +7,7 @@
 #define TRUE 1
 #define FALSE  0
 
-typedef int Boolean;
-
+typedef enum {false, true} boolean;
 
 #define DEBUG 1
 
