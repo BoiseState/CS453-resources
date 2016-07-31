@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef enum {false, true} boolean;
+
 #define MAX_KEY_DIGITS 10 /* max digits in an int */
 
 struct object {
@@ -45,8 +47,7 @@ void freeObject(void *obj);
  *
  * @param o1 A pointer to the first <code>struct object</code>.
  * @param o2 A pointer to the first <code>struct object</code>.
- * @return Returns 0 if the objects are equal, anything other than 0
- *			otherwise.
+ * @return Returns 1 (true) if the objects are equal, 0 (false)) otherwise.
  */
 int equals(const void *o1,const void *o2);
 
