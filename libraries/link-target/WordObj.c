@@ -28,13 +28,13 @@ void freeWordObj(void *obj)
     free(wordObj);
 }
 
-int equals(const void *obj1, const void *obj2)
+boolean equals(const void *obj1, const void *obj2)
 {
     WordObjPtr wordObj1 = (WordObjPtr) obj1;
     WordObjPtr wordObj2 = (WordObjPtr) obj2;
 
     if (strcmp(wordObj1->word, wordObj2->word) == 0)
-        return 1;
+        return true;
     else
-        return 0;
+        return false;
 }

@@ -8,7 +8,6 @@
 
 #include "WordObj.h"
 
-typedef enum { false, true } boolean;
 
 const char * delimiters = " 0123456789\t;{}()[].#<>\n\r+-/%*\"^~&=!|:\\?,";
 const int MAX_LINE_LENGTH = 2048;
@@ -58,15 +57,16 @@ int main(int argc, char **argv)
     printList(list);
     freeList(list);
     fclose(fin);
-    return 0;
+	exit(EXIT_SUCCESS);
 }
 
 /**
  * If the word is already in the list, increment the frequency
  * of the existing word object. Else, add it to the list.
  *
- * For self-organizing, move the word to the front of the when
- * it is found.
+ * For self-organizing, move the word to the front of the list when
+ * it is found. This will improve performance as frequantly occuring
+ * words will accumulate in the front of the list.
  */
 void processWord(struct list *list, char *word)
 {
@@ -121,7 +121,7 @@ void printWordObj(WordObjPtr wordObj)
 
 void printUsage(char *progname, char *invalid, char *info)
 {
-    printf("%s: {%s|%s} <textfile>", progname, FLAG_ORGANIZED, FLAG_STD);
+    printf("%s {%s|%s} <textfile>", progname, FLAG_ORGANIZED, FLAG_STD);
     if(invalid) {
         printf("\n\tInvalid argument: %s", invalid);
     }
@@ -129,7 +129,7 @@ void printUsage(char *progname, char *invalid, char *info)
         printf(" [%s]", info);
     }
     printf("\n");
-    exit(1);
+    exit(EXIT_FAILURE);
 }
 
 void parseCommandArgs(char **argv)

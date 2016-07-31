@@ -1,13 +1,14 @@
 #This is your starter Makefile to link the wf.c and WordObject.c
 #code to your linked list.
-GENERIC_LIST_DIR= #TODO:Point this to your linked list directory
+#GENERIC_LIST_DIR= #TODO:Point this to your linked list directory
+GENERIC_LIST_DIR=../../p3/solution/
 GENERIC_LIST_LIB=$(GENERIC_LIST_DIR)/lib
 GENERIC_LIST_INCLUDE=$(GENERIC_LIST_DIR)/include
 
 CC=gcc
 IDIR=include
 LDIR=lib
-CFLAGS=-Wall -g -O -I. -I$(IDIR) -fPIC -MMD
+CFLAGS=-Wall -g -O -I. -I$(IDIR) -fPIC -MMD 
 LFLAGS=-L$(LDIR) -lmylib
 
 PROGS=wf
@@ -37,4 +38,4 @@ libclean:
 
 
 clean: libclean
-	/bin/rm -f $(PROGS) *.o a.out *.d *.diff *.out
+	/bin/rm -fr $(PROGS) *.o *.d output/
