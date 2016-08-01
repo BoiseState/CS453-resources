@@ -1,5 +1,5 @@
 #This is your starter Makefile to link the wf.c and WordObject.c
-#code to your linked list.
+#files to your linked list.
 GENERIC_LIST_DIR= #TODO:Point this to your linked list directory
 GENERIC_LIST_LIB=$(GENERIC_LIST_DIR)/lib
 GENERIC_LIST_INCLUDE=$(GENERIC_LIST_DIR)/include
