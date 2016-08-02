@@ -12,8 +12,7 @@ JFLAGS=
 
 PROGS=mycp stdc-mycp fork-and-wait fork-hello-world fork-child-grandchild fork-and-exec\
 	  fork-two-children  fork-test simple-shell print-max-no-procs print-pid\
-	  numcpus print-buffer-sizes skeleton fork-and-exec-xlogo\
-	  sig-handler
+	  print-buffer-sizes skeleton fork-and-exec-xlogo\
 
 all: $(PROGS)
 
@@ -50,9 +49,6 @@ simple-shell: simple-shell.o error.o
 print-max-no-procs: print-max-no-procs.o
 	$(CC) $(CFLAGS) -o $@ print-max-no-procs.o
 
-numcpus: numcpus.o
-	$(CC) $(CFLAGS) -o $@ $<
-
 print-buffer-sizes: print-buffer-sizes.o error.o
 	$(CC) $(CFLAGS) -o $@ print-buffer-sizes.o error.o
 
@@ -62,7 +58,5 @@ skeleton: skeleton.o
 fork-and-exec-xlogo: fork-and-exec-xlogo.o
 	$(CC) $(CFLAGS) -o $@ $<
 
-sig-handler: sig-handler.o
-	$(CC) $(CFLAGS) -o $@ $<
 clean:
 	/bin/rm -f *.o $(PROGS) a.out core *.class junk log logfile

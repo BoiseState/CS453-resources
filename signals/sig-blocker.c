@@ -27,12 +27,11 @@ int main()
 
     signal(SIGTSTP, ourhandler);   // CTRL+Z
     signal(SIGINT, ourhandler);    // CTRL+C
-    signal(SIGWINCH, ourhandler);  // Resize the window
     signal(SIGKILL, ourhandler);   // kill <pid> ... try it. Does it do anything?
     signal(SIGALRM, onalarm);      // Timer/alarm
     alarm(5);                      // Set the timer for 5 secs
 
-    while(1); // run forever
+    while(1) {pause();} // run forever
 
     exit(EXIT_SUCCESS);
 }
@@ -57,6 +56,6 @@ static void onalarm(int signo)
         printf("Okay, goodbye!\n");
         exit(EXIT_SUCCESS);
     } else {
-        printf("Alright, try again. Good luck...\n");
+        printf("Alright, try again. Good luck... (try kill -9 %d from another window)\n", getpid());
     }
 }
