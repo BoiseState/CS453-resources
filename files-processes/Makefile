@@ -11,8 +11,8 @@ JFLAGS=
 	javac $(JFLAGS) $<
 
 PROGS=mycp stdc-mycp fork-and-wait fork-hello-world fork-child-grandchild fork-and-exec\
-	  fork-two-children  timeout fork-test simple-shell print-max-no-procs print-pid\
-	  numcpus pow2Tester print-buffer-sizes skeleton fork-and-exec-xlogo\
+	  fork-two-children  fork-test simple-shell print-max-no-procs print-pid\
+	  numcpus print-buffer-sizes skeleton fork-and-exec-xlogo\
 	  sig-handler
 
 all: $(PROGS)
@@ -41,9 +41,6 @@ fork-and-wait: fork-and-wait.o
 fork-two-children: fork-two-children.o
 	$(CC) $(CFLAGS) -o $@ fork-two-children.o
 
-timeout: timeout.o
-	$(CC) $(CFLAGS) -o $@ timeout.o
-
 fork-test: fork-test.o
 	$(CC) $(CFLAGS) -o $@ fork-test.o
 
@@ -58,9 +55,6 @@ numcpus: numcpus.o
 
 print-buffer-sizes: print-buffer-sizes.o error.o
 	$(CC) $(CFLAGS) -o $@ print-buffer-sizes.o error.o
-
-pow2Tester: pow2Tester.o
-	$(CC) $(CFLAGS) -o $@ $<
 
 skeleton: skeleton.o
 	$(CC) $(CFLAGS) -o $@ $<
