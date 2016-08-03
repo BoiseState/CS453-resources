@@ -29,8 +29,9 @@ else
     exit 1
 fi
 
-len=$(wc -l ring.log)
-if [ $len -eq $numEntries ]; then
+len=$(wc -l ring.log | awk '{print $1}')
+if [ "$len" -eq "$numEntries" ] 
+then
 	echo "Found $numEntries entries a log file"
 else
     echo "P6: FAIL - Did not create the correct number of entries in the log file" >> $dest

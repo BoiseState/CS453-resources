@@ -24,7 +24,7 @@ int main(void)
     //signal has fired and we have written out our file
     //This approach (hard coded sleep) is really bad
     //however for a quick test we can live with it for now
-    printf("Sleeping for %d seconds to let signals finish\n" , alarm_interval +1);
-    sleep(alarm_interval +1);
+    printf("Sleeping for %d seconds to let signals finish\n" , alarm_interval + 2);
+    sleep(alarm_interval + 2);
     exit(EXIT_SUCCESS);
 }
