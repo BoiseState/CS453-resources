@@ -21,7 +21,7 @@ else
 fi
 
 #Check to make sure we created the log file
-numEntries=10
+numEntries=5
 if [ -e "ring.log" ]; then
     echo "Created a log file"
 else
