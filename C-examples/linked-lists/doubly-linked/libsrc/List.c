@@ -78,17 +78,12 @@ void reverseList(struct list *list)
 void printList(const struct list *list)
 {
     if (!list) return; //list was null!!
-    int count = 0;
     char *output;
     struct node *temp = list->head;
     while (temp) {
         output = list->toString(temp->obj);
-        printf(" %s -->",output);
+        printf("%s\n",output);
         free(output);
         temp = temp->next;
-        count++;
-        if ((count % 6) == 0)
-            printf("\n");
     }
-    printf(" NULL \n");
 }
