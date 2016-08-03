@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdio.h>
+#include <time.h>
 #include <ring.h>
 
 static struct {
@@ -18,11 +19,24 @@ void init_buffer()
 
 void log_msg(char *entry)
 {
+	if (entry == NULL) {
+		printf("Skipping null log entry!\n");
+		return;
+	}
+	// get the current timestamp (localtime)
+    time_t myTime;
+    myTime = time(NULL);
+	char *timeString = ctime(&myTime);
+	timeString[strlen(timeString)-1] = '\0'; //erase the newline at the end
+
     printf("Adding log entry into buffer\n");
     int idx = buff.curr % MAX_LOG_ENTRY;
-    strncpy(buff.log[idx],entry,MAX_STRING_LENGTH);
+    strncpy(buff.log[idx], timeString, MAX_STRING_LENGTH);
+    strncat(buff.log[idx], " -- " , MAX_STRING_LENGTH);
+    strncat(buff.log[idx], entry, MAX_STRING_LENGTH);
+
     /*
-     * From the documentation of strncpy:
+     * From the documentation of strncpy/strncat:
      * No null-character is implicitly appended at the end of destination
      * if source is longer than num. Thus, in this case, destination shall
      * not be considered a null terminated C string
@@ -33,6 +47,7 @@ void log_msg(char *entry)
     buff.log[idx][MAX_STRING_LENGTH-1]='\0';
     buff.curr++;
 }
+
 
 
 /*
