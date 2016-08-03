@@ -23,9 +23,9 @@ void log_msg(char *entry)
 		printf("Skipping null log entry!\n");
 		return;
 	}
-	// get the current timestamp (localtime)
+	//get the current timestamp (localtime) from the system
     time_t myTime;
-    myTime = time(NULL);
+    myTime = time(NULL); //this is a system call
 	char *timeString = ctime(&myTime);
 	timeString[strlen(timeString)-1] = '\0'; //erase the newline at the end
 

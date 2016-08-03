@@ -27,6 +27,6 @@ clean:
 	rm -f lib/*.so
 	rm -f include/*.h
 	rm -f grader
-	rm -fr docs/
+	rm -fr docs/ doxygen.log
 	cd libsrc; make clean
 	cd test; make clean
