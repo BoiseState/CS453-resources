@@ -5,7 +5,7 @@
    variable. This isn't a very good coding style. For a better way to code
    this see monitors code in the OS class.
 
-   @author Amit Jain
+   @author amit
 */
 
 #include <stdio.h>

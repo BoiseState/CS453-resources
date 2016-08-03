@@ -1,3 +1,9 @@
+
+Ring Buffer Library {#mainpage}
+===================
+
+YOU MUST COMPLETE THIS README.md FILE BEFORE SUBMITTING!
+
 To run the test programs you will need to set the paths to find the library:
 
 ```

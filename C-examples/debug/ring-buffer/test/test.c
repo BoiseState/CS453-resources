@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h> //for sleep ()
-//This is an example of using a relative path to import header files.
-//Generally you would want to use the -I flag in the compiler to set
-//up the include paths. Using relative paths like this creates a
-//dependency on the file structure which could make it tough to move
-//this file around.
-#include "../include/ring.h"
+#include <ring.h>
 
 int main(void)
 {

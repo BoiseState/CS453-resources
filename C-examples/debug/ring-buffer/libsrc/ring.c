@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdio.h>
-#include "ring.h"
+#include <ring.h>
 
 static struct {
     int curr;
@@ -11,7 +11,7 @@ void init_buffer()
 {
     printf("Initialize the ring buffer\n");
     int i;
-    for(i =0; i<MAX_LOG_ENTRY; i++) {
+    for(i = 0; i < MAX_LOG_ENTRY; i++) {
         buff.log[i][0]='\0';
     }
 }
