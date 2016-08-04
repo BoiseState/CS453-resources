@@ -19,7 +19,7 @@ int main(void)
         if ((pid = fork()) < 0) {
             err_sys("fork error");
         } else if (pid == 0) {  /* ith child */
-            sleep(20);
+            sleep(60);
             exit(EXIT_SUCCESS);
         }
         printf("Created child  number %d with pid %d\n",i,pid);

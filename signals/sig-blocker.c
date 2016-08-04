@@ -56,6 +56,7 @@ static void onalarm(int signo)
         printf("Okay, goodbye!\n");
         exit(EXIT_SUCCESS);
     } else {
-        printf("Alright, try again. Good luck... (try kill -9 %d from another window)\n", getpid());
+        printf("Alright, try again. Good luck... (try kill -9 %d from another window)\n", 
+		        getpid());
     }
 }

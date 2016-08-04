@@ -12,14 +12,12 @@ int  main()
     char *message1 = "Goodbye";
     char *message2 = "World";
 
-    pthread_create( &thread1, NULL,
-                    print_message_function, (void*) message1);
-    /*sleep(1);*/
-    pthread_create(&thread2, NULL,
-                   print_message_function, (void*) message2);
+    pthread_create(&thread1, NULL, print_message_function, (void*) message1);
+    pthread_create(&thread2, NULL, print_message_function, (void*) message2);
 
-    pthread_join(thread2, NULL); /* wait for thread2 to finish */
     pthread_join(thread1, NULL); /* wait for thread1 to finish */
+    pthread_join(thread2, NULL); /* wait for thread2 to finish */
+	printf("\n");
     exit(0);
 }
 

@@ -47,7 +47,7 @@ int main(void)
     }
 #if DEBUG
     printf("Created child with pid %d\n",pid);
-    sleep(2);
+    /*sleep(2);*/
 #endif
     exit(EXIT_SUCCESS);
 }

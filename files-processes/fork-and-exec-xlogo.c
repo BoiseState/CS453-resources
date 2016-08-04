@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     }
 
     /* other code */
-    for (i = 0; i < 3; i++)
+    /*for (i = 0; i < 3; i++)*/
         waitpid(-1, &status, 0);
     exit(0);
 }
