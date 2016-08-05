@@ -3,7 +3,7 @@
 CC=gcc
 CFLAGS=-Wall -g -I../include 
 
-grader: test.o
+grader: test-ring-buffer.o
 	$(CC) $(CFLAGS) -o $@ $^  -L../lib/ -lring
 
 clean:
