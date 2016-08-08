@@ -15,6 +15,7 @@ void init_buffer()
     for(i = 0; i < MAX_LOG_ENTRY; i++) {
         buff.log[i][0]='\0';
     }
+	buff.curr = 0; 
 }
 
 void log_msg(char *entry)
@@ -53,15 +54,17 @@ void log_msg(char *entry)
 /*
  * Right now this is just printing to the console. We want to change this to
  * write to a file (log_name) and we want to use signals to trigger the logging
- * event
+ * event. This also needs to be fixed so that it prints the log messages in the
+ * right order (from the oldest to the newest).
  *
- * This method should write all the current entries to disk. We will use
- * the constant log_name as the name of the file.
+ * This method should write all the current entries to disk in the right order 
+ * (from the oldest to the newest). We will use the constant log_name as the 
+ * name of the file.
  */
 static void dump_buffer()
 {
     int i;
-    for(i =0; i<MAX_LOG_ENTRY; i++) {
+    for(i = 0; i < MAX_LOG_ENTRY; i++) {
         printf("log %d: %s\n",i, buff.log[i]);
     }
 }
