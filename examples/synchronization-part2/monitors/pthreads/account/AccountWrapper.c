@@ -1,11 +1,9 @@
 
 /* 
- * A simple monitor example
- * 
- * Author: Amit Jain
+ * Implementation of a  simple monitor example that uses a mutex to protect against race conditions.
  *
+ * @author amit
  */ 
-
  
 #include <sys/types.h>
 #include <fcntl.h>
@@ -14,7 +12,7 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <signal.h>
-#include "account.h"
+#include <Account.h>
 
 static void __credit(AccountPtr acct, double amount);
 static void __debit(AccountPtr acct, double amount); 
