@@ -18,18 +18,25 @@ void init_buffer()
 	buff.curr = 0; 
 }
 
+//get the current timestamp (localtime) from the system
+static char *getTimeString() 
+{
+    time_t myTime;
+    myTime = time(NULL); //this is a system call
+	char *timeString = ctime(&myTime);
+	timeString[strlen(timeString)-1] = '\0'; //erase the newline at the end
+	return timeString;
+}
+
+
 void log_msg(char *entry)
 {
 	if (entry == NULL) {
 		printf("Skipping null log entry!\n");
 		return;
 	}
-	//get the current timestamp (localtime) from the system
-    time_t myTime;
-    myTime = time(NULL); //this is a system call
-	char *timeString = ctime(&myTime);
-	timeString[strlen(timeString)-1] = '\0'; //erase the newline at the end
 
+	char *timeString = getTimeString();
     printf("Adding log entry into buffer\n");
     int idx = buff.curr % MAX_LOG_ENTRY;
     strncpy(buff.log[idx], timeString, MAX_STRING_LENGTH);

@@ -25,13 +25,13 @@ int main(int argc, char **argv)
     }
     n = atoi(argv[1]);
     tid = (pthread_t *) malloc(sizeof(pthread_t) * n);
-    for (i=0; i<n; i++) {
+    for (i = 0; i< n; i++) {
         value = (int *) malloc(sizeof(int));
         *value = i;
         pthread_create(&tid[i], NULL, run, (void *) value);
     }
 
-    for (i=0; i<n; i++)
+    for (i = 0; i< n; i++)
         pthread_join(tid[i], NULL);
 
     exit(EXIT_SUCCESS);
