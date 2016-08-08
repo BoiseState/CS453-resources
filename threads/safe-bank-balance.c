@@ -1,9 +1,8 @@
 
 /*
-   ch8/safe-bank-balance.c
-   Uses Pthread Mutexes (binary semaphores) to protect the bank balance
-   variable. This isn't a very good coding style. For a better way to code
-   this see monitors code in the OS class.
+   Uses Pthread Mutexes to protect the bank balance variable. This isn't a good
+   coding style.  For a better way to code this see subfolder account. Also
+   monitors will be discussed extensively in the Operating Systems class.
 
    @author amit
 */

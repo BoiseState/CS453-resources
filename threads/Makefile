@@ -14,6 +14,7 @@ all: $(PROGS) subdirs
 
 subdirs:
 	cd java; make
+	cd account; make
 
 thread-hello-world: thread-hello-world.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
@@ -57,3 +58,4 @@ random_r: random_r.o
 clean:
 	/bin/rm -f *.o $(PROGS) a.out core *.class junk log logfile
 	cd java; make clean
+	cd account; make clean
