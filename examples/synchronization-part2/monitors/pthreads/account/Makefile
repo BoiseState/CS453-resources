@@ -1,8 +1,8 @@
 
 DEBUG=
 CC=gcc
-#CFLAGS=-g  -Wall  $(DEBUG)
-CFLAGS=-O  -Wall  $(DEBUG)
+#CFLAGS=-g  -Wall  $(DEBUG) -MMD
+CFLAGS=-O  -Wall  $(DEBUG) -MMD
 LFLAGS=-lpthread
 
 PROGS=TestAccount badTestAccount TestAccountWrapper
@@ -18,6 +18,8 @@ TestAccountWrapper: account.h accountWrapper.o TestAccount.o
 badTestAccount: account.h account.c badTestAccount.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
 
+-include *.d
+
 
 clean:
-	/bin/rm -f *.o core a.out $(PROGS)
+	/bin/rm -f *.o *.d core a.out $(PROGS)
