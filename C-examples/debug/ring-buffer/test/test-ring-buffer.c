@@ -18,7 +18,9 @@ int main(void)
     /*Test a message that is too long, we should not corrupt memory */
     log_msg("Error: we tried to make foo when we needed bar  ... oops that was a pretty crazy thing to do");
     log_msg("Error: failed 6");
-    log_msg("Error: shutdown");
+    log_msg("Error: shutdown 1");
+    log_msg("Error: shutdown 2");
+    log_msg("Error: shutdown 3");
 
     //sleep for (alarm_interval + 1) seconds to ensure that the
     //signal has fired and we have written out our file
