@@ -1,9 +1,10 @@
 
-/*
-Compile this program as
-
-gcc threads-hello-world.c -lpthread
-
+/**
+ * This example shows how to assign sequential ids 0..n-1 to n threads. This is
+ * preferable to using pthread_self() as the thread ids assigned by the system
+ * are unpredictable and not supposed to be portable beyond being used in
+ * pthread library calls.
+ *
 */
 
 #include <stdlib.h>
