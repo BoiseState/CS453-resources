@@ -1,17 +1,22 @@
 
-public class InterruptTest implements Runnable {
-
-	public static void main( String [] args ) throws Exception {
-		Thread sleepyThread = new Thread( new InterruptTest() );
+/**
+ * Shows how to use thread interrupts
+ * @author amit
+ */
+public class InterruptTest implements Runnable 
+{
+	public static void main( String [] args ) throws Exception 
+	{
+		Thread sleepyThread = new Thread(new InterruptTest());
 		sleepyThread.setName("SleepyThread");
 		sleepyThread.start();
-        // now we two threads running, the main thread and the sleepy thread,
+        // Now we have two threads running, the main thread and the sleepy thread,
 		// which goes to sleep after printing a message.
 
 		Thread.sleep(500);// put main thread to sleep for a while
 		sleepyThread.interrupt();// interrupt sleepyThread's beauty sleep
 		Thread.sleep(500);// put main thread to sleep for a while
-		sleepyThread.interrupt();// interrupt sleepyThread's beauty sleep
+		sleepyThread.interrupt();// interrupt sleepyThread's beauty sleep again
 	}
 	
 	public void run() {
