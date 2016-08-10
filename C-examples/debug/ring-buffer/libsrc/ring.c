@@ -39,9 +39,9 @@ void log_msg(char *entry)
 	char *timeString = getTimeString();
     printf("Adding log entry into buffer\n");
     int idx = buff.curr % MAX_LOG_ENTRY;
-    strncpy(buff.log[idx], timeString, MAX_STRING_LENGTH);
-    strncat(buff.log[idx], " -- " , MAX_STRING_LENGTH);
-    strncat(buff.log[idx], entry, MAX_STRING_LENGTH);
+    strncpy(buff.log[idx], timeString, MAX_STRING_LENGTH - 1);
+    strncat(buff.log[idx], " -- ", 4);
+    strncat(buff.log[idx], entry, MAX_STRING_LENGTH - strlen(timeString) - 4);
 
     /*
      * From the documentation of strncpy/strncat:
