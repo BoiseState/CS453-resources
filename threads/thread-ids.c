@@ -43,6 +43,6 @@ void *run(void *ptr)
 	int id = *(int *) ptr;
 	free(ptr); // we are done with it, free it to avoid a leak
 
-    printf("I am thread %d with thread id %X\n", *(int *)ptr, (unsigned int) pthread_self());
+    printf("I am thread %d with thread id %X\n", id, (unsigned int) pthread_self());
     pthread_exit(NULL);
 }
