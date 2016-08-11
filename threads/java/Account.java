@@ -1,7 +1,7 @@
 
 public class Account
 {
-	protected double balance;
+	private double balance;
 
 	public double getBalance() { return balance;}
 
