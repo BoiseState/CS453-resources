@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 int main(int argc, char **argv)
 {
@@ -18,7 +19,7 @@ int main(int argc, char **argv)
     fin = fopen(argv[1], "r");
     if (!fin) {
         perror("filesize:");
-        exit(-1);
+        exit(errno);
     }
     fseek(fin, 0, SEEK_END);
     size = ftell(fin);

@@ -67,7 +67,7 @@ int main(int argc, char **argv)
     fout = fopen(filename, "w");
     if (!fout) {
         perror(filename);
-        exit(errno); /* errno will get set y the OS */
+        exit(errno); /* errno will get set by the OS */
     }
 
     /* generate and write random entries (plain text) */

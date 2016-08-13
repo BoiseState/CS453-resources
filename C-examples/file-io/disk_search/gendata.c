@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <time.h>
 
 struct record {
@@ -38,16 +39,15 @@ int main(int argc, char **argv)
         fprintf(stderr, "Usage: %s <n> [<seed>]\n", argv[0]);
         exit(1);
     }
-
     n = atoi(argv[1]);
     if (argc == 3) {
         seed = atoi(argv[1]);
     }
 
-
     fout = fopen("data.bin", "w");
     if (!fout) {
-        perror("");
+        perror("gendata --  opening file data.bin");
+		exit(errno);
     }
 
     generate_file(n ,seed, fout);
