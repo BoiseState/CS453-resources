@@ -180,3 +180,6 @@ synchronization-part2/signals/sig6
 synchronization-part2/wait1
 virtual-memory/exhaust-vm
 virtual-memory/pft
+#
+*.d
+*.o

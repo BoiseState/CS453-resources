@@ -1,7 +1,6 @@
 
 CC=gcc
-CFLAGS=-I. -Wall -O3 
-#CFLAGS=-I. -Wall -g 
+CFLAGS=-I. -Wall -g -O3 
 LIBFLAGS=-I. -shared -fPIC
 LIBS=-L. -lbuddy
 LIBOBJS=buddy.o
