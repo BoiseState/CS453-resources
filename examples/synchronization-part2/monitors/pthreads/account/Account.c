@@ -1,9 +1,8 @@
 
-/* 
- * A simple monitor example
+/** 
+ * Implementation of a  simple monitor example that uses a mutex to protect against race conditions.
  * 
- * Author: Amit Jain
- *
+ * @author amit
  */ 
 
  
@@ -14,7 +13,7 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <signal.h>
-#include "account.h"
+#include <Account.h>
 
 
 AccountPtr account_init()

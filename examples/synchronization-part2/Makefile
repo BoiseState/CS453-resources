@@ -2,14 +2,11 @@
 CC=gcc
 CFLAGS=-g -Wall 
 
-all: wait1 fun daemon_ex1 subdirs 
+all: fun daemon_ex1 subdirs 
 
 
 fun: fun-with-fns.o
 	$(CC) $(CFLAGS) -o $@ fun-with-fns.o
-
-wait1: wait-ex1.o error.o
-	$(CC) $(CFLAGS) -o wait1 wait-ex1.c error.o
 
 dameon_ex1: daemon_ex1.o
 	$(CC) $(CFLAGS) -o $@ $<

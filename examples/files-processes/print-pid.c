@@ -7,7 +7,8 @@
 
 int main()
 {
-	printf("after exec pid=%d\n",getpid());
-	sleep(5);
-	exit(EXIT_SUCCESS);
+    printf("print-pid: after exec pid=%d\n",getpid());
+    sleep(5);
+    printf("print-pid: finishing up\n");
+    exit(EXIT_SUCCESS);
 }
