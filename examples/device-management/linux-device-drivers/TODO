@@ -1,1 +1,0 @@
-Update example3 and example4 to use proc_create instead of create_proc_entry (for 3.01+ kernels!)
