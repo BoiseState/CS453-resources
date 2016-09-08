@@ -31,7 +31,8 @@ document the appropriate smoke/unit/system tests that you wrote.
 
 ###Valgrind
 
-Describe how you tested your project with Valgrind and do you hve clean bill from Valgrind or not.
+Describe how you tested your project with Valgrind the current status of your
+bill of health from Valgrind!
 
 ###Known Bugs
 
