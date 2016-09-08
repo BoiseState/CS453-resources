@@ -21,7 +21,7 @@ loop: loop.o
 ##
 git_version.c: FORCE
 		echo -n 'const char* git_version(void) { const char* GIT_Version = "' > git_version.c
-		git rev-parse HEAD | cut -c1-4 | tr -d '\n'  >> git_version.c
+		git rev-parse HEAD | cut -c1-6 | tr -d '\n'  >> git_version.c
 		echo '"; return GIT_Version; }' >> git_version.c
 
 FORCE:
