@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS= -g   -Wall 
+CFLAGS= -g   -Wall  -MMD
 LIBS=-lreadline -lncurses
 
 PROGS=test-readline loop 
@@ -12,6 +12,9 @@ loop: loop.o
 
 test-readline: test-readline.o
 	$(CC) $(CFLAGS) -o $@  $< $(LIBS)
+
+
+-include *.d
 
 dox:
 	echo "Generating documentation using doxygen..."
