@@ -10,12 +10,17 @@ sentences, you're going too far. Generally you should be pulling this
 right from the project specification. We don't want you to just cut and
 paste, but paraphrase what is stated in the project specification.
 
-##Building the project 
+##Manifest
 
-This section should tell the user how to build your code.  
-If you are delivering a library, where does it need to be installed or how do you
-use it? Is this an executable, if so how can a user get up to speed as
-fast as possible.
+A listing of source files and other non-generated files and a brief (one line)
+explanation of the purpose of each file.
+
+##Building the project
+
+This section should tell the user how to build your code.  If you are
+delivering a library, where does it need to be installed or how do you use
+it? Is this an executable, if so how can a user get up to speed as fast
+as possible.
 
 ##Features and usage
 
@@ -24,15 +29,15 @@ instruct the user how to use your program.
 
 ##Testing
 
-This section should detail how you tested your code. Simply stating 
-"I ran it a few times and it seems to work" is not sufficient. Your 
-testing needs to be detailed here or even better, this section should 
-document the appropriate smoke/unit/system tests that you wrote.
+This section should detail how you tested your code. Simply stating "I ran
+it a few times and it seems to work" is not sufficient. Your testing needs to
+be detailed here or even better, this section should document the appropriate
+smoke/unit/system tests that you wrote.
 
 ###Valgrind
 
-Describe how you tested your project with Valgrind the current status of your
-bill of health from Valgrind!
+Describe how you tested your project with Valgrind the current status of
+your bill of health from Valgrind!
 
 ###Known Bugs
 
@@ -44,9 +49,8 @@ Discuss the issues you encountered during development and testing. What
 problems did you have? What did you have to research and learn on your
 own? What kinds of errors did you get? How did you fix them?
 
-What parts of the project did you find challenging? Is there anything
-that finally "clicked" for you in the process of working on this
-project?
+What parts of the project did you find challenging? Is there anything that
+finally "clicked" for you in the process of working on this project?
 
 ##Sources used
 
