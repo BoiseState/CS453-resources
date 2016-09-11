@@ -23,7 +23,7 @@
 # macro CFLAGS defines the default set of options or flags used 
 # with the C compiler.
 CC=gcc
-CFLAGS=-Wall -g  
+CFLAGS=-Wall -Wconversion -g  
 
 # Recognize files with .c and .o extensions
 .SUFFIXES: .o .c
