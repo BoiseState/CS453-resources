@@ -1,8 +1,8 @@
 
 CC=gcc
+INCLUDES=-I../list/include/
 CFLAGS=-g  -Wall -I. $(INCLUDES) -MMD
 LIBS=-lreadline -lncurses -L../list/lib/ -lmylib
-INCLUDES=-I../list/include/
 MV=/bin/mv
 
 PROGS=loop  mydash
@@ -10,7 +10,7 @@ PROGS=loop  mydash
 all: $(PROGS)
 
 mydash: dash.o error.o git_version.o Parsing.o RunCmds.o BuiltInCmds.o InitDash.o Job.o JobList.o
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@  $^ $(LIBS)
+	$(CC) $(CFLAGS) -o $@  $^ $(LIBS)
 	$(MV) $@ ../
 
 loop: loop.o
