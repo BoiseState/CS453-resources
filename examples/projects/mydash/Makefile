@@ -1,27 +1,23 @@
+# This Makefile will not build unless you first update the line 
+# below to point to your linked list code from p0
+LISTINSTALL=../../../../p0/grader/solutions/amit/
+export LISTINSTALL
 
-CC=gcc
-CFLAGS= -g   -Wall  -MMD
-LIBS=-lreadline -lncurses
+all: mydash-project dox
 
-PROGS=test-readline loop 
+mydash-project: lib
+	cd mydash-src; make
+	cp $(LISTINSTALL)/lib/libmylib.so .
 
-all: $(PROGS) dox
-
-loop: loop.o
-	$(CC) $(CFLAGS) -o $@  $<
-
-test-readline: test-readline.o
-	$(CC) $(CFLAGS) -o $@  $< $(LIBS)
-
-
--include *.d
+lib:
+	cd $(LISTINSTALL); make 
 
 dox:
 	echo "Generating documentation using doxygen..."
-	doxygen doxygen-config >& doxygen.log
+	doxygen doxygen-config > doxygen.log 2>&1
 	echo "Use konqueror docs/html/index.html to see docs (or any other browser)"
 
-
 clean:
-	/bin/rm -f *.o $(PROGS) a.out core  *.log
-	/bin/rm -fr docs
+	echo "You need to implement this rule"
+
+

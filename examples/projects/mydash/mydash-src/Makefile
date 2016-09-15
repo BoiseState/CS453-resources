@@ -1,21 +1,19 @@
+#LISTINSTALL is exported by the top-level Makefile
+#We are one level below, so we add .. to the front of LISTINSTALL
 
-LISTINSTALL=../../../../../p0/grader/solutions/amit/
 CC=gcc
-CFLAGS=-g  -Wall -I. $(INCLUDES)
-LIBS=-lreadline -lncurses -L$(LISTINSTALL)/lib/ -lmylib 
-INCLUDES=-I$(LISTINSTALL)/include
+CFLAGS=-g  -Wall -I. $(INCLUDES) -MMD
+LIBS=-lreadline -lncurses -L../$(LISTINSTALL)/lib/ -lmylib 
+INCLUDES=-I../$(LISTINSTALL)/include
 MV=/bin/mv
 
-PROGS=loop  mydash
+PROGS=mydash
 
 all: $(PROGS)
 
 mydash: mydash.o error.o git_version.o Parsing.o RunCmds.o BuiltInCmds.o InitDash.o Job.o JobList.o
 	$(CC) $(CFLAGS) -o $@  $^ $(LIBS)
 	$(MV) $@ ../
-
-loop: loop.o
-	$(CC) $(CFLAGS) -o $@  $<
 
 ##
 ## on every build, record the working copy revision string
@@ -25,12 +23,6 @@ git_version.c: FORCE
 		git rev-parse HEAD | cut -c1-6 | tr -d '\n'  >> git_version.c
 		echo '"; return GIT_Version; }' >> git_version.c
 
-# Use the following for subversion
-# svn_version.c: FORCE
-#   	echo -n 'const char* svn_version(void) { const char* SVN_Version = "' > svn_version.c
-#   	svnversion -n . >> svn_version.c
-#   	echo '"; return SVN_Version; }' >> svn_version.c
-#
 
 			
 FORCE:
@@ -40,4 +32,4 @@ FORCE:
 ## describes exactly what revision was built.
 
 clean:
-	/bin/rm -f *.o $(PROGS) a.out core 
+	/bin/rm -f *.o $(PROGS) a.out core  *.d
