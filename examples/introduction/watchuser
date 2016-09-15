@@ -12,7 +12,7 @@ else
 	interval=$2
 fi
 
-who | awk '{print $1}' | grep $name >& /dev/null
+who | awk '{print $1}' | grep $name > /dev/null 2>&1
 if test "$?" = "0"
 then
 	loggedin=true
@@ -24,7 +24,7 @@ fi
 
 while true
 do
-	who | awk '{print $1}' | grep $name >& /dev/null
+	who | awk '{print $1}' | grep $name > /dev/null 2>&1
 	if test "$?" = "0"
 	then
 		if test "$loggedin" = "false"

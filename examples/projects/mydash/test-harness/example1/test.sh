@@ -18,7 +18,7 @@ if test "$debug" = "true"
 then
 	diff  outputs/test1.out outputs/test1.out.correct 
 else
-	diff  outputs/test1.out outputs/test1.out.correct >& /dev/null
+	diff  outputs/test1.out outputs/test1.out.correct > /dev/null 2>&1
 fi
 
 if test "$?" = "0"
