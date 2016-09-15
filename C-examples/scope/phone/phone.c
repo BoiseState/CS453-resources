@@ -2,16 +2,40 @@
 #include <unistd.h> /* sleep */
 #include "phone.h"
 
-void callMe(char *message)
-{
-	static int count = 0;
-	count++; /* Increment count every time I'm called */
+/* global scope. available in all files */
+int total_calls = 0;
 
-	if(count <= MAX_CALLS) {
-		printf("\twoohoo! I've been called %d times :D\n", count);
-	} else {
-		printf("\tOkay, I've been called %d times. You can stop now.\n", count);
+/**
+ * Private helper function. Tells the user how excited we are to be receiving
+ * a call.
+ */
+static void handle_call() {
+	printf("\twoohoo! I've been called %d times :D\n", total_calls);
+}
+
+/**
+ * Private helper function. Prevents call overload by putting the
+ * phone to sleep.
+ */
+static void handle_call_overload() {
+	printf("\tI've been called %d times. You can stop now.\n", total_calls);
+
+	long phone_sleep_time = SLEEP_TIME;
+	while(phone_sleep_time > 0) {
+		sleep(1);
+		phone_sleep_time--;
 	}
+}
 
-	printf("%s\n", message);
+void call(const char *message, const int id)
+{
+	printf("[%d] %s\n", id, message);
+
+	total_calls++;
+
+	if(total_calls <= MAX_CALLS) {
+		handle_call();
+	} else {
+		handle_call_overload();
+	}
 }

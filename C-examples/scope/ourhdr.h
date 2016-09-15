@@ -5,9 +5,9 @@
 #define __OURHDR_H
 
 /* function prototyes */
-void f1(int, double);
-void f2(int);
-void f3(void);
+void setTotalToSum(int, double);
+void addToTotal(int);
+void addTenToTotal(void);
 
 extern int total;
 

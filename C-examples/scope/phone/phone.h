@@ -1,8 +1,14 @@
-#ifndef __PHONE_H
-#define __PHONE_H
+/* public global defines */
+#define MAX_CALLS 5 
+#define SLEEP_TIME 3 
 
-#define MAX_CALLS 5
-enum boolean { FALSE, TRUE };
+/* public global variable definition. no memory set aside.
+ * Keeps track of the number of incoming calls. */
+extern int total_calls;
 
-void callMe(char *message);
-#endif /* __PHONE_H */
+/**
+ * @brief Calls the phone and reads the provided message.
+ *
+ * @param message
+ */
+void call(const char *message, const int id);

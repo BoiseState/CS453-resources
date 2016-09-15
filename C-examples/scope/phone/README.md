@@ -32,10 +32,10 @@
 4. Now compile executable from caller1.c.
 
      ```bash
-     gcc -Wall -caller1.c
+     gcc -Wall caller1.c
      ```
 
-     What's the problem? (callMe not defined). Need to compile/link phone.c.
+     What's the problem? (call not defined). Need to compile/link phone.c.
 
 5. Try compiling executable from phone.c by itself. (No main method.)
 

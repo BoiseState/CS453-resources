@@ -1,30 +1,31 @@
 #include <stdio.h>
-#include <unistd.h> /* sleep */
-#include "phone.h"
 #include "caller.h"
+#include "phone.h"
+
+/* scope is limited to this file */
+static long id = 123456;
+
+/* what if I want to keep track of my total_calls too? */
+/* int total_calls = 0; */
 
 int main(int argc, char *argv[])
 {
-	enum boolean goAhead = TRUE;
-
-#if DEBUG == 2
-	printf("debug: goAhead = %d\n", goAhead);
-#endif
-
-	if(goAhead == TRUE) {
-		makeSomeCalls();
-	}
-    return 0;
+	whoami();
+	make_calls(100);
+	return 0;
 }
 
-void makeSomeCalls()
+void whoami()
 {
-	callMe("maybe");
-	callMe("I just met you");
-	callMe("maybe");
+	printf("I am caller #%ld\n", id);
+}
 
-	forever {
-		sleep(1);
-		callMe("hello");
+void make_calls(const int n)
+{
+	int i;
+	for(i = 0; i < n; i++) {
+		call("Hey, I just met you.", i);
+		/* what if I want to stop the phone from sleeping when I call too much?
+		 * can I modify the phone's global variables?*/
 	}
 }

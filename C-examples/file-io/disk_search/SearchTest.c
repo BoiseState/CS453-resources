@@ -1,6 +1,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include "common.h"
 #include "Record.h"
 #include "ExternalSearch.h"
@@ -80,7 +81,7 @@ int main (int argc, char **argv)
     dataFile = fopen(argv[1], "r");
     if (!dataFile) {
         perror(program);
-        exit(1);
+        exit(errno);
     }
     searchType = BINARY;
     if (argc == 4) {

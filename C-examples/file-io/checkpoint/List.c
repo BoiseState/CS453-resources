@@ -142,7 +142,7 @@ Boolean checkpointList(struct list *list, char *saveFile)
     if (!fout) {
         sprintf(errmsg, "checkpointList: %s",saveFile);
         perror(errmsg);
-        return FALSE;
+        return FALSE; // throwing an exception and exiting is also an option here
     }
 
     /* First, write out the number of nodes we will be outputting so
@@ -186,7 +186,7 @@ struct list *restoreList(char *saveFile)
     if (!fin) {
         sprintf(errmsg, "restoreList: %s",saveFile);
         perror(errmsg);
-        return NULL;
+        return NULL; // throwing an exception and exiting is also an option here
     }
 
     /* First, figure out how many nodes we wrote */
