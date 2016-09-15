@@ -5,10 +5,18 @@
 /* global scope. available in all files */
 int total_calls = 0;
 
+/**
+ * Private helper function. Tells the user how excited we are to be receiving
+ * a call.
+ */
 static void handle_call() {
 	printf("\twoohoo! I've been called %d times :D\n", total_calls);
 }
 
+/**
+ * Private helper function. Prevents call overload by putting the
+ * phone to sleep.
+ */
 static void handle_call_overload() {
 	printf("\tI've been called %d times. You can stop now.\n", total_calls);
 
