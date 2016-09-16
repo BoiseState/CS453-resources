@@ -1,7 +1,5 @@
-/* Our own header, to be included *after* all standard system headers */
-
-#ifndef	__OURHDR_H
-#define	__OURHDR_H
+#ifndef	__MYDASH_H
+#define	__MYDASH_H
 
 #include	<sys/types.h>	/* required for some of our prototypes */
 #include	<stdio.h>		/* for convenience */
@@ -27,4 +25,4 @@ void	err_ret(const char *, ...);
 void	err_sys(const char *, ...);
 
 
-#endif	/* __OURHDR_H */
+#endif	/* __MYDASH_H */

@@ -3,7 +3,7 @@
  */
 #include    <sys/types.h>
 #include    <sys/wait.h>
-#include    "ourhdr.h"
+#include    "mydash.h"
 
 int main(void)
 {
