@@ -1,57 +1,89 @@
 #include <stdio.h>
 
-static void print_letters(const char letters[], const int count);
-static void fill_letters(char letters[], const int count);
+static void print_array(const char values[], const int count);
+static void fill_array(char values[], const int count);
+
 /**
  * Skeleton for in-class demo.
  */
 int main(int argc, char *argv[])
 {
-	/* Task 1: Static declaration */
-	char letters[26];
+	int i, n = 5;
 
-	/* Task 2: Print addresses */
-	printf("&letters: %p\n", &letters);
+	/* Static declaration and fill values */
+	char letters[n];
 
-	/* Task 2.5: Show same thing for int array */
-	int digits[10];
+	/* Print address of letters */
+	printf("letters: %p\n", letters);
 
-	/* Task 3: Print addresses using pointer arithmetic (letters + i) syntax */
+	/* Print addresses */
+	printf("\nAddresses using array indexing syntax\n");
+	printf("&letters[i]: ");
+	for(i = 0; i < n; i++) {
+		printf("[%p]", &letters[i]);
+	}
+	printf("\n");
 
-	/* Task 4: Show how to access values using letters[i] syntax */
+	/* Print addresses using pointer arithmetic (letters + i) syntax */
+	/* letters is an address, so if we add to the address, we can get a new
+	 * address */
+	printf("\nAddresses using pointer arithmetic\n");
+	printf("letters + i: ");
+	for(i = 0; i < n; i++) {
+		printf("[%p]", letters + i);
+	}
+	printf("\n");
 
-	/* Task 5: Show how to access values using pointer arithmetic *(letters + i) syntax */
+	/* Fill array with values (use array indexing and pointer arithmetic) */
+	letters[0] = 'a';
+	*(letters + 0) = 'a';
 
-	/* Task 6: Fill array with letters. Pass to function. */
+	/* Show same thing for int array */
+	/* int digits[n]; */
+    /*  */
+	/* printf("digits: %p\n", digits); */
+    /*  */
+	/* printf("\nAddresses using array indexing syntax\n"); */
+	/* printf("&digits[i]: "); */
+	/* for(i = 0; i < n; i++) { */
+	/* 	printf("[%p]", &digits[i]); */
+	/* } */
+	/* printf("\n"); */
+    /*  */
+	/* printf("\nAddresses using pointer arithmetic\n"); */
+	/* printf("digits + i: "); */
+	/* for(i = 0; i < n; i++) { */
+	/* 	printf("[%p]", digits + i); */
+	/* } */
+	/* printf("\n"); */
+    /*  */
 
-	/* Task 7: Print array. Pass to function. */
-
-	/* Task 8: How can we setup a pointer to an array? */
+	/* How can we setup a pointer to an array? */
 	/* char *pletters = letters; */
 	/* char *pletters = &letters[0]; */
 
-	/* Task 9: Increment pointer by one (pletters++) then print array. */
+	/* Increment pointer by one (pletters++) then print array. */
 	/* pletters++; */
 	/* print_letters(pletters, 26); */
 
-	/* Task 9.5: Can we inspect values of other variables this way? (char hello[6] = "hello")*/
+	/* Can we inspect values of other variables this way? (char hello[6] = "hello")*/
 
 	return 0;
 }
 
-static void print_letters(const char letters[], const int count)
+static void print_array(const char values[], const int count)
 {
 	int i;
 	for(i = 0; i < count; i++) {
-		printf("[%c]", letters[i]);
+		printf("[%c]", values[i]);
 	}
 	printf("\n");
 }
 
-static void fill_letters(char letters[], const int count)
+static void fill_array(char values[], const int count)
 {
 	int i;
 	for(i = 0; i < count; i++) {
-		letters[i] = 'a' + i;
+		values[i] = 'a' + i;
 	}
 }
