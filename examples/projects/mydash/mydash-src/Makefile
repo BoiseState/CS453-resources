@@ -3,7 +3,9 @@
 
 CC=gcc
 CFLAGS=-g  -Wall -I. $(INCLUDES) -MMD
-LIBS=-lreadline -lncurses -L../$(LISTINSTALL)/lib/ -lmylib 
+LIBS=-lreadline -lncurses 
+#Change above line to the following to make it link with your linked list!
+#LIBS=-lreadline -lncurses -L../$(LISTINSTALL)/lib/ -lmylib 
 INCLUDES=-I../$(LISTINSTALL)/include
 MV=/bin/mv
 
@@ -11,7 +13,7 @@ PROGS=mydash
 
 all: $(PROGS)
 
-mydash: mydash.o error.o git_version.o Parsing.o RunCmds.o BuiltInCmds.o InitDash.o Job.o JobList.o
+mydash: mydash.o error.o git_version.o 
 	$(CC) $(CFLAGS) -o $@  $^ $(LIBS)
 	$(MV) $@ ../
 
@@ -24,6 +26,7 @@ git_version.c: FORCE
 		echo '"; return GIT_Version; }' >> git_version.c
 
 
+-include *.d
 			
 FORCE:
 ##
