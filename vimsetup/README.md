@@ -6,8 +6,12 @@ This directory contains two hidden files and a hidden directory.
 * .gvimrc
 * .vim/
 
-Copy these files into your home directory and vim will use the new settings and
+Copy these files into your home directory using the following command and vim will use the new settings and
 plugins. Feel free to modify to your liking!
+
+```
+/bin/cp -fr .vimrc .gvimrc .vim ~/
+```
 
 Plugins
 =========
