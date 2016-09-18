@@ -8,7 +8,7 @@
 #include <pthread.h>
 
 
-#define ITERATIONS 3000000000
+#define ITERATIONS 1000000000
 
 void printSchedulingPolicy()
 {
@@ -37,12 +37,12 @@ int main()
   struct sched_param p;
 
 	struct rusage usage;
-	int i;
+	long long i;
 	int A[1000000];
 	
 	printSchedulingPolicy();
 	/* experiment with value of priority below: try setting as high as 98 and then 99! */
-	p.sched_priority = 100;   
+	p.sched_priority = 99;   
 	/* if (sched_setscheduler(0, SCHED_RR, &p) != 0) {*/
 	if (sched_setscheduler(0, SCHED_FIFO, &p) != 0) {
 		printf("Failed to set the scheduler\n");

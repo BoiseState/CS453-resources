@@ -1,4 +1,6 @@
 #!/bin/sh
+# Show number of context switches per unit time (specififed as cmdline argument)
+# 
 
 case $# in
 0) echo 'Usage: wcs.sh <#milliseconds>'; exit 1;;
