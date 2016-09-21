@@ -27,8 +27,8 @@ int main(int argc, char **argv)
     int *zeros; /* dynamically allocated below */
 
 	printf("\nStatically declared array of %d elements...\n", SIZE);
-    debug(digits, SIZE, "digits before init'ing elements");
-    debug(pdigits, SIZE, "pdigits before init'ing digits");
+    debug(digits, SIZE, "digits before init'ing elements (expect a valgrind read error)");
+    debug(pdigits, SIZE, "pdigits before init'ing digits (expect a valgrind read error)");
 
 	/* Initialize values of digits */
 	printf("\nInitializing digits...\n");
@@ -42,10 +42,9 @@ int main(int argc, char **argv)
 	printf("\nDynamically allocating %d elements...\n", n);
     //debug(zeros, n, "zeros before malloc'ing memory"); /* this may cause seg fault (if we are lucky) */
     zeros = (int *) malloc(sizeof(int) * n);
-    debug(zeros, n, "zeros after malloc'ing memory");
+    debug(zeros, n, "zeros after malloc'ing memory (expect a valgrind read error)"); 
 
 	/* Initialize zeros array */
-    debug(zeros, n, "zeros before init'ing elements");
     for (i = 0; i < n; i++) {
         zeros[i] = 0; /* equivalent to *(C+i) */
     }
@@ -65,7 +64,7 @@ int main(int argc, char **argv)
 	/* Free memory (for every malloc there is a free) */
 	printf("\nFreeing zeros...\n");
 	free(zeros);
-    debug(zeros, n*2, "zeros after free");
+    //debug(zeros, n*2, "zeros after free (expect a valgrind read error)");
 
 	/* pdigits is also a pointer. Should I free it? Why or why not? */
 
