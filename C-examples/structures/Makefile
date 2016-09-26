@@ -40,7 +40,7 @@ CFLAGS=-Wall -g
 # name of the rule followed by a colon. After the colon are listed
 # other rules that this rule depends upon. Following the rules line 
 # are one or more command lines that must start with a TAB character.
-all: structs-ex0 
+all: structs-ex0 point-test 
 
 # Another rule below. This depends upon the rule hello.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
@@ -49,9 +49,12 @@ all: structs-ex0
 structs-ex0: structs-ex0.o
 	$(CC) $(CFLAGS) $< -o $@
 
+point-test: point.o point-test.o
+	$(CC) $(CFLAGS) $^ -o $@
+
 # A rule most that all Makefiles should have. This one removes
 # any .o files and other undesirables that are  lying around and 
 # the executable hello and leaves only the source. Useful for running 
 # before submitting a program!
 clean:
-	/bin/rm -f *.o structs-ex0 
+	/bin/rm -f *.o point-test structs-ex0 
