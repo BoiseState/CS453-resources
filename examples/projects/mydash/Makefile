@@ -14,7 +14,7 @@ lib:
 
 dox:
 	echo "Generating documentation using doxygen..."
-	doxygen doxygen-config > doxygen.log 2>&1
+	doxygen doxygen-config > doxygen.log 
 	echo "Use konqueror docs/html/index.html to see docs (or any other browser)"
 
 clean:
