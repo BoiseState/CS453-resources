@@ -1,22 +1,21 @@
 
-INCLUDE=$(INSTALL)/include -I.
-CC=gcc
-CFLAGS=-Wall -g  -I$(INCLUDE) -MMD
 
-PROGS=RandomTestList SimpleTestList UnitTestList
+all: library testcode
 
-all: $(PROGS)
+library:	
+	cd libsrc; make install
 
-RandomTestList: RandomTestList.o Node.o List.o 
-	$(CC) $(CFLAGS) -o $@ $^  $(LFLAGS)
+testcode:
+	cd testsuite; make
 
-SimpleTestList: SimpleTestList.o Node.o List.o
-	$(CC) $(CFLAGS) -o $@ $^   $(LFLAGS)
 
-UnitTestList: UnitTestList.o Node.o List.o
-	$(CC) $(CFLAGS) -o $@ $^   $(LFLAGS)
-
--include *.d
+dox:
+	echo "Generating documentation using doxygen..."
+	doxygen doxygen-config >& doxygen.log
+	echo "Use konqueror docs/html/index.html to see docs (or any other browser)"
 
 clean:
-	rm -f list *.o $(PROGS) *.d
+	cd libsrc; make installclean
+	cd testsuite; make clean
+	/bin/rm -fr docs doxygen.log
+
