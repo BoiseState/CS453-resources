@@ -8,7 +8,7 @@
 #include <pthread.h>
 
 
-#define ITERATIONS 1000000000
+#define ITERATIONS 3000000000
 
 void printSchedulingPolicy()
 {
