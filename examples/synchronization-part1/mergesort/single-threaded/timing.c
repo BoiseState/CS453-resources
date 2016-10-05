@@ -4,6 +4,7 @@
 #include <sys/times.h> /* for times system call */
 #include <sys/time.h>  /* for gettimeofday system call */
 #include <unistd.h>
+#include <error.h>
 
 
 /*

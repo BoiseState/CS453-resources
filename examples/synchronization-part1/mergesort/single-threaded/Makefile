@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-O -Wall
+CFLAGS=-O -Wall -g
 # Uncomment the line below to enable the use of a debugger
 #CPPFLAGS=-g -Wall
 # specify libraries to compile below, e.g. -lm (for the math library)

@@ -12,7 +12,7 @@ void generate_random_array(int A[], int n, int seed);
 void serial_mergesort(int A[], int p, int r); 
 void merge(int A[], int p, int q, int r);
 void insertion_sort(int A[], int p, int r);
-float getMilliSeconds();
+double getMilliSeconds();
 
 
 /*
@@ -74,8 +74,8 @@ int main(int argc, char **argv) {
 	
 	generate_random_array(A,n, seed);
 	
-	float start_time;
-	float  sorting_time;
+	double start_time;
+	double sorting_time;
 
 	// sort the input (and time it)
 	start_time = getMilliSeconds();
@@ -84,11 +84,11 @@ int main(int argc, char **argv) {
 	
 	// print results if correctly sorted otherwise cry foul and exit
 	if (check_if_sorted(A,n)) {
-		printf("Sorting %d elements took %lf seconds.\n", n,  sorting_time);
+		printf("Sorting %d elements took %4.2lf seconds.\n", n,  sorting_time/1000.0);
 	} else { 
 		printf("%s: sorting failed!!!!\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
-	exit(EXIT_SUCCESS); //normal termination
+	exit(EXIT_SUCCESS); 
 } 
