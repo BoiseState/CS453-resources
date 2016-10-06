@@ -40,7 +40,8 @@ CFLAGS=-Wall -g
 # name of the rule followed by a colon. After the colon are listed
 # other rules that this rule depends upon. Following the rules line
 # are one or more command lines that must start with a TAB character.
-all: pointers1 pointers2 1d-arrays 2d-arrays pointer-types array-bounds swap
+all: pointers1 pointers2 1d-arrays 2d-arrays pointer-types array-swap\
+	array-bounds swap
 
 # Another rule below. This depends upon the rule hello.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
@@ -64,6 +65,9 @@ pointers2: pointers2.o
 pointer-types: pointer-types.o
 	$(CC) $(CFLAGS) $< -o $@
 
+array-swap: array-swap.o
+	$(CC) $(CFLAGS) $< -o $@
+
 array-bounds: array-bounds.o
 	$(CC) $(CFLAGS) $< -o $@
 
@@ -75,4 +79,4 @@ swap: swap.o
 # the executable hello and leaves only the source. Useful for running
 # before submitting a program!
 clean:
-	/bin/rm -f *.o pointers1 pointers2 1d-arrays 2d-arrays 3d-arrays pointer-types array-bounds a.out core swap
+	/bin/rm -f *.o pointers1 pointers2 1d-arrays 2d-arrays 3d-arrays pointer-types array-swap array-bounds a.out core swap
