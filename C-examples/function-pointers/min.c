@@ -57,7 +57,7 @@ int main()
 
 	/* Find the index of the smallest value */
 	imin = min((void  **)v, SIZE, compare);
-	printf("%d\n", *v[index]);
+	printf("%d\n", *v[imin]);
 	
 	/* make sure to free array */
 	for(i = 0; i < SIZE; i++) {
