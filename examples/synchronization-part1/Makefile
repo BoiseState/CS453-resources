@@ -14,7 +14,7 @@ LDFLAGS=-lpthread
 
 PROGS= threads-hello-synchronized mycp threads-sem-cp threads-dbl-buf threads-cp checkpoint counting\
 		threads-barrier threads-id bad-bank-balance safe-bank-balance java-progs randomqueues-test\
-	    tdbc tsc mergesort-progs
+	    threads-dbl-buf threads-sem-cp mergesort-progs thread-sum
 
 all: $(PROGS)
 
@@ -55,6 +55,10 @@ safe-bank-balance: safe-bank-balance.o
 
 checkpoint: checkpoint.o 
 	$(CC) $(CFLAGS) checkpoint.o  -o $@ $(LDFLAGS)
+
+thread-sum: thread-sum.o timing.o
+	$(CC) $(CFLAGS) $^  -o $@ $(LDFLAGS)
+
 
 java-progs: 
 	cd java; make
