@@ -131,12 +131,13 @@ synchronization-part1/mergesort/single-threaded/mergesort
 synchronization-part1/mycp
 synchronization-part1/randomqueues-test
 synchronization-part1/safe-bank-balance
-synchronization-part1/tdbc
 synchronization-part1/threads-barrier
 synchronization-part1/threads-cp
 synchronization-part1/threads-hello-synchronized
 synchronization-part1/threads-id
-synchronization-part1/tsc
+synchronization-part1/thread-sum
+synchronization-part1/threads-dbl-buf
+synchronization-part1/threads-sem-cp
 synchronization-part2/daemon_ex1
 synchronization-part2/fifos/color
 synchronization-part2/fifos/color.d

@@ -35,10 +35,10 @@ threads-cp: $(OBJS) threads-cp.o
 	$(CC) $(CFLAGS)  $(OBJS)  threads-cp.o -o $@ $(LDFLAGS)
 
 threads-sem-cp:  threads-sem-cp.o
-	$(CC) $(CFLAGS)  threads-sem-cp.o -o tsc $(LDFLAGS)
+	$(CC) $(CFLAGS)  threads-sem-cp.o -o $@ $(LDFLAGS)
 
 threads-dbl-buf: $(OBJS) threads-dbl-buf.o
-	$(CC) $(CFLAGS)  $(OBJS) threads-dbl-buf.o -o tdbc $(LDFLAGS)
+	$(CC) $(CFLAGS)  $(OBJS) threads-dbl-buf.o -o $@ $(LDFLAGS)
 
 
 threads-id:	threads-id.o
