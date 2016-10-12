@@ -7,13 +7,7 @@
 
 JFLAGS=
 
-CC=gcc
-#CFLAGS=-I. -g   -Wall
-CFLAGS=-I. -O  -Wall
-LDFLAGS=-lpthread
-OBJS=semaphore.o
-
-all: Account.class TestAccount.class ReentrantAccount.class
+all: Account.class TestAccount.class ThreadsafeAccount.class
 
 clean:
 	/bin/rm -f *.o *.class log*

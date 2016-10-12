@@ -1,5 +1,5 @@
 
-public class ReentrantAccount extends Account
+public class ThreadsafeAccount extends Account
 {
 	public synchronized void deposit(double amount) 
 	{ 

@@ -22,7 +22,7 @@ public class TestAccount
 		int iterations = Integer.parseInt(args[1]);
 		Account account = new Account();
 		if (args[2].compareTo("good") == 0) 
-			account = new ReentrantAccount();
+			account = new ThreadsafeAccount();
 
 
 		Thread [] tids = new Thread[numThreads];
