@@ -2,6 +2,8 @@
 CC=gcc
 CFLAGS=-g -Wall -MMD
 
+PROGS=dup dup1 dup2 pipe2 pipe3 pipe4 pipe-hello-1 pipe-hello-2 pipe-talk
+
 
 all: dup pipes subdirs
 
@@ -13,24 +15,22 @@ dup1: dup1.o error.o
 dup2: dup2.o error.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-pipes: p1 p2 p3 p4 hello-pipe hello-pipe-two pipe-talk
+pipes: pipe2 pipe3 pipe4 hello-pipe-1 hello-pipe-2 pipe-talk
 
-p1: pipe1.o error.o
-	$(CC) $(CFLAGS) -o $@ $^
 
-p2: pipe2.o error.o
+pipe2: pipe2.o error.o
 	$(CC) $(CFLAGS) -o $@ $^
 	
-p3: pipe3.o error.o
+pipe3: pipe3.o error.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-p4: pipe4.o error.o
+pipe4: pipe4.o error.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-hello-pipe: hello-pipe.o error.o
+hello-pipe-1: hello-pipe-1.o error.o
 	$(CC) $(CFLAGS) -o $@ $^
 
-hello-pipe-two: hello-pipe-two.o error.o
+hello-pipe-2: hello-pipe-2.o error.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 pipe-talk: pipe-talk.o error.o
@@ -42,5 +42,5 @@ subdirs:
 	cd anagrams; make
 
 clean:
-	/bin/rm -f *.o p1 p2 p3 p4 dup1 dup2 hello-pipe hello-pipe-two pipe-talk
+	/bin/rm -f *.o *.d $(PROGS) 
 	cd anagrams; make clean
