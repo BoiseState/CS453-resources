@@ -24,4 +24,4 @@ print-gid: print-gid.o error.o
 -include: *.d
 
 clean:
-	/bin/rm -f *.o $(PROGS)
+	/bin/rm -f *.o *.d $(PROGS)

@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <pthread.h>
 
-/*#define DEBUG */
+#define DEBUG 
 
 #define MODE 0666
 #define MAX_BUF_SIZE 65536

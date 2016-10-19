@@ -34,5 +34,5 @@ installclean:  clean
 	rm -f $(INCLUDE)/Node.h
 
 clean:
-	rm -f list *.o a.out core libmylib.a libmylib.so
+	rm -f list *.o *.d a.out core libmylib.a libmylib.so
 

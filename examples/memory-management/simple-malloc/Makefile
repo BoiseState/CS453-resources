@@ -16,4 +16,4 @@ simple-malloc-random-test: simple-malloc-random-test.o simple-malloc.o
 -include: *.d
 
 clean:
-	/bin/rm -f *.o a.out  $(PROGS)
+	/bin/rm -f *.o *.d a.out  $(PROGS)

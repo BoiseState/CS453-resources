@@ -27,4 +27,4 @@ sig6: signal-ex6.o error.o
 -include: *.d
 
 clean:
-	/bin/rm -f *.o  $(PROGS)
+	/bin/rm -f *.o *.d  $(PROGS)
