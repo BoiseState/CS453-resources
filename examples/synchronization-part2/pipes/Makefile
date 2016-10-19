@@ -2,7 +2,7 @@
 CC=gcc
 CFLAGS=-g -Wall -MMD
 
-PROGS=dup dup1 dup2 pipe2 pipe3 pipe4 pipe-hello-1 pipe-hello-2 pipe-talk
+PROGS=dup dup1 dup2 pipe2 pipe3 pipe4 hello-pipe-1 hello-pipe-2 pipe-talk
 
 
 all: dup pipes subdirs
