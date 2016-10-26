@@ -1,38 +1,38 @@
 
-/* files-processes/fork-and-exec.c */
+/* files-processes/fork-and-exec-chrome.c */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
+static char *build_query_url(char *term);
+
 /**
- * Forks off a child process that will execute the specified program.
- * Parent will wait for child to terminate before exiting.
+ * Forks off a child process that will open google-chrome with the specified
+ * query. Parent will wait for child to terminate before exiting.
  *
  * man 3 execlp
  */
 int main(int argc, char *argv[])
 {
     pid_t pid;
-    char *exe;
 
     /* check command line args in parent */
-    if(argc == 1) {
-        fprintf(stderr, "Usage: %s <exe>\n", argv[0]);
+    if(argc != 2) {
+        fprintf(stderr, "Usage: %s <\"search query\">\n", argv[0]);
         exit(EXIT_FAILURE);
     }
-
-    /* grab the command we are going to exec */
-    exe = argv[1];
 
     if ((pid = fork()) < 0) {
         perror("fork");
         exit(errno);
     } else if (pid == 0) {  /* child */
-        execlp(exe, exe, (char *) NULL);
+        char *url = build_query_url(argv[1]);
+        execlp("google-chrome","google-chrome", "--new-window", url, (char *) NULL);
         /* if we get this far, something is not right */
         perror("exec failed");
         exit(errno);
@@ -49,4 +49,17 @@ int main(int argc, char *argv[])
     }
     printf("Parent exiting\n");
     exit(EXIT_SUCCESS);
+}
+
+/**
+ * Builds google search url to be passed as argument when launching
+ * google-chrome.
+ */
+static char *build_query_url(char *term)
+{
+    char *searchUrl= "https://www.google.com/search?q=";
+    char *query = malloc(sizeof(char) * (strlen(searchUrl)+1 + strlen(term)+1));
+    strcpy(query, searchUrl);
+    strcat(query, term);
+    return query;
 }
