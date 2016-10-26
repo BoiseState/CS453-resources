@@ -8,7 +8,14 @@
 #define MAXNUM 20000
 #define TIMEOUT 30
 
-int main(void)
+/**
+ * A "fork bomb". Forks off as many children as it can until it reaches the
+ * system limit. To see the max user process limit on your system, use
+ *
+ * ulimit -u
+ * ulimit -a will show all limits for various system resources
+ */
+int main(int argc, char *argv[])
 {
     pid_t pid;
     int i;
