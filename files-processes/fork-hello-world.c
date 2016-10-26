@@ -8,7 +8,7 @@
 
 /* #define DEBUG */
 
-void print_message(char *msg);
+static void print_message(char *msg);
 
 /**
  * Demonstrates creating a two child processes using the fork system call.
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     exit(EXIT_SUCCESS);
 }
 
-void print_message(char *message)
+static void print_message(char *message)
 {
     printf("%s ", message); /* child is the only one to get in here */
     fflush(NULL);

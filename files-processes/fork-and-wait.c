@@ -1,22 +1,31 @@
-/* ch2/fork-and-wait.c */
+/* files-processes/fork-and-wait.c */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
 #define DEBUG 1
 
-void childs_play();
-void err_sys(char *msg);
+static void childs_play();
 
-int main(void)
+/**
+ * Demonstrates creating a child process using the fork system call and
+ * waiting for it to finish before terminating.
+ *
+ * For more info on wait and waitpid, see
+ *
+ * man 2 wait
+ */
+int main(int argc, char *argv[])
 {
-    pid_t   pid;
+    pid_t pid;
 
     if ((pid = fork()) < 0) {
-        err_sys("fork error");
+        perror("fork");
+        exit(errno);
     } else if (pid == 0) { /* child */
         childs_play();
         exit(EXIT_SUCCESS);
@@ -25,35 +34,22 @@ int main(void)
     /* parent continues concurrently with child */
 
 #ifdef DEBUG
-    printf("Created child with pid %d\n",pid);
-    sleep(4);
+    printf("[%d] Created child with pid %d\n", getpid(), pid);
 #endif
 
-    printf("Shoo away!\n");
-
-    /* wait for normal termination of child process */
+    /* parent waits for normal termination of child process */
     if (waitpid(pid, NULL, 0) != pid) {
-        err_sys("waitpid error");
+        perror("waitpid"); /* something went wrong */
+        exit(errno);
     }
+
+    printf("[%d] Shoo away!\n", getpid());
+
     exit(EXIT_SUCCESS);
 }
 
-void childs_play()
+static void childs_play()
 {
-#ifdef DEBUG
-    sleep(3);
-#endif
-
-    printf("Hey, I need some money! \n");
-
-#ifdef DEBUG
+    printf("[%d] Hey, I need some money! \n", getpid());
     sleep(1);
-#endif
-}
-
-void err_sys(char *msg)
-{
-    fprintf(stderr, msg);
-    fflush(NULL); /* flush all output streams */
-    exit(EXIT_FAILURE); /* exit abnormally */
 }

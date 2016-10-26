@@ -7,7 +7,7 @@
 
 /**
  * Demonstrates creating a single child process using the fork system call.
- * For more info on fork and getpid, see 
+ * For more info on fork and getpid, see
  * man 2 fork
  * man 2 getpid
  */
