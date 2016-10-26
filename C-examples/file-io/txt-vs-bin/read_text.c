@@ -12,9 +12,9 @@
  */
 static int read_record(struct record *r, FILE *fin)
 {
-	int chars = 0;
-	chars = fscanf(fin, "%d %lf %lf %lf\n", &(r->key), &(r->value1), &(r->value2), &(r->value3));
-	return (chars > 0) ? 1 : -1;
+    int chars = 0;
+    chars = fscanf(fin, "%d %lf %lf %lf\n", &(r->key), &(r->value1), &(r->value2), &(r->value3));
+    return (chars > 0) ? 1 : -1;
 }
 
 
@@ -27,29 +27,29 @@ static int read_record(struct record *r, FILE *fin)
  */
 static int read_records(struct record *r, unsigned int n, FILE *fin)
 {
-	int i;
-	for(i=0; i < n; i++) {
-		if(read_record(r, fin) != 1)
-			break;
-		r++;
-	}
-	return i;
+    int i;
+    for(i=0; i < n; i++) {
+        if(read_record(r, fin) != 1)
+            break;
+        r++;
+    }
+    return i;
 }
 
 int main(int argc, char **argv)
 {
-	const char *filename = "data.txt";
+    const char *filename = "data.txt";
     FILE *fin;
-	unsigned int n;
-	int read;
-	struct record *records;
+    unsigned int n;
+    int read;
+    struct record *records;
 
-	if(argc != 2) {
-		fprintf(stderr, "Usage: %s <number records>\n", argv[0]);
-		exit(EXIT_FAILURE);
-	}
+    if(argc != 2) {
+        fprintf(stderr, "Usage: %s <number records>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
 
-	n = atoi(argv[1]);
+    n = atoi(argv[1]);
 
     fin = fopen(filename, "r");
     if (!fin) {
@@ -57,15 +57,15 @@ int main(int argc, char **argv)
         exit(errno);
     }
 
-	fprintf(stderr, "Reading %d records...\n", n);
+    fprintf(stderr, "Reading %d records...\n", n);
 
-	records = (struct record *) malloc(sizeof(struct record) * n);
+    records = (struct record *) malloc(sizeof(struct record) * n);
     read = read_records(records, n, fin);
-	if(read != n) {
-		fprintf(stderr, "Failed to read %d records. Found %d\n", n, read);
-	}
-	print_records(records, read);
-	free(records);
+    if(read != n) {
+        fprintf(stderr, "Failed to read %d records. Found %d\n", n, read);
+    }
+    print_records(records, read);
+    free(records);
 
     fclose(fin);
 

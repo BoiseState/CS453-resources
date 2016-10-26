@@ -23,8 +23,8 @@ int main(int argc, char **argv)
     }
     fseek(fin, 0, SEEK_END);
     size = ftell(fin);
-    printf("Size of the file %s = %lf MB [%ld bytes]\n", argv[1], 
-									(double) size/(1024*1024), size);
+    printf("Size of the file %s = %lf MB [%ld bytes]\n", argv[1],
+           (double) size/(1024*1024), size);
 
     // Alternate method. Not fully portable. POSIX standard, not C standard.
     /*struct stat st;
