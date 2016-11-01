@@ -22,6 +22,7 @@ static void childs_play();
 int main(int argc, char *argv[])
 {
     pid_t pid;
+    int status;
 
     if ((pid = fork()) < 0) {
         perror("fork");
@@ -38,9 +39,11 @@ int main(int argc, char *argv[])
 #endif
 
     /* parent waits for normal termination of child process */
-    if (waitpid(pid, NULL, 0) != pid) {
-        perror("waitpid"); /* something went wrong */
+    if (waitpid(pid, &status, 0) != pid) {
+        perror("waitpid");
         exit(errno);
+    } else if(WIFEXITED(status)) { /* check if child exited normally */
+        printf("[%d] Child exited with status %d\n", getpid(), WEXITSTATUS(status));
     }
 
     printf("[%d] Shoo away!\n", getpid());

@@ -18,6 +18,7 @@
 int main(void)
 {
     pid_t pid1, pid2; /* keep track of both so we can wait for both */
+    int status1, status2;
 
     printf("original process, pid = %d\n", getpid());
 
@@ -41,13 +42,20 @@ int main(void)
         exit(EXIT_SUCCESS);
     }
 
-    if (waitpid(pid1, NULL, 0) != pid1) { /* wait for the first child */
+    /* wait for the first child */
+    if (waitpid(pid1, &status1, 0) != pid1) {
         perror("waitpid");
         exit(errno);
+    } else if(WIFEXITED(status1)) { /* check if first child exited normally */
+        printf("Child [%d] exited with status %d\n", pid1, WEXITSTATUS(status1));
     }
-    if (waitpid(pid2, NULL, 0) != pid2) { /* wait for the second child */
+
+    /* wait for the second child */
+    if (waitpid(pid2, &status2, 0) != pid2) {
         perror("waitpid");
         exit(errno);
+    } else if(WIFEXITED(status2)) { /* check if second child exited normally */
+        printf("Child [%d] exited with status %d\n", pid2, WEXITSTATUS(status2));
     }
 
     exit(EXIT_SUCCESS);

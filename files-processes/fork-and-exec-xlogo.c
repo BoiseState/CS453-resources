@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -37,8 +38,14 @@ int main(int argc, char **argv)
         }
     }
 
-    /* other code */
-    /*for (i = 0; i < 3; i++)*/
-    waitpid(-1, &status, 0);
-    exit(0);
+    /* wait for any process to terminate */
+    if((pid = waitpid(-1, &status, 0)) == -1) {
+        perror("waitpid");
+    } else if(WIFEXITED(status)) {
+        printf("[%d] child [%d] exited with status %d\n", getpid(), pid, WEXITSTATUS(status));
+    } else if(WIFSIGNALED(status)) {
+        printf("[%d] child [%d] terminated by signal %s\n", getpid(), pid, strsignal(WTERMSIG(status)));
+    }
+
+    exit(EXIT_SUCCESS);
 }

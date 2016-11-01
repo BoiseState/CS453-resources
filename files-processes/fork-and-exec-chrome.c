@@ -20,6 +20,7 @@ static char *build_query_url(char *term);
 int main(int argc, char *argv[])
 {
     pid_t pid;
+    int status;
 
     /* check command line args in parent */
     if(argc != 2) {
@@ -43,10 +44,17 @@ int main(int argc, char *argv[])
 
     /* wait for normal termination of child process */
     printf("Parent waiting for child to finish...\n");
-    if (waitpid(pid, NULL, 0) != pid) {
+    if (waitpid(pid, &status, 0) != pid) {
         perror("waitpid");
         exit(errno);
+    } else if(WIFEXITED(status)) {
+        printf("[%d] child [%d] exited with status %d\n",
+               getpid(), pid, WEXITSTATUS(status));
+    } else if(WIFSIGNALED(status)) {
+        printf("[%d] child [%d] terminated by signal %s\n",
+               getpid(), pid, strsignal(WTERMSIG(status)));
     }
+
     printf("Parent exiting\n");
     exit(EXIT_SUCCESS);
 }
