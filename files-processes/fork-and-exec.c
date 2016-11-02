@@ -18,26 +18,24 @@
 int main(int argc, char *argv[])
 {
     pid_t pid;
-    char *exe;
     int status;
+    char *exe = NULL;   /* program to exec */
+    char **args = NULL; /* args to pass to exec'd program */
 
     /* check command line args in parent */
-    if(argc <= 1) {
-        fprintf(stderr, "Usage: %s <exe> [<args>...]\n", argv[0]);
-        exit(EXIT_FAILURE);
+    if(argc >= 2) {
+        exe = argv[1];
+        args = &argv[1];
     }
-
-    /* grab the command we are going to exec */
-    exe = argv[1];
 
     if ((pid = fork()) < 0) {
         perror("fork");
         exit(errno);
     } else if (pid == 0) {  /* child */
-        if(argc == 1) { /* no args, use execlp */
-            execlp(exe, exe, (char *) NULL);
+        if(exe == NULL) { /* no args, use execlp */
+            execlp("ls", "ls", (char *) NULL);
         } else { /* if there are args, use execvp (or could always use vp)*/
-            execvp(exe, &argv[1]);
+            execvp(exe, args);
         }
         /* if we get this far, something is not right */
         perror("exec failed");
