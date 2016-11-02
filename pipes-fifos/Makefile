@@ -2,7 +2,7 @@
 CC=gcc
 CFLAGS=-Wall -MMD -g
 
-PROGS=pipe-talk hello-pipe hello-pipe-two
+PROGS=pipe-talk hello-pipe hello-pipe-two mypipe
 
 all:  $(PROGS)
 	cd fifo; make
@@ -14,6 +14,9 @@ hello-pipe: hello-pipe.o error.o
 	$(CC) $(CFLAGS) $^  -o $@
 
 hello-pipe-two: hello-pipe-two.o error.o
+	$(CC) $(CFLAGS) $^  -o $@
+
+mypipe: mypipe.o 
 	$(CC) $(CFLAGS) $^  -o $@
 
 -include: *.d
