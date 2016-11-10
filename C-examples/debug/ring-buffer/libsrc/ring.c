@@ -15,44 +15,34 @@ void init_buffer()
     for(i = 0; i < MAX_LOG_ENTRY; i++) {
         buff.log[i][0]='\0';
     }
-	buff.curr = 0; 
+    buff.curr = 0;
 }
 
-//get the current timestamp (localtime) from the system
-static char *getTimeString() 
+/**
+ * Return the current timestamp (localtime) from the system.
+ */
+static char *getTimeString()
 {
-    time_t myTime;
-    myTime = time(NULL); //this is a system call
-	char *timeString = ctime(&myTime);
-	timeString[strlen(timeString)-1] = '\0'; //erase the newline at the end
-	return timeString;
+    time_t myTime = time(NULL); //this is a system call
+    char *timeString = ctime(&myTime);
+    timeString[strlen(timeString)-1] = '\0'; //erase the newline at the end
+    return timeString;
 }
-
 
 void log_msg(char *entry)
 {
-	if (entry == NULL) {
-		printf("Skipping null log entry!\n");
-		return;
-	}
+    if (entry == NULL) {
+        printf("Skipping null log entry!\n");
+        return;
+    }
 
-	char *timeString = getTimeString();
     printf("Adding log entry into buffer\n");
-    int idx = buff.curr % MAX_LOG_ENTRY;
-    strncpy(buff.log[idx], timeString, MAX_STRING_LENGTH - 1);
-    strncat(buff.log[idx], " -- ", 4);
-    strncat(buff.log[idx], entry, MAX_STRING_LENGTH - strlen(timeString) - 4);
 
-    /*
-     * From the documentation of strncpy/strncat:
-     * No null-character is implicitly appended at the end of destination
-     * if source is longer than num. Thus, in this case, destination shall
-     * not be considered a null terminated C string
-     * (reading it as such would overflow).
-     *
-     * Thus we need to make sure that we null terminate the string;
-     */
-    buff.log[idx][MAX_STRING_LENGTH-1]='\0';
+    char *timeString = getTimeString();
+    int idx = buff.curr % MAX_LOG_ENTRY;
+
+    snprintf(buff.log[idx], MAX_STRING_LENGTH, "%s -- %s", timeString, entry);
+
     buff.curr++;
 }
 
@@ -64,8 +54,8 @@ void log_msg(char *entry)
  * event. This also needs to be fixed so that it prints the log messages in the
  * right order (from the oldest to the newest).
  *
- * This method should write all the current entries to disk in the right order 
- * (from the oldest to the newest). We will use the constant log_name as the 
+ * This method should write all the current entries to disk in the right order
+ * (from the oldest to the newest). We will use the constant log_name as the
  * name of the file.
  */
 static void dump_buffer()
