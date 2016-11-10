@@ -2,7 +2,7 @@
 module="example"
 device="example"
 group="wheel"
-mode="644"
+mode="666"
 
 # invoke insmod with all arguments we got
 if test -f "$module.ko"
