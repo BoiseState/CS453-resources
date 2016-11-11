@@ -17,7 +17,7 @@ int  main()
 
     pthread_join(thread1, NULL); /* wait for thread1 to finish */
     pthread_join(thread2, NULL); /* wait for thread2 to finish */
-	printf("\n");
+    printf("\n");
     exit(0);
 }
 

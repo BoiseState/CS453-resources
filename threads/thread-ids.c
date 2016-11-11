@@ -36,14 +36,14 @@ int main(int argc, char **argv)
     for (i = 0; i < n; i++)
         pthread_join(tid[i], NULL);
 
-	free (tid);
+    free (tid);
     exit(EXIT_SUCCESS);
 }
 
 void *run(void *ptr)
 {
-	int id = *(int *) ptr;
-	free(ptr); // we are done with it, free it to avoid a leak
+    int id = *(int *) ptr;
+    free(ptr); // we are done with it, free it to avoid a leak
 
     printf("I am thread %d with thread id %X\n", id, (unsigned int) pthread_self());
     pthread_exit(NULL);

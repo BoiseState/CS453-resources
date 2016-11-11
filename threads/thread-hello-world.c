@@ -11,7 +11,7 @@ gcc threads-hello-world.c -lpthread
 #include <stdio.h>
 #include <pthread.h>
 
-void *print_message_function( void *ptr );
+static void *print_message_function( void *ptr );
 
 int  main()
 {
@@ -21,17 +21,18 @@ int  main()
 
     pthread_create(&thread1, NULL, print_message_function, (void*) message1);
     pthread_create(&thread2, NULL, print_message_function, (void*) message2);
-    /*sleep(1);*/
 
-    /*pause();*/
+    /* sleep(1); */
+    /* pause(); */
     exit(EXIT_SUCCESS);
 }
 
-void *print_message_function(void *ptr)
+static void *print_message_function(void *ptr)
 {
     char *message;
     message = (char *) ptr;
     printf("%s ", message);
+    fflush(stdout);
     /*pause();*/
     pthread_exit(NULL);
 }
