@@ -1,7 +1,7 @@
 
 CC=gcc
 CFLAGS=-Wall -g  
-PROGS=filesize readfile subdirs
+PROGS=filesize readfile writefile subdirs
 
 
 all: $(PROGS) 
@@ -10,6 +10,9 @@ filesize: filesize.o
 	$(CC) $(CFLAGS)  -o $@ $<
 
 readfile: readfile.o
+	$(CC) $(CFLAGS)  -o $@ $<
+
+writefile: writefile.o
 	$(CC) $(CFLAGS)  -o $@ $<
 
 subdirs:
