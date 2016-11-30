@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     int num_threads, count;
     pthread_t *tids;
 
-    if (argc < 2) {
+    if (argc < 3) {
         fprintf(stderr, "Usage: %s <num-threads> <iterations>\n", argv[0]);
         exit(1);
     }
