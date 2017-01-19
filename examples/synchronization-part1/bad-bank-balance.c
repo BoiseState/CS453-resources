@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     for (i=0; i<numThreads; i++)
         pthread_join(tids[i], NULL);
 
-	printf("final balance = %lf\n", myacct->balance);
+    printf("final balance = %lf\n", myacct->balance);
     exit(0);
 }
 

@@ -19,4 +19,4 @@ test1: test1.c
 	$(CC) -Wall -I. -L. test1.c -lmylib -o $@
 
 clean:
-	/bin/rm -f *.o libmylib.so a.out core test1 test1-static
+	/bin/rm -f *.o libmylib.so libmylib.a a.out core test1 test1-static

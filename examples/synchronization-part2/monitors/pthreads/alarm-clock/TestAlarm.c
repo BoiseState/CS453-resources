@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     for (i=0; i<numThreads; i++)
         pthread_join(tids[i], NULL);
 
-	pthread_mutex_destroy(&mutex);
+    pthread_mutex_destroy(&mutex);
     exit(0);
 }
 
