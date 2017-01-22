@@ -1,12 +1,10 @@
-#LISTINSTALL is exported by the top-level Makefile
-#We are one level below, so we add .. to the front of LISTINSTALL
-
+LISTINSTALL=../../p0
 CC=gcc
 CFLAGS=-g  -Wall -I. $(INCLUDES) -MMD
 LIBS=-lreadline -lncurses 
 #Change above line to the following to make it link with your linked list!
-#LIBS=-lreadline -lncurses -L../$(LISTINSTALL)/lib/ -lmylib 
-INCLUDES=-I../$(LISTINSTALL)/include
+#LIBS=-lreadline -lncurses -L$(LISTINSTALL)/lib/ -lmylib 
+INCLUDES=-I$(LISTINSTALL)/include
 MV=/bin/mv
 
 PROGS=mydash
