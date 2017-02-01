@@ -1,68 +1,72 @@
-/* ch2/fork-hello-world.c */
+/* files-processes/fork-hello-world.c */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include <sys/types.h>
 
-void print_message_function( void *ptr );
-void err_sys(char *msg);
+/* #define DEBUG */
 
-/* #define DEBUG 1 */
+static void print_message(char *msg);
 
-int main(void)
+/**
+ * Demonstrates creating a two child processes using the fork system call.
+ * For more info on fork and getpid, see
+ *
+ * man 2 fork
+ * man 2 getpid
+ *
+ * Notice that the order in which Hello and World are printed is not always the
+ * same and the parent doesn't necessarily wait for the children to finish.
+ */
+int main(int argc, char *argv[])
 {
-    pid_t   pid;
-    char *message1 = "Goodbye";
+    pid_t pid;
+    char *message1 = "Hello";
     char *message2 = "World";
 
-#if DEBUG
-    printf("\n\nbefore fork\n");
+#ifdef DEBUG
+    printf("\n\n[%d] Before fork\n", getpid());
 #endif
 
-    if ((pid = fork()) < 0) {
-        err_sys("fork error");
+    /* create a child process */
+    if ((pid = fork()) < 0) { /* uh-oh, something went wrong */
+        perror("fork");
+        exit(errno);
     } else if (pid == 0) {  /* first child */
-        print_message_function(message1);
-#if DEBUG
-        sleep(2);
-#endif
-        exit(EXIT_SUCCESS);
+        print_message(message1);
+        /* sleep(2); */
+        exit(EXIT_SUCCESS); /* first child exits */
     }
-
-#if DEBUG
-    printf("Created child with pid %d\n",pid);
-#endif
 
     /* parent continues and creates another child */
-    if ((pid = fork()) < 0) {
-        err_sys("fork error");
-    } else if (pid == 0) {  /* second child */
-        print_message_function(message2);
-        printf("\n");
-#if DEBUG
-        sleep(2);
+#ifdef DEBUG
+    printf("[%d] Created child with pid %d\n", getpid(), pid);
 #endif
+
+    /* create a child process */
+    if ((pid = fork()) < 0) {
+        perror("fork");
+        exit(errno);
+    } else if (pid == 0) {  /* second child */
+        print_message(message2);
+        /* sleep(2); */
         exit(EXIT_SUCCESS);
     }
-#if DEBUG
-    printf("Created child with pid %d\n",pid);
-    /*sleep(2);*/
+
+
+    /* parent continues here */
+#ifdef DEBUG
+    printf("[%d] Created child with pid %d\n", getpid(), pid);
 #endif
+    /* sleep(2); */
+
     exit(EXIT_SUCCESS);
 }
 
-void print_message_function( void *ptr )
+static void print_message(char *message)
 {
-    char *message;
-    message = (char *) ptr;
-    printf("%s ", message);
+    printf("%s ", message); /* child is the only one to get in here */
     fflush(NULL);
-}
-
-void err_sys(char *msg)
-{
-    fprintf(stderr, msg);
-    fflush(NULL); /* flush all output streams */
-    exit(EXIT_FAILURE); /* exit abnormally */
 }

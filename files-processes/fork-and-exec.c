@@ -1,60 +1,60 @@
 
-/* ch2/fork-and-exec.c */
+/* files-processes/fork-and-exec.c */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <string.h>
-void err_sys(char *msg);
 
 /**
- * Builds google search url to be passed as argument when launching
- * google-chrome.
+ * Forks off a child process that will execute the specified program.
+ * Parent will wait for child to terminate before exiting.
+ *
+ * man 3 execlp
  */
-char *buildQueryUrl(char *term)
-{
-    char *searchUrl= "https://www.google.com/search?q=";
-    char *query = malloc(sizeof(char) * (strlen(searchUrl)+1 + strlen(term)+1));
-    strcpy(query, searchUrl);
-    strcat(query, term);
-    return query;
-}
-
 int main(int argc, char *argv[])
 {
-    pid_t   pid;
+    pid_t pid;
+    int status;
+    char *exe = NULL;   /* program to exec */
+    char **args = NULL; /* args to pass to exec'd program */
+
+    /* check command line args in parent */
+    if(argc >= 2) {
+        exe = argv[1];
+        args = &argv[1];
+    }
 
     if ((pid = fork()) < 0) {
-        err_sys("fork error");
+        perror("fork");
+        exit(errno);
     } else if (pid == 0) {  /* child */
-        if(argc == 1) {
-            execlp("./print-pid","print-pid",(char *) NULL);
-        } else if(argc == 2) {
-            char *url = buildQueryUrl(argv[1]);
-            execlp("google-chrome","google-chrome", "--new-window", url, (char *) NULL);
-            /* execlp("gvim","gvim", argv[1], (char *) NULL); */
+        if(exe == NULL) { /* no args, use execlp */
+            execlp("ls", "ls", (char *) NULL);
+        } else { /* if there are args, use execvp (or could always use vp)*/
+            execvp(exe, args);
         }
-        err_sys("exec failed");
-        exit(EXIT_FAILURE);
+        /* if we get this far, something is not right */
+        perror("exec failed");
+        exit(errno);
     }
-    printf("Created child with pid %d\n",pid);
 
     /* parent continues concurrently with child */
+    printf("Created child with pid %d\n",pid);
 
-    printf("Parent waiting for child to finish...\n");
     /* wait for normal termination of child process */
-    if (waitpid(pid, NULL, 0) != pid) {
-        err_sys("waitpid error");
+    printf("Parent waiting for child to finish...\n");
+    if (waitpid(pid, &status, 0) != pid) {
+        perror("waitpid");
+        exit(errno);
+    } else if(WIFEXITED(status)) {
+        printf("[%d] Child exited with status %d\n", getpid(), WEXITSTATUS(status));
+    } else if(WIFSIGNALED(status)) {
+        printf("[%d] Child terminated by signal %s\n", getpid(), strsignal(WTERMSIG(status)));
     }
     printf("Parent exiting\n");
     exit(EXIT_SUCCESS);
-}
-
-void err_sys(char *msg)
-{
-    fprintf(stderr, msg);
-    fflush(NULL); /* flush all output streams */
-    exit(EXIT_FAILURE); /* exit abnormally */
 }

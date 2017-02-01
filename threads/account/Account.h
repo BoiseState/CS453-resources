@@ -2,11 +2,11 @@
 #ifndef __ACCOUNT_H
 #define __ACCOUNT_H
 
-/** 
+/**
  * A simple monitor example that uses a mutex to protect against race conditions.
- * 
+ *
  * @author: amit
- */ 
+ */
 
 #include <pthread.h>
 
@@ -17,8 +17,8 @@ typedef struct account Account;
 typedef struct account *AccountPtr;
 
 struct account {
-	double balance;
-	pthread_mutex_t mutex;
+    double balance;
+    pthread_mutex_t mutex;
 };
 
 

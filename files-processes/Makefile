@@ -10,9 +10,9 @@ JFLAGS=
 .java.class:
 	javac $(JFLAGS) $<
 
-PROGS=mycp stdc-mycp fork-and-wait fork-hello-world fork-child-grandchild fork-and-exec\
-	  fork-two-children  fork-test simple-shell print-max-no-procs print-pid\
-	  print-buffer-sizes skeleton fork-and-exec-xlogo\
+PROGS=mycp stdc-mycp fork-and-wait fork-hello fork-hello-world fork-child-grandchild\
+	  fork-and-exec fork-two-children  fork-test simple-shell print-max-no-procs\
+	  print-pid print-buffer-sizes skeleton fork-and-exec-xlogo fork-and-exec-chrome\
 
 all: $(PROGS)
 
@@ -21,6 +21,9 @@ mycp: mycp.o
 
 stdc-mycp: stdc-mycp.o
 	$(CC) $(CFLAGS) -o stdc-mycp stdc-mycp.o
+
+fork-hello: fork-hello.o
+	$(CC) $(CFLAGS) -o $@ $< 
 
 fork-hello-world: fork-hello-world.o
 	$(CC) $(CFLAGS) -o $@ fork-hello-world.o
@@ -56,6 +59,9 @@ skeleton: skeleton.o
 	$(CC) $(CFLAGS) -o $@ $<
 
 fork-and-exec-xlogo: fork-and-exec-xlogo.o
+	$(CC) $(CFLAGS) -o $@ $<
+
+fork-and-exec-chrome: fork-and-exec-chrome.o
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
