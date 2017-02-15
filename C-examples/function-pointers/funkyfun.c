@@ -43,6 +43,7 @@ int main(int argc, char **argv)
 	/* repeatln is a function that takes int and char * args and returns void. */
 	print = repeatln;
 	(*print)(3, "Hello");
+    /* This is also valid:  print(3, "Hello"); */
 
 	return 0;
 }

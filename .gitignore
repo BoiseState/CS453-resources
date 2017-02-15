@@ -28,9 +28,34 @@
 *.x86_64
 *.hex
 
+#Eclipse stuff
+*.cproject
+*.project
 
 # Vim stuff
 *.sw[a-p]
 
-#Mac crap
+# Mac stuff
 .DS_Store
+
+# Eclipse stuff
+*.cproject
+*.project
+
+#
+C-examples/intro/cmdline
+C-examples/intro/cmdline-str
+C-examples/intro/conv
+C-examples/intro/count-digits
+C-examples/intro/cp1
+C-examples/intro/cp2
+C-examples/intro/helloworld
+C-examples/intro/printtest
+C-examples/intro/range
+C-examples/intro/rmblanks.c
+C-examples/intro/static
+C-examples/intro/wc1
+C-examples/intro/wc2
+C-examples/intro/wc3
+C-examples/intro/width
+

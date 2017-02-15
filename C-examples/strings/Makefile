@@ -24,7 +24,7 @@
 # macro CFLAGS defines the default set of options or flags used 
 # with the C compiler.
 CC=gcc
-CFLAGS=-Wall -g  
+CFLAGS=-Wall  -g
 
 # Recognize files with .c and .o extensions
 .SUFFIXES: .o .c
@@ -40,7 +40,7 @@ CFLAGS=-Wall -g
 # name of the rule followed by a colon. After the colon are listed
 # other rules that this rule depends upon. Following the rules line 
 # are one or more command lines that must start with a TAB character.
-all: strings-ex1 strings-ex2 strings-ex3 reverse
+all: strings-ex1 strings-ex2 strings-ex3 reverse strings-ex4
 
 # Another rule below. This depends upon the rule hello.o but we don't
 # have any such rule. However make recognizes the suffix .o and uses
@@ -54,6 +54,10 @@ strings-ex2: strings-ex2.o
 
 strings-ex3: strings-ex3.o
 	$(CC) $(CFLAGS) $< -o $@
+
+strings-ex4: strings-ex4.o
+	$(CC) $(CFLAGS) $< -o $@
+
 reverse: reverse.o
 	$(CC) $(CFLAGS) $< -o $@
 
@@ -62,4 +66,4 @@ reverse: reverse.o
 # the executable hello and leaves only the source. Useful for running 
 # before submitting a program!
 clean:
-	/bin/rm -f *.o reverse strings-ex1 strings-ex2 strings-ex3  a.out core
+	/bin/rm -f *.o reverse strings-ex1 strings-ex2 strings-ex3 strings-ex4  a.out core

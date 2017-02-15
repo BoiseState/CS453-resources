@@ -2,7 +2,6 @@
 /* C-examples/intro/wc3.c */
 
 #include <stdio.h>
-#include <stdlib.h>
 
 #define IN 1 /* inside a word */
 #define OUT 0 /* outside a word */

@@ -17,8 +17,8 @@ INCLUDE=.
 ifeq ($(OSTYPE),darwin11)
 	# --- OS X Lion (10.7) and XCode 4 ---
 	LIBRARY_NAME = lib$(LIBRARY_BASENAME).dylib
-	CC = gcc-4.2
-	LD = gcc-4.2
+	CC = gcc
+	LD = gcc
 	# According to the gcc man page, "-fPIC is the default on Darwin and Mac OS X."
 	CFLAGS = -Wall -g -fno-common -I$(INCLUDE)/
 	LDFLAGS = -dynamiclib -install_name $(INSTALL_LIB)/$@

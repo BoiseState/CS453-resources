@@ -12,7 +12,7 @@
 int main(int argc, char **argv)
 {
     // one dimensional arrays
-    int A[100];
+    int A[100]; //static declaration
     int *B;
     int *C;
     int *tmp;
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     B = C;
     C = tmp; // swap B and C
 
-    // delete the arrays that B and C point to
+    // free the space that arrays B and C point to
     free(B);
     free(C);
 
@@ -83,10 +83,10 @@ int main(int argc, char **argv)
         printf("\n");
     }
 
-    // delete the 2-dimensional array Y
+    // free the 2-dimensional array Y
     for (i=0; i<n; i++)
         free(Y[i]);
     free(Y);
 
-    exit(0); // normal termination
+	return 0;
 }

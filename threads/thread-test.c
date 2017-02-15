@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 
 void *run(void *arg)
 {
-    printf("This is  thread id = %X\n",pthread_self());
+    printf("This is  thread id = %lX\n",pthread_self());
     sleep(30);
     pthread_exit(NULL);
 }

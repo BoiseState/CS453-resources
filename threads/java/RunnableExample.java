@@ -1,9 +1,9 @@
 
 	
-class AnotherGrape implements Runnable 
+class AnotherWater implements Runnable 
 {
 	private String name;
-    AnotherGrape(String s) {name = s;}
+    AnotherWater(String s) {name = s;}
 	public String getName() {return name;}
 
     public void run() {
@@ -17,9 +17,9 @@ class AnotherGrape implements Runnable
 public class RunnableExample {
     public static void main (String args[]) 
 	{
-        AnotherGrape g1 = new AnotherGrape("merlot");
-        AnotherGrape g2 = new AnotherGrape("pinot");
-        AnotherGrape g3 = new AnotherGrape("cabernet");
+        AnotherWater g1 = new AnotherWater("Tap Water");
+        AnotherWater g2 = new AnotherWater("Filtered Water");
+        AnotherWater g3 = new AnotherWater("Spring Water");
 		new Thread(g1).start();
 		new Thread(g2).start();
 		new Thread(g3).start();

@@ -13,45 +13,30 @@
 #include <pthread.h>
 #include <string.h>
 
+#define GOOD 0
+#define BAD 1
+
+static void *run(void *);
+static void good_session(int, FILE *);
+static void bad_session(int, FILE *);
+
+typedef struct account account;
 struct account {
     double balance;
     pthread_mutex_t mutex;
 };
 
-void *run(void *);
-void goodSession(int, FILE *);
-void badSession(int, FILE *);
+/* shared account */
+static account *myacct;
+static int version = GOOD;
 
-/* Global variables */
-struct account *myacct;
-pthread_t *tids;
-int numThreads;
-int good = 0;
-
-/**
- * Creates a new account with an initial balance and initializes
- * the account's mutex.
- * @param balance The starting balance of the account.
- */
-struct account *createAccount(double balance)
-{
-    myacct = (struct account *) malloc(sizeof(struct account));
-    myacct->balance = balance;
-    pthread_mutex_init(&(myacct->mutex), NULL);
-    return myacct;
-}
-
-/**
- * Deposits the specified amount into the account.
- */
+/** deposits the specified amount into the account. */
 void deposit(struct account *acct, double amount)
 {
     acct->balance += amount;
 }
 
-/**
- * Withdraws the specified amount from the account.
- */
+/** withdraws the specified amount from the account. */
 void withdraw(struct account *acct, double amount)
 {
     acct->balance -= amount;
@@ -60,46 +45,56 @@ void withdraw(struct account *acct, double amount)
 int main(int argc, char **argv)
 {
     int i;
-    int *value;
+    int num_threads = 0;
+    int *id;
+    pthread_t *tids;
+
 
     if (argc < 3) {
-        fprintf(stderr, "Usage: %s <numThreads (1-3)> <good|bad>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <num_threads (1-3)> <good|bad>\n", argv[0]);
         exit(1);
     }
 
-    numThreads = atoi(argv[1]);
-    if (numThreads > 3) {
-        fprintf(stderr, "Usage: %s Too many threads  specified. Defaulting to 3.\n", argv[0]);
-        numThreads = 3;
+    num_threads = atoi(argv[1]);
+    if (num_threads > 3) {
+        fprintf(stderr, "Usage: %s Too many threads. Defaulting to 3.\n", argv[0]);
+        num_threads = 3;
     }
 
-    char *goodArg = argv[2];
-    if(strcmp(goodArg, "good") == 0) {
-        good = 1;
+    if(strcmp(argv[2], "good") == 0) {
+        version = GOOD;
         printf("Running good version...\n");
     } else {
-        good = 0;
+        version = BAD;
         printf("Running bad version...\n");
     }
 
-    /* Initialize account */
-    myacct = createAccount(0.0);
+    /* create an account and set balance to 0 */
+    myacct = (struct account *) malloc(sizeof(struct account));
+    myacct->balance = 0.0;
     printf("initial balance = %lf\n", myacct->balance);
 
-    /* Create threads */
-    tids = (pthread_t *) malloc(sizeof(pthread_t)*numThreads);
-    for (i=0; i<numThreads; i++) {
-        value = (int *) malloc(sizeof(int));
-        *value = i;
-        pthread_create(&tids[i], NULL, run, (void *) value);
+    /* initialize the shared mutex */
+    pthread_mutex_init(&(myacct->mutex), NULL);
+
+    /* create threads */
+    tids = (pthread_t *) malloc(sizeof(pthread_t)*num_threads);
+    for(i = 0; i < num_threads; i++) {
+        id = (int *) malloc(sizeof(int));
+        *id = i;
+        pthread_create(&tids[i], NULL, run, (void *) id);
     }
 
     /* Wait for all threads to finish */
-    for (i=0; i<numThreads; i++) {
+    for (i = 0; i < num_threads; i++) {
         pthread_join(tids[i], NULL);
     }
 
     printf("final balance = %lf\n", myacct->balance);
+
+    free(myacct);
+    free(tids);
+
     exit(0);
 }
 
@@ -114,9 +109,9 @@ int main(int argc, char **argv)
  * a value < 1, then it will sleep for 30 seconds to simulate a user
  * starting a transaction, but not ending it.
  */
-void *run(void *ptr)
+static void *run(void *arg)
 {
-    int id = *((int *)ptr);
+    int id = *((int *)arg);
     char filename[80];
     FILE *fp;
 
@@ -129,24 +124,24 @@ void *run(void *ptr)
     }
 
     printf("Thread [%d]: Session started\n", id);
-    if(good == 1) {
-        goodSession(id, fp);
+    if(version == GOOD) {
+        good_session(id, fp);
     } else {
-        badSession(id, fp);
+        bad_session(id, fp);
     }
     printf("Thread [%d]: Session ended\n", id);
 
+    free(arg);
     pthread_exit(NULL);
 }
 
 /**
  * Starves the other threads from depositing if this thread goes to sleep.
  */
-void badSession(int id, FILE *fp)
+void bad_session(int id, FILE *fp)
 {
     double amount;
 
-    /* This is not a good place to lock! */
     pthread_mutex_lock(&(myacct->mutex));
     while(fscanf(fp, "%lf", &amount) != EOF) {
         if(amount < 1) {
@@ -163,7 +158,7 @@ void badSession(int id, FILE *fp)
  * Other threads can continue depositing if this thread goes to sleep. This
  * is good.
  */
-void goodSession(int id, FILE *fp)
+void good_session(int id, FILE *fp)
 {
     double amount;
 

@@ -11,7 +11,7 @@ int main()
     char *s;
     char q[MAXLEN];
     int stat;
-    char *delimiter = " ";
+    char *delimiter = " ;";
     char *token;
     char *save;
     char *copy;
@@ -20,7 +20,7 @@ int main()
     strcat(s,"tigger"); /* initialize string s */
     strcat(q, "pooh");
 
-    printf("String r = %s length of r = %d\n",r, strlen(r));
+    printf("String r = %s length of r = %ld\n",r, strlen(r));
 
     strcpy(q, r); // r is copied to q
 

@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <string.h>
 
-void printValues(int n, char values[])
+void printValues(char msg[], int n, char values[])
 {
 	int i;
-	printf("Printing chars");
+	printf("Printing %s", msg);
 	printf("\n=================================\n");
 	for(i = 0; i < n; ++i) {
 		printf("%c ", values[i]);
@@ -11,20 +12,21 @@ void printValues(int n, char values[])
 	printf("\n=================================\n");
 }
 
+
 int main(int argc, char *argv[])
 {
-	int i, n = 10, m = 100000;
+	int i = 0, m = 100000;
+	char message[] = {'h', 'e', 'l', 'l', 'o', ' ', 't', 'h', 'e', 'r', 'e'};
+	char values[10];
 
-	char values[n];
+	printValues("message", strlen(message), message);
 
-	// does this fail? if it does, use gdb backtrace
+	// This writes beoynd the end of the array --- what effect does that have?
 	for(i = 0; i < m; ++i) {
 		values[i] = 'a' + i;
 	}
-
-	char message[] = {'h', 'e', 'l', 'l', 'o', ' ', 't', 'h', 'e', 'r', 'e'};
-
-	printValues(m, values);
+	printValues("values", 10, values);
+	printValues("message", strlen(message), message);
 
 	return 0;
 }

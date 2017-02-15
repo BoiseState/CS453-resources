@@ -1,8 +1,20 @@
+/* NOTE: We are missing something here. Notice what happens when I 
+ * complile using gcc -E caller1.c */
+
 #include "phone.h"
 
-#define forever for(;;)
+/* What if I want to use a variable (total_calls) to keeps track of the number
+ * of calls this caller has made? */
 
 /**
- * A function that makes some calls to the phone.
+ * @brief Prints who this caller is. 
  */
-void makeSomeCalls();
+void whoami(void);
+
+
+/**
+ * @brief Calls the phone n times. 
+ *
+ * @param n
+ */
+void make_calls(const int n);

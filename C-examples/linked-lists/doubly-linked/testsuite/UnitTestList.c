@@ -7,6 +7,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define TRUE 1
+#define FALSE 0
+
+
 #include "Object.h"
 #include "Node.h"
 #include "List.h"
@@ -15,7 +19,7 @@
  * macro to mimic the functionality of assert() from <assert.h>. The difference is that this version doesn't exit the program entirely.
  * It will just break out of the current function (or test case in this context).
  */
-#define myassert(expr) if(!(expr)){ fprintf(stderr, "\t[assertion failed] %s: %s\n", __PRETTY_FUNCTION__, __STRING(expr)); return 0; }
+#define myassert(expr) if(!(expr)){ fprintf(stderr, "\t[assertion failed] %s: %s\n", __PRETTY_FUNCTION__, __STRING(expr)); return FALSE; }
 
 struct list *testlist;
 
@@ -52,37 +56,37 @@ int addAtFrontWithNoNodes()
     myassert(testlist->tail == node)
     myassert(testlist->head->next == NULL)
     myassert(testlist->head->prev == NULL)
-    return 1;
+    return TRUE;
 }
 
 int addAtFrontWithOneNode()
 {
     printTestInfo("addAtFrontWithOneNode", "(not implemented)");
-    return 0;
+    return FALSE;
 }
 
 int addAtRearWithNoNodes()
 {
     printTestInfo("addAtRearWithNoNodes", "(not implemented)");
-    return 0;
+    return FALSE;
 }
 
 int addAtRearWithOneNode()
 {
     printTestInfo("addAtRearWithOneNode", "(not implemented)");
-    return 0;
+    return FALSE;
 }
 
 int removeFromListWithOneNode()
 {
     printTestInfo("removeFromListWithOneNode", "(not implemented)");
-    return 0;
+    return FALSE;
 }
 
 int nullNodeTest()
 {
     printTestInfo("nullNodeTest", "(not implemented)");
-    return 0;
+    return FALSE;
 }
 
 void beforeTest(char* testName)

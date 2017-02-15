@@ -12,6 +12,9 @@
 #define MAX_WORD_LENGTH 50
 #define MAX_FREQ_DIGITS 20
 
+typedef int boolean;
+enum { false, true };
+
 typedef struct word WordObj;
 typedef struct word *WordObjPtr;
 
@@ -23,6 +26,6 @@ struct word {
 WordObjPtr createWordObj(const char *, const unsigned long int);
 char *toString(const void *);
 void freeWordObj(void *);
-int equals(const void *, const void *);
+boolean equals(const void *, const void *);
 
 #endif /* WORDOBJ_H_ */

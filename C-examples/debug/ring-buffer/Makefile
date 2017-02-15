@@ -5,14 +5,14 @@ INCLUDE=$(INSTALL)/include
 #Builds the single threaded version
 #We will extend this rule in the next homework
 #to build both the single and multi-threaded version
-all: test-code
+all: test-code dox
 
 #Build the single threaded version
 #and then copy over the build artifacts
 ring:
-	cd src; make
-	mv src/libring.so $(LIB)
-	cp src/ring.h $(INCLUDE)
+	cd libsrc; make
+	mv libsrc/libring.so $(LIB)
+	cp libsrc/ring.h $(INCLUDE)
 
 #First build all the dependencies then build
 #the test code and copy the tester to the top level
@@ -20,9 +20,13 @@ test-code: ring
 	cd test; make
 	mv test/grader .
 
+dox:
+	doxygen doxygen-config >& doxygen.log
+
 clean:
 	rm -f lib/*.so
 	rm -f include/*.h
 	rm -f grader
-	cd src; make clean
+	rm -fr docs/ doxygen.log
+	cd libsrc; make clean
 	cd test; make clean

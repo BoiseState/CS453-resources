@@ -2,7 +2,6 @@
 /* C-examples/intro/wc1.c */
 
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {

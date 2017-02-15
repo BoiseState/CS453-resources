@@ -142,14 +142,14 @@ Boolean checkpointList(struct list *list, char *saveFile)
     if (!fout) {
         sprintf(errmsg, "checkpointList: %s",saveFile);
         perror(errmsg);
-        return FALSE;
+        return FALSE; // throwing an exception and exiting is also an option here
     }
 
     /* First, write out the number of nodes we will be outputting so
      * we know how many to read back in. */
     fwrite(&(list->size), sizeof(int), 1, fout);
 
-    /* Then, write out the nodes (starting with the rail in this case) */
+    /* Then, write out the nodes (starting with the tail in this case) */
     node = list->tail;
     while (node) {
         checkpointNode(node, fout);
@@ -186,7 +186,7 @@ struct list *restoreList(char *saveFile)
     if (!fin) {
         sprintf(errmsg, "restoreList: %s",saveFile);
         perror(errmsg);
-        return NULL;
+        return NULL; // throwing an exception and exiting is also an option here
     }
 
     /* First, figure out how many nodes we wrote */

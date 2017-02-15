@@ -1,7 +1,8 @@
 
 /**
 	An example of synchronization in Java. Creates two threads that play
-	ping-pong. The threads synchronize using semaphore objects.
+	ping-pong. The threads synchronize using synchoronization built-in
+	all Java objects.
 */
 
 public class SynchronizedPingPong 
@@ -9,7 +10,7 @@ public class SynchronizedPingPong
 	public static void main(String[] args) 
 	{
 		Ping ping = new Ping("ping", 10);
-		Pong pong = new Pong("pong", 10);
+		Pong pong = new Pong("PONG", 10);
 		ping.setPong(pong);
 		pong.setPing(ping);
 		

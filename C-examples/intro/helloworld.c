@@ -2,10 +2,6 @@
 
 #include <stdio.h>
 
-/**
- * @author amit
- */
-
 int main(void)
 {
     printf("Hello World!\n");

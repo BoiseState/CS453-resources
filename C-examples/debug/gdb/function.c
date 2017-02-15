@@ -21,13 +21,6 @@ static void populate(int size, int *b)
     }
 }
 
-
-
-
-
-
-
-
 void not_buggy(int size, int *b)
 {
     int z = rand()%10;
@@ -42,8 +35,8 @@ void not_buggy(int size, int *b)
 
 int main(void)
 {
-    int *stuff = (int*)malloc(sizeof(int)*20);
-    for(;;) not_buggy(20,stuff);
+    int *array = (int*)malloc(sizeof(int)*20);
+    for(;;) not_buggy(20,array);
 }
 
 

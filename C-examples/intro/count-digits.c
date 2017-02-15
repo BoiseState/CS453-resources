@@ -21,11 +21,11 @@ int main()
         }
     }
 
-    printf("digits =");
+    printf("digits =\n");
     for (i = 0; i < 10; ++i) {
-        printf(" %d", ndigit[i]);
+        printf("%d: %d\n", i, ndigit[i]);
     }
-    printf(", white space = %d, other = %d\n", nwhite, nother);
+    printf("white space = %d, other = %d\n", nwhite, nother);
 
     return 0;
 }

@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     strcpy(save, s);
 
     token = (char **) malloc (sizeof(char *) * MAX_TOKENS);
-    /* tokenize the string s */
+    printf("\nUsing strtok: starting to tokenize the string: %s \n", s);
     nextToken = strtok(s, delimiter);
     numTokens=0;
     while (nextToken != NULL) {
@@ -47,5 +47,14 @@ int main(int argc, char **argv)
     // Now the tokens are copied into token[0..numTokens-1];
 
     strcpy(s, save); /* restore s */
+    
+     printf("\nUsing strsep: starting to tokenize the string: %s \n", s);
+    /* tokenize the string s */
+    nextToken = strsep(&s, delimiter); /* use space as a delimiter */
+    while (nextToken != NULL) {
+        printf("next token = %s\n", nextToken);
+        nextToken = strsep(&s, delimiter);
+    }
+
     return 0;
 }

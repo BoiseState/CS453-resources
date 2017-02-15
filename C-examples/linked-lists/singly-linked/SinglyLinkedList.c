@@ -7,22 +7,32 @@
 #include <stdlib.h>
 #include "SinglyLinkedList.h"
 
-struct node *addAtFront(struct node *head, struct node *node)
+struct list *createList() {
+
+	struct list *myList = (struct list *) malloc(sizeof(struct list));
+	myList->size = 0;
+	myList->head = NULL;
+	return myList;
+}
+
+struct list *addAtFront(struct list *myList, struct node *newNode)
 {
-    if (node == NULL) return head;
-    if (head == NULL) {
-        head = node;
-        node->next = NULL;
+    if (newNode == NULL) return myList;
+    if (myList->head == NULL) {
+        myList->head = newNode;
+        newNode->next = NULL;
     } else {
-        node->next = head;
-        head = node;
+        newNode->next = myList->head;
+        myList->head = newNode;
     }
-    return head;
+	myList->size++;
+    return myList;
 }
 
 
-struct node* reverseList(struct node *head)
+struct list *reverseList(struct list *myList)
 {
+	struct node *head = myList->head;
     struct node *list = NULL;
     while (head) {
         struct node *tmp = head;
@@ -30,12 +40,16 @@ struct node* reverseList(struct node *head)
         tmp->next = list;
         list = tmp;
     }
-    return list;
+	myList->head = list;
+    return myList;
 }
 
 
-void printList(struct node *head)
+void printList(struct list *myList)
 {
+	struct node *head = myList->head;
+
+	printf("List: %d elements\n", myList->size);
     while (head) {
         printf(" %d -->",head->item);
         head = head->next;

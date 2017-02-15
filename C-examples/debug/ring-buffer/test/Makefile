@@ -1,8 +1,10 @@
-#Lets keep this Makefile as simple as possible
 #build the grader from the file test.c
-grader:
-	gcc -Wall -Wextra -o grader test.c -L../lib/ -lring
+
+CC=gcc
+CFLAGS=-Wall -g -I../include 
+
+grader: test-ring-buffer.o
+	$(CC) $(CFLAGS) -o $@ $^  -L../lib/ -lring
 
 clean:
-	rm -f *.o
-	rm -f grader
+	/bin/rm -f *.o grader

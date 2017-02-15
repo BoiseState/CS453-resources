@@ -2,7 +2,6 @@
 /* C-examples/intro/cp2.c */
 
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(int argc, char *argv[])
 {

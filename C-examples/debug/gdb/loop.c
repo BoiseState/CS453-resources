@@ -1,22 +1,17 @@
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include <unistd.h>
 
 int main()
 {
-    int status;
-    pid_t pid;
+	int count = 0;
 
+	fprintf(stderr, "loop: starting up.\n");
     for(;;) {
-        sleep(5);
-        pid=fork();
-        if (pid == 0) {
-            sleep(100);
-            printf("hello\n");
-            exit(0);
-        }
-        waitpid(pid, &status, 0);
+		if (count % 100 == 0) {
+            fprintf(stderr, "loop: hello, I am still alive.\n");
+		}
+		sleep(1);
+		count++;
     }
 }

@@ -1,6 +1,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include "common.h"
 #include "Record.h"
 #include "ExternalSearch.h"
@@ -80,7 +81,7 @@ int main (int argc, char **argv)
     dataFile = fopen(argv[1], "r");
     if (!dataFile) {
         perror(program);
-        exit(1);
+        exit(errno);
     }
     searchType = BINARY;
     if (argc == 4) {
@@ -105,9 +106,9 @@ int main (int argc, char **argv)
     conduct_random_searches(dataFile, n, searchType);
     totalTime = getMilliseconds() - startTime;
     if (searchType == BINARY)
-        printf("Elapsed time for %d binary searches = %8.2f seconds\n", n, totalTime/1000.0);
+        fprintf(stderr, "Elapsed time for %d binary searches = %8.2f seconds\n", n, totalTime/1000.0);
     else if (searchType == LINEAR)
-        printf("Elapsed time for %d binary searches = %8.2f seconds\n", n, totalTime/1000.0);
+        fprintf(stderr, "Elapsed time for %d binary searches = %8.2f seconds\n", n, totalTime/1000.0);
 
     fclose(dataFile);
     exit(0);

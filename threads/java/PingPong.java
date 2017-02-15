@@ -25,7 +25,7 @@ class PingPong extends Thread {
 			System.exit(1);
 		}
 		int delay = Integer.parseInt(args[0]);
-		new PingPong("ping", delay).start();  //in millisecs
+		new PingPong("ping", delay).start(); //in millisecs
 		new PingPong("PONG", delay).start(); //in millisecs
 	}
 }

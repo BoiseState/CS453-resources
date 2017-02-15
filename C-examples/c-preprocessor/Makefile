@@ -1,6 +1,7 @@
+# define it from the make command line
+# make "DEBUG=-DDEBUG=1"
 CC=gcc
-CFLAGS=-Wall -g
-#CFLAGS=-Wall -g -DDEBUG=1
+CFLAGS=-Wall -g $(DEBUG)
 .SUFFIXES: .o .c
 
 .c.o:

@@ -45,4 +45,4 @@ html:
 	mkdir html
 
 clean:
-		rm --force  *.class hash.serial
+		rm --force  *.class list.serial
