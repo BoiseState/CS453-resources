@@ -20,21 +20,11 @@ fast as possible.
 
 ##Testing
 
-This section should detail how you tested your code. Simply stating 
-"I ran it a few times and it seems to work" is not sufficient. Your 
-testing needs to be detailed here or even better, this section should 
+This section should detail how you tested your code. Simply stating
+"I ran it a few times and it seems to work" is not sufficient. Your
+testing needs to be detailed here or even better, this section should
 just point the user at the appropriate unit/system tests that you wrote.
 
-##Discussion
-
-Discuss the issues you encountered during programming (development)
-and testing. What problems did you have? What did you have to
-research and learn on your own? What kinds of errors did you get? How
-did you fix them?
-
-What parts of the project did you find challenging? Is there anything
-that finally "clicked" for you in the process of working on this
-project?
 
 ##Sources used
 
