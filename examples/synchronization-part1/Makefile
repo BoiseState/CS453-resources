@@ -14,7 +14,7 @@ LDFLAGS=-lpthread
 
 PROGS= threads-hello-synchronized mycp threads-sem-cp threads-dbl-buf threads-cp checkpoint counting\
 		threads-barrier threads-id bad-bank-balance safe-bank-balance java-progs randomqueues-test\
-	    threads-dbl-buf threads-sem-cp mergesort-progs thread-sum
+	    threads-dbl-buf threads-sem-cp thread-sum
 
 all: $(PROGS)
 
@@ -63,10 +63,6 @@ thread-sum: thread-sum.o timing.o
 java-progs: 
 	cd java; make
 
-mergesort-progs: 
-	cd mergesort/; make
-
 clean:
 	/bin/rm -f *.o $(PROGS)
 	cd java; make clean
-	cd mergesort/; make clean
