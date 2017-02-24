@@ -13,20 +13,20 @@ exit
 
 
 #####Test3
-#test for blank commands
+#test for empty and blank commands
 
 
 exit
 #####
 
 #####Test4
-dash -v
+mydash -v
 #####
 
 
 #####Test5
 export DASH_PROMPT="myprompt:"
-dash
+mydash
 exit
 #####
 
@@ -50,7 +50,7 @@ cd
 pwd
 cd /tmp
 pwd
-cd /home/amit/workspace/dash/dash-src/
+cd /home/amit/workspace/mydash/mydash-src/
 pwd
 cd jfdkjfdjfd
 exit
@@ -63,6 +63,4 @@ sleep 2&
 <enter>
 exit
 #####
-
-
 

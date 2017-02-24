@@ -1,3 +1,0 @@
-pwd
-cd ..
-pwd
