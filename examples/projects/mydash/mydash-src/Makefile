@@ -33,4 +33,4 @@ FORCE:
 ## describes exactly what revision was built.
 
 clean:
-	/bin/rm -f *.o $(PROGS) a.out core  *.d
+	/bin/rm -f *.o $(PROGS) a.out core  *.d git_version.c
