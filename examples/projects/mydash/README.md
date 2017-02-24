@@ -8,7 +8,6 @@ README for Sample Code {#mainpage}
 |doxygen-config |Sample config file for doxygen                                     |
 |Makefile       |**Incomplete** build file for the mydash project (adapt to your needs) |
 |TestCases      |An incomplete list of test cases                                   |
-|test-harness/  |An example (incomplete) test harness for the dash project          |
 |valgrind.supp  |Example suppression file for valgrind for the readline library     |
 |mydash-src/Makefile | Build file for mydash (adapt to your needs)                  |
 |mydash-src/mydash.c | Starter version of mydash.c                                  |
