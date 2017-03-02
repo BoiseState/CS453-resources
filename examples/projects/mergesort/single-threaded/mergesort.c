@@ -13,7 +13,7 @@ void serial_mergesort(int A[], int p, int r);
 void merge(int A[], int p, int q, int r);
 void insertion_sort(int A[], int p, int r);
 
-const int INSERTION_SORT_CUTOFF = 100; //based on trial and error
+const int INSERTION_SORT_THRESHOLD = 100; //based on trial and error
 
 
 /*
@@ -45,7 +45,7 @@ void insertion_sort(int A[], int p, int r)
  */
 void serial_mergesort(int A[], int p, int r) 
 {
-	if (r-p+1 <= INSERTION_SORT_CUTOFF)  {
+	if (r-p+1 <= INSERTION_SORT_THRESHOLD)  {
 			insertion_sort(A,p,r);
 	} else {
 		int q = (p+r)/2;
