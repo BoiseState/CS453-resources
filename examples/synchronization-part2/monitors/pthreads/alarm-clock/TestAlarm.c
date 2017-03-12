@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 }
 
 
-int get_my_index()
+static int get_my_index()
 {
     int i;
     pthread_mutex_lock(&mutex);
