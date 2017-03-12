@@ -11,13 +11,13 @@
 #include <unistd.h>
 #include <pthread.h>
 #include "Item.h"
-#include <List.h>
+#include <ThreadsafeBoundedList.h>
 #include <Node.h>
 
 #define TRUE 1
 #define FALSE 0
 
-#define DEBUG 0
+#define DEBUG 1
 
 
 // prototypes for the producer and consumer thread's main functions.
@@ -25,7 +25,7 @@ void *producer(void *ptr);
 void *consumer(void *ptr);
 
 int poolsize;
-ListPtr pool;
+tsb_ListPtr pool;
 
 int num_producers; // number of producer threads
 int num_consumers; // number of consumer threads
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
 
 	fprintf(stderr, "%d producers %d consumers %d items %d pool size\n",
 			num_producers, num_consumers, maxcount*num_producers, poolsize);
-	pool = createList(compareToItem, toStringItem, freeItem, poolsize);
+	pool = tsb_createList(compareToItem, toStringItem, freeItem, poolsize);
 
 	
 	ptids = (pthread_t *)  malloc(sizeof(pthread_t)*num_producers);
@@ -109,7 +109,7 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 	}
-	finishUp(pool);
+	tsb_finishUp(pool);
 
 		
 	for (i=0; i < num_consumers; i++) {
@@ -130,7 +130,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, " Simulation FAILED!!!\n");
 	}
 
-	freeList(pool);
+	tsb_freeList(pool);
 	free(ptids);
 	free(ctids);
 
@@ -174,9 +174,9 @@ void *producer(void *ptr)
 		/* add item to the pool */
 		choice = random() % 2;
 		if (choice) {
-			addAtFront(pool, node);
+			tsb_addAtFront(pool, node);
 		} else {
-			addAtRear(pool, node);
+			tsb_addAtRear(pool, node);
 		}
 		i++;
 	}
@@ -212,13 +212,13 @@ void *consumer(void *ptr)
 	    /* remove item from the queue */
 		choice = random() % 2;
 		if (choice) {
-			node = removeFront(pool);
+			node = tsb_removeFront(pool);
 		} else {
-			node = removeRear(pool);
+			node = tsb_removeRear(pool);
 		}
 		/* print item using toString method */
 		if (node) {
-			itemString = pool->toString(node->obj);
+			itemString = pool->list->toString(node->obj);
 			/*printf("Consumer %d consumed item %s\n", thread_number, itemString);*/
 			fflush(NULL);
 			free(itemString);

@@ -24,7 +24,7 @@ char *toStringItem(const void *obj)
 	return buffer;
 }
 
-void freeItem(const void *obj) 
+void freeItem(void *obj) 
 {
 	free((ItemPtr) obj);
 }
