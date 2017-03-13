@@ -10,8 +10,8 @@ DEBUG=
 all: library pc pc-mq
 
 library:
-	cd thread-safe-list/; make
-	cd thread-safe-list/; make install
+	cd wrapper-library/; make
+	cd wrapper-library/; make install
 
 pc: pc.o  Item.o Item.h
 	$(CC) $(CFLAGS) $(DEBUG) -o $@ pc.o Item.o  $(LIBS)
@@ -21,4 +21,4 @@ pc-mq: pc-mq.o  Item.o Item.h
 
 clean:
 	/bin/rm -f *.o pc pc-mq
-	cd thread-safe-list/; make installclean
+	cd wrapper-library/; make installclean
