@@ -10,7 +10,7 @@ LFLAGS=-L$(LIB) -lmylib
 
 LIBOBJS= ThreadsafeBoundedList.o 
 
-all: libs 
+all: libs G
 
 libs: libthreadsafe-mylib.so  libthreadsafe-mylib.a
 
@@ -35,4 +35,4 @@ installclean:  clean
 	rm --force $(INSTALL)/include/ThreadsafeBoundedList.h
 	
 clean:
-	rm --force list *.o a.out core *.d *.so *.a
+	rm --force list *.o a.out core *.so *.a *.d

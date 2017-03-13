@@ -25,7 +25,7 @@ void *producer(void *ptr);
 void *consumer(void *ptr);
 
 int poolsize;
-tsb_ListPtr pool;
+struct tsb_list *pool;
 
 int num_producers; // number of producer threads
 int num_consumers; // number of consumer threads
@@ -148,8 +148,8 @@ int main(int argc, char **argv)
 
 void *producer(void *ptr) 
 {
-	ItemPtr item;
-	NodePtr node;
+	struct item *item;
+	struct node *node;
 	int i=0;
 	int choice;
 	int thread_number;
@@ -218,7 +218,7 @@ void *consumer(void *ptr)
 		}
 		/* print item using toString method */
 		if (node) {
-			itemString = pool->list->toString(node->obj);
+			itemString = toStringItem(node->obj);
 			/*printf("Consumer %d consumed item %s\n", thread_number, itemString);*/
 			fflush(NULL);
 			free(itemString);
