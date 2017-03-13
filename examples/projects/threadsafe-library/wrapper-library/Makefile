@@ -10,7 +10,7 @@ LFLAGS=-L$(LIB) -lmylib
 
 LIBOBJS= ThreadsafeBoundedList.o 
 
-all: libs G
+all: libs 
 
 libs: libthreadsafe-mylib.so  libthreadsafe-mylib.a
 
