@@ -21,9 +21,6 @@ typedef int Boolean;
 
 
 
-/* opaque declaration, real declaation should be in ThreadsafeBoundedList.c so
- * users of the wrapper library cannot directly use the internal list structure 
- */
 struct tsb_list;
 
 

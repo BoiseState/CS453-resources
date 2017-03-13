@@ -17,7 +17,9 @@
 #define TRUE 1
 #define FALSE 0
 
-#define DEBUG 1
+#define NORMAL 1
+#define VERBOSE 2
+#define DEBUG NORMAL
 
 
 // prototypes for the producer and consumer thread's main functions.
@@ -100,10 +102,9 @@ int main(int argc, char **argv)
 		
 	
 	// wait for the producers and consumers to finish
-	// collect statistics
 	for (i=0; i < num_producers; i++) {
 	    pthread_join(ptids[i], NULL);
-		if (DEBUG) printf("producer %d finished\n", i);
+		if (DEBUG == NORMAL) printf("producer %d finished\n", i);
 		if (status != 0) {
 			perror("pc: thread join failed!");
 			exit(1);
@@ -114,7 +115,7 @@ int main(int argc, char **argv)
 		
 	for (i=0; i < num_consumers; i++) {
 	    int status = pthread_join(ctids[i], NULL);
-		if (DEBUG) printf("consumer %d finished\n", i);
+		if (DEBUG == NORMAL) printf("consumer %d finished\n", i);
 		if (status != 0) {
 			perror("pc: thread join failed!");
 			exit(1);
@@ -160,7 +161,7 @@ void *producer(void *ptr)
 		thread_number = counter1;
 	pthread_mutex_unlock(&mutex1);
 
-	if (DEBUG) printf("I am producer thread %d (with thread id = %lX)\n", thread_number, mytid);
+	if (DEBUG == NORMAL) printf("I am producer thread %d (with thread id = %lX)\n", thread_number, mytid);
 
 	/* now produce the items and add them to the pool */
 	i = 0;
@@ -203,11 +204,9 @@ void *consumer(void *ptr)
 		thread_number = counter2;
 	pthread_mutex_unlock(&mutex2);
 
-	if (DEBUG) printf("I am consumer thread %d (with thread id = %lX)\n", thread_number, mytid);
+	if (DEBUG == NORMAL) printf("I am consumer thread %d (with thread id = %lX)\n", thread_number, mytid);
 
-	/* now consume the items by removing them from the end of the pool and
-	   displaying them */
-
+	/* consume the items by removing them from the pool and displaying them */
 	while (TRUE) {
 	    /* remove item from the queue */
 		choice = random() % 2;
@@ -219,7 +218,7 @@ void *consumer(void *ptr)
 		/* print item using toString method */
 		if (node) {
 			itemString = toStringItem(node->obj);
-			/*printf("Consumer %d consumed item %s\n", thread_number, itemString);*/
+			if (DEBUG == VERBOSE) printf("Consumer %d consumed item %s\n", thread_number, itemString);
 			fflush(NULL);
 			free(itemString);
 			freeNode(node, freeItem);
