@@ -27,8 +27,6 @@ void setAlarm(AlarmClockPtr alarm, long int period)
 	while (alarm->now < period) {
 		pthread_cond_wait(&(alarm->timeToWakeUp), &(alarm->mutex));
 	}
-	pthread_cond_signal(&(alarm->timeToWakeUp));
-
 	pthread_mutex_unlock(&(alarm->mutex));
 }
 
@@ -36,11 +34,8 @@ void setAlarm(AlarmClockPtr alarm, long int period)
 void tick(AlarmClockPtr alarm)
 {
 	pthread_mutex_lock(&(alarm->mutex));
-
 	alarm->now++;
-	/*pthread_cond_signal(&(alarm->timeToWakeUp));*/
 	pthread_cond_broadcast(&(alarm->timeToWakeUp));
-
 	pthread_mutex_unlock(&(alarm->mutex));
 }
 

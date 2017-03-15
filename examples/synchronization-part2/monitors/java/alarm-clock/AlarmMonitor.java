@@ -20,13 +20,12 @@ public class AlarmMonitor extends TimerTask
 		{
 			try {wait();} catch (InterruptedException e) {System.err.println(e);}
 		}
-		notify(); // cascading signal
 	}
 
 	public synchronized void run()
 	{
 		now++;
-		notify();
+		notifyAll();
 	}
 }
 
