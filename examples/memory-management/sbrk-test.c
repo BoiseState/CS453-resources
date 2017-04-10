@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	int *slot;
 
 	/*void *pool = sbrk(1LL << 34);*/
-	void *pool = sbrk(1 << 22);
+	void *pool = sbrk(1ll << 22);
 	if (pool < 0 || errno == ENOMEM) {
 		perror("Could not allocate memory pool!");
 		exit(1);
