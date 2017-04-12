@@ -6,7 +6,7 @@
 /* Snooze button */
 static void onalarm(int signo);
 
-static const int SNOOZE = 3; 
+static const int SNOOZE = 3;
 
 /**
  * Demonstrates basic alarm usage.
@@ -31,5 +31,6 @@ static void onalarm(int signo)
 {
     printf("I'm awake! I'm going to take another nap....\n");
     fflush(stdout);
+    signal(SIGALRM, onalarm);      // reset signal handler
     alarm(SNOOZE); /* reset timer so it will go off again */
 }
