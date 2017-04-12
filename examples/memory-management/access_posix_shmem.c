@@ -22,7 +22,7 @@ int main(void)
 	int		shmid;
 	char	*shmptr;
 	
-	shmid = shm_open("/xyz", O_RDWR, S_IRWXU);
+	shmid = shm_open("/amit", O_RDWR, S_IRWXU);
 	if (shmid == -1) {
 		perror("Error in creating shared memory:");
 		exit(1);
