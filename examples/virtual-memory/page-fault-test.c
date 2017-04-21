@@ -23,7 +23,7 @@ void run_row_major()
 	totaltime = getMilliseconds();
     for (i=0; i<SIZE; i++)
              for (j=0; j<SIZE; j++)     
-                     A[i][j] = 0;
+                     A[i][j] = i*j;
     cputime = report_cpu_time() - cputime;
     systime = report_sys_time() - systime;
 	totaltime = getMilliseconds() - totaltime;
@@ -44,7 +44,7 @@ void run_column_major()
 	totaltime = getMilliseconds();
     for (j=0; j<SIZE; j++)
              for (i=0; i<SIZE; i++)     
-                     A[i][j] = 0;
+                     A[i][j] = i*j;
     cputime = report_cpu_time() - cputime;
     systime = report_sys_time() - systime;
 	totaltime = getMilliseconds() - totaltime;
@@ -58,15 +58,8 @@ void run_column_major()
 
 int main(void)
 {
-
     printf(" page size = %ld\n", sysconf(_SC_PAGESIZE));
-    
-
     run_column_major();
-
 	run_row_major();
- 
 	exit(0);
-
-  
 }
