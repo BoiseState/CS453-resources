@@ -58,9 +58,11 @@ d1:
 	mkdir d1; cd d1; mkdir d2; cd d2; ln -s ../../d1 d3
 	touch f1; ln -s f1 f2; ln -s f1 f3; ln f1 f4; ln f1 f5
 	date > f1
+	tar cvf d1.tar d1
+	zip -r d1.zip d1
 	
 clean:
 	/bin/rm -f *.o $(PROGS) mem.data.*
-	/bin/rm -fr d1/ f?
+	/bin/rm -fr d1/ f? d1.tar d1.zip
 	/bin/rm -f pseudo-device.img
 
