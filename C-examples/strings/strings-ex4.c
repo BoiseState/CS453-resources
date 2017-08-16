@@ -1,8 +1,9 @@
 
-/* C-examples/strings/strings-ex3.c
+/* C-examples/strings/strings-ex4.c
  *
  * This example shows the proper way to tokenize a string when the tokens
- * need to be passed to other parts of the program.
+ * need to be passed to other parts of the program. It separates the
+ * parsing code into a function that can be reused in other programs
  *
  * */
 

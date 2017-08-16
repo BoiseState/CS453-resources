@@ -2,7 +2,12 @@
 /* C-examples/strings/strings-ex3.c
  *
  * This example shows the proper way to tokenize a string when the tokens
- * need to be passed to other parts of the program.
+ * need to be passed to other parts of the program. Study this program
+ * and then attempt to refactor the parsing doe into a a separate function
+ * with the prototype shown below and then modify main to use this function
+   
+   char **parseInput(char *s, char *delimiter, int *numTokens);
+
  *
  * */
 
@@ -47,14 +52,5 @@ int main(int argc, char **argv)
     // Now the tokens are copied into token[0..numTokens-1];
 
     strcpy(s, save); /* restore s */
-    
-     printf("\nUsing strsep: starting to tokenize the string: %s \n", s);
-    /* tokenize the string s */
-    nextToken = strsep(&s, delimiter); /* use space as a delimiter */
-    while (nextToken != NULL) {
-        printf("next token = %s\n", nextToken);
-        nextToken = strsep(&s, delimiter);
-    }
-
     return 0;
 }
