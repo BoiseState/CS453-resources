@@ -1,4 +1,7 @@
-/* lab.private/structures/structs-ex0.c */
+/**
+ * Example that illustrates use of a dynamically allocated structure
+ *
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
