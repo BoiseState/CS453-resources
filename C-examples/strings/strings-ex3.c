@@ -3,7 +3,7 @@
  *
  * This example shows the proper way to tokenize a string when the tokens
  * need to be passed to other parts of the program. Study this program
- * and then attempt to refactor the parsing doe into a a separate function
+ * and then attempt to refactor the parsing code into a separate function
  * with the prototype shown below and then modify main to use this function
    
    char **parseInput(char *s, char *delimiter, int *numTokens);
