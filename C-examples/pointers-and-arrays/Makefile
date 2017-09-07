@@ -74,6 +74,10 @@ array-bounds: array-bounds.o
 swap: swap.o
 	$(CC) $(CFLAGS) $< -o $@
 
+overflow: overflow.o
+	$(CC) $(CFLAGS) $< -o $@
+
+
 # A rule most that all Makefiles should have. This one removes
 # any .o files and other undesirables that are  lying around and
 # the executable hello and leaves only the source. Useful for running
