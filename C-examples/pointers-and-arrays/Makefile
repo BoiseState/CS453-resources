@@ -83,4 +83,4 @@ overflow: overflow.o
 # the executable hello and leaves only the source. Useful for running
 # before submitting a program!
 clean:
-	/bin/rm -f *.o pointers1 pointers2 1d-arrays 2d-arrays 3d-arrays pointer-types array-swap array-bounds a.out core swap
+	/bin/rm -f *.o pointers1 pointers2 1d-arrays 2d-arrays 3d-arrays pointer-types array-swap array-bounds a.out core swap overflow

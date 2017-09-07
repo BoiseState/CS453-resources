@@ -1,8 +1,9 @@
+
 /*
- * Author: Dan Crow (modified by Amit Jain)
- * 
- * File:    overflow.c
- * Purpose: an example of buffer overflow
+ * Author: Dan Crow (modified by Amit Jain and Shane Panter)
+ *
+ * Purpose: an example of buffer overflow and show how arrays
+ * are not checked for length like in java
  * Compile: gcc Wall -o overflow overflow.c
  */
 #include <stdio.h>
@@ -19,10 +20,11 @@ int main()
 	scanf("%s", msg);
 	if (strcmp(msg, "mrh898") == 0) pass=1;
 
-	if (pass)
+	if (pass){
 		printf("You pass!\n");
-	else 
+	} else{
 		printf("You fail!\n");
+	}
 
 	exit(0);
 }
