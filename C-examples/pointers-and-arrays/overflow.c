@@ -3,7 +3,7 @@
  * Author: Dan Crow (modified by Amit Jain and Shane Panter)
  *
  * Purpose: an example of buffer overflow and show how arrays
- * are not checked for length like in java
+ * are not checked for lenght like in java
  * Compile: gcc Wall -o overflow overflow.c
  */
 #include <stdio.h>
@@ -12,8 +12,9 @@
 
 int main()
 {
-	char msg[16];
+
 	int pass=0;
+	char msg[16];
 
 	printf("&pass=%p &msg=%p \n", &pass, &msg);
 	printf("Enter password: ");
