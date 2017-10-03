@@ -25,5 +25,5 @@ compile: main.o
 	g++ $(CPPFLAGS) -o TestLists main.o
 
 clean:
-		rm --force  *.o 
-		rm --force TestLists
+		rm -f  *.o 
+		rm -f TestLists

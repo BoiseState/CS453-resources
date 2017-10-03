@@ -24,4 +24,4 @@ testTemplate: testTemplate.o
 	$(CC) $(CPPFLAGS) -o $@ $<
 
 clean:
-		rm --force  *.o  testTemplate
+		rm -f  *.o  testTemplate

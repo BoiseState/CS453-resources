@@ -12,9 +12,9 @@ int main(int argc, char **argv)
 {
     int i;
     int n;
-    NodePtr node;
-    JobPtr job;
-    ListPtr list;
+    struct node* node;
+    struct job* job;
+    struct list* list;
 
     if (argc != 2) {
         fprintf(stderr, "Usage: %s <list size> \n",argv[0]);
@@ -37,4 +37,3 @@ int main(int argc, char **argv)
 
     exit(0);
 }
-

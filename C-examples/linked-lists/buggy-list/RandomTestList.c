@@ -13,12 +13,12 @@ const int NUM_TESTS = 6;
 const int DEBUG = 0;
 
 
-void runRandomTests(int count, unsigned int seed, int n, ListPtr list)
+void runRandomTests(int count, unsigned int seed, int n, struct list* list)
 {
     int i;
     int test;
-    NodePtr node;
-    JobPtr job;
+    struct node* node;
+    struct job* job;
 
     srandom(seed);
     for (i=0; i<count; i++) {
@@ -67,9 +67,9 @@ int main(int argc, char **argv)
     int count;
     unsigned int seed;
 
-    NodePtr node;
-    JobPtr job;
-    ListPtr list;
+    struct node* node;
+    struct job* job;
+    struct list* list;
 
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <list size> [<test size=list size>] [<seed>] \n",argv[0]);

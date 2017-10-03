@@ -9,4 +9,4 @@ testTokenizer:	testTokenizer.o StringTokenizer.o
 	$(CC) $(CPPFLAGS) -o testTokenizer testTokenizer.o StringTokenizer.o
 
 clean:
-	rm --force *.o testTokenizer
+	rm -f *.o testTokenizer

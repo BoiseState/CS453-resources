@@ -1,4 +1,3 @@
-
 /*
     List.h: Defines the interface for a doubly-linked list.
 */
@@ -11,36 +10,33 @@
 #include "common.h"
 #include "Node.h"
 
-typedef struct list List;
-typedef struct list * ListPtr;
-
 struct list {
     int size;
-    NodePtr head;
-    NodePtr tail;
+    struct node* head;
+    struct node* tail;
 };
 
 /* prototypes of public methods */
 
-ListPtr createList(); /* constructor */
-void freeList(ListPtr L); /* destructor */
+struct list* createList(); /* constructor */
+void freeList(struct list* L); /* destructor */
 
-int getSize(ListPtr L);
+int getSize(struct list* L);
 
-Boolean isEmpty(ListPtr L);
+Boolean isEmpty(struct list* L);
 
-void addAtFront(ListPtr list, NodePtr node);
-void addAtRear(ListPtr list, NodePtr node);
+void addAtFront(struct list* list, struct node* node);
+void addAtRear(struct list* list, struct node* node);
 
-NodePtr removeFront(ListPtr list);
-NodePtr removeRear(ListPtr list);
-NodePtr removeNode(ListPtr list, NodePtr node);
+struct node* removeFront(struct list* list);
+struct node* removeRear(struct list* list);
+struct node* removeNode(struct list* list, struct node* node);
 
-NodePtr search(ListPtr list, int key);
+struct node* search(struct list* list, int key);
 
-void reverseList(ListPtr  L);
+void reverseList(struct list*  L);
 
-void printList(ListPtr L);
+void printList(struct list* L);
 
 
 #endif /* __LIST_H */

@@ -1,5 +1,3 @@
-
-
 #ifndef __JOB_H
 #define __JOB_H
 
@@ -9,19 +7,13 @@
 
 #define MAXPID_DIGITS 20
 
-
-typedef struct job  Job;
-typedef struct job * JobPtr;
-
 struct job {
     int jobid;
     char *info;
 };
 
-JobPtr createJob (int, char *);
-void freeJob(JobPtr job);
-
-char *toString(JobPtr);
-
+struct job* createJob (int, char *);
+void freeJob(struct job* job);
+char *toString(struct job*);
 
 #endif /* __JOB_H */

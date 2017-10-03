@@ -1,24 +1,23 @@
 #include "Job.h"
 
-
-JobPtr createJob(int jobid, char *info)
+struct job* createJob(int jobid, char *info)
 {
-    JobPtr newJob = (JobPtr) malloc (sizeof(Job));
+    struct job* newJob = (struct job*) malloc (sizeof(struct job*));
     newJob->jobid = jobid;
-    newJob->info = (char *) malloc(sizeof(char)*(strlen(info)+1));
+    newJob->info = (char *) malloc(sizeof(char)*(strlen(info)));
     strcpy(newJob->info, info);
     return newJob;
 }
 
-char *toString(JobPtr node)
+char *toString(struct job* node)
 {
     char *temp;
-    temp = (char *)malloc(sizeof(char)*strlen(node->info)+1+MAXPID_DIGITS+4);
+    temp = (char *)malloc(sizeof(char)*strlen(node->info));
     sprintf(temp, "[%d] %s", node->jobid, node->info);
     return temp;
 }
 
-void freeJob(JobPtr job)
+void freeJob(struct job* job)
 {
-
+	//Don't worry the garbage collector will get it :)
 }

@@ -1,38 +1,28 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "List.h"
 
-/*
 
-    list.c
-        Contains functions to manipulate a doubly-linked list.
-
-*/
-
-
-/* private methods */
-
-static NodePtr reverse(NodePtr L);
-static void print(NodePtr node);
+static struct node* reverse(struct node* L);
+static void print(struct node* node);
 
 
 
-ListPtr createList()
+struct list* createList()
 {
-    ListPtr list = (ListPtr) malloc(sizeof(List));
+    struct list* list = (struct list*) malloc(sizeof(List));
     list->size = 0;
     list->head = NULL;
     list->tail = NULL;
     return list;
 }
 
-int getSize(ListPtr L)
+int getSize(struct list* L)
 {
     return L->size;
 }
 
-Boolean isEmpty(ListPtr L)
+Boolean isEmpty(struct list* L)
 {
     if (L->size == 0)
         return TRUE;
@@ -40,7 +30,7 @@ Boolean isEmpty(ListPtr L)
         return FALSE;
 }
 
-void addAtFront(ListPtr list, NodePtr node)
+void addAtFront(struct list* list, struct node* node)
 {
     if (list == NULL) return;
     if (node == NULL) return;
@@ -56,48 +46,47 @@ void addAtFront(ListPtr list, NodePtr node)
     }
 }
 
-void addAtRear(ListPtr list, NodePtr node)
+void addAtRear(struct list* list, struct node* node)
 {
 }
 
-NodePtr removeFront(ListPtr list)
-{
-    return NULL;
-}
-
-NodePtr removeRear(ListPtr list)
+struct node* removeFront(struct list* list)
 {
     return NULL;
 }
 
-NodePtr removeNode(ListPtr list, NodePtr node)
+struct node* removeRear(struct list* list)
 {
     return NULL;
 }
 
-NodePtr search(ListPtr list, int key)
+struct node* removeNode(struct list* list, struct node* node)
 {
     return NULL;
 }
 
-void reverseList(ListPtr L)
+struct node* search(struct list* list, int key)
+{
+    return NULL;
+}
+
+void reverseList(struct list* L)
 {
     L->tail = L->head;
     L->head  = reverse (L->head);
 }
 
-static NodePtr reverse(NodePtr L)
+static struct node* reverse(struct node* L)
 {
-    /* finish this function */
     return NULL;
 }
 
-void printList(ListPtr L)
+void printList(struct list* L)
 {
     if (L) print(L->head);
 }
 
-static void print(NodePtr node)
+static void print(struct node* node)
 {
     int count = 0;
     char *buf;
@@ -105,7 +94,6 @@ static void print(NodePtr node)
     while (node) {
         buf = toString(node->data);
         printf(" %s -->", buf);
-        free(buf);
         node = node->next;
         count++;
         if ((count % 6) == 0)
@@ -115,8 +103,6 @@ static void print(NodePtr node)
 }
 
 
-void freeList(ListPtr L)
+void freeList(struct list* L)
 {
 }
-
-

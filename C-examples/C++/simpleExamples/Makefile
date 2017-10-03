@@ -33,5 +33,5 @@ demo3: demo3.o
 	$(CC) $(CPPFLAGS) -o demo3 demo3.o  
 
 clean:
-		rm --force  *.o 
-		rm --force hello demo1 demo2 demo3
+		rm -f  *.o 
+		rm -f hello demo1 demo2 demo3

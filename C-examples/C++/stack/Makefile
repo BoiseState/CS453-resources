@@ -27,5 +27,5 @@ compile: TestStack.o List.o Node.o Stack.o
 	$(CC) $(CPPFLAGS) -o TestStack TestStack.o List.o Node.o Stack.o
 
 clean:
-		rm --force  *.o 
-		rm --force  TestStack
+		rm -f  *.o 
+		rm -f  TestStack

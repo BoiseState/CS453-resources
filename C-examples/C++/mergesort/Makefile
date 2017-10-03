@@ -25,5 +25,5 @@ testms: TimeMergeSort.o Utility.h MergeSort.h
 
 
 clean:
-		rm --force  *.o 
-		rm --force testms
+		rm -f  *.o 
+		rm -f testms

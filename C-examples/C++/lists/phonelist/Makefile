@@ -25,5 +25,5 @@ compile: main.o List.o Node.o
 	g++ $(CPPFLAGS) -o TestLists main.o List.o Node.o
 
 clean:
-		rm --force  *.o 
-		rm --force  TestLists
+		rm -f  *.o 
+		rm -f  TestLists
