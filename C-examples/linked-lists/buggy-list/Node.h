@@ -7,17 +7,14 @@
 #include "common.h"
 #include "Job.h"
 
-typedef struct node Node;
-typedef struct node * NodePtr;
-
 struct node {
-    JobPtr data;
-    NodePtr next;
-    NodePtr prev;
+    struct job* data;
+    struct node* next;
+    struct node* prev;
 };
 
-NodePtr createNode (JobPtr data);
-void freeNode(NodePtr node);
+struct node* createNode (struct job* data);
+void freeNode(struct node* node);
 
 
 #endif /* __NODE_H */
