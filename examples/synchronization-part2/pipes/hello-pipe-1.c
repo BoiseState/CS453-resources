@@ -20,7 +20,7 @@ int main(void)
 	} else {				/* child */
 		close(fd[1]); /* close write end of pipe */
 		n = read(fd[0], line, MAXLINE);
-		printf("child read %d characters from pipe: %s", n, line);
+		printf("child read %d characters from pipe\n", n);
 		printf("child read from pipe: %s", line);
 	}
 
