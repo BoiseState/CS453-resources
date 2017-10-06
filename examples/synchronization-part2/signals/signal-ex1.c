@@ -19,8 +19,9 @@ int main(void)
 	exit(0);
 }
 
-void onintr(int signo) /* clean up on interrupt */
+void onintr(int signo) 
 {	
 	printf("Caught Ctl-C\n");
+	/* clean up on interrupt and then exiting would be an option in some programs */
 	/*exit(1);*/
 }
