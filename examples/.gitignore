@@ -160,12 +160,11 @@ synchronization-part2/monitors/pthreads/thread-signals
 synchronization-part2/pipes/anagrams/sign
 synchronization-part2/pipes/dup1
 synchronization-part2/pipes/dup2
-synchronization-part2/pipes/hello-pipe
-synchronization-part2/pipes/hello-pipe-two
-synchronization-part2/pipes/p1
-synchronization-part2/pipes/p2
-synchronization-part2/pipes/p3
-synchronization-part2/pipes/p4
+synchronization-part2/pipes/hello-pipe-1
+synchronization-part2/pipes/hello-pipe-2
+synchronization-part2/pipes/pipe2
+synchronization-part2/pipes/pipe3
+synchronization-part2/pipes/pipe4
 synchronization-part2/pipes/pipe-talk
 synchronization-part2/process-groups/g1
 synchronization-part2/process-groups/g2
