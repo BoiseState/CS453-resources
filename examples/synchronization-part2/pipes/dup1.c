@@ -1,7 +1,7 @@
 
 
 /* 
-   Note the we can get the redirection to work by first closing stdout,
+   Note that we can also get redirection to work by first closing stdout,
    which has file descriptor 1, and then opening a new file so that 
    the new file descriptor is 1 (without using dup system call).
 

@@ -47,11 +47,11 @@ public class SharedQueue
 
   public synchronized String getMessage() throws InterruptedException 
   {
-		notifyAll(); // use notify for single producer
 		while ( this.size() == 0 )
 			wait();
 		String message = (String)this.firstElement();
 		this.removeElement( message );
+		notifyAll(); // use notify for single producer
         return message;
     }
 
