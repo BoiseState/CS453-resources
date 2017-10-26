@@ -1,5 +1,0 @@
-include/ThreadsafeBoundedList.h
-pc
-pc-mq
-wrapper-library/*.d
-
