@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	/* Now pool is an array of MAX_MEM_SIZE  bytes */
 
 	printf("starting address for memory pool  = %p\n", pool);
-	for (i =.0; i < 1000000; i++) {
+	for (i =0; i < 1000000; i++) {
 		slot = pool + sizeof(int) * i;
 		*slot = i;
 	}
