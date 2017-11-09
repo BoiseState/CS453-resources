@@ -1,0 +1,64 @@
+[amit@localhost gdb] faulty1
+*** Error in `faulty1': double free or corruption (!prev): 0x00000000006f1010 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x77bdd)[0x7fd340bbfbdd]
+/lib64/libc.so.6(cfree+0x5cd)[0x7fd340bcbfbd]
+faulty1[0x4005db]
+/lib64/libc.so.6(__libc_start_main+0xf0)[0x7fd340b68700]
+faulty1[0x4004b9]
+======= Memory map: ========
+ .
+ .
+ .
+Aborted (core dumped)
+
+[amit@localhost gdb]$ gdb faulty1
+
+GNU gdb (GDB) Fedora 7.9.1-20.fc22
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from faulty1...done.
+
+(gdb) run
+Starting program: /home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/faulty1 
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.21-13.fc22.x86_64
+*** Error in `/home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/faulty1': double free or corruption (!prev): 0x0000000000602010 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x77bdd)[0x7ffff7a92bdd]
+/lib64/libc.so.6(cfree+0x5cd)[0x7ffff7a9efbd]
+/home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/faulty1[0x4005db]
+/lib64/libc.so.6(__libc_start_main+0xf0)[0x7ffff7a3b700]
+/home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/faulty1[0x4004b9]
+======= Memory map: ========
+ .
+ .
+ .
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff7a4f9c8 in raise () from /lib64/libc.so.6
+Missing separate debuginfos, use: dnf debuginfo-install libgcc-5.3.1-6.fc22.x86_64
+
+(gdb) where
+#0  0x00007ffff7a4f9c8 in raise () from /lib64/libc.so.6
+#1  0x00007ffff7a5165a in abort () from /lib64/libc.so.6
+#2  0x00007ffff7a92be2 in __libc_message () from /lib64/libc.so.6
+#3  0x00007ffff7a9efbd in free () from /lib64/libc.so.6
+#4  0x00000000004005db in main (argc=1, argv=0x7fffffffda58) at faulty1.c:21
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 3094] will be killed.
+
+Quit anyway? (y or n) y
+[amit@localhost gdb]$ exit

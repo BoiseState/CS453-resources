@@ -1,0 +1,209 @@
+[amit@localhost gdb]$ gdb arrays
+
+GNU gdb (GDB) Fedora 7.9.1-20.fc22
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from arrays...done.
+
+(gdb) break main
+Breakpoint 1 at 0x40062f: file arrays.c, line 19.
+
+(gdb) run
+Starting program: /home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/arrays 
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.21-13.fc22.x86_64
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffda58) at arrays.c:19
+19	    int n=10;
+(gdb) l
+14	    // one dimensional arrays
+15	    int A[100]; //static declaration
+16	    int *B;
+17	    int *C;
+18	    int *tmp;
+19	    int n=10;
+20	    int i,j;
+21	
+22	    int **X; // dynamically allocated two-dimensional array
+23	    int **Y;
+(gdb) l
+24	
+25	    for (i=0; i<100; i++)
+26	        A[i] = i;
+27	
+28	    B = (int *) malloc(sizeof(int)*100);  // B points to an array of 100 int's
+29	    for (i =0; i<100; i++)
+30	        B[i] = i;
+31	
+32	    C = (int *) malloc(sizeof(int)*100); // C points to an array of n int's
+33	    for (i =0; i<100; i++)
+(gdb) l
+34	        C[i] = 1;
+35	
+36	    tmp = B;
+37	    B = C;
+38	    C = tmp; // swap B and C
+39	
+40	    // free the space that arrays B and C point to
+41	    free(B);
+42	    free(C);
+43	
+(gdb) break 41
+Breakpoint 2 at 0x4006e5: file arrays.c, line 41.
+
+(gdb) continue
+Continuing.
+Breakpoint 2, main (argc=1, argv=0x7fffffffda58) at arrays.c:41
+41	    free(B);
+
+(gdb) print B
+$1 = (int *) 0x6021b0
+
+(gdb) print B[0]
+$2 = 1
+
+(gdb) p B[1]
+$3 = 1
+
+(gdb) p C[0]
+$4 = 0
+
+(gdb) p C[1]
+$5 = 1
+
+(gdb) p C[2]
+$6 = 2
+
+(gdb) p *B
+$7 = 1
+
+(gdb) p *B@100
+$8 = {1 <repeats 100 times>}
+
+(gdb) print *C@100
+$9 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+  30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 
+  59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 
+  88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99}
+
+(gdb) list
+36	    tmp = B;
+37	    B = C;
+38	    C = tmp; // swap B and C
+39	
+40	    // free the space that arrays B and C point to
+41	    free(B);
+42	    free(C);
+43	
+44	    // two dimensional arrays
+45	    X = (int **) malloc(sizeof(int *)*n);
+
+(gdb) step
+42	    free(C);
+
+(gdb) step
+45	    X = (int **) malloc(sizeof(int *)*n);
+
+(gdb) list
+40	    // free the space that arrays B and C point to
+41	    free(B);
+42	    free(C);
+43	
+44	    // two dimensional arrays
+45	    X = (int **) malloc(sizeof(int *)*n);
+46	    for (i=0; i<n; i++)
+47	        X[i] = (int *) malloc(sizeof(int)*n);
+48	
+49	
+
+(gdb) list
+50	    // initialize the 2-dimensional array
+51	    for (i=0; i<n; i++)
+52	        for (j=0; j<n; j++)
+53	            X[i][j] = i;
+54	
+55	    // print out the 2-dimensional array
+56	    for (i=0; i<n; i++) {
+57	        for (j=0; j<n; j++)
+58	            printf(" %d",X[i][j]);
+59	        printf("\n");
+
+(gdb) list
+60	    }
+61	
+62	
+63	    // delete the 2-dimensional array X
+64	    for (i=0; i<n; i++)
+65	        free(X[i]);
+66	    free(X);
+67	
+68	    //create  triangular shaped 2-dimensional array
+69	    Y = (int **) malloc(sizeof(int *)*n);
+
+(gdb) break 64
+Breakpoint 3 at 0x40080e: file arrays.c, line 64.
+
+(gdb) continue
+Continuing.
+ 0 0 0 0 0 0 0 0 0 0
+ 1 1 1 1 1 1 1 1 1 1
+ 2 2 2 2 2 2 2 2 2 2
+ 3 3 3 3 3 3 3 3 3 3
+ 4 4 4 4 4 4 4 4 4 4
+ 5 5 5 5 5 5 5 5 5 5
+ 6 6 6 6 6 6 6 6 6 6
+ 7 7 7 7 7 7 7 7 7 7
+ 8 8 8 8 8 8 8 8 8 8
+ 9 9 9 9 9 9 9 9 9 9
+
+Breakpoint 3, main (argc=1, argv=0x7fffffffda58) at arrays.c:64
+64	    for (i=0; i<n; i++)
+
+(gdb) p X
+$10 = (int **) 0x602010
+
+(gdb) p *X
+$11 = (int *) 0x602070
+
+(gdb) p X[0][0]
+$12 = 0
+
+(gdb) p X[9][9]
+$16 = 9
+
+(gdb) print *X[0]@10
+$13 = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+(gdb) print *X[1]@10
+$14 = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+
+(gdb) print *X[9]@10
+$15 = {9, 9, 9, 9, 9, 9, 9, 9, 9, 9}
+
+(gdb) p *X@10
+$18 = {0x602070, 0x6020a0, 0x6020d0, 0x602100, 0x602130, 0x602160, 0x602190, 0x6021c0, 0x6021f0, 0x602220} 
+
+(gdb) continue
+Continuing.
+  1 
+  2   3 
+  4   5   6 
+  7   8   9  10 
+ 11  12  13  14  15 
+ 16  17  18  19  20  21 
+ 22  23  24  25  26  27  28 
+ 29  30  31  32  33  34  35  36 
+ 37  38  39  40  41  42  43  44  45 
+ 46  47  48  49  50  51  52  53  54  55 
+[Inferior 1 (process 1892) exited normally]
+(gdb) quit

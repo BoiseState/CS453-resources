@@ -1,0 +1,5 @@
+all:
+	echo ""
+
+clean:
+	echo ""

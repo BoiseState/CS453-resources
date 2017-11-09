@@ -1,0 +1,27 @@
+Modified by Amit Jain to show how to load a non-rentrant library twice
+using dlopen to avoid race conditions...a crude hack!
+
+The purpose of these programs is to demonstrate the loading of libraries
+during runtime.  Important points to note is that the loading program 
+and the libraries generally have to have an agreed upon set of symbols
+so that the loading program can use the library.  Frequently the library
+will have an _init function, but in the case of my programs, the libraries
+have the functions message1 and message2.
+
+
+---------------------------------
+--- Compiling/Linking Options ---
+---------------------------------
+
+-c		: compile without linking
+-fPIC		: Emits position-independent code, suitable for dynamic
+		  linking, even if branches need large displacements.
+-shared		: Produce  a  shared  object which can then be linked
+		  with other objects to form an executable.  Only a
+		  few systems support this option.
+(ld)-rdynamic	: When creating an ELF file, add all symbols to the dynamic
+		 symbol table.  Normally, the dynamic symbol table contains
+		 only symbols which are used by a dynamic object.  This
+		 option is needed for some uses of dlopen.
+(ld)-ldl	: Links libdl to the file.
+

@@ -1,0 +1,12 @@
+
+This version of linked lists has memory errors and memory leaks. Use this to learn how to use the valgrind tool. To use valgrind, type the command
+
+
+valgrind --tool=memcheck --leak-check=yes SimpleTestList 10
+
+
+Then try
+
+valgrind --tool=memcheck --leak-check=yes RandomTestList 100 100 1234
+
+
