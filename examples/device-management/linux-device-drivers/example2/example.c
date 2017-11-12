@@ -10,7 +10,7 @@
 #include <linux/errno.h>  /* error codes */
 #include <linux/types.h>  /* size_t */
 #include <linux/init.h>  /* for module_init and module_exit */
-#include <asm/uaccess.h>  /* for __copy_to_user and __copy_from_user */
+#include <linux/uaccess.h>  /* for __copy_to_user and __copy_from_user */
 #include "example.h"        /* local definitions */
 
 static int example_major =   EXAMPLE_MAJOR;
