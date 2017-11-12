@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -MMD -g
+CFLAGS=-Wall -MMD -g 
 
 PROGS=color fifo-talk fifo-client fifo-server hello-fifo
 

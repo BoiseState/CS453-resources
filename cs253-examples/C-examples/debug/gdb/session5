@@ -1,0 +1,122 @@
+[amit@localhost gdb(master)]$ loop >& loop.log &
+[1] 9976
+
+[amit@localhost gdb[(master)]$ ps augx | grep loop
+amit      9976  0.0  0.0   4172   728 pts/3    S    17:54   0:00 [01;31m[Kloop[m[K
+amit      9988  0.0  0.0 115820  2376 pts/3    S+   17:54   0:00 grep --color=auto [01;31m[Kloop[m[K
+root     23718  0.0  0.0      0     0 ?        S<   Jun27   0:00 [[01;31m[Kloop[m[K0]
+root     23720  0.0  0.0      0     0 ?        S<   Jun27   0:00 [[01;31m[Kloop[m[K1]
+
+[amit@localhost gdb(master)]$ gdb
+
+GNU gdb (GDB) Fedora 7.9.1-20.fc22
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+
+(gdb) attach 9976
+Attaching to process 9976
+Reading symbols from /home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/loop...done.
+Reading symbols from /lib64/libc.so.6...(no debugging symbols found)...done.
+Reading symbols from /lib64/ld-linux-x86-64.so.2...(no debugging symbols found)...done.
+0x00007faddb277d20 in __nanosleep_nocancel () from /lib64/libc.so.6
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.21-13.fc22.x86_64
+
+(gdb) where
+#0  0x00007faddb277d20 in __nanosleep_nocancel () from /lib64/libc.so.6
+#1  0x00007faddb277bd4 in sleep () from /lib64/libc.so.6
+#2  0x000000000040063e in main () at loop.c:14
+
+(gdb) up
+#1  0x00007faddb277bd4 in sleep () from /lib64/libc.so.6
+
+(gdb) up
+#2  0x000000000040063e in main () at loop.c:14
+14			sleep(1);
+
+(gdb) list
+9		fprintf(stderr, "loop: starting up.\n");
+10	    for(;;) {
+11			if (count % 100 == 0) {
+12	            fprintf(stderr, "loop: hello, I am still alive.\n");
+13			}
+14			sleep(1);
+15			count++;
+16	    }
+17	}
+
+(gdb) b 15
+Breakpoint 1 at 0x40063e: file loop.c, line 15.
+
+(gdb) continue
+Continuing.
+
+Breakpoint 1, main () at loop.c:15
+15			count++;
+
+(gdb) p count
+$1 = 14
+(gdb) step
+16	    }
+
+(gdb) step
+11			if (count % 100 == 0) {
+
+(gdb) p count
+$2 = 15
+
+(gdb) step
+14			sleep(1);
+
+(gdb) step
+
+Breakpoint 1, main () at loop.c:15
+15			count++;
+
+(gdb) set count=99
+
+(gdb) step
+16	    }
+
+(gdb) step
+11			if (count % 100 == 0) {
+
+(gdb) step
+12	            fprintf(stderr, "loop: hello, I am still alive.\n");
+(gdb) step
+14			sleep(1);
+
+(gdb) !cat loop.log
+loop: starting up.
+loop: hello, I am still alive.
+loop: hello, I am still alive.
+
+(gdb) detach
+Detaching from program: /home/amit/Documents/work/courses/github/CS253-resources/C-examples/debug/gdb/loop, process 9976
+
+(gdb) quit
+
+[amit@localhost gdb(master)]$ cat loop.log
+loop: starting up.
+loop: hello, I am still alive.
+loop: hello, I am still alive.
+
+[amit@localhost gdb(master)]$ ps augx | grep loop
+amit      9976  0.0  0.0   4172   796 pts/3    S    17:54   0:00 [01;31m[Kloop[m[K
+amit     10053  0.0  0.0 115820  2320 pts/3    S+   17:55   0:00 grep --color=auto [01;31m[Kloop[m[K
+root     23718  0.0  0.0      0     0 ?        S<   Jun27   0:00 [[01;31m[Kloop[m[K0]
+root     23720  0.0  0.0      0     0 ?        S<   Jun27   0:00 [[01;31m[Kloop[m[K1]
+
+[amit@localhost gdb(master)]$ kill -9 9976
+[1]+  Killed                  loop &> loop.log
+

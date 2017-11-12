@@ -39,12 +39,10 @@ int main(int argc, char *argv[])
 		execvp(argv[1], &argv[1]);
 		error("couldn't start %s", argv[1]);
 	}
-	if ((wait(&status) == -1) || WIFSIGNALED(status))
-        {
-                int signo = WTERMSIG(status);
-
+	if ((wait(&status) == -1) || WIFSIGNALED(status)) {
+    	int signo = WTERMSIG(status);
 		printf("%s %s", argv[1], strsignal(signo));
-        }
+    }
 	exit(WEXITSTATUS(status));
 }
 

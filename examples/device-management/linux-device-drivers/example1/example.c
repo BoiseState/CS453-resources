@@ -16,6 +16,7 @@ static int example_major =   EXAMPLE_MAJOR;
 module_param(example_major,int, 0);
 static int example_nr_devs = EXAMPLE_NR_DEVS;    /* number of bare example devices */
 module_param(example_nr_devs, int, 0);
+
 MODULE_AUTHOR("Amit Jain");
 MODULE_LICENSE("GPL v2");
 MODULE_DESCRIPTION("Simple Example Module");

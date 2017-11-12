@@ -52,7 +52,7 @@ testfileopen: testfileopen.o
 
 pseudo-device.img: create-empty-file
 	echo "Creating empty file of 100MB..."
-	create-empty-file 100
+	./create-empty-file 100
 
 d1:
 	mkdir d1; cd d1; mkdir d2; cd d2; ln -s ../../d1 d3

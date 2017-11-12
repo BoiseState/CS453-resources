@@ -27,20 +27,23 @@ int main(void)
 
 	count = 0;
 	for (;;) {
-		randvalue = random() % 4;
+		randvalue = random() % 3;
 		if (randvalue == 0) 
 			strcpy(request, "I need some money!");
 		else
 			strcpy(request, "Hello parent!");
-		printf("%schild[%3d]: %s\n", red, count, request);
+		printf("%sclient[%3d]: %s\n", red, count, request);
+
 		status = write(fifo1, request, strlen(request));
 		if (status == 0) break;
 		memset(request, 0, PIPE_BUF);
+
 		status = read(fifo2, reply, PIPE_BUF);
-		printf("%sparent[%3d]: %s\n", blue, count, reply);
+		printf("%sserver[%3d]: %s\n", blue, count, reply);
 		if (status == 0) break;
 		memset(reply, 0, PIPE_BUF);
-		sleep(1);
+
+		sleep(2);
 		count++;
 	}
 

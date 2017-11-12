@@ -4,7 +4,8 @@
 #define red   "\033[0;31m"        /* 0 -> normal ;  31 -> red */
 #define cyan  "\033[1;36m"        /* 1 -> bold ;  36 -> cyan */
 #define green "\033[4;32m"        /* 4 -> underline ;  32 -> green */
-#define blue  "\033[9;34m"        /* 9 -> strike ;  34 -> blue */
+#define blue_strike  "\033[9;34m"        /* 9 -> strike ;  34 -> blue */
+#define blue  "\033[0;34m"        /* 9 -> strike ;  34 -> blue */
  
 #define black  "\033[0;30m"
 #define brown  "\033[0;33m"
@@ -17,6 +18,7 @@ int main(void)
 {
 	printf("\n");
 	printf("%sHello, %sworld!%s\n", red, blue, none);
+	printf("%sHello, %sworld!%s\n", blue_strike, blue_strike, none);
   	printf("%sHello%s, %sworld!\n", green, none, cyan);
    	printf("%s", none);
    	printf("Vanilla hello\n");

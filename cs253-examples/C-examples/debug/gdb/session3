@@ -1,0 +1,266 @@
+[amit@kohinoor gdb(master)]$ gdb strings
+
+GNU gdb (GDB) Fedora 7.9.1-20.fc22
+Copyright (C) 2015 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from strings...done.
+
+(gdb) break main
+Breakpoint 1 at 0x400821: file strings.c, line 10.
+
+(gdb) run
+Starting program: /home/amit/Documents/classes/cs253/CS253-resources/C-examples/debug/gdb/strings 
+Missing separate debuginfos, use: dnf debuginfo-install glibc-2.21-13.fc22.x86_64
+
+Breakpoint 1, main () at strings.c:10
+10	    char *r = "winnie";
+
+(gdb) l
+5	
+6	#define MAXLEN 256
+7	
+8	int main()
+9	{
+10	    char *r = "winnie";
+11	    char *s;
+12	    char q[MAXLEN];
+13	    int stat;
+14	    char *delimiter = " ";
+(gdb) l
+15	    char *token;
+16	    char *save;
+17	    char *copy;
+18	
+19	    s = (char *) malloc(sizeof(char) * MAXLEN);
+20	    strcat(s,"tigger"); /* initialize string s */
+21	    strcat(q, "pooh");
+22	
+23	    printf("String r = %s length of r = %ld\n",r, strlen(r));
+24	
+(gdb) l
+25	    strcpy(q, r); // r is copied to q
+26	
+27	    strcat(s, r);
+28	    printf("r = %s s = %s q = %s \n",r, s, q);
+29	
+30	    stat = strcmp(r,s);
+31	    if (stat < 0)
+32	        printf("r < s (lexicographically)\n");
+33	    else if (stat == 0)
+34	        printf("r == s (lexicographically)\n");
+(gdb) l
+35	    else
+36	        printf("r > s (lexicographically)\n");
+37	
+38	
+39	
+40	
+41	    free(s);
+42	    s = (char *) malloc(sizeof(char)*MAXLEN);
+43	    strcpy(s, " tigger pooh abracadabra woo ;; woo & choo choo");
+44	
+
+(gdb) break 41
+Breakpoint 2 at 0x400963: file strings.c, line 41.
+
+(gdb) c
+Continuing.
+String r = winnie length of r = 6
+r = winnie s = tiggerwinnie q = winnie 
+r > s (lexicographically)
+
+Breakpoint 2, main () at strings.c:41
+41	    free(s);
+
+(gdb) display s
+1: s = 0x602010 "tiggerwinnie"
+
+(gdb) next
+42	    s = (char *) malloc(sizeof(char)*MAXLEN);
+1: s = 0x602010 "tiggerwinnie"
+
+(gdb) next
+43	    strcpy(s, " tigger pooh abracadabra woo ;; woo & choo choo");
+1: s = 0x602010 "tiggerwinnie"
+
+(gdb) next
+46	    save = (char *) malloc(sizeof(char)*(strlen(s)+1));
+1: s = 0x602010 " tigger pooh abracadabra woo ;; woo & choo choo"
+
+(gdb) list 71
+66	
+67	
+68	    while (token != NULL) {
+69	        printf("next token = %s\n", token);
+70	        token = strsep(&s,  " ;");
+71	    }
+72	    exit(0);
+73	
+74	}
+(gdb) list
+Line number 75 out of range; strings.c has 74 lines.
+(gdb) list 41
+36	        printf("r > s (lexicographically)\n");
+37	
+38	
+39	
+40	
+41	    free(s);
+42	    s = (char *) malloc(sizeof(char)*MAXLEN);
+43	    strcpy(s, " tigger pooh abracadabra woo ;; woo & choo choo");
+44	
+45	    /* save a copy because strtok will eat it up */
+(gdb) list
+46	    save = (char *) malloc(sizeof(char)*(strlen(s)+1));
+47	    strcpy(save, s);
+48	
+49	    printf("starting to tokenize the string: %s \n", s);
+50	    /* tokenize the string q */
+51	    token = strtok(s, delimiter); /* use space as a delimiter */
+52	    /* you should copy the token to a local space since right now token is
+53	     * pointing to inside the string s, which is liable to change. This is
+54	     * especially needed if you will pass the token around to other functions. */
+55	    copy = (char *) malloc (sizeof(char)*(strlen(token)+1));
+
+(gdb) next
+47	    strcpy(save, s);
+1: s = 0x602010 " tigger pooh abracadabra woo ;; woo & choo choo"
+
+(gdb) next
+49	    printf("starting to tokenize the string: %s \n", s);
+1: s = 0x602010 " tigger pooh abracadabra woo ;; woo & choo choo"
+
+(gdb) next
+starting to tokenize the string:  tigger pooh abracadabra woo ;; woo & choo choo 
+51	    token = strtok(s, delimiter); /* use space as a delimiter */
+1: s = 0x602010 " tigger pooh abracadabra woo ;; woo & choo choo"
+
+(gdb) p save
+$1 = 0x602120 " tigger pooh abracadabra woo ;; woo & choo choo"
+
+(gdb) next
+55	    copy = (char *) malloc (sizeof(char)*(strlen(token)+1));
+1: s = 0x602010 " tigger"
+
+(gdb) next
+56	    strcpy(copy, token);
+1: s = 0x602010 " tigger"
+
+(gdb) next
+57	    while (token != NULL) {
+1: s = 0x602010 " tigger"
+
+(gdb) next
+58	        printf("next token = %s\n", token);
+1: s = 0x602010 " tigger"
+
+(gdb) next
+next token = tigger
+59	        token = strtok(NULL,  delimiter);
+1: s = 0x602010 " tigger"
+
+(gdb) next
+57	    while (token != NULL) {
+1: s = 0x602010 " tigger"
+
+(gdb) display token
+2: token = 0x602018 "pooh"
+
+(gdb) next
+58	        printf("next token = %s\n", token);
+2: token = 0x602018 "pooh"
+1: s = 0x602010 " tigger"
+
+(gdb) next
+next token = pooh
+59	        token = strtok(NULL,  delimiter);
+2: token = 0x602018 "pooh"
+1: s = 0x602010 " tigger"
+
+(gdb) next
+57	    while (token != NULL) {
+2: token = 0x60201d "abracadabra"
+1: s = 0x602010 " tigger"
+
+(gdb) next
+58	        printf("next token = %s\n", token);
+2: token = 0x60201d "abracadabra"
+1: s = 0x602010 " tigger"
+
+(gdb) next
+next token = abracadabra
+59	        token = strtok(NULL,  delimiter);
+2: token = 0x60201d "abracadabra"
+1: s = 0x602010 " tigger"
+
+(gdb) l
+54	     * especially needed if you will pass the token around to other functions. */
+55	    copy = (char *) malloc (sizeof(char)*(strlen(token)+1));
+56	    strcpy(copy, token);
+57	    while (token != NULL) {
+58	        printf("next token = %s\n", token);
+59	        token = strtok(NULL,  delimiter);
+60	    }
+61	
+62	    strcpy(s, save); /* restore s */
+63	    printf("starting to tokenize the string: %s \n", s);
+
+(gdb) break 62
+Breakpoint 3 at 0x400a93: file strings.c, line 62.
+
+(gdb) c
+Continuing.
+next token = woo
+next token = ;;
+next token = woo
+next token = &
+next token = choo
+next token = choo
+
+Breakpoint 3, main () at strings.c:62
+62	    strcpy(s, save); /* restore s */
+2: token = 0x0
+1: s = 0x602010 " tigger"
+
+(gdb) next
+63	    printf("starting to tokenize the string: %s \n", s);
+2: token = 0x0
+1: s = 0x602010 " tigger pooh abracadabra woo ;; woo & choo choo"
+
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000400821 in main at strings.c:10
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0000000000400963 in main at strings.c:41
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x0000000000400a93 in main at strings.c:62
+	breakpoint already hit 1 time
+
+(gdb) continue
+Continuing.
+starting to tokenize the string:  tigger pooh abracadabra woo ;; woo & choo choo 
+next token = 
+next token = tigger
+next token = pooh
+next token = abracadabra
+next token = woo
+next token = 
+next token = 
+next token = 
+next token = woo
+next token = &
+next token = choo
+next token = choo
+[Inferior 1 (process 13644) exited normally]
+(gdb) quit

@@ -94,7 +94,7 @@ static int example_release (struct inode *inode, struct file *filp)
 		up(&example_device_stats->sem);
 
 		module_put(THIS_MODULE);
-		return (0);
+		return 0;
 }
 
 /*
