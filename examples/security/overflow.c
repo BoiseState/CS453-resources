@@ -11,8 +11,8 @@
 
 int main()
 {
-	char msg[16];
 	int pass=0;
+	char msg[16];
 
 	printf("&pass=%p &msg=%p \n", &pass, &msg);
 	printf("Enter password: ");
