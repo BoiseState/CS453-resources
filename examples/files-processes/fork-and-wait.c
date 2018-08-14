@@ -8,7 +8,7 @@
 
 #define DEBUG 1
 
-void childs_play();
+void childs_play(void);
 void err_sys(char *msg);
 
 int main(void)
@@ -38,7 +38,7 @@ int main(void)
     exit(EXIT_SUCCESS);
 }
 
-void childs_play()
+void childs_play(void)
 {
 #ifdef DEBUG
     sleep(3);

@@ -10,7 +10,7 @@
 
 #define ITERATIONS 1000000000
 
-void printSchedulingPolicy()
+void printSchedulingPolicy(void)
 {
   	int which;
 	which = sched_getscheduler(0);
@@ -28,7 +28,7 @@ void printSchedulingPolicy()
 }
 
 
-int main()
+int main(void)
 {     
 
   int sched_setscheduler(pid_t pid, int policy,  const  struct  sched_param *p);
@@ -39,6 +39,7 @@ int main()
 	struct rusage usage;
 	long long i;
 	int A[1000000];
+#pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 	
 	printSchedulingPolicy();
 	/* experiment with value of priority below: try setting as high as 98 and then 99! */

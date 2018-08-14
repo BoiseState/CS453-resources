@@ -14,7 +14,7 @@
 
 void printUsage(char *progName);
 void onAlarm(int signo);
-void printStats();
+void printStats(void);
 
 int count, correct;
 
@@ -101,7 +101,7 @@ void onAlarm(int signo)
 	kill(getpid(), SIGINT);
 }
 
-void printStats()
+void printStats(void)
 {
 	if (count > 0)
 		fprintf(stdout, "\ncorrect answers: %d of %d for %d%%\n\n", correct, count, (int)(((float)correct/(float)count)*100));

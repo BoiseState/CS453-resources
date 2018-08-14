@@ -97,7 +97,7 @@ void *threadMain (void *ptr)
 	pthread_exit(NULL);
 }
 
-void savestate()
+void savestate(void)
 {
 	fprintf(stderr, "Thread #%lX: saving state.\n",pthread_self());
 }

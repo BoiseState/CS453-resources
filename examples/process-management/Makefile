@@ -1,7 +1,7 @@
 
 
 CC=gcc
-CFLAGS= -O -Wall 
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 PROGS=deh  deh-static test-bss
 
 all: $(PROGS)

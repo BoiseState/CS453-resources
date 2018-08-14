@@ -9,7 +9,7 @@ JFLAGS=
 
 CC=gcc
 #CFLAGS=-I. -g -Wall
-CFLAGS=-I. -O  -Wall
+CFLAGS=-g -O2 -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 LDFLAGS=-lpthread
 
 PROGS= threads-hello-synchronized mycp threads-sem-cp threads-dbl-buf threads-cp checkpoint counting\

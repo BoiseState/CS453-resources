@@ -44,5 +44,6 @@ int main(int argc, char **argv) {
 		printf("read %d bytes, random value = %u\n", count, randomvalue);
 	}
 	printf("----------------------------------------------------\n");
+	exit(0);
 }
  

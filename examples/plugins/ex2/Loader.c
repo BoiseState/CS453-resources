@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "Loader.h"
 
-int main()
+int main(void)
 {
   fMessage fMsg[NMESSAGES];
     //  Open the desired libraries.

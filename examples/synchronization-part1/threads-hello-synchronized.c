@@ -4,11 +4,11 @@
 #include <semaphore.h>
 #include <limits.h>
 
-void *print_message_function( void *ptr );
+void *print_message_function(void *ptr);
 
 sem_t worlds_turn;
 
-int main()
+int main(void)
 {
      pthread_t thread1, thread2;
      char *message1 = "Hello";

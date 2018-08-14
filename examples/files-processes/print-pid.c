@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main()
+int main(void)
 {
     printf("print-pid: after exec pid=%d\n",getpid());
     sleep(5);

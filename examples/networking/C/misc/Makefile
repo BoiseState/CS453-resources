@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -g  
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes -MMD
 
 all: byteorder testrcmd
 

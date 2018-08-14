@@ -7,8 +7,8 @@
 #include <sys/wait.h>
 
 void err_sys(char *msg);
-void run_child();
-void run_grandchild();
+void run_child(void);
+void run_grandchild(void);
 
 int main(void)
 {
@@ -32,7 +32,7 @@ int main(void)
     exit(EXIT_SUCCESS);
 }
 
-void run_child()
+void run_child(void)
 {
     pid_t   pid;
 
@@ -51,7 +51,7 @@ void run_child()
     exit(EXIT_SUCCESS); /* the child can now exit */
 }
 
-void run_grandchild()
+void run_grandchild(void)
 {
     printf("grandchild = %d, parent = %d\n", getpid(), getppid());
     exit(EXIT_SUCCESS);

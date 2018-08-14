@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -I. -g 
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes -MMD -I.
 
 all: udpclient1 udpserver1 udpclient2 udpserver2
 

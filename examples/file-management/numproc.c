@@ -15,7 +15,7 @@
 #define MAX 4096
  
 
-int num_processes()
+int num_processes(void)
 {
 	struct rlimit rlim;
 	int myuid; 
@@ -53,7 +53,7 @@ int num_processes()
 	return num;
 }
 
-int main()
+int main(void)
 {
 	fprintf(stderr, "Number of my processes is %d\n", num_processes());
 	exit(0);

@@ -28,7 +28,7 @@ with the agrgument _SC_CLK_TCK.
 */
 								  
 
-float report_cpu_time()
+float report_cpu_time(void)
 { 
 	struct tms buffer;
 	float cputime;
@@ -39,7 +39,7 @@ float report_cpu_time()
 }
 
 
-float report_sys_time()
+float report_sys_time(void)
 { 
 	struct tms buffer;
 	float systime;
@@ -49,7 +49,7 @@ float report_sys_time()
 	return (systime);
 }
 
-double getMilliSeconds()
+double getMilliSeconds(void)
 {
     struct timeval now;
     gettimeofday(&now, (struct timezone *)0);

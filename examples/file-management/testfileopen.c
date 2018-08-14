@@ -5,7 +5,7 @@
 #include <errno.h>
 #include <stdlib.h>
 
-int main() 
+int main(void) 
 {
 	char file[1024];
 	FILE *fd;

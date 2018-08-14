@@ -11,7 +11,7 @@
 
 int a[100000000];
 
-int main()
+int main(void)
 {
 	int i;
 

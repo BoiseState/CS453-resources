@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	int *slot;
 
 	/*void *pool = sbrk(1LL << 34);*/
-	void *pool = sbrk(1ll << 22);
+	char *pool = sbrk(1ll << 22);
 	if (pool < 0 || errno == ENOMEM) {
 		perror("Could not allocate memory pool!");
 		exit(1);
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 
 	printf("starting address for memory pool  = %p\n", pool);
 	for (i =0; i < 1000000; i++) {
-		slot = pool + sizeof(int) * i;
+		slot = (int *)(pool + sizeof(int) * i);
 		*slot = i;
 	}
 
@@ -35,14 +35,14 @@ int main(int argc, char **argv)
 		/*int * array = (int *) pool; array[i]*/
 	}
 	/*int *x = (int *) malloc(sizeof(int));*/
-	void *pool2 = sbrk(1 << 22);
+	char *pool2 = sbrk(1 << 22);
 	if (pool2 < 0 || errno == ENOMEM) {
 		perror("Could not allocate memory pool!");
 		exit(1);
 	}
 	printf("starting address for memory pool  = %p\n", pool2);
 	for (i = 0; i < 1000000; i++) {
-		slot = pool2 + sizeof(int) * i;
+		slot = (int *)(pool2 + sizeof(int) * i);
 		*slot = i;
 	}
 	for (i = 0; i < 10; i++) {

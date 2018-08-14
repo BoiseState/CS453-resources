@@ -1,5 +1,5 @@
 CC=gcc
-CPP=g++
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 OBJFLAGS=-c -fPIC
 LIBFLAGS=-shared
 LOADERFLAGS=-rdynamic

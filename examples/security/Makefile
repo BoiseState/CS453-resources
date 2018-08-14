@@ -1,7 +1,7 @@
 
 
 CC=gcc
-CFLAGS=-Wall 
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 
 all: printwhoami overflow self
 

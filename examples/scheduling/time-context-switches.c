@@ -10,7 +10,7 @@
 
 #define ITERATIONS 70000000
 
-void printSchedulingPolicy()
+void printSchedulingPolicy(void)
 {
   	int which;
 	which = sched_getscheduler(0);
@@ -28,7 +28,7 @@ void printSchedulingPolicy()
 }
 
 
-int main()
+int main(void)
 {     
 
   int sched_setscheduler(pid_t pid, int policy,  const  struct  sched_param *p);

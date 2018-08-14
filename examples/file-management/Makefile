@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -O
+CFLAGS=-g -O2 -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 
 PROGS=filetype-survey filesize-survey file-io mmap-io mcopy myls mycp seek1 seek2 mystat numproc testfileopen\
 	  create-empty-file

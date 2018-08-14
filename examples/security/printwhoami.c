@@ -17,10 +17,10 @@ int main(int argc, char **argv)
 	euid = geteuid();
 	printf("but I am acting effectively as  %s!\n", getpwuid(euid)->pw_name);
 
-	/*gid = getgid();*/
-	/*egid = getegid();*/
-	/*printf("my group is %s and my effective group id is %s\n", */
-					/*getgrgid(gid)->gr_name, getgrgid(egid)->gr_name); */
+	gid = getgid();
+	egid = getegid();
+	printf("my group is %s and my effective group id is %s\n", 
+					getgrgid(gid)->gr_name, getgrgid(egid)->gr_name); 
 
 	exit(0);
 }

@@ -11,7 +11,7 @@ int *values;
 int n;
 int result[2]; /* partial sums arrays */
 
-float report_cpu_time();
+float report_cpu_time(void);
 
 int  main( int argc, char **argv)
 {

@@ -8,13 +8,13 @@
 
 int A[SIZE][SIZE];
 
-float report_cpu_time();
-float report_sys_time();
-double getMilliseconds();
+float report_cpu_time(void);
+float report_sys_time(void);
+double getMilliseconds(void);
 float cputime, systime;
 double totaltime;
 
-void run_row_major() 
+void run_row_major(void) 
 {
 	int i, j;
 
@@ -35,7 +35,7 @@ void run_row_major()
 
 }
 
-void run_column_major() 
+void run_column_major(void) 
 {
 	int i, j;
 

@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g  
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes 
 LIBFLAGS=-fpic -shared
 LIBS=-ldl
 

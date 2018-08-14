@@ -8,7 +8,8 @@
 
 unsigned int MAX=4294967295U;
 
-int main(){
+int main(void)
+{
 		unsigned int  i = 0;
 		printf("MAX = %u\n",MAX);
 		/*for (i=0; i<MAX; i++) {*/

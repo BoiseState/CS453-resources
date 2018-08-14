@@ -9,7 +9,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-int main()
+int main(void)
 {
 	int pass=0;
 	char msg[16];

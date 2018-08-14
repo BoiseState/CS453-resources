@@ -21,6 +21,7 @@ void fun(int (*fn)(int x)) {
 	int result;
 	
 	result = (*fn) (5);
+	printf("result = %d\n", result);
 }
 
 int main(int argc, char **argv){

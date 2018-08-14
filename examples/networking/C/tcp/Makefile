@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-Wall -I.
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes -MMD -I.
 
 all: tcpclient tcpserver timeserver timeclient
 

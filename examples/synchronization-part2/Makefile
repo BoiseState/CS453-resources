@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-g -Wall 
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 
 all: fun daemon_ex1 subdirs 
 

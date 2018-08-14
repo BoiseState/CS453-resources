@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -g  
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 OBJFLAGS= -g -c -fPIC
 LIBFLAGS=-shared
 

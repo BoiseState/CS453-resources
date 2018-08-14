@@ -1,6 +1,6 @@
 
 CC=gcc
-CFLAGS=-g   -Wall
+CFLAGS=-g -std=gnu89 -Wall -Wpointer-arith -Wstrict-prototypes
 LDFLAGS=-lrt
 
 PROGS= access_shmem create_shmem create_shmem_2 access_shmem_2 create_posix_shmem\

@@ -9,7 +9,7 @@
 
 void ourhandler(int signo);
 
-int main()
+int main(void)
 {
 	printf("Try to stop me...I dare you!\n");
 	fflush(stdout);

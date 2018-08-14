@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main() {
+int main(void) {
 	int stat[5] = {0,0,0,0,0};
 	const int MAXNUM=5;
 	int max, min;

@@ -4,7 +4,7 @@
 #define DLLOAD_H
 
 typedef void* HANDLE;
-typedef void (*fMessage)();
+typedef void (*fMessage)(void);
 
 #define NMESSAGES 4
 
