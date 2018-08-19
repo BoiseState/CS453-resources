@@ -1,7 +1,7 @@
 #Project Number/Title {#mainpage}
 
 * Author: Your Name
-* Class: CS453/552 [Operating Systems] Section #num
+* Class: CS453 [Operating Systems] Section #num
 
 ##Overview
 
