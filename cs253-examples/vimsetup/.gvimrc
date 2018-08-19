@@ -17,3 +17,6 @@ map <F7> :set hls!<CR>
 " if we wish to, we can use different color schmes for vim versus gvim
 colors pyte
 
+" turn off all beeps and flashes
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
