@@ -34,6 +34,6 @@ stackoverflow.com and fail to cite it in this section it will be
 considered plagiarism and be dealt with accordingly. So be safe CITE!
 [Here is some help creating links](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
 
-## Know issues
+## Known issues
 
 Please detail any known issues or bugs in this project.
