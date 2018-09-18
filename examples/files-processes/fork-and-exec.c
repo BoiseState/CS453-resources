@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
             execlp("./print-pid","print-pid",(char *) NULL);
         } else if(argc == 2) {
             char *url = buildQueryUrl(argv[1]);
-            execlp("google-chrome","google-chrome", "--new-window", url, (char *) NULL);
-            /* execlp("gvim","gvim", argv[1], (char *) NULL); */
+            //execlp("google-chrome","google-chrome", "--new-window", url, (char *) NULL);
+            execlp("gvim","gvim", argv[1], (char *) NULL); 
         }
         err_sys("exec failed");
         exit(EXIT_FAILURE);
