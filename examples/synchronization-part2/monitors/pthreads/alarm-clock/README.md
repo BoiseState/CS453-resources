@@ -6,3 +6,8 @@ to make sure threads get a chance.
 The better way to solve this would be to use priority-based wait implementation that wraps
 around the pthread_cond_wait call.
 
+To verify output, try
+
+TestAlarm 3 4 |  sort --stable -k 2,2
+
+

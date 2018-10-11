@@ -18,7 +18,6 @@
 
 AccountPtr account_init()
 {
-
 	AccountPtr acct = (AccountPtr) malloc(sizeof(Account));
 	acct->balance = 0.0;
 	pthread_mutex_init(&(acct->mutex), NULL);
