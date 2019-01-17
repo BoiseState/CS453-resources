@@ -11,21 +11,21 @@ int  main()
 	char *szMessage2 = "World";
 	
 	phThread1 = CreateThread(
-			NULL,							// Security Descriptor (handle not inheritable)
-			0,								// initial stack size (default)
+			NULL,					// Security Descriptor (handle not inheritable)
+			0,						// initial stack size (default)
 			PrintMessageFunction,	// thread function
-			szMessage1,					// thread argument
-			0,								// creation option (run immediately)
-			&dwThreadID1				// thread identifier
+			szMessage1,				// thread argument
+			0,						// creation option (run immediately)
+			&dwThreadID1			// thread identifier
 	);
 
 	phThread2 = CreateThread(
-			NULL,							// Security Descriptor (handle not inheritable)
-			0,								// initial stack size (default)
+			NULL,					// Security Descriptor (handle not inheritable)
+			0,						// initial stack size (default)
 			PrintMessageFunction,	// thread function
-			szMessage2,					// thread argument
-			0,								// creation option (run immediately)
-			&dwThreadID2				// thread identifier
+			szMessage2,				// thread argument
+			0,						// creation option (run immediately)
+			&dwThreadID2			// thread identifier
 	);
 		
 
