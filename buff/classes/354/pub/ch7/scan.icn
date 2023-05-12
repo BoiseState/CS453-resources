@@ -1,0 +1,20 @@
+# icon scan.icn < scan.icn
+
+procedure scan(s)
+    local tok
+    local ws
+    ws:=' \t'			# character set
+    while s ?:= {		# subject and assignment
+	tab(many(ws))
+	tok:=tab(many(~ws)) | fail
+	suspend tok
+	tab(0)			# to end of string
+    }
+end
+
+procedure main()
+    local s
+    s:=""
+    while s||:=read()||" "	# newlines -> spaces
+    every write(scan(s))
+end

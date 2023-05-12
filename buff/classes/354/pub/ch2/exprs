@@ -1,0 +1,17 @@
+expr     : expr add_op term
+	 | term
+
+term     : term mult_op factor
+	 | factor
+
+factor   : id
+	 | number
+	 | '-' factor
+	 | '(' expr ')'
+
+add_op   : '+'
+	 | '-'
+
+mult_op  : '*'
+	 | '/'
+

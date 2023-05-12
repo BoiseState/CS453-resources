@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -x
+
+guile sum.scm
+#guile sumtail.scm

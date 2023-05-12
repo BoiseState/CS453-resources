@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# This program, when run on onyx, will ssh to a random node.
+
+trap exit SIGINT SIGTERM
+
+base=onyxnode
+
+declare -a Nodes
+
+Nums() { seq -f "%02.0f" 1 99 | shuf ; }
+
+Node() {
+    [ ${#Nodes[@]}=0 ] && readarray -t Nodes < <(Nums)
+    echo $base${Nodes[0]} ; unset Nodes[0]
+}
+
+Ping() { ping -nq -c 1 $1 >/dev/null 2>&1 ; }
+
+Ssh() {
+    local timeout="-o ServerAliveCountMax=5 -o ServerAliveInterval=1"
+    local   batch="-o StrictHostKeyChecking=no"
+    local    args="-qtYA $timeout $batch"
+    ssh $args $1
+}
+
+Try() { Ping $1 && Ssh $1 ; }
+
+until Try $(Node) ; do
+    echo trying another node
+done

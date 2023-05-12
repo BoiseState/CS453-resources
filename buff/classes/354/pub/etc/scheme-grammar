@@ -1,0 +1,7 @@
+sexprs : sexpr sexprs
+       | sexpr
+
+sexpr  : literal                      # e.g., #t, #f, 123, 3.14, "hi", ()
+       | symbol                       # e.g., foo, +
+       | '(' sexprs ')'               # regular list
+       | '(' sexprs '.' sexpr ')'     # dotted pair (rare)

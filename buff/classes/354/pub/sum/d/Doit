@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export PATH=/usr/local/src/gdc/x86_64-pc-linux-gnu/bin:/usr/bin:/bin
+unset LD_LIBRARY_PATH
+
+gcc -o sum sum.d -lgphobos2 -lpthread -lm
+
+./sum

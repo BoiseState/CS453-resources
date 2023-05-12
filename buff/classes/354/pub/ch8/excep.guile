@@ -1,0 +1,20 @@
+#! /bin/guile
+!#
+
+(define (foo i)
+  (if (< i 2)
+      (throw 'ArgsException "too few args"))
+  ;much more code
+  (display "foo() done")
+  (display "\n"))
+
+(catch 'ArgsException
+       (lambda ()
+	 (foo (length (command-line)))
+         ;much more code
+	 (display "ok")
+	 (display "\n"))
+       (lambda (key . e)
+	 (display "not ok: ")
+	 (display (car e))
+	 (display "\n")))

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -x
+
+gcc -o sum sum.f -lgfortran
+
+./sum

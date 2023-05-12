@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# This program is a simple regression tester.
+# For each test directory, the interpreter/compiler
+# is executed on programs in files whose names glob "prg*".
+# Input is from "inp", which is redirected to stdin.
+# Output goes to "out", to which stdout is redirected.
+# After each execution, "out" is compared to "exp",
+# the expected output.
+
+Quote() {
+    sed 's/"/\\\"/g'
+}
+
+Prgs() {
+    for f ; do
+	echo -n "\"$(Quote <$f)\" "
+    done
+}
+
+Compare() {
+    case $2 in
+	i) trans=Interpreter ;;
+	c) trans=Compiler ;;
+    esac
+    diff -w $1/exp $1/out.$2 2>/dev/null >&2 || echo "$trans ${1##*/} failed" >&2
+}
+
+for t in test-* ; do
+    echo ${t##*/}
+    [ -f $t/inp ] || > $t/inp
+    export Code=$t/gen
+    eval java -cp .. Main "$(Prgs $t/prg*)" < $t/inp > $t/out.i
+    Compare $t i
+    clang-format -i $Code.c
+    gcc -Wall $Code.c -o $Code 2>$t/gccerrs && $Code < $t/inp > $t/out.c
+    Compare $t c
+done

@@ -1,0 +1,19 @@
+// slightly edited output from frame.c
+
+fp:(0x7fff2859acc0)
+    0x7fff2859acc0 - 0x7fff2859aca4     main's frame
+    0x7fff2859aca3 - 0x7fff2859aca0 (4) retval
+    0x7fff2859ac9b - 0x7fff2859ac98 (4) formal h
+    0x7fff2859ac93 - 0x7fff2859ac90 (4) formal g
+sp:(0x7fff2859ac90)
+    0x7fff2859ac8f - 0x7fff2859ac88 (8) retadr
+    0x7fff2859ac87 - 0x7fff2859ac80 (8) fp
+    0x7fff2859ac7f - 0x7fff2859ac7c (4) local x
+    0x7fff2859ac7b - 0x7fff2859ac78 (4) local y
+    0x7fff2859ac77 - 0x7fff2859ac70 (8) ?
+    0x7fff2859ac6f - 0x7fff2859ac6c (4) formal a
+    0x7fff2859ac6b - 0x7fff2859ac68 (4) formal b
+    0x7fff2859ac67 - 0x7fff2859ac64 (4) formal c
+    0x7fff2859ac63 - 0x7fff2859ac60 (4) formal d
+    0x7fff2859ac5f - 0x7fff2859ac5c (4) formal e
+    0x7fff2859ac5b - 0x7fff2859ac58 (4) formal f

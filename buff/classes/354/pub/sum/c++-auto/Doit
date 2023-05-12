@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -x
+
+g++ -pedantic -o sum sum.c++
+./sum

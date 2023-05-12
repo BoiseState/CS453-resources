@@ -1,0 +1,13 @@
+# icon fib.icn
+
+procedure fib1(i,j)
+    suspend i | fib1(j,i+j)
+end
+
+procedure fib()
+    suspend fib1(0,1)
+end
+procedure main()
+    local x
+    every x:=fib() do if x<20 then write(x) else return
+end

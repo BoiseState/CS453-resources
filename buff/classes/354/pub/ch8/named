@@ -1,0 +1,7 @@
+#!/bin/python
+
+def f(a=1, b=2, c=3):
+    print a,b,c
+
+f()
+f(c=30,b=20)

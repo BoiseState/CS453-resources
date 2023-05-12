@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -x
+
+export PATH=/usr/local/bin:/usr/bin:/bin
+
+sr -o sum sum.sr
+./sum

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -x
+
+#gen=--gen-suppressions=all
+
+valgrind $gen \
+    --leak-check=full \
+    --show-leak-kinds=all \
+    --suppressions=fltk.supp \
+    ./wam

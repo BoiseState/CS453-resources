@@ -1,0 +1,5 @@
+test-two/gen.c: In function 'main':
+test-two/gen.c:8:3: error: 'y' undeclared (first use in this function)
+    8 |   y = x + 3;
+      |   ^
+test-two/gen.c:8:3: note: each undeclared identifier is reported only once for each function it appears in

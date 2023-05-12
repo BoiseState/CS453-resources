@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -x
+
+# If you uncomment this, it will clobber sum.s
+# gcc -S -o sum.s sum.c
+# gcc -c sum.c -Wa,-adhlns=sum.l -fverbose-asm
+
+as -a=sum.lst -g -o sum.o sum.s
+ld -g -o sum sum.o
+
+./sum
+
+#ftp://ftp.gnu.org/old-gnu/Manuals/gas/html_chapter/as_7.html
+#https://wiki.cdot.senecacollege.ca/wiki/X86_64_Register_and_Instruction_Quick_Start
+
+#https://en.wikibooks.org/wiki/X86_Assembly/Shift_and_Rotate

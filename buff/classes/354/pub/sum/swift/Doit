@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -x
+
+swiftc -g -o sum sum.swift
+./sum

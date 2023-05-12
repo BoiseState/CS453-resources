@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -x
+
+PATH=/bin:/usr/bin
+
+rm -f go.mod
+go mod init local
+
+cd Main
+go build main.go
+go run main.go

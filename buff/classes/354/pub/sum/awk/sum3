@@ -1,0 +1,19 @@
+#!/bin/awk -f
+
+# Awk sum program
+
+function sum(seq) {
+    for (i in seq)
+        s+=seq[i]
+    return s
+}
+
+BEGIN {
+    seq["x1"]=5
+    seq["x2"]=6
+    seq["x3"]=1
+    seq["x4"]=8
+    seq["x5"]=3
+    seq["x6"]=7
+    print sum(seq)
+}

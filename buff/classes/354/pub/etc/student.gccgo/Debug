@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# workspace for go build:
+#   https://nanxiao.gitbooks.io/golang-101-hacks/content/posts/go-build-vs-go-install.html
+
+set -ex
+
+top=/usr/local/apps/local
+
+export PATH=$top/bin:/bin
+export LD_LIBRARY_PATH=$top/usr/lib64
+
+verold=8.3.0
+vernew=10.1.0
+ver=$vernew
+
+cxxinc=$top/include/c++/$ver
+target=x86_64-pc-linux-gnu
+export GCC_EXEC_PREFIX=$top/lib/gcc/
+export CPLUS_INCLUDE_PATH=$cxxinc/$target:$cxxinc
+
+make clean
+make
+
+# b main.main
+gdb ./main

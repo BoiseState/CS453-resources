@@ -1,0 +1,28 @@
+#!/bin/bash
+
+f() { false; }
+g() { false; }
+
+##############################
+
+if f ; then
+    echo f
+else
+    if g ; then
+	    echo g
+    else
+	    echo not f nor g
+    fi
+fi
+
+##############################
+
+if f ; then
+    echo f
+elif g ; then
+    echo g
+else
+    echo not f nor g
+fi
+	 
+	

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+prg=${0##*/}
+tmp=/tmp/$prg.$$ ; trap "rm -f $tmp" EXIT
+
+Doit() {
+    tr A-Z a-z                \
+        | sed 's/[^ a-z]//g'  \
+        | sed 's/[-,.;:]/ /g' \
+        | xargs -n1           \
+        | grep ...            \
+	| sort -u > $tmp
+    line=$(((RANDOM%$(wc -l <$tmp))+1))
+    sed -n "$line {p;q}" $tmp
+}
+
+Doit < ~/ws/452/pub/doc/US-Constitution.txt

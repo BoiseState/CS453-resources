@@ -1,0 +1,29 @@
+// -*-C-*-
+
+static void *prod(void *a) {
+  while (1) {
+    int data;
+    prod(&data);
+    pthread_mutex_lock(&mutex);
+    while (full())
+      pthread_cond_wait(wait_cv,&mutex);
+    xput(&data);
+    pthread_mutex_unlock(&mutex);
+    pthread_cond_signal(sign_cv);
+  }
+  return 0;
+}
+
+static void *cons(void *a) {
+  while (1) {
+    int data;
+    pthread_mutex_lock(&mutex);
+    while (empt())
+      pthread_cond_wait(&getable,&mutex);
+    xget(&data);
+    pthread_mutex_unlock(&mutex);
+    pthread_cond_signal(&putable);
+    cons(&data);
+  }
+  return 0;
+}

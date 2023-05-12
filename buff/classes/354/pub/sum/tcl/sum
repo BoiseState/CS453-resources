@@ -1,0 +1,14 @@
+#!/usr/bin/tclsh
+
+# Tcl sum program
+
+proc sum seq {
+    set s 0
+    foreach v $seq {
+        incr s $v
+    }
+    return $s
+}
+
+set seq {5 6 1 8 3 7}
+puts [sum $seq]

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Bash sum program
+
+Sum() {
+    s=0
+    for v ; do
+        ((s+=v))
+    done
+    echo $s
+}
+
+seq=(5 6 1 8 3 7)
+Sum ${seq[@]}

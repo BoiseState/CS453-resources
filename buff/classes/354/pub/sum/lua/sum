@@ -1,0 +1,14 @@
+#!/usr/bin/lua
+
+-- Lua sum program
+
+function sum(seq)
+    local s=0
+    for i,v in pairs(seq) do
+        s=s+v
+    end
+    return s
+end
+
+seq={5,6,1,8,3,7}
+print(sum(seq))

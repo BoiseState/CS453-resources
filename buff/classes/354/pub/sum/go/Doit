@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -x
+
+go build sum.go
+./sum
+
+go build sumgo.go
+./sumgo
+
+go build sumgo1.go
+./sumgo1
+
+go build sumgo2.go
+./sumgo2

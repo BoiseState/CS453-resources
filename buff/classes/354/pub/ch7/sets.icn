@@ -1,0 +1,15 @@
+# icon sets.icn
+
+procedure main()
+    local s1,s2,s3
+
+    s1:='abc'
+    s2:='cde'
+    s3:=s1++s2		        # s3 = {'a','b','c','d','e'} 
+    s3:=s1**s2		        # s3 = {'c'}
+    s3:=s1--s2		        # s3 = {'a','b'}
+    s3:=(s1--s2)++(s2--s1)	# s3 = {'a','b','d','e'}
+
+    every writes(!s3)
+    write()
+end

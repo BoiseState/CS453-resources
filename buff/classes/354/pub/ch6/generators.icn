@@ -1,0 +1,18 @@
+# icon generators.icn
+
+procedure seq(from, thru, delta)
+    while (delta>=0 & from<=thru) | (delta<0 & from>=thru) do {
+	suspend from
+	from+:=delta
+    }
+end
+
+procedure main()
+    every write(seq(1,10,2))
+    write("\n")
+    every write(seq(1,10,4))
+    write("\n")
+    every write(seq(10,1,-2))
+    write("\n")
+    every write(seq(3,7,2)=seq(1,10,4))
+end

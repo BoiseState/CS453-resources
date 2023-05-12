@@ -1,0 +1,5 @@
+   * 'info threads', a command to inquire about existing threads
+   * thread-specific breakpoints
+          (gdb) thread 2
+	  (gdb) break foo thread 2
+          (gdb) break frik.c:13 thread 2 if bartab > lim

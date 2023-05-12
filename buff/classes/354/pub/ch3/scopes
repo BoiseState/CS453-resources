@@ -1,0 +1,16 @@
+#!/bin/bash
+
+declare a
+
+first() {
+    a=1
+}
+
+second() {
+    local a
+    first
+}
+
+a=2
+second
+echo $a

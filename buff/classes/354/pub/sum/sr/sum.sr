@@ -1,0 +1,12 @@
+# SR sum program
+
+resource Sum()
+   procedure sum(var seq[1:*]: int) returns r: int
+     r:=0
+     fa i:=lb(seq) to ub(seq) ->
+	r:=r+seq[i]
+     af
+   end
+   var seq[1:6]: int := (5,6,1,8,3,7)
+   write(sum(seq))
+end Sum

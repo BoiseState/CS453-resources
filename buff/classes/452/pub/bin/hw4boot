@@ -1,0 +1,50 @@
+#!/bin/bash
+
+prg=${0##*/}
+
+Error() {
+    echo -e "$prg:" "$@" >&2
+    exit 1
+}
+
+case "$HOSTNAME" in
+    onyxnode*) ;;
+    *)         Error "not on an onyx node" ;;
+esac
+
+pub="~jbuffenb/classes/452/pub"
+img=fedora.img
+user=cs452@localhost
+#user=root@localhost
+
+qemu=qemu-kvm
+running=$(pgrep -c $qemu)
+port=$((2222+running))
+
+[ -f $img ] || Error "$img missing\n    try: cp $pub/hw4/$img ."
+chmod u+w $img
+
+net=user
+net="$net,model=virtio"
+net="$net,hostfwd=tcp::$port-:22"
+net="$net,hostname=qemu"
+net="$net,dnssearch=boisestate.edu"
+net="$net,domainname=boisestate.edu"
+
+/usr/local/apps/local/usr/libexec/$qemu \
+     -display none \
+     -name qemu -enable-kvm -m 4G \
+     -drive file=fedora.img,format=qcow2,media=disk,if=virtio \
+     -nic "$net" &
+pid=$!
+sleep 5
+ps -p $pid >/dev/null || Error "$qemu exited"
+
+echo "copy to/from VM:"
+echo "    scp -P $port -r <src> $user:<dst>"
+echo "    scp -P $port -r $user:<src> <dst>"
+echo "login to VM:"
+echo "    ssh -p $port $user"
+echo "shutdown VM:"
+echo "    ssh -p $port $user sudo -S shutdown -h 0"
+echo "VM password: cs452hw4"

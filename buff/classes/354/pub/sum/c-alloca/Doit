@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -x
+
+gcc -pedantic -o sum sum.c
+./sum

@@ -1,0 +1,80 @@
+{
+   Fltk1
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:*Fl_Window4show*
+   ...
+}
+{
+   Fltk2
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:*Fl*add_fd*
+   ...
+}
+{
+   Fltk3
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:*make_xid*
+   fun:lawnimp_new
+   fun:lawn_new
+   ...
+}
+{
+   Fltk4
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:lawnimp_run
+   ...
+}
+{
+   Fltk5
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:_dlerror_run
+   ...
+}
+{
+   Fltk6
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:XSetLocaleModifiers
+   ...
+}
+{
+   Fltk7
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:XInitThreads
+   ...
+}
+{
+   Fltk8
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:_XlcCurrentLC
+}
+{
+   Fltk9
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:_Znwm
+   ...
+}

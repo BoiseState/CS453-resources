@@ -1,0 +1,11 @@
+# icon record.icn
+
+record Person(name,address,age)
+
+procedure main()
+    local p
+    p:=Person("Ann Smith","101 Main Street",27)
+    write(p.name)
+    write(p.age)
+end
+

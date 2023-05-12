@@ -1,0 +1,25 @@
+// -*-C-*-
+
+static void *count_decr(void *a) {
+  while (1) {
+    pthread_mutex_lock(&mutex);
+    while (counter<-max)
+      pthread_cond_wait(&decrable,&mutex);
+    printf("%d\n",counter--);
+    pthread_mutex_unlock(&mutex);
+    pthread_cond_signal(&incrable);
+  }
+  return 0;
+}
+
+static void *count_incr(void *a) {
+  while (1) {
+    pthread_mutex_lock(&mutex);
+    while (counter>=max)
+      pthread_cond_wait(&incrable,&mutex);
+    printf("%d\n",counter++);
+    pthread_mutex_unlock(&mutex);
+    pthread_cond_signal(&decrable);
+  }
+  return 0;
+}

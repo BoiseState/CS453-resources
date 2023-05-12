@@ -1,0 +1,16 @@
+-- SETL sum program
+
+program Sum;
+
+    seq:={5,6,1,8,3,7};
+    print(sum(seq));
+
+    procedure sum(seq);
+        s:=0;
+        for v in seq loop
+            s+:=v;
+        end loop;
+        return s;
+    end sum;
+
+end Sum;

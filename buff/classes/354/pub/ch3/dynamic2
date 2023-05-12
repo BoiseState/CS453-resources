@@ -1,0 +1,18 @@
+#!/bin/bash
+
+i=1
+
+f() {
+    i=2
+}
+
+g() {
+    local i
+    f
+}
+
+echo $i
+g
+echo $i
+f
+echo $i

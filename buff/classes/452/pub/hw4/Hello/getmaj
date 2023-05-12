@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk -v name=$1 '$2==name {print $1; exit;}' /proc/devices

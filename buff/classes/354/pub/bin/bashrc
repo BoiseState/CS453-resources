@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# This script is executed in one of two ways:
+#   1) When its name is typed normally at a Bash prompt,
+#      it adds a line to the end of the user's .bashrc file,
+#      unless that line is already present.
+#      That line sources this script.
+#   2) When its name is sourced, it sets variables.
+
+Vars() {
+    local top=/usr/local/apps/local
+    [ -d $top ] || return
+
+    export PATH=$top/bin:$PATH
+    export LD_LIBRARY_PATH=/lib:/lib64:$top/lib:$top/lib64
+
+    # ver=10.1.0
+    # cxxinc=$top/include/c++/$ver
+    # target=x86_64-pc-linux-gnu
+    # export GCC_EXEC_PREFIX=$top/lib/gcc/
+    # export CPLUS_INCLUDE_PATH=$cxxinc/$target:$cxxinc
+
+    export SMALLTALK_KERNEL=$top/share/smalltalk/kernel
+
+    # sed -i "s@ /usr/@ $top/usr/@g" $top/bin/mcs
+    export MONO_CONFIG=$top/etc/mono/config
+
+    # ln -sf $top/usr/lib64/fpc/3.2.0/ppcx64 $top/usr/bin
+    export FPCDIR=$top/lib64/fpc/3.2.0
+}
+
+File() {
+    local this=$(realpath $0)
+    local line="[ -x $this ] && source $this"
+    local file=$HOME/.${this##*/}
+    fgrep -qx "$line" $file || echo "$line" >>$file
+}
+
+case "${HOSTNAME%%.*}:$0" in
+    *:*bash) Vars ;;		# sourced
+    *:*)     File ;;		# executed
+esac
+
+unset Vars File

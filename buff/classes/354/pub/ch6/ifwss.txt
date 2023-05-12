@@ -1,0 +1,21 @@
+; if ((a > b) and (c > d)) or (e <> f) then
+;     then_clause
+; else
+;     else_clause
+
+    r1 := a
+    r2 := b
+    if r1 <= r2 goto L4
+    r1 := c
+    r2 := d
+    if r1 > r2 goto L1
+L4:
+    r1 := e
+    r2 := f
+    if r1 = r2 goto L2
+L1:
+    then_clause
+    goto L3
+L2:
+    else_clause
+L3:

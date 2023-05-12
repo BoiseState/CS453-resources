@@ -1,0 +1,12 @@
+#!/bin/bash -ex
+
+# armv8-a
+# Linux pi 4.15.0-1031-raspi2 #33-Ubuntu SMP PREEMPT Wed Jan 16 09:52:45
+#    UTC 2019 aarch64 aarch64 aarch64 GNU/Linux
+
+#gcc -S -o s.s sum.c
+
+as -g -o sum.o sum.s
+ld -g sum.o -o sum
+
+./sum

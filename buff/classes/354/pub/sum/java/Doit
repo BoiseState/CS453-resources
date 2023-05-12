@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -x
+
+javac Sum.java
+java Sum
+
+javac SumIndex.java
+java SumIndex

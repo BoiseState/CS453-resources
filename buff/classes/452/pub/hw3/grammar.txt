@@ -1,0 +1,25 @@
+sequence ::=
+    pipeline
+    pipeline &
+    pipeline ;
+    pipeline & sequence
+    pipeline ; sequence
+
+pipeline ::=
+    command
+    command | pipeline
+
+command ::=
+    words redir
+    ( sequence ) redir      # CS 552 only
+    { sequence } redir      # CS 552 only
+
+words ::=
+    word
+    words word
+
+redir ::=
+    ^                       # empty
+    < word
+    > word
+    < word > word

@@ -1,0 +1,42 @@
+getLabel lab = let
+                old=
+             in
+                fst (runState (do
+                i<-get
+                put (i+1)
+                j<-get
+                return j
+         ) 9)
+
+getLabel lab = fst (runState (do
+             i<-get
+             put (i+1)
+             j<-get
+             return j
+         ) 9)
+
+getLabel lab = fst (runState (do
+                i<-get
+                put (i+1)
+                return i
+               ) 10)
+
+-- cool: http://www.haskell.org/haskellwiki/Haskell_Tutorial_for_C_Programmers
+-- http://www.haskell.org/haskellwiki/State_Monad
+-- http://www.engr.mun.ca/~theo/Misc/haskell_and_monads.htm
+
+-- ghc -o label label.hs && ./label
+
+valFromState :: Int -> Int
+valFromState s = -s
+
+nextState :: Int -> Int
+nextState x = 1+x
+ 
+incLabel :: Label
+incLabel = state (\st -> let st' = nextState(st) in (valFromState(st'),st'))
+
+getLabel :: Label -> Int
+-- getLabel lab = snd (runState lab 22)
+getLabel lab = fst (runState (do { put 1; lab; i<-get; return (i+1) }) 3)
+

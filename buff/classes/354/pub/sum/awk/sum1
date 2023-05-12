@@ -1,0 +1,20 @@
+#!/bin/awk -f
+
+# Awk sum program
+
+function sum(seq) {
+    for (i in seq) {
+        s+=seq[i]
+    }
+    return s
+}
+
+BEGIN {
+    seq[1]=5
+    seq[2]=6
+    seq[3]=1
+    seq["cat"]=8
+    seq[5]=3
+    seq[6]=7
+    print sum(seq)
+}

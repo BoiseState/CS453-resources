@@ -1,0 +1,19 @@
+#!/bin/bash
+
+g() {
+    local i
+    i=2				# late/shallow
+    $1
+}
+
+main() {
+    local i
+    i=1				# early/deep
+    f() {
+	echo $i
+    }
+    g f
+}
+
+main
+

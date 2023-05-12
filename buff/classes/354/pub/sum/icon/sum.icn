@@ -1,0 +1,13 @@
+# Icon sum program
+
+procedure sum(seq)
+    local s
+    s:=0
+    every s+:=!seq
+    return s;
+end
+
+procedure main()
+    seq:=[5,6,1,8,3,7]
+    write(sum(seq))
+end

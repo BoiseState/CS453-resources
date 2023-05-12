@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# This program "follows" the syslog(3).
+
+sudo journalctl -f -l --no-pager
