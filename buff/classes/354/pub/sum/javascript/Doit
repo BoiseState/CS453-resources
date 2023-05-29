@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -x
-
-# sudo dnf install nodejs
-
-node sum.js

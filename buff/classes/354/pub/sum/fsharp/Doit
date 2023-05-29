@@ -1,6 +1,0 @@
-#!/bin/bash
-
-set -x
-
-fsharpc Sum.fs
-mono Sum.exe
