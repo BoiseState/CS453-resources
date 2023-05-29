@@ -21,7 +21,7 @@ qemu=qemu-kvm
 running=$(pgrep -c $qemu)
 port=$((2222+running))
 
-[ -f $img ] || Error "$img missing\n    try: cp $pub/hw4/$img ."
+[ -f $img ] || Error "$img missing\n    try: cp $pub/hw5/$img ."
 chmod u+w $img
 
 net=user
