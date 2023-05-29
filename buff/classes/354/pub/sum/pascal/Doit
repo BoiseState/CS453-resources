@@ -1,8 +1,0 @@
-#!/bin/bash
-
-set -x
-
-fpc $FPC_ARGS -osum sum.p
-
-./sum
-

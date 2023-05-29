@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -x
-
-# https://doc.rust-lang.org/book/index.html
-
-rustc sum.rs
-
-./sum

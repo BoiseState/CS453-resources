@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -x
-
-ocamlc -o sum sum.ml
-
-./sum

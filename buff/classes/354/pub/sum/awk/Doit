@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -x
-
-# poor example
-#./sum1
-
-# good example
-echo 5 6 1 8 3 7 | xargs -n1 | ./sum2
