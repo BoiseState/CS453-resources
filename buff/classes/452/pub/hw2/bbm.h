@@ -7,7 +7,8 @@
 
 typedef void *BBM;
 
-extern BBM bbmnew(size_t size, int e);
+extern BBM  bbmcreate(size_t size, int e);
+extern void bbmdelete(BBM b);
 
 extern void bbmset(BBM b, void *base, void *mem, int e);
 extern void bbmclr(BBM b, void *base, void *mem, int e);

@@ -6,6 +6,7 @@
 static const int bitsperbyte=8;
 
 extern void *mmalloc(size_t size);
+extern void mmfree(void *p, size_t size);
 
 extern size_t divup(size_t n, size_t d);
 extern size_t bits2bytes(size_t bits);

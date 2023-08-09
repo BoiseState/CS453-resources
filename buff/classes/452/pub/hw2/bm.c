@@ -15,7 +15,7 @@ static void ok(BM b, size_t i) {
   exit(1);
 }         
 
-extern BM bmnew(size_t bits) {
+extern BM bmcreate(size_t bits) {
   size_t bytes=bits2bytes(bits);
   size_t *p=mmalloc(sizeof(size_t)+bytes);
   if ((long)p==-1)
@@ -24,6 +24,12 @@ extern BM bmnew(size_t bits) {
   BM b=++p;
   memset(b,0,bytes);
   return b;
+}
+
+extern void bmdelete(BM b) {
+  size_t *p=b;
+  p--;
+  mmfree(p,*p);
 }
 
 extern void bmset(BM b, size_t i) {

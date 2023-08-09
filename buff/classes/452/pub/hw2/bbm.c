@@ -15,11 +15,15 @@ static size_t bitaddr(void *base, void *mem, int e) {
   return addr/blocksize/2;
 }
 
-extern BBM bbmnew(size_t size, int e) {
-  BBM b=bmnew(mapsize(size,e));
+extern BBM bbmcreate(size_t size, int e) {
+  BBM b=bmcreate(mapsize(size,e));
   if ((long)b==-1)
     return 0;
   return b;
+}
+
+extern void bbmdelete(BBM b) {
+  bmdelete(b);
 }
 
 extern void bbmset(BBM b, void *base, void *mem, int e) {

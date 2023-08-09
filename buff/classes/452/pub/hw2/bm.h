@@ -7,7 +7,8 @@
 
 typedef void *BM;
 
-extern BM bmnew(size_t bits);
+extern BM   bmcreate(size_t bits);
+extern void bmdelete(BM b);
 
 extern void bmset(BM b, size_t i);
 extern void bmclr(BM b, size_t i);
