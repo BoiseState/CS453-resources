@@ -4,8 +4,10 @@
 
 static Balloc bp=0;
 
+#include <stdio.h>
+
 extern void *malloc(size_t size) {
-  bp=bp ? bp : bnew(4096,4,12);
+  bp=bp ? bp : bcreate(4096,4,12);
   return balloc(bp,size);
 }
 
