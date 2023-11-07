@@ -1,0 +1,26 @@
+                                                                    /66
+
+
+
+
+You must implement the interface:
+
+    open()                                             /6
+
+    release()                                          /3
+
+    read()                                             /15
+
+    write()                                            /15
+
+    ioctl()                                            /3
+
+    init()                                             /6
+
+    exit()                                             /3
+
+Memory leaks                                           /5
+
+Test suite                                             /5
+
+Documentation and error messages                       /5
