@@ -14,19 +14,16 @@ extern Lock locknew() {
 #ifdef Spin
 extern void lock(Lock lck) { while (atomic_lock(lck)); }
 extern void unlock(Lock lck) { atomic_unlock(lck); }
-extern void lockend(Lock lck)  { unlock(lck); }
 #endif
 
 #ifdef Yield
 #include <sched.h>
 extern void lock(Lock lck) { while (atomic_lock(lck)) sched_yield(); }
 extern void unlock(Lock lck) { atomic_unlock(lck); }
-extern void lockend(Lock lck)  { unlock(lck); }
 #endif
 
 #ifdef Wait
 #include "../Lock/Wait.h"
 extern void lock(Lock lck) { while (atomic_lock(lck)) wait(lck); }
 extern void unlock(Lock lck) { atomic_unlock(lck); wake(lck); }
-extern void lockend(Lock lck) { unlock(lck); wakeall(lck); }
 #endif

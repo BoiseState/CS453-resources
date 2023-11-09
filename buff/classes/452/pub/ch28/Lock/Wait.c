@@ -20,11 +20,7 @@ extern void wait(Lock lck) {
     ERROR(strerror(errno));
 }
 
-static void wake_n(Lock lck, int n) {
-  if (futex((int *)lck,FUTEX_WAKE,n)==-1)
+extern void wake(Lock lck) {
+  if (futex((int *)lck,FUTEX_WAKE,1)==-1)
     ERROR(strerror(errno));
 }
-
-extern void    wake(Lock lck) { wake_n(lck,1); }
-extern void wakeall(Lock lck) { wake_n(lck,INT_MAX); }
-

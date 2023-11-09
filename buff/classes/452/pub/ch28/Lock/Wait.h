@@ -5,6 +5,5 @@
 
 extern void wait(Lock lck);
 extern void wake(Lock lck);
-extern void wakeall(Lock lck);
 
 #endif

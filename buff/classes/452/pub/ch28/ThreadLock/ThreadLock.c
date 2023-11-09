@@ -12,7 +12,7 @@ static void *count(void *a) {
   while (1) {
     lock(lck);
     if (counter>9) {
-      lockend(lck);
+      unlock(lck);
       break;
     }
     printf("%d\n",counter);
