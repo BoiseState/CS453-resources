@@ -14,6 +14,7 @@ extern int atomic_lock(int *lck) {
                : "+r"(val) // %0 r=register
                : "r"(lck)  // %1 r=register
                : "cc");    // flags
+  return val;
 }
 
 #include "Decr.c"

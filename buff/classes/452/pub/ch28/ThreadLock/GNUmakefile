@@ -1,12 +1,12 @@
 # Locking (pick one)
-atomic:=TestAndSet
+#atomic:=TestAndSet
 #atomic:=CompareAndExchange
-#atomic:=ExchangeAndAdd
+atomic:=ExchangeAndAdd
 #atomic:=LoadLinkedAndStoreConditional
 
 # Blocking (pick one)
-block:=Spin
-#block:=Yield
+#block:=Spin
+block:=Yield
 #block:=Wait
 
 defines:=-D$(atomic) -D$(block)
