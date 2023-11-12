@@ -1,14 +1,12 @@
-pi$ uname -a | fold -s -w 45 | head -n 2
-Linux pi 4.15.0-1031-raspi2 #33-Ubuntu SMP 
-PREEMPT Wed Jan 16 09:52:45 UTC 2019 aarch64 
-pi$ make clean && make run
-rm -f ThreadLock TestAndSet.o Lock.o Wait.o ThreadLock.o *.o *.d *.i
-gcc -o TestAndSet.o -c Lock/aarch64/TestAndSet.c -pthread -g -Wall -MMD -DTestAndSet -DSpin -D_GNU_SOURCE
-gcc -o Lock.o -c Lock.c -pthread -g -Wall -MMD -DTestAndSet -DSpin -D_GNU_SOURCE
-gcc -o Wait.o -c Wait.c -pthread -g -Wall -MMD -DTestAndSet -DSpin -D_GNU_SOURCE
-gcc -o ThreadLock.o -c ThreadLock.c -pthread -g -Wall -MMD -DTestAndSet -DSpin -D_GNU_SOURCE
-g++ -o ThreadLock TestAndSet.o Lock.o Wait.o ThreadLock.o -pthread -g
-./ThreadLock 
+pi$ uname -a
+Linux pi 6.5.10-200.fc38.aarch64 #1 SMP PREEMPT_DYNAMIC Thu Nov  2 20:21:58 UTC 2023 aarch64 GNU/Linux
+pi$ make
+gcc -o LoadLinkedAndStoreConditional.o -c Lock/aarch64/LoadLinkedAndStoreConditional.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
+gcc -o Lock.o -c Lock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
+gcc -o ThreadLock.o -c ThreadLock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
+gcc -o Wait.o -c Wait.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
+gcc -o ThreadLock LoadLinkedAndStoreConditional.o Lock.o ThreadLock.o Wait.o -pthread -g
+pi$ ./ThreadLock 
 0
 1
 2

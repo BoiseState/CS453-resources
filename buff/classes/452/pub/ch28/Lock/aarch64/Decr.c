@@ -3,9 +3,11 @@
 //   [SRCM] <- DST + SRCR;
 
 extern void atomic_unlock(int *lck) {
-  asm volatile("   mov     w0,-1    \n\t"
-               "   ldaddal w0,w0,%0 \n\t"
-               : "+m"(*lck) // %0 m=memory
-               :
-               : "cc");     // flags
+  asm volatile("mov     w1,-1;"
+               "ldaddal w2,w1,[%[lck]];"
+               : // OutputOperands
+               : // InputOperands
+                 [lck]"r"(lck) // r=register
+               : // Clobbers
+                 "cc");         // flags
 }

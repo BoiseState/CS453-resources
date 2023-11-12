@@ -1,0 +1,46 @@
+* Overall syntax
+    asm asm-qualifiers ( AssemblerTemplate 
+		     : OutputOperands
+		     [ : InputOperands
+		     [ : Clobbers ] ])
+
+    asm asm-qualifiers ( AssemblerTemplate 
+			  : OutputOperands
+			  : InputOperands
+			  : Clobbers
+			  : GotoLabels)
+
+* Operands are separated by commas. Each operand has this format:
+    [ [asmSymbolicName] ] constraint (cvariablename)
+
+* Constraints
+    Output constraints must begin with either ‘=’ (a variable
+    overwriting an existing value) or ‘+’ (when reading and
+    writing). When using ‘=’, do not assume the location
+    contains the existing value on entry to the asm, except when
+    the operand is tied to an input; see Input Operands.
+
+    After the prefix, there must be one or more additional
+    constraints (see Constraints for asm Operands) that describe
+    where the value resides. Common constraints include ‘r’ for
+    register and ‘m’ for memory. When you list more than one
+    possible location (for example, "=rm"), the compiler chooses
+    the most efficient one based on the current context.
+
+    Input constraint strings may not begin with either ‘=’
+    or ‘+’. When you list more than one possible location
+    (for example, ‘"irm"’), the compiler chooses the most
+    efficient one based on the current context. If you must
+    use a specific register, but your Machine Constraints do
+    not provide sufficient control to select the specific
+    register you want, local register variables may provide
+    a solution (see Specifying Registers for Local
+    Variables).
+
+    Input constraints can also be digits (for example,
+    "0"). This indicates that the specified input must be in
+    the same place as the output constraint at the
+    (zero-based) index in the output constraint list. When
+    using asmSymbolicName syntax for the output operands,
+    you may use these names (enclosed in brackets ‘[]’)
+    instead of digits.

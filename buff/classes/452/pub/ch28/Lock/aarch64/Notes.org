@@ -1,9 +1,0 @@
-* tries:
-  pi$ sudo dnf install gcc-aarch64-linux-gnu
-  pi$ scp mork.wired.pvt:ws/452/pub/ch28/Lock/aarch64/\*.c .
-  pi$ aarch64-linux-gnu-gcc -march=armv8.1-a -c Decr.c
-  I guess my example worked with Ubuntu
-* plan:
-  install fc39 aarch on pi
-  that should let me use ldaddal
-

@@ -1,22 +1,24 @@
 // bts BitOffset,BitBase
-//   CF <- Bit(BitBase, BitOffset);
-//   Bit(BitBase, BitOffset) <-1;
+//   CF <- Bit(*BitBase, BitOffset);
+//   Bit(*BitBase, BitOffset) <-1;
 
 // setcc DEST
 //   IF condition        // setc or setb for CF
-//      THEN DEST <- 1;
-//      ELSE DEST <- 0;
+//      THEN *DEST <- 1;
+//      ELSE *DEST <- 0;
 //   FI;
 
 extern int atomic_lock(int *lck) {
   unsigned char old;
-  asm volatile("lock       \n\t"
-               "btsw $0,%1 \n\t"
-               "setc %0    \n\t"
-               : "=b"(old), // %0 b=byte
-                 "+m"(*lck) // %1 m=memory
-               : "m"(*lck)  // %2 m=memory
-               : "cc");     // flags
+  asm volatile("lock;"
+               "btsw $0,%[lck];"
+               "setc %[old];"
+               : // OutputOperands
+                 [old]"=b"(old), // b=byte
+                 [lck]"+m"(*lck) // m=memory
+               : // InputOperands
+               : // Clobbers
+                 "cc");          // flags
   return old;
 }
 

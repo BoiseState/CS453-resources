@@ -1,28 +1,30 @@
-// cmpxchg SRC,DEST
+// cmpxchg SRC,*DEST
 //   TEMP <- DEST
 //   IF accumulator = TEMP
 //       THEN
 //           ZF <- 1;
-//           DEST <- SRC;
+//           *DEST <- SRC;
 //       ELSE
 //           ZF <- 0;
 //           accumulator <- TEMP;
-//           DEST <- TEMP;
+//           *DEST <- TEMP;
 //   FI;
 
 extern int atomic_lock(int *lck) {
   unsigned char old;
   const int zero=0;
   const int one=1;
-  asm volatile("lock          \n\t"
-               "cmpxchg %4,%1 \n\t"
-               "setnz   %0    \n\t"
-               : "=b"(old), // %0 b=byte
-                 "+m"(*lck) // %1 m=memory
-               : "m"(*lck), // %2 m=memory
-                 "a"(zero), // %3 a=register r0-r3
-                 "r"(one)   // %4 r=register
-               : "cc");     // flags
+  asm volatile("lock;"
+               "cmpxchg %[one],%[lck];"
+               "setnz   %[old];"
+               : // OutputOperands
+                 [old]"=b"(old),  // b=byte
+                 [lck]"+m"(*lck)  // m=memory
+               : // InputOperands
+                 [zero]"a"(zero), // a=register r0-r3
+                 [one]"r"(one)    // r=register
+               : // Clobbers
+                 "cc");           // flags
   return old;
 }
 

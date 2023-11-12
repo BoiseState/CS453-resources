@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in {1..10000} ; do
+    ./ThreadLock > out
+    cmp exp out || { echo $i ; cat out ; exit ; }
+done
