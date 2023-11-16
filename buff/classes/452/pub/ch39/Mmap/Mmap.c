@@ -27,13 +27,13 @@ int main(int argc, char *argv[]) {
   int ifd=open(argv[1],O_RDONLY);
   if (ifd<0) usage();
 
-  States *states=(States *)mmap(0,sizeof(*states),
+  States *states=(States *)mmap(0,sizeof *states,
 				PROT_READ,MAP_PRIVATE,
 				ifd,0);
   close(ifd);
   for (int i=0; i<STATES; i++)
     printf("%.*s\n",MaxAbbr,(*states)[i].abbr);
-  munmap(states,sizeof(*states));
+  munmap(states,sizeof *states);
 
   return 0;
 }

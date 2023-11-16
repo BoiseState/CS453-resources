@@ -18,7 +18,7 @@ static void err(char *s, char *file, int line) {
 }
 
 extern Box newBox() {
-  BoxRep r=(BoxRep)malloc(sizeof(*r));
+  BoxRep r=(BoxRep)malloc(sizeof *r);
   if (!r)
     ERR("malloc() failed");
   pthread_mutex_init(&r->mutex,0);

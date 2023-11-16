@@ -16,7 +16,7 @@ typedef struct {
 } *Semaphore;
 
 extern void sem_init(sem_t *s, int flags, int value) {
-  Semaphore r=(Semaphore)malloc(sizeof(*r));
+  Semaphore r=(Semaphore)malloc(sizeof *r);
   if (!r) ERROR("malloc() failed");
   r->value=value;
   r->mutex=0;

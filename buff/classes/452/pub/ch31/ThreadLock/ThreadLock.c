@@ -14,8 +14,8 @@ static void *count(void *a) {
   sem_t *wait_sem=chg<0 ? &decrable : &incrable;
   sem_t *post_sem=chg<0 ? &incrable : &decrable;
   while (1) {
-    sem_wait(&mutex);
     sem_wait(wait_sem);
+    sem_wait(&mutex);
     printf("%d\n",counter+=chg);
     sem_post(&mutex);
     sem_post(post_sem);

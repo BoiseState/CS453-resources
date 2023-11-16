@@ -34,7 +34,8 @@ static void wr_lock()   { sem_wait(&(b->putable)); }
 static void wr_unlock() { sem_post(&(b->putable)); }
 
 extern void init() {
-  if (!(b=(Buffer)malloc(sizeof(*b)))) ERROR("malloc() failed");
+  if (!(b=(Buffer)malloc(sizeof *b)))
+    ERROR("malloc() failed");
   b->s=0;
   b->getters=0;
   sem_init(&(b->getable),0,1);
@@ -54,7 +55,8 @@ extern char *get() {
 
 extern void put(char *s) {
   wr_lock();
-  if (!(b->s=realloc(b->s,strlen(s)+1))) ERROR("realloc() failed");
+  if (!(b->s=realloc(b->s,strlen(s)+1)))
+    ERROR("realloc() failed");
   strcpy(b->s,s);
   wr_unlock();
 }

@@ -5,7 +5,7 @@
 typedef struct { int val; } *LockRep;
 
 extern Lock locknew() {			   
-  LockRep r=(LockRep)malloc(sizeof(*r)); 
+  LockRep r=(LockRep)malloc(sizeof *r); 
   if (!r) ERROR("malloc() failed");	   
   r->val=0;				   
   return r;				   
