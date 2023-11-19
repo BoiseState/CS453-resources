@@ -1,7 +1,7 @@
 # Locking (pick one)
-atomic:=TestAndSet
+#atomic:=TestAndSet
 #atomic:=CompareAndExchange
-#atomic:=ExchangeAndAdd
+atomic:=ExchangeAndAdd
 #atomic:=LoadLinkedAndStoreConditional
 
 # Blocking (pick one)
@@ -19,7 +19,5 @@ vpath %.c Lock/$(arch)
 
 ccflags:=-pthread
 ldflags:=-pthread
-
-#sinclude GNUmakefile.$(arch)
 
 sinclude ../../GNUmakefile

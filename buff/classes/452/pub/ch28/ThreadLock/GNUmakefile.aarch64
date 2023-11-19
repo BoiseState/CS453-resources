@@ -1,1 +1,0 @@
-ccflags+=-march=armv8.1-a

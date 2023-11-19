@@ -7,11 +7,7 @@
 extern int atomic_lock(int *lck) {
   int old=1;
   const int one=1;
-  asm volatile("   ldadd w2,%[one],[%[lck]];"
-               "   cbz   w2,1f;
-               "   mov   w2,-1;"
-               "   stadd w2,[%[lck]];"
-               "   mov   %[old],0;"
+  asm volatile("   cas;"
                "1: dmb   sy;"
                : // OutputOperands
                  [old]"=m"(old) // m=memory
@@ -24,13 +20,13 @@ extern int atomic_lock(int *lck) {
 }
 
 extern void atomic_unlock(int *lck) {
-  asm volatile("mov   w2,-1;"
-               "stadd w2,[%[lck]];"
+  asm volatile("dmb sy;"
+               "str wzr,[%[lck]];"
                : // OutputOperands
                : // InputOperands
-                 [lck]"r"(lck) // r=register
+                 [lck]"r"(lck)  // r=register
                : // Clobbers
-                 "cc");         // flags
+	       );
 }
 
 extern int atomic_test(int *lck) { return *lck; }

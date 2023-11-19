@@ -1,12 +1,14 @@
 pi$ uname -a
 Linux pi 6.5.10-200.fc38.aarch64 #1 SMP PREEMPT_DYNAMIC Thu Nov  2 20:21:58 UTC 2023 aarch64 GNU/Linux
-pi$ make
+pi$ for b in Spin Yield Wait ; do
+> make clean ; make block=$b ThreadLock ; ./ThreadLock
+> done
+rm -f ThreadLock *.o *.d *.i
 gcc -o LoadLinkedAndStoreConditional.o -c Lock/aarch64/LoadLinkedAndStoreConditional.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
 gcc -o Lock.o -c Lock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
 gcc -o ThreadLock.o -c ThreadLock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
 gcc -o Wait.o -c Wait.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DSpin -D_GNU_SOURCE
 gcc -o ThreadLock LoadLinkedAndStoreConditional.o Lock.o ThreadLock.o Wait.o -pthread -g
-pi$ ./ThreadLock 
 0
 1
 2
@@ -17,4 +19,36 @@ pi$ ./ThreadLock
 7
 8
 9
-pi$ 
+rm -f ThreadLock *.o *.d *.i
+gcc -o LoadLinkedAndStoreConditional.o -c Lock/aarch64/LoadLinkedAndStoreConditional.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DYield -D_GNU_SOURCE
+gcc -o Lock.o -c Lock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DYield -D_GNU_SOURCE
+gcc -o ThreadLock.o -c ThreadLock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DYield -D_GNU_SOURCE
+gcc -o Wait.o -c Wait.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DYield -D_GNU_SOURCE
+gcc -o ThreadLock LoadLinkedAndStoreConditional.o Lock.o ThreadLock.o Wait.o -pthread -g
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+rm -f ThreadLock *.o *.d *.i
+gcc -o LoadLinkedAndStoreConditional.o -c Lock/aarch64/LoadLinkedAndStoreConditional.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DWait -D_GNU_SOURCE
+gcc -o Lock.o -c Lock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DWait -D_GNU_SOURCE
+gcc -o ThreadLock.o -c ThreadLock.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DWait -D_GNU_SOURCE
+gcc -o Wait.o -c Wait.c -pthread -g -Wall -MMD -DLoadLinkedAndStoreConditional -DWait -D_GNU_SOURCE
+gcc -o ThreadLock LoadLinkedAndStoreConditional.o Lock.o ThreadLock.o Wait.o -pthread -g
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+pi$
