@@ -34,8 +34,8 @@ extern char *getBox(Box box) {
     pthread_cond_wait(&r->condv,&r->mutex);
   char *msg=r->msg;
   r->msg=0;
-  pthread_cond_signal(&r->condv);
   pthread_mutex_unlock(&r->mutex);
+  pthread_cond_signal(&r->condv);
   return msg;
 }
 
