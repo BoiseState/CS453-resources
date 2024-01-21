@@ -9,12 +9,12 @@
 typedef enum {Head,Tail,Ends} End;
 
 typedef struct Node {
-  struct Node *np[Ends];		// next/prev neighbors
+  struct Node *np[Ends];        // next/prev neighbors
   Data data;
 } *Node;
 
 typedef struct {
-  Node ht[Ends];			// head/tail nodes
+  Node ht[Ends];                // head/tail nodes
   int len;
 } *Rep;
 
