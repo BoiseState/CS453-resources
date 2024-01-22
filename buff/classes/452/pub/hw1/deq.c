@@ -40,12 +40,12 @@ extern Deq deq_new() {
 extern int deq_len(Deq q) { return rep(q)->len; }
 
 extern void deq_head_put(Deq q, Data d) {        put(rep(q),Head,d); }
-extern Data deq_head_get(Deq q)         { return get(rep(q),Head); }
+extern Data deq_head_get(Deq q)         { return get(rep(q),Head);   }
 extern Data deq_head_ith(Deq q, int i)  { return ith(rep(q),Head,i); }
 extern Data deq_head_rem(Deq q, Data d) { return rem(rep(q),Head,d); }
 
 extern void deq_tail_put(Deq q, Data d) {        put(rep(q),Tail,d); }
-extern Data deq_tail_get(Deq q)         { return get(rep(q),Tail); }
+extern Data deq_tail_get(Deq q)         { return get(rep(q),Tail);   }
 extern Data deq_tail_ith(Deq q, int i)  { return ith(rep(q),Tail,i); }
 extern Data deq_tail_rem(Deq q, Data d) { return rem(rep(q),Tail,d); }
 
