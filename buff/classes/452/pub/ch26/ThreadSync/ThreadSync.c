@@ -15,7 +15,7 @@ int main() {
   pthread_t tids[threads];
   for (int i=0; i<threads; i++)
     pthread_create(&tids[i],0,count,(void *)(long)i);
-  usleep(100);		// 0.1ms
+  usleep(100); // 0.1ms
   done=1;
   for (int i=0; i<threads; i++)
     pthread_join(tids[i],0);
