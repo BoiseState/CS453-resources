@@ -1,7 +1,7 @@
 # Locking (pick one)
-#atomic:=TestAndSet
+atomic:=TestAndSet
 #atomic:=CompareAndExchange
-atomic:=ExchangeAndAdd
+#atomic:=ExchangeAndAdd
 #atomic:=LoadLinkedAndStoreConditional
 
 # Blocking (pick one)

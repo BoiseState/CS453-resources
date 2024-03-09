@@ -45,6 +45,6 @@ extern void putBox(Box box, char *msg) {
   while (r->msg)
     pthread_cond_wait(&r->condv,&r->mutex);
   r->msg=msg;
-  pthread_cond_signal(&r->condv);
   pthread_mutex_unlock(&r->mutex);
+  pthread_cond_signal(&r->condv);
 }
