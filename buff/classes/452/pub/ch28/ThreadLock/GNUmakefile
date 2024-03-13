@@ -1,6 +1,6 @@
 # Locking (pick one)
-atomic:=TestAndSet
-#atomic:=CompareAndExchange
+#atomic:=TestAndSet
+atomic:=CompareAndExchange
 #atomic:=ExchangeAndAdd
 #atomic:=LoadLinkedAndStoreConditional
 
