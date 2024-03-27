@@ -10,7 +10,7 @@
 typedef enum {Think,Munch} State;
 typedef struct {
   State state;
-  sem_t *sticks[2];
+  sem_t *sticks[2];             // left/rite
 } Phil;
 
 enum {size=5};                // number of phils/sticks
@@ -47,10 +47,8 @@ static void fini() {
 void *be(void *a) {
   int id=(int)(long)a;
   for (int i=cycles; i; i--) {
-    sem_wait(phils[id].sticks[0]);
-    sem_wait(phils[id].sticks[1]);
-    //sem_wait(phils[id].sticks[id?0:1]);
-    //sem_wait(phils[id].sticks[id?1:0]);
+    sem_wait(phils[id].sticks[0?0:1]); // left
+    sem_wait(phils[id].sticks[0?1:0]); // rite
     phils[id].state=Munch;
     print();
     sem_post(phils[id].sticks[0]);
