@@ -14,7 +14,6 @@ int main(int argc, char *argv[]) {
   if (stat("bar",&buf))                       perror(0);
   printf(" stat size: %ld\n",buf.st_size);
   if (unlink("bar"))                          perror(0);
-  
   if (symlink("../../stat.h","bar"))          perror(0);
   if (stat("bar",&buf))                       perror(0);
   printf(" stat size: %ld\n",buf.st_size);
