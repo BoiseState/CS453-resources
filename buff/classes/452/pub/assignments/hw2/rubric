@@ -5,7 +5,7 @@
 
 interface:
 
-    bnew()                                             /5
+    bcreate()                                          /5
 
     balloc()                                           /5
 
