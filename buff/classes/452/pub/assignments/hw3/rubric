@@ -1,0 +1,24 @@
+                                                                    /70
+
+
+read, parse, and interpret loop            /5
+
+parser                                     /10
+
+interpreter & its tests
+
+    simple commands                        /5
+
+    sequences of commands                  /10
+
+    I/O redirection                        /5
+
+    pipelines                              /10
+
+    exit, pwd, cd, history                 /5
+
+documentation                              /5
+
+test suite, via "run"                      /10
+
+valgrind                                   /5
