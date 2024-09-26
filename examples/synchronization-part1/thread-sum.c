@@ -8,15 +8,15 @@
 
 void *partial_sum(void *ptr);
 int *values;
-int n;
-int result[2]; /* partial sums arrays */
+long long n;
+long long result[2]; /* partial sums arrays */
 
 float report_cpu_time(void);
 
 int  main( int argc, char **argv)
 {
-    int i;
-    long sum;
+    long long i;
+    long long sum;
     float start_time, total_time;
     pthread_t thread1, thread2;
 
@@ -24,9 +24,9 @@ int  main( int argc, char **argv)
         fprintf(stderr, "Usage: %s <n> \n", argv[0]);
         exit(EX_USAGE);
     }
-    n = atoi(argv[1]);
+    n = strtoull(argv[1], NULL, 10);
     values = (int *) malloc(sizeof(int)*n);
-    for (i=0; i<n; i++)
+    for (i = 0; i < n; i++)
         values[i] = 1;
 
 
@@ -41,7 +41,7 @@ int  main( int argc, char **argv)
     sum = result[0] + result[1];
     total_time = report_cpu_time() - start_time;
 
-    printf("Total sum = %ld time taken = %lf seconds\n", sum, total_time );
+    printf("Total sum = %lld time taken = %lf seconds\n", sum, total_time );
 
     exit(EXIT_SUCCESS);
 }
@@ -49,9 +49,9 @@ int  main( int argc, char **argv)
 void *partial_sum(void *ptr)
 {
     char *message;
-    int sum;
-    int i;
-    int start, end, index;
+    long long sum;
+    long long i;
+    long long start, end, index;
 
     message = (char *) ptr;
     printf("%s ", message);
@@ -67,7 +67,7 @@ void *partial_sum(void *ptr)
         end = n - 1;
     }
 
-    for (i=start; i<=end; i++)
+    for (i = start; i <= end; i++)
         sum += values[i];
 
     result[index] = sum;
