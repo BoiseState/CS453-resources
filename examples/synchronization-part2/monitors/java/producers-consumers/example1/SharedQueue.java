@@ -1,59 +1,66 @@
-import java.util.Vector;
+import java.util.ArrayList;
 
-/*
- * A simple shared queue that is synchronized for use by multiple threads
+/**
+ * A simple shared queue monitor that is synchronized for use by multiple
+ * threads.
+ * 
  * @author amit
  */
 
-public class SharedQueue 
-{
+public class SharedQueue {
 
-  private Vector<String> v;
-  private int maxSize;
+	private ArrayList<String> queue;
+	private int maxSize;
 
-  public SharedQueue(int max) 
-  {
-    v = new Vector<String>();
-    maxSize = max;
-  }
+	public SharedQueue(int max) {
+		queue = new ArrayList<String>();
+		maxSize = max;
+	}
 
-  public synchronized int size() 
-  {
-    return v.size();
-  }
 
-  public synchronized void removeElement(String obj) 
-  {
-    v.removeElement(obj);
-  }
+	public synchronized int size() 
+	{
+		return queue.size();
+	}
 
-  public synchronized String firstElement() 
-  {
-    return v.firstElement();
-  }
 
-  public synchronized void addElement(String obj) 
-  {
-    v.addElement(obj);
-  }
+	public synchronized void removeElement(String obj)
+	{
+		queue.remove(obj);
+	}
 
-  public synchronized void putMessage(String msg) throws InterruptedException 
-  {
-		while ( this.size() == maxSize )
+
+	public synchronized String firstElement()
+	{
+		return queue.getFirst();
+	}
+
+
+	public synchronized void addElement(String obj)
+	{
+		queue.add(obj);
+	}
+
+
+	public synchronized void putMessage(String msg) throws InterruptedException
+	{
+		while (size() == maxSize) {
 			wait();
-		this.addElement(msg);
+		}
+		addElement(msg);
 		notifyAll(); // for multiple consumers
-  }
+	}
 
-  public synchronized String getMessage() throws InterruptedException 
-  {
-		while ( this.size() == 0 )
+
+	public synchronized String getMessage() throws InterruptedException
+	{
+		while (size() == 0) {
 			wait();
-		String message = (String)this.firstElement();
-		this.removeElement( message );
-		notifyAll(); // use notify for single producer
-        return message;
-    }
+		}
+		String message = (String) firstElement();
+		removeElement(message);
+		notifyAll(); // for multiple producers
+		return message;
+	}
 
 }
-

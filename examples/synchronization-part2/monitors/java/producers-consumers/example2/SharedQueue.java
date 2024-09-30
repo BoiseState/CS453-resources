@@ -19,10 +19,10 @@ public class SharedQueue extends JFrame
 {
 	static final long serialVersionUID = 4341937266846499391L;
 	private Vector<String> messages = new Vector<String>();
-	Timer timer;
-	public int size;
-	JProgressBar progressBar;
-	int i = 0;
+	private Timer timer;
+	private int size;
+	private JProgressBar progressBar;
+	private int i = 0;
 
 	/**
 	 * Constructor
