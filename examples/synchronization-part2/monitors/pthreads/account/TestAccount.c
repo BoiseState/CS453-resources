@@ -23,9 +23,9 @@ int main(int argc, char **argv)
 
 	numThreads  = atoi(argv[1]);
 	count = atoi(argv[2]);
-	if (numThreads > 32) {
+	if (numThreads > 1000) {
 		fprintf(stderr, "Usage: %s Too many threads  specified. Defaulting to 32.\n", argv[0]);
-		numThreads = 32;
+		numThreads = 1000;
 	}
 
 	account = account_init();
