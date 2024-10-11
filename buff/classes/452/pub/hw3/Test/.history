@@ -1,0 +1,6 @@
+pwd
+echo hi
+exit
+cd Test
+pwd
+exit
