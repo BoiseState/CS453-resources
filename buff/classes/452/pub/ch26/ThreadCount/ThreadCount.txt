@@ -1,0 +1,32 @@
+#include <unistd.h>
+#include <pthread.h>
+
+static int counter=0;
+
+static void *count(void *a) {
+  401146:	55                   	push   %rbp
+  401147:	48 89 e5             	mov    %rsp,%rbp
+  40114a:	48 83 ec 10          	sub    $0x10,%rsp
+  40114e:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  while (counter<10) {
+  401152:	eb 26                	jmp    40117a <count+0x34>
+    printf("%d\n",counter);
+  401154:	8b 05 c6 2e 00 00    	mov    0x2ec6(%rip),%eax        # 404020 <__TMC_END__>
+  40115a:	89 c6                	mov    %eax,%esi
+  40115c:	bf 10 20 40 00       	mov    $0x402010,%edi
+  401161:	b8 00 00 00 00       	mov    $0x0,%eax
+  401166:	e8 c5 fe ff ff       	call   401030 <printf@plt>
+    counter=counter+1;
+  40116b:	8b 05 af 2e 00 00    	mov    0x2eaf(%rip),%eax        # 404020 <__TMC_END__>
+  401171:	83 c0 01             	add    $0x1,%eax
+  401174:	89 05 a6 2e 00 00    	mov    %eax,0x2ea6(%rip)        # 404020 <__TMC_END__>
+  while (counter<10) {
+  40117a:	8b 05 a0 2e 00 00    	mov    0x2ea0(%rip),%eax        # 404020 <__TMC_END__>
+  401180:	83 f8 09             	cmp    $0x9,%eax
+  401183:	7e cf                	jle    401154 <count+0xe>
+  }
+  return 0;
+  401185:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  40118a:	c9                   	leave
+  40118b:	c3                   	ret
