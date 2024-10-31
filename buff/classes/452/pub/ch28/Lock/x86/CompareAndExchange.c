@@ -1,5 +1,5 @@
-// cmpxchg SRC,*DEST
-//   TEMP <- DEST
+// cmpxchg SRC,DEST
+//   TEMP <- *DEST
 //   IF accumulator = TEMP
 //       THEN
 //           ZF <- 1;

@@ -4,7 +4,7 @@
 //   *DEST <- TEMP;
 
 // dec DEST
-//   *DEST <- *DEST – 1;
+//   *DEST <- *DEST - 1;
 
 extern int atomic_lock(int *lck) {
   int val=1;
