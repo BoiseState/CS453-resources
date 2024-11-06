@@ -5,9 +5,9 @@ atomic:=CompareAndExchange
 #atomic:=LoadLinkedAndStoreConditional
 
 # Blocking (pick one)
-block:=Spin
+#block:=Spin
 #block:=Yield
-#block:=Wait
+block:=Wait
 
 defines:=-D$(atomic) -D$(block)
 
