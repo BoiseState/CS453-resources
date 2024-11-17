@@ -20,7 +20,6 @@ module_param(example_nr_devs, int, 0);
 MODULE_AUTHOR("Amit Jain");
 MODULE_LICENSE("GPL v2");
 MODULE_DESCRIPTION("Simple Example Module");
-MODULE_SUPPORTED_DEVICE("example");
 
 
 

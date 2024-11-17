@@ -30,29 +30,38 @@ MODULE_AUTHOR("Amit Jain");
 MODULE_LICENSE("GPL v2");
 
 static example_stats *example_device_stats;
-
+static struct proc_dir_entry* example_proc_file;
+                
 static ssize_t example_read (struct file *, char *, size_t , loff_t *);
 static ssize_t example_write (struct file *, const char *, size_t , loff_t *);
 static int example_open (struct inode *, struct file *);
 static int example_release (struct inode *, struct file *);
+static int example_proc_open(struct inode *inode, struct file *file);
 
 
-/* The different file operations */
-/* Note that the tagged initialization of a structure is not ANSI C but an
- * extension provided by the GNU C compiler gcc. 
- */
-static struct file_operations example_fops = {
-    .llseek =     NULL,
-    .read =       example_read,
-    .write =      example_write,
-    .unlocked_ioctl =      NULL,
-    .open =       example_open,
-    .release =    example_release,
+
+/*  This is where we define the standard read,write,open and release function */
+/*  pointers that provide the drivers main functionality. */
+static const struct proc_ops example_proc_fops = {
+            .proc_open =       example_open,
+            .proc_read =       example_read,
+            .proc_write =      example_write,
+            .proc_release =    example_release,
 };
 
+/* The file operations struct holds pointers to functions that are defined by */
+/* driver impl. to perform operations on the device. What operations are needed */
+/* and what they should do is dependent on the purpose of the driver. */
+static const struct file_operations example_fops = {
+        .owner  = THIS_MODULE,
+        .open   = example_proc_open,
+        .read   = seq_read,
+        .llseek = seq_lseek,
+        .release    = single_release,
+};
+
+
 static struct proc_dir_entry* example_proc_file;
-
-
 
 /*
  * Open and close
@@ -127,13 +136,6 @@ static int example_proc_open(struct inode *inode, struct file *file)
     return single_open(file, example_proc_show, NULL);
 }
 
-static const struct file_operations example_proc_fops = {
-     .owner	= THIS_MODULE,
-     .open	= example_proc_open,
-     .read	= seq_read,
-     .llseek	= seq_lseek,
-     .release	= single_release,
-};
 
 static __init int example_init(void)
 {
@@ -166,7 +168,6 @@ static __init int example_init(void)
           result = -ENOMEM;
           goto fail_malloc;
 	}
-							
 	return 0;
 	
 	fail_malloc:
@@ -187,4 +188,7 @@ static __exit  void example_cleanup(void)
 
 module_init(example_init);
 module_exit(example_cleanup);
+
+
+
 

@@ -43,11 +43,11 @@ static int example_proc_open(struct inode *inode, struct file *file);
 /* }; */
 /*  This is where we define the standard read,write,open and release function */
 /*  pointers that provide the drivers main functionality. */
-static struct file_operations example_fops = {
-		    read:       example_read,
-			write:      example_write,
-			open:       example_open,
-			release:    example_release,
+static const struct proc_ops example_fops = {
+			.proc_open =       example_open,
+		    .proc_read =       example_read,
+			.proc_write =      example_write,
+			.proc_release =    example_release,
 };
 
 /* The file operations struct holds pointers to functions that are defined by */
@@ -71,7 +71,7 @@ static int example_open (struct inode *inode, struct file *filp)
 
 		if (num >= example_nr_devs) return -ENODEV;
 
-		filp->f_op = &example_fops;
+		filp->f_op = &example_proc_fops;
 
 		/* need to protect this with a semaphore if multiple processes
 		   will invoke this driver to prevent a race condition */
@@ -157,7 +157,7 @@ static __init int example_init(void)
 		/*
 		 * Register your major, and accept a dynamic number
 		 */
-		result = register_chrdev(example_major, "example", &example_fops);
+		result = register_chrdev(example_major, "example", &example_proc_fops);
 		if (result < 0) {
 				printk(KERN_WARNING "example: can't get major %d\n",example_major);
 				return result;
@@ -175,7 +175,7 @@ static __init int example_init(void)
 		/* We assume that the /proc/driver exists. Otherwise we need to use proc_mkdir to
 		 * create it as follows: proc_mkdir("driver", NULL);
 		 */
-		example_proc_file = proc_create("driver/example", 0, NULL, &example_proc_fops);
+		example_proc_file = proc_create("driver/example", 0, NULL, &example_fops);
 		if (!example_proc_file)  {
 				result = -ENOMEM;
 				goto fail_malloc;

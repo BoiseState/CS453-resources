@@ -106,13 +106,13 @@ static ssize_t example_read (struct file *filp, char *buf, size_t count, loff_t 
 
     return count;
 fail_malloc:
-	return result;
+    return result;
 }
 
 static ssize_t example_write (struct file *filp, const char *buf, size_t count , loff_t *f_pos)
 {
-	printk("<1>example_write invoked.\n");
-	return count; // pretend that count bytes were written, similar to /dev/null
+    printk("<1>example_write invoked.\n");
+    return count; // pretend that count bytes were written, similar to /dev/null
 }
 
 
@@ -141,15 +141,15 @@ static int __init example_init(void)
 
 fail_malloc:
     unregister_chrdev(example_major, "example");
-	return result;
+    return result;
 		
 }
 
 static void __exit example_exit(void)
 {
     unregister_chrdev(example_major, "example");
-	kfree(example_device);
-	printk("<1> example device driver version 2: unloaded\n");
+    kfree(example_device);
+    printk("<1> example device driver version 2: unloaded\n");
 }
 
 module_init(example_init);
