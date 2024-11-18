@@ -7,7 +7,7 @@
 #include <linux/cdev.h>
 
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("BSU CS 452 HW4");
+MODULE_DESCRIPTION("BSU CS 452 HW5");
 MODULE_AUTHOR("<buff@cs.boisestate.edu>");
 
 typedef struct {
@@ -46,9 +46,9 @@ static int release(struct inode *inode, struct file *filp) {
 }
 
 static ssize_t read(struct file *filp,
-		    char *buf,
-		    size_t count,
-		    loff_t *f_pos) { 
+    char *buf,
+    size_t count,
+    loff_t *f_pos) { 
   File *file=filp->private_data;
   int n=strlen(file->s);
   n=(n<count ? n : count);
@@ -60,8 +60,8 @@ static ssize_t read(struct file *filp,
 }
 
 static long ioctl(struct file *filp,
-                 unsigned int cmd,
-		 unsigned long arg) {
+    unsigned int cmd,
+    unsigned long arg) {
   return 0;
 }
 
