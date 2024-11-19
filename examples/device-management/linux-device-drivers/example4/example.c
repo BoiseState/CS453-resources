@@ -29,36 +29,18 @@ static ssize_t example_read (struct file *, char *, size_t , loff_t *);
 static ssize_t example_write (struct file *, const char *, size_t , loff_t *);
 static int example_open (struct inode *, struct file *);
 static int example_release (struct inode *, struct file *);
-static int example_proc_open(struct inode *inode, struct file *file);
 
-
-/*  The different file operations */
-/* The syntax you see below is an extension to gcc. The prefered */
-/* way to init structures is to use C99 Taged syntax */
-/* static struct file_operations example_fops = { */
-/* 		    .read    =       example_read, */
-/* 			.write   =       example_write, */
-/* 			.open    =       example_open, */
-/* 			.release =       example_release */
-/* }; */
-/*  This is where we define the standard read,write,open and release function */
-/*  pointers that provide the drivers main functionality. */
-static const struct proc_ops example_fops = {
-			.proc_open =       example_open,
-		    .proc_read =       example_read,
-			.proc_write =      example_write,
-			.proc_release =    example_release,
-};
-
-/* The file operations struct holds pointers to functions that are defined by */
-/* driver impl. to perform operations on the device. What operations are needed */
-/* and what they should do is dependent on the purpose of the driver. */
-static const struct file_operations example_proc_fops = {
-		.owner	= THIS_MODULE,
-		.open	= example_proc_open,
-		.read	= seq_read,
-		.llseek	= seq_lseek,
-		.release	= single_release,
+/* The different file operations */
+/* Note that the tagged initialization of a structure is part ANSI C'99 standard
+ * but is not part of ANSI C'89.
+ */
+static struct file_operations example_fops = {
+    .llseek =     NULL,
+    .read =       example_read,
+    .write =      example_write,
+    .unlocked_ioctl =      NULL,
+    .open =       example_open,
+    .release =    example_release,
 };
 
 
@@ -71,7 +53,7 @@ static int example_open (struct inode *inode, struct file *filp)
 
 		if (num >= example_nr_devs) return -ENODEV;
 
-		filp->f_op = &example_proc_fops;
+		filp->f_op = &example_fops;
 
 		/* need to protect this with a semaphore if multiple processes
 		   will invoke this driver to prevent a race condition */
@@ -144,12 +126,6 @@ static int example_proc_show(struct seq_file *m, void *v)
 }
 
 
-static int example_proc_open(struct inode *inode, struct file *file)
-{
-		return single_open(file, example_proc_show, NULL);
-}
-
-
 static __init int example_init(void)
 {
 		int result;
@@ -157,7 +133,7 @@ static __init int example_init(void)
 		/*
 		 * Register your major, and accept a dynamic number
 		 */
-		result = register_chrdev(example_major, "example", &example_proc_fops);
+		result = register_chrdev(example_major, "example", &example_fops);
 		if (result < 0) {
 				printk(KERN_WARNING "example: can't get major %d\n",example_major);
 				return result;
@@ -175,7 +151,7 @@ static __init int example_init(void)
 		/* We assume that the /proc/driver exists. Otherwise we need to use proc_mkdir to
 		 * create it as follows: proc_mkdir("driver", NULL);
 		 */
-		example_proc_file = proc_create("driver/example", 0, NULL, &example_fops);
+		example_proc_file = proc_create_single("driver/example", 0, NULL, example_proc_show);
 		if (!example_proc_file)  {
 				result = -ENOMEM;
 				goto fail_malloc;
