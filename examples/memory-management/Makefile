@@ -5,7 +5,7 @@ LDFLAGS=-lrt
 
 PROGS= access_shmem create_shmem create_shmem_2 access_shmem_2 create_posix_shmem\
 	  access_posix_shmem a.out limits memtest malloc-sbrk memtest sbrk-test 2d_contiguous types\
-	  semdemo semrm malloc-and-OS
+	  semdemo semrm malloc-and-OS mmap-test
 
 all: $(PROGS) subdirs
 
@@ -54,6 +54,9 @@ malloc-sbrk: malloc-sbrk.o
 	$(CC) $(CFLAGS) -o $@ $<
 
 sbrk-test: sbrk-test.o
+	$(CC) $(CFLAGS) -o $@ $<
+
+mmap-test: mmap-test.o
 	$(CC) $(CFLAGS) -o $@ $<
 
 malloc-and-OS: malloc-and-OS.o

@@ -96,6 +96,7 @@ memory-management/malloc-and-OS
 memory-management/malloc-sbrk
 memory-management/memtest
 memory-management/sbrk-test
+memory-management/mmap-test
 memory-management/semdemo
 memory-management/semrm
 memory-management/simple-malloc/simple-malloc-random-test
