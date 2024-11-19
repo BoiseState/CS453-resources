@@ -7,7 +7,7 @@
 /*
  * example.c -- the bare example char module
  *
- *********/
+ */
 
 #include <linux/module.h>
 #include <linux/version.h>
@@ -52,6 +52,7 @@ static struct file_operations example_fops = {
 
 static struct proc_dir_entry* example_proc_file;
 
+
 /*
  * Open and close
  */
@@ -71,6 +72,7 @@ static int example_open (struct inode *inode, struct file *filp)
     return 0;          /* success */
 }
 
+
 static int example_release (struct inode *inode, struct file *filp)
 {
 	/* need to protect this with a semaphore if multiple processes
@@ -80,10 +82,10 @@ static int example_release (struct inode *inode, struct file *filp)
     return (0);
 }
 
+
 /*
  * Data management: read and write
  */
-
 static ssize_t example_read (struct file *filp, char *buf, size_t count, loff_t *f_pos)
 {
 	printk("<1>example_read invoked.\n");
@@ -92,6 +94,7 @@ static ssize_t example_read (struct file *filp, char *buf, size_t count, loff_t 
 	example_device_stats->num_read++; 
     return 0;
 }
+
 
 static ssize_t example_write (struct file *filp, const char *buf, size_t count , loff_t *f_pos)
 {
@@ -102,6 +105,7 @@ static ssize_t example_write (struct file *filp, const char *buf, size_t count ,
 	return count; // pretend that count bytes were written
 }
 
+
 static void init_example_device_stats(void)
 {
 	example_device_stats->num_read=0;
@@ -109,6 +113,7 @@ static void init_example_device_stats(void)
 	example_device_stats->num_open=0;
 	example_device_stats->num_close=0;
 }
+
 
 static int example_proc_show(struct seq_file *m, void *v)
 {
@@ -123,7 +128,6 @@ static int example_proc_show(struct seq_file *m, void *v)
 static __init int example_init(void)
 {
     int result;
-
     /*
      * Register your major, and accept a dynamic number
      */
@@ -134,7 +138,6 @@ static __init int example_init(void)
     }
     if (example_major == 0) example_major = result; /* dynamic */
 	printk("<1> example device driver version 3: loaded at major number %d\n", example_major);
-
 
 	example_device_stats = (example_stats *) kmalloc(sizeof(example_stats),GFP_KERNEL);
 	if (!example_device_stats) {
@@ -172,3 +175,4 @@ static __exit  void example_cleanup(void)
 module_init(example_init);
 module_exit(example_cleanup);
 
+/* vim: set ts=4: */

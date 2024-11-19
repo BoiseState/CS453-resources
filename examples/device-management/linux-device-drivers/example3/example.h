@@ -1,6 +1,7 @@
 
 #ifndef __EXAMPLE_H
 #define __EXAMPLE_H
+
 /*
  * example.h -- definitions for the char module
  */

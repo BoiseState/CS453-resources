@@ -21,15 +21,13 @@ MODULE_AUTHOR("Amit Jain");
 MODULE_LICENSE("GPL v2");
 MODULE_DESCRIPTION("Simple Example Module");
 
-
-
 static ssize_t example_read (struct file *, char *, size_t , loff_t *);
 static ssize_t example_write (struct file *, const char *, size_t , loff_t *);
 static int example_open (struct inode *, struct file *);
 static int example_release (struct inode *, struct file *);
 
 /* The different file operations */
-/* Note that the tagged initialization of a structure is part ANSI C'99 standard
+/* Note that the tagged initialization of a structure is part of the ANSI C'99 standard
  * but is not part of ANSI C'89.
  */
 static struct file_operations example_fops = {
@@ -39,6 +37,7 @@ static struct file_operations example_fops = {
     .open =       example_open,
     .release =    example_release,
 };
+
 /*
  * Open and close
  */
@@ -58,6 +57,7 @@ static int example_open (struct inode *inode, struct file *filp)
     return 0;          /* success */
 }
 
+
 static int example_release (struct inode *inode, struct file *filp)
 {
 	module_put(THIS_MODULE);
@@ -65,16 +65,17 @@ static int example_release (struct inode *inode, struct file *filp)
     return (0);
 }
 
+
 /*
  * Data management: read and write
  */
-
 static ssize_t example_read (struct file *filp, char *buf, size_t count, loff_t *f_pos)
 {
     long long counter = 8000000000LL;
     printk("<1>example_read invoked. %lld\n", counter);
     return 0;
 }
+
 
 static ssize_t example_write (struct file *filp, const char *buf, size_t count , loff_t *f_pos)
 {
@@ -83,11 +84,9 @@ static ssize_t example_write (struct file *filp, const char *buf, size_t count ,
 }
 
 
-
 static int __init example_init(void)
 {
     int result;
-
     /*
      * Register your major, and accept a dynamic number
      */
@@ -98,11 +97,10 @@ static int __init example_init(void)
     }
     if (example_major == 0) example_major = result; /* dynamic */
 
-
     printk("<1> example device driver version 1: loaded at major number %d\n", example_major);
     return 0;
-
 }
+
 
 static void __exit example_exit(void)
 {
@@ -114,3 +112,4 @@ static void __exit example_exit(void)
 module_init(example_init);
 module_exit(example_exit);
 
+/* vim: set ts=4: */

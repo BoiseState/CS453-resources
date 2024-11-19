@@ -29,7 +29,7 @@ static int example_open (struct inode *, struct file *);
 static int example_release (struct inode *, struct file *);
 
 /* The different file operations */
-/* Note that the tagged initialization of a structure is part ANSI C'99 standard
+/* Note that the tagged initialization of a structure is part of the ANSI C'99 standard
  * but is not part of ANSI C'89.
  */
 static struct file_operations example_fops = {
@@ -59,12 +59,14 @@ static int example_open (struct inode *inode, struct file *filp)
     return 0;          /* success */
 }
 
+
 static int example_release (struct inode *inode, struct file *filp)
 {
 	printk("<1> /dev/example%d released\n", example_device->minor);
 	module_put(THIS_MODULE);
     return (0);
 }
+
 
 /*
  * example_read: 
@@ -109,6 +111,7 @@ fail_malloc:
     return result;
 }
 
+
 static ssize_t example_write (struct file *filp, const char *buf, size_t count , loff_t *f_pos)
 {
     printk("<1>example_write invoked.\n");
@@ -116,11 +119,9 @@ static ssize_t example_write (struct file *filp, const char *buf, size_t count ,
 }
 
 
-
 static int __init example_init(void)
 {
     int result;
-
     /*
      * Register your major, and accept a dynamic number
      */
@@ -142,8 +143,8 @@ static int __init example_init(void)
 fail_malloc:
     unregister_chrdev(example_major, "example");
     return result;
-		
 }
+
 
 static void __exit example_exit(void)
 {
@@ -152,8 +153,8 @@ static void __exit example_exit(void)
     printk("<1> example device driver version 2: unloaded\n");
 }
 
+
 module_init(example_init);
 module_exit(example_exit);
-
 
 /* vim: set ts=4: */

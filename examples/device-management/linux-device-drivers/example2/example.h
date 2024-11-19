@@ -2,11 +2,11 @@
 
 #ifndef __EXAMPLE_H
 #define __EXAMPLE_H
+
 /*
  * example.h -- definitions for the char module
  *
  */
-
 #ifndef EXAMPLE_MAJOR
 #define EXAMPLE_MAJOR 0   /* dynamic major by default */
 #endif
