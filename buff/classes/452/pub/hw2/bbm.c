@@ -16,10 +16,7 @@ static size_t bitaddr(void *base, void *mem, int e) {
 }
 
 extern BBM bbmcreate(size_t size, int e) {
-  BBM b=bmcreate(mapsize(size,e));
-  if ((long)b==-1)
-    return 0;
-  return b;
+  return bmcreate(mapsize(size,e));
 }
 
 extern void bbmdelete(BBM b) {
