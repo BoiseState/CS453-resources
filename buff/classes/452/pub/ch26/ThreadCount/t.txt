@@ -1,0 +1,236 @@
+
+t:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000401000 <_init>:
+  401000:	f3 0f 1e fa          	endbr64
+  401004:	48 83 ec 08          	sub    $0x8,%rsp
+  401008:	48 8b 05 d1 2f 00 00 	mov    0x2fd1(%rip),%rax        # 403fe0 <__gmon_start__@Base>
+  40100f:	48 85 c0             	test   %rax,%rax
+  401012:	74 02                	je     401016 <_init+0x16>
+  401014:	ff d0                	call   *%rax
+  401016:	48 83 c4 08          	add    $0x8,%rsp
+  40101a:	c3                   	ret
+
+Disassembly of section .plt:
+
+0000000000401020 <printf@plt-0x10>:
+  401020:	ff 35 ca 2f 00 00    	push   0x2fca(%rip)        # 403ff0 <_GLOBAL_OFFSET_TABLE_+0x8>
+  401026:	ff 25 cc 2f 00 00    	jmp    *0x2fcc(%rip)        # 403ff8 <_GLOBAL_OFFSET_TABLE_+0x10>
+  40102c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401030 <printf@plt>:
+  401030:	ff 25 ca 2f 00 00    	jmp    *0x2fca(%rip)        # 404000 <printf@GLIBC_2.2.5>
+  401036:	68 00 00 00 00       	push   $0x0
+  40103b:	e9 e0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401040 <pthread_create@plt>:
+  401040:	ff 25 c2 2f 00 00    	jmp    *0x2fc2(%rip)        # 404008 <pthread_create@GLIBC_2.34>
+  401046:	68 01 00 00 00       	push   $0x1
+  40104b:	e9 d0 ff ff ff       	jmp    401020 <_init+0x20>
+
+0000000000401050 <pthread_join@plt>:
+  401050:	ff 25 ba 2f 00 00    	jmp    *0x2fba(%rip)        # 404010 <pthread_join@GLIBC_2.34>
+  401056:	68 02 00 00 00       	push   $0x2
+  40105b:	e9 c0 ff ff ff       	jmp    401020 <_init+0x20>
+
+Disassembly of section .text:
+
+0000000000401060 <_start>:
+  401060:	f3 0f 1e fa          	endbr64
+  401064:	31 ed                	xor    %ebp,%ebp
+  401066:	49 89 d1             	mov    %rdx,%r9
+  401069:	5e                   	pop    %rsi
+  40106a:	48 89 e2             	mov    %rsp,%rdx
+  40106d:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+  401071:	50                   	push   %rax
+  401072:	54                   	push   %rsp
+  401073:	45 31 c0             	xor    %r8d,%r8d
+  401076:	31 c9                	xor    %ecx,%ecx
+  401078:	48 c7 c7 8c 11 40 00 	mov    $0x40118c,%rdi
+  40107f:	ff 15 53 2f 00 00    	call   *0x2f53(%rip)        # 403fd8 <__libc_start_main@GLIBC_2.34>
+  401085:	f4                   	hlt
+  401086:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  40108d:	00 00 00 
+
+0000000000401090 <_dl_relocate_static_pie>:
+  401090:	f3 0f 1e fa          	endbr64
+  401094:	c3                   	ret
+  401095:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+  40109c:	00 00 00 
+  40109f:	90                   	nop
+
+00000000004010a0 <deregister_tm_clones>:
+  4010a0:	b8 20 40 40 00       	mov    $0x404020,%eax
+  4010a5:	48 3d 20 40 40 00    	cmp    $0x404020,%rax
+  4010ab:	74 13                	je     4010c0 <deregister_tm_clones+0x20>
+  4010ad:	b8 00 00 00 00       	mov    $0x0,%eax
+  4010b2:	48 85 c0             	test   %rax,%rax
+  4010b5:	74 09                	je     4010c0 <deregister_tm_clones+0x20>
+  4010b7:	bf 20 40 40 00       	mov    $0x404020,%edi
+  4010bc:	ff e0                	jmp    *%rax
+  4010be:	66 90                	xchg   %ax,%ax
+  4010c0:	c3                   	ret
+  4010c1:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  4010c8:	00 00 00 00 
+  4010cc:	0f 1f 40 00          	nopl   0x0(%rax)
+
+00000000004010d0 <register_tm_clones>:
+  4010d0:	be 20 40 40 00       	mov    $0x404020,%esi
+  4010d5:	48 81 ee 20 40 40 00 	sub    $0x404020,%rsi
+  4010dc:	48 89 f0             	mov    %rsi,%rax
+  4010df:	48 c1 ee 3f          	shr    $0x3f,%rsi
+  4010e3:	48 c1 f8 03          	sar    $0x3,%rax
+  4010e7:	48 01 c6             	add    %rax,%rsi
+  4010ea:	48 d1 fe             	sar    $1,%rsi
+  4010ed:	74 11                	je     401100 <register_tm_clones+0x30>
+  4010ef:	b8 00 00 00 00       	mov    $0x0,%eax
+  4010f4:	48 85 c0             	test   %rax,%rax
+  4010f7:	74 07                	je     401100 <register_tm_clones+0x30>
+  4010f9:	bf 20 40 40 00       	mov    $0x404020,%edi
+  4010fe:	ff e0                	jmp    *%rax
+  401100:	c3                   	ret
+  401101:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  401108:	00 00 00 00 
+  40110c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401110 <__do_global_dtors_aux>:
+  401110:	f3 0f 1e fa          	endbr64
+  401114:	80 3d 01 2f 00 00 00 	cmpb   $0x0,0x2f01(%rip)        # 40401c <completed.0>
+  40111b:	75 13                	jne    401130 <__do_global_dtors_aux+0x20>
+  40111d:	55                   	push   %rbp
+  40111e:	48 89 e5             	mov    %rsp,%rbp
+  401121:	e8 7a ff ff ff       	call   4010a0 <deregister_tm_clones>
+  401126:	c6 05 ef 2e 00 00 01 	movb   $0x1,0x2eef(%rip)        # 40401c <completed.0>
+  40112d:	5d                   	pop    %rbp
+  40112e:	c3                   	ret
+  40112f:	90                   	nop
+  401130:	c3                   	ret
+  401131:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+  401138:	00 00 00 00 
+  40113c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000401140 <frame_dummy>:
+  401140:	f3 0f 1e fa          	endbr64
+  401144:	eb 8a                	jmp    4010d0 <register_tm_clones>
+
+0000000000401146 <count>:
+#include <unistd.h>
+#include <pthread.h>
+
+static int counter=0;
+
+static void *count(void *a) {
+  401146:	55                   	push   %rbp
+  401147:	48 89 e5             	mov    %rsp,%rbp
+  40114a:	48 83 ec 10          	sub    $0x10,%rsp
+  40114e:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  while (counter<10) {
+  401152:	eb 26                	jmp    40117a <count+0x34>
+    printf("%d\n",counter);
+  401154:	8b 05 c6 2e 00 00    	mov    0x2ec6(%rip),%eax        # 404020 <__TMC_END__>
+  40115a:	89 c6                	mov    %eax,%esi
+  40115c:	bf 00 22 40 00       	mov    $0x402200,%edi
+  401161:	b8 00 00 00 00       	mov    $0x0,%eax
+  401166:	e8 c5 fe ff ff       	call   401030 <printf@plt>
+    counter=counter+1;
+  40116b:	8b 05 af 2e 00 00    	mov    0x2eaf(%rip),%eax        # 404020 <__TMC_END__>
+  401171:	83 c0 01             	add    $0x1,%eax
+  401174:	89 05 a6 2e 00 00    	mov    %eax,0x2ea6(%rip)        # 404020 <__TMC_END__>
+  while (counter<10) {
+  40117a:	8b 05 a0 2e 00 00    	mov    0x2ea0(%rip),%eax        # 404020 <__TMC_END__>
+  401180:	83 f8 09             	cmp    $0x9,%eax
+  401183:	7e cf                	jle    401154 <count+0xe>
+  }
+  return 0;
+  401185:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+  40118a:	c9                   	leave
+  40118b:	c3                   	ret
+
+000000000040118c <main>:
+
+int main() {
+  40118c:	55                   	push   %rbp
+  40118d:	48 89 e5             	mov    %rsp,%rbp
+  401190:	53                   	push   %rbx
+  401191:	48 83 ec 28          	sub    $0x28,%rsp
+  401195:	48 89 e0             	mov    %rsp,%rax
+  401198:	48 89 c3             	mov    %rax,%rbx
+  const int threads=3;
+  40119b:	c7 45 e4 03 00 00 00 	movl   $0x3,-0x1c(%rbp)
+  pthread_t tids[threads];
+  4011a2:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+  4011a5:	48 98                	cltq
+  4011a7:	48 83 e8 01          	sub    $0x1,%rax
+  4011ab:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+  4011af:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+  4011b2:	48 98                	cltq
+  4011b4:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+  4011bb:	00 
+  4011bc:	b8 10 00 00 00       	mov    $0x10,%eax
+  4011c1:	48 83 e8 01          	sub    $0x1,%rax
+  4011c5:	48 01 d0             	add    %rdx,%rax
+  4011c8:	b9 10 00 00 00       	mov    $0x10,%ecx
+  4011cd:	ba 00 00 00 00       	mov    $0x0,%edx
+  4011d2:	48 f7 f1             	div    %rcx
+  4011d5:	48 6b c0 10          	imul   $0x10,%rax,%rax
+  4011d9:	48 29 c4             	sub    %rax,%rsp
+  4011dc:	48 89 e0             	mov    %rsp,%rax
+  4011df:	48 83 c0 07          	add    $0x7,%rax
+  4011e3:	48 c1 e8 03          	shr    $0x3,%rax
+  4011e7:	48 c1 e0 03          	shl    $0x3,%rax
+  4011eb:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  for (int i=0; i<threads; i++)
+  4011ef:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+  4011f6:	eb 2f                	jmp    401227 <main+0x9b>
+    pthread_create(&tids[i],0,count,0);
+  4011f8:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  4011fb:	48 98                	cltq
+  4011fd:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+  401204:	00 
+  401205:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  401209:	48 01 d0             	add    %rdx,%rax
+  40120c:	b9 00 00 00 00       	mov    $0x0,%ecx
+  401211:	ba 46 11 40 00       	mov    $0x401146,%edx
+  401216:	be 00 00 00 00       	mov    $0x0,%esi
+  40121b:	48 89 c7             	mov    %rax,%rdi
+  40121e:	e8 1d fe ff ff       	call   401040 <pthread_create@plt>
+  for (int i=0; i<threads; i++)
+  401223:	83 45 ec 01          	addl   $0x1,-0x14(%rbp)
+  401227:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  40122a:	3b 45 e4             	cmp    -0x1c(%rbp),%eax
+  40122d:	7c c9                	jl     4011f8 <main+0x6c>
+  for (int i=0; i<threads; i++)
+  40122f:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+  401236:	eb 1f                	jmp    401257 <main+0xcb>
+    pthread_join(tids[i],0);
+  401238:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  40123c:	8b 55 e8             	mov    -0x18(%rbp),%edx
+  40123f:	48 63 d2             	movslq %edx,%rdx
+  401242:	48 8b 04 d0          	mov    (%rax,%rdx,8),%rax
+  401246:	be 00 00 00 00       	mov    $0x0,%esi
+  40124b:	48 89 c7             	mov    %rax,%rdi
+  40124e:	e8 fd fd ff ff       	call   401050 <pthread_join@plt>
+  for (int i=0; i<threads; i++)
+  401253:	83 45 e8 01          	addl   $0x1,-0x18(%rbp)
+  401257:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  40125a:	3b 45 e4             	cmp    -0x1c(%rbp),%eax
+  40125d:	7c d9                	jl     401238 <main+0xac>
+  return 0;
+  40125f:	b8 00 00 00 00       	mov    $0x0,%eax
+  401264:	48 89 dc             	mov    %rbx,%rsp
+}
+  401267:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+  40126b:	c9                   	leave
+  40126c:	c3                   	ret
+
+Disassembly of section .fini:
+
+0000000000401270 <_fini>:
+  401270:	f3 0f 1e fa          	endbr64
+  401274:	48 83 ec 08          	sub    $0x8,%rsp
+  401278:	48 83 c4 08          	add    $0x8,%rsp
+  40127c:	c3                   	ret
