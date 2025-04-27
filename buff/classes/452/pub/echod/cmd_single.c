@@ -23,9 +23,8 @@ typedef struct {
 static Cmd cmds[]={{"echo",echo}, {"quit",quit}, {0,0}};
 
 /***************************************************************************
- * This function services a client. Starting with an empty                 *
- * category set, it reads and performs a sequence of category              *
- * commands from the client.                                               *
+ * This function services a client.  It repeatedly reads and               *
+ * performs a command from the client.                                     *
  *                                                                         *
  * Arguments:                                                              *
  *     - fpp: file-pointer pair                                            *
