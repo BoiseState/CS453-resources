@@ -1,0 +1,20 @@
+#!/bin/bash
+
+Foo() {
+    echo foo
+}
+
+Bar() {
+    cat
+    echo bar
+}
+
+Zap() {
+    cat > tmp
+    cat tmp
+    cat tmp
+}
+
+Foo | Bar | Zap
+
+rm tmp

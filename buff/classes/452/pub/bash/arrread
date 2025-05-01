@@ -1,0 +1,7 @@
+#!/bin/bash
+
+readarray -t a < arrread
+
+for line in "${a[@]}" ; do
+    echo ${line^^}
+done

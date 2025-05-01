@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -x
+
+prg=${0##*/}
+tmp=/tmp/$prg.$$ ; trap "rm -rf $tmp $tmp.*" EXIT
+
+{
+    echo a ; echo b
+    echo c
+} > $tmp
+
+cat $tmp

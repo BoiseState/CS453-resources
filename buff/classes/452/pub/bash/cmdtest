@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -x
+
+test -e /etc/fedora-release
+echo $?
+
+[ -e /etc/fedora-release ]
+echo $?
+
+[ foo = bar ]
+echo $?
+
+[ ! foo = bar ]
+echo $?
+
+[ foo = foo -a bar = bar ]
+echo $?
+
+[ foo = bar -o bar = foo ]
+echo $?
+
+[ 0123 = 123 ]
+echo $?
+
+[ 0123 -eq 123 ]
+echo $?

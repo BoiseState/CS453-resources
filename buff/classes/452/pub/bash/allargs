@@ -1,0 +1,21 @@
+#!/bin/bash
+
+Foo() {
+    for a ; do
+	echo "<$a>"
+    done
+    echo =============
+    for a in "$@" ; do
+	echo "<$a>"
+    done
+    echo =============
+    for a in "$*" ; do
+	echo "<$a>"
+    done
+}
+
+Bar() {
+    Foo "$@"
+}
+
+Bar "hello world" hello world

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -a a
+
+a=(foo bar zap)
+a[1]=hi
+
+echo '${a[1]}:' "${a[1]}"
+echo size: "${#a[@]}"
+echo inxs: "${!a[@]}"
+echo vals: "${a[@]}"

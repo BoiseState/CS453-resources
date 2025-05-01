@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ls /lib/*.so
+ls /lib64/*-?.?.so
+ls /lib64/lib[a-z]*-*.so

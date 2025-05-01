@@ -1,0 +1,11 @@
+#!/bin/bash
+
+Up() {
+    echo ${1^^}
+    # echo $1 | tr a-z A-Z
+}
+
+echo $(Up hello) $(Up world)
+
+x=$(Up hello)
+echo $x

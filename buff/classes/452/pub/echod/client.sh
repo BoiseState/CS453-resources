@@ -5,8 +5,8 @@ Close() { exec {fd}<&- ; }
 
 Open
 {
-    echo single
-    # echo thread
+    # echo single
+    echo thread
     # echo process
 
     echo echo Hello
@@ -17,6 +17,7 @@ Open
 } >&$fd
 cat <&$fd
 Close
+exit
 
 Open
 echo exit >&$fd

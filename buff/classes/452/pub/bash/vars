@@ -1,0 +1,13 @@
+#!/bin/bash
+
+foo=/usr/lib/libstdc++.so.6.0.0
+
+echo $foo
+
+echo ${foo}bar
+
+echo ${foo#/*/}  # remove shortest matching prefix
+echo ${foo##*/}  # remove longest matching prefix
+
+echo ${foo%.*}   # remove shortest matching suffix
+echo ${foo%%.*}  # remove longest matching suffix

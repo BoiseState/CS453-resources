@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "# file names"
+
+for f in cmd* ; do
+    wc -l $f
+done
+
+echo "# command-line arguments"
+
+set - "hello world" 1 xx "*"
+for a ; do
+    echo "$a"
+done
+
+echo "# function parameters"
+
+Foo() {
+    for a ; do
+	echo "$a"
+    done
+}
+
+Foo "hello world" 1 xx "*"

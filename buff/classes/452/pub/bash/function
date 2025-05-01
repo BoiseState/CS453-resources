@@ -1,0 +1,9 @@
+#!/bin/bash
+
+foo() {
+    echo A $1 A
+    echo B $2 B
+    echo C $3 C
+}
+
+foo one two three

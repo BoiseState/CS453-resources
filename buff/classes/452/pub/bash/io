@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo out > tmp.out
+echo out 1> tmp.out
+
+echo err 2> tmp.err >&2
+echo err 2> tmp.err 1>&2
+
+cat < /etc/hosts > tmp.inp
+cat 0< /etc/hosts 1> tmp.inp
+
+echo tmp.inp ; cat tmp.inp
+echo tmp.out ; cat tmp.out
+echo tmp.err ; cat tmp.err
+
+echo Error: meltdown imminent >&2
+
+rm tmp.*

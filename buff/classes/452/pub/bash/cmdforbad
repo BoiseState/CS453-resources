@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# ugh!
+for f in `ls cmd*` ; do
+    echo $f
+done
+

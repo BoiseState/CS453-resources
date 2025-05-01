@@ -1,0 +1,16 @@
+#!/bin/bash
+
+./echod
+
+for i in {1..100} ; do
+    ./client.sh single &
+done >/dev/null
+
+wait
+
+Open()  { exec {fd}<>/dev/tcp/localhost/$(<port) ; }
+Close() { exec {fd}<&- ; }
+
+Open
+echo exit >&$fd
+Close

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -A a
+
+a=([f]=foo [b]=bar [z]=zap)
+a[h]=hi
+
+echo '${a[b]}:' "${a[b]}"
+echo size: "${#a[@]}"
+echo keys: "${!a[@]}"
+echo vals: "${a[@]}"

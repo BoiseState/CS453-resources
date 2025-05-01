@@ -1,0 +1,20 @@
+#!/bin/bash
+
+Up() {
+    echo ${1^^}
+    # echo $1 | tr a-z A-Z
+}
+
+Foo() {
+    echo GOODBYE WORLD > $1
+}
+
+Down() {
+    tr A-Z a-z
+}
+
+cat <(Up hello) <(Up world)
+
+Foo >(Down)
+
+wait

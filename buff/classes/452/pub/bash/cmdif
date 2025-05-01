@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if diff /etc/passwd /etc/passwd ; then
+    echo "No surprise!"
+else
+    echo "what?"
+fi
+
+if [ -e /etc/fedora-release ] ; then
+    echo Fedora
+elif [ -e /etc/redhat-release ] ; then
+    echo Redhat
+else
+    echo mystery
+fi

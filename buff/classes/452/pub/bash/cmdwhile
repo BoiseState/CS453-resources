@@ -1,0 +1,5 @@
+#!/bin/bash
+
+while IFS=: read user pw uid others ; do
+    echo $uid $user
+done < /etc/passwd | sort -n
