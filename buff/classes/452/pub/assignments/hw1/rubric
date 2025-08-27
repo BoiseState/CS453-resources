@@ -1,0 +1,20 @@
+                                                        /45
+
+
+
+
+implementations: doubly linked list, symmetry
+
+    put		                       /5
+
+    ith		                       /5
+
+    get		                       /5
+
+    rem		                       /5
+
+documentation and error messages       /10
+
+test suite                             /10
+
+valgrind                               /5
