@@ -1,4 +1,4 @@
-// gcc -o a.s -S a.c
+// gcc -o a.asm -S a.c
 // gcc -o a a.c ; objdump -dS a > a.od ; nm a > a.nm
 // gcc -c a.c -Wa,-adhlns=a.l -fverbose-asm
 
