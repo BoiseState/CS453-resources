@@ -15,7 +15,7 @@
 //         real-life-use-cases-of-barriers-dsb-dmb-isb-in-arm
 //     One simple example of a barrier requirement is a
 //     spinlock. If you implement a spinlock using
-//     compare-and-swap(or LDREX/STREX on ARM) and without a
+//     compare-and-swap (or LDREX/STREX on ARM) and without a
 //     barrier, the processor is allowed to speculatively load
 //     values from memory and lazily store computed values to
 //     memory, and neither of those are required to happen in the
