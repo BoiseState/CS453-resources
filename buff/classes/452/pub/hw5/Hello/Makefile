@@ -7,7 +7,7 @@ obj-m:=$(name).o
 KDIR :=/lib/modules/$(shell uname -r)/build
 PWD  :=$(shell pwd)
 
-EXTRA_CFLAGS+=-DDEVNAME='"$(name)"'
+KBUILD_CFLAGS+=-DDEVNAME='"$(name)"'
 
 modules clean: ; $(MAKE) -C $(KDIR) M=$(PWD) $@
 
