@@ -29,7 +29,7 @@ extern BM bmcreate(size_t bits) {
 extern void bmdelete(BM b) {
   size_t *p=b;
   p--;
-  mmfree(p,*p);
+  mmfree(p,sizeof(size_t)+bits2bytes(*p));
 }
 
 extern void bmset(BM b, size_t i) {
