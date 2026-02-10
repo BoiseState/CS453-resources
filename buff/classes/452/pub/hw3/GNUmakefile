@@ -8,7 +8,7 @@ try: $(objs) libdeq.so
 	gcc -o $@ $(objs) $(ldflags) -L. -ldeq -Wl,-rpath=.
 
 trytest: try
-	Test/run
+	Test/run $<
 
 test: $(prog)
-	Test/run
+	Test/run $<

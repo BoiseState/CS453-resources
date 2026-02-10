@@ -1,6 +1,6 @@
 #!/bin/bash
 
-prg=./try
+prg=./$1
 
 for t in Test/Test_* ; do
     echo ${t##*/}
