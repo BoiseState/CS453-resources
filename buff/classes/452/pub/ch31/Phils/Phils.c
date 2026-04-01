@@ -47,8 +47,8 @@ static void fini() {
 void *be(void *a) {
   int id=(int)(long)a;
   for (int i=cycles; i; i--) {
-    sem_wait(phils[id].sticks[0?0:1]); // left
-    sem_wait(phils[id].sticks[0?1:0]); // rite
+    sem_wait(phils[id].sticks[id?0:1]); // left
+    sem_wait(phils[id].sticks[id?1:0]); // rite
     phils[id].state=Munch;
     print();
     sem_post(phils[id].sticks[0]);
