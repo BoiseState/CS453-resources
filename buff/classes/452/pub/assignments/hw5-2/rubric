@@ -1,15 +1,36 @@
-                                                                    /59
+                                                                    /71
 
 
 
 
-typedef Device                /5
-typedef File                  /5
-open()                        /5
-release()	              /3
-read()		              /10
-write()		              /15
-ioctl()		              /3
-init()		              /5
-exit()		              /3
+documentation                 /5
 demo                          /5
+
+typedef Device/File           /10
+open()/release()              /8
+read()                        /10
+write()                       /15
+ioctl()                       /5
+init()/exit()                 /8
+errors                        /5
+
+
+
+======================== Graduate-Student Rubric =======================
+                                                                    /101
+
+
+
+
+documentation                 /5
+demo                          /5
+
+typedef Device/File           /10
+open()/release()              /8
+read()                        /10
+write()                       /15
+ioctl()                       /5
+init()/exit()                 /8
+errors                        /5
+
+regexp9 (grad students)       /30

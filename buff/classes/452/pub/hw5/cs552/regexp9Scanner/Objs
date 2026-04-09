@@ -1,0 +1,6 @@
+../regexp9/libregexp/regcomp.o
+../regexp9/libregexp/regerror.o
+../regexp9/libregexp/regexec.o
+../regexp9/libregexp/regaux.o
+../regexp9/libutf/rune.o
+../regexp9/libutf/utfrune.o
