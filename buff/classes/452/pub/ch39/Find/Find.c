@@ -16,7 +16,7 @@ static int isdir(char *path, char *entry) {
       return 0;
   struct stat buf;
   if (lstat(path,&buf)) ERROR(strerror(errno));
-  return S_ISDIR(buf.st_mode);
+  return S_ISDIR(buf.st_mode);  // man inode(7)
 }
 
 static void find(char *dir) {
