@@ -2,9 +2,10 @@
 
 Foo() {
     case "$1" in
-	[0-4].*)    echo very old kernel ;&
+	[0-4].*)    echo very old kernel ;;
 	5.[0-2].*)  echo old kernel ;;
 	5.[^0-2].*) echo new kernel ;;
+	6.15.*)     echo eddy kernel ;&
 	6.*)        echo newer kernel ;;
 	*)          echo unknown kernel ;;
     esac
