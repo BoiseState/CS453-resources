@@ -5,6 +5,6 @@
 #include "Tree.h"
 #include "Jobs.h"
 
-extern void interpretTree(Tree t, int *eof, Jobs jobs);
+extern void interpretSequence(T_sequence s, int *eof, Jobs jobs);
 
 #endif

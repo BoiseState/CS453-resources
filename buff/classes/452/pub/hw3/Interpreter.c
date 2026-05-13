@@ -36,10 +36,10 @@ static void i_sequence(T_sequence t, Sequence sequence) {
   i_sequence(t->sequence,sequence);
 }
 
-extern void interpretTree(Tree t, int *eof, Jobs jobs) {
-  if (!t)
+extern void interpretSequence(T_sequence s, int *eof, Jobs jobs) {
+  if (!s)
     return;
   Sequence sequence=newSequence();
-  i_sequence(t,sequence);
+  i_sequence(s,sequence);
   execSequence(sequence,jobs,eof);
 }

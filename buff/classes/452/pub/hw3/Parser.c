@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "Interpreter.h"
 #include "Parser.h"
 #include "Tree.h"
 #include "Scanner.h"
@@ -22,6 +23,12 @@ static T_words p_words();
 static T_command p_command();
 static T_pipeline p_pipeline();
 static T_sequence p_sequence();
+
+static void f_word(T_word t);
+static void f_words(T_words t);
+static void f_command(T_command t);
+static void f_pipeline(T_pipeline t);
+static void f_sequence(T_sequence t);
 
 static T_word p_word() {
   char *s=curr();
@@ -83,20 +90,35 @@ static T_sequence p_sequence() {
   return sequence;
 }
 
-extern Tree parseTree(char *s) {
-  scan=newScanner(s);
-  Tree tree=p_sequence();
-  if (curr())
-    ERROR("extra characters at end of input");
-  freeScanner(scan);
-  return tree;
+static T_sequence p_pipeline_as_sequence() {
+  T_pipeline pipeline=p_pipeline();
+  if (!pipeline)
+    return 0;
+  T_sequence sequence=new_sequence();
+  sequence->pipeline=pipeline;
+  if (eat("&"))
+    sequence->op="&";
+  if (eat(";"))
+    sequence->op=";";
+  return sequence;
 }
 
-static void f_word(T_word t);
-static void f_words(T_words t);
-static void f_command(T_command t);
-static void f_pipeline(T_pipeline t);
-static void f_sequence(T_sequence t);
+// A "sequence" of pipelines is processed in an interleaved way:
+// Parse a pipeline, interpret that pipeline, and repeat.
+// This allows a pipeline to change the execution environment of
+// subsequent pipelines.
+
+extern void interpret(char *line, int *eof, Jobs jobs) {
+  scan=newScanner(line);
+  while (1) {
+    T_sequence sequence=p_pipeline_as_sequence();
+    if (!sequence)
+      break;
+    interpretSequence(sequence,eof,jobs);
+    f_sequence(sequence);
+  }
+  freeScanner(scan);
+}
 
 static void f_word(T_word t) {
   if (!t)
@@ -135,8 +157,4 @@ static void f_sequence(T_sequence t) {
   f_pipeline(t->pipeline);
   f_sequence(t->sequence);
   free(t);
-}
-
-extern void freeTree(Tree t) {
-  f_sequence(t);
 }

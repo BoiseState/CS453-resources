@@ -12,3 +12,5 @@ trytest: try
 
 test: $(prog)
 	Test/run $<
+
+Parser.o:ccflags+=-Wno-unused-function

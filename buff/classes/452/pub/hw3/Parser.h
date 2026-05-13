@@ -1,9 +1,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-typedef void *Tree;
+#include "Jobs.h"
 
-extern Tree parseTree(char *s);
-extern void freeTree(Tree t);
+extern void interpret(char *line, int *eof, Jobs jobs);
 
 #endif

@@ -24,17 +24,15 @@ int main() {
     rl_bind_key('\t',rl_insert);
     rl_outstream=fopen("/dev/null","w");
   }
-  
+
   while (!eof) {
     char *line=readline(prompt);
     if (!line)
       break;
     if (*line)
       add_history(line);
-    Tree tree=parseTree(line);
+    interpret(line,&eof,jobs);
     free(line);
-    interpretTree(tree,&eof,jobs);
-    freeTree(tree);
   }
 
   if (isatty(fileno(stdin))) {
