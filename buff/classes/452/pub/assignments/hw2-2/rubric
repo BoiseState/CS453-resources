@@ -1,0 +1,24 @@
+                                                                    /55
+
+
+
+
+interface:
+
+    bcreate()                                          /5
+
+    balloc()                                           /5
+
+    bfree()                                            /5
+
+    bsize()                                            /5
+
+    bprint()                                           /5
+
+data structures and modularity                         /10
+
+test suite                                             /10
+
+documentation and error messages                       /5
+
+Deq and malloc()/free() wrapper                        /5
