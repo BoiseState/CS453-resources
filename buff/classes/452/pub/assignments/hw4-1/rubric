@@ -1,0 +1,17 @@
+                                                        /45
+
+
+
+
+single-threaded warmup                 /5
+
+single-threaded with Deq               /5
+
+multi-threaded with Deq                /10
+
+multi-threaded with Mtq                /15
+
+valgrind                               /5
+
+documentation and error messages       /5
+
