@@ -50,7 +50,7 @@ extern LINKAGE void* lawnimp_new(int lawnsize, int molesize) {
   Fl_Window* w=new Fl_Window(size,size);
   w->end();
   w->show();
-  Fl::lock();
+  // Fl::lock();
   return w;
 }
 
