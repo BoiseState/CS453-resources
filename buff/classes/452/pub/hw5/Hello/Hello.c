@@ -52,11 +52,14 @@ static ssize_t read(struct file *filp,
     loff_t *f_pos) { 
   File *file=filp->private_data;
   int n=strlen(file->s);
+  if (*f_pos>=n)
+    return 0;
   n=(n<count ? n : count);
   if (copy_to_user(buf,file->s,n)) {
     printk(KERN_ERR "%s: copy_to_user() failed\n",DEVNAME);
     return -EFAULT;
   }
+  *f_pos+=n;
   return n;
 }
 
