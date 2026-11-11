@@ -15,7 +15,7 @@ int main() {
   if (fd<0)
     ERR("open() failed");
   enum { size=100 };
-  char buf[size];
+  char buf[size+1];
   for (int len; (len=read(fd,buf,size))>0;) {
     buf[len]=0;
     printf("%s",buf);
