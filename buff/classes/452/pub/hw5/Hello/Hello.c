@@ -51,15 +51,15 @@ static ssize_t read(struct file *filp,
     size_t count,
     loff_t *f_pos) { 
   File *file=filp->private_data;
-  int n=strlen(file->s);
-  if (*f_pos>=n)
-    return 0;
-  n=(n<count ? n : count);
-  if (copy_to_user(buf,file->s,n)) {
+  char *p=file->s+*f_pos;       // where we left off
+  int n=strlen(p);
+  if (n==0)    return 0;        // done
+  if (n>count) n=count;         // too much
+  if (copy_to_user(buf,p,n)) {
     printk(KERN_ERR "%s: copy_to_user() failed\n",DEVNAME);
     return -EFAULT;
   }
-  *f_pos+=n;
+  *f_pos+=n;                    // where to continue
   return n;
 }
 
