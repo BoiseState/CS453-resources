@@ -15,9 +15,8 @@ static int rdm(int lo, int hi) {
 extern Mole mole_new(Lawn l, int vimlo, int vimhi) {
   if (!vimlo) vimlo=1;
   if (!vimhi) vimhi=5;
-
   LawnRep lawn=(LawnRep)l;
-  MoleRep mole=(MoleRep)malloc(sizeof(*mole));
+  MoleRep mole=(MoleRep)malloc(sizeof *mole);
   if (!mole) ERROR("malloc() failed");
   mole->size=lawn->molesize;
   int max=lawn->lawnsize*lawn->molesize;
@@ -35,4 +34,3 @@ extern void mole_whack(Mole m) {
   lawnimp_whack(m);
   free(m);
 }
-

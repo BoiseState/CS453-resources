@@ -42,22 +42,24 @@ static int text() {
 
 #define gettid() ((pid_t)syscall(SYS_gettid))
 #define WR(X,Y,MSG) printf("(%d,%d) %d %s %s\n",X,Y, gettid(), __func__,MSG)
-#define WR0 { WR(0,0,""); return 0; }
+#define WR0(r) { WR(0,0,""); return r; }
 
 extern LINKAGE void* lawnimp_new(int lawnsize, int molesize) {
-  if (text()) WR0;
+  if (Fl::lock()) {
+    fprintf(stderr,"Threading not supported.\n");
+    exit(1);
+  }
+  if (text()) WR0(0);
   int size=lawnsize*molesize;
-  Fl_Window* w=new Fl_Window(size,size);
+  Fl_Window* w=new Fl_Window(size,size,"Whack-a-Mole");
   w->end();
   w->show();
-  // Fl::lock();
   return w;
 }
 
-extern LINKAGE void* lawnimp_run(LawnRep l) {
-  if (text()) WR0;
+extern LINKAGE void lawnimp_run(LawnRep l) {
+  if (text()) WR0();
   Fl::run();
-  return 0;
 }
 
 extern LINKAGE void* lawnimp_mole(MoleRep m) {
@@ -76,9 +78,9 @@ extern LINKAGE void* lawnimp_mole(MoleRep m) {
   b->box(FL_OVAL_BOX);
   b->color(FL_GREEN);
   w->end();
-  w->redraw();
-  Fl::check();
+  Fl::redraw();
   Fl::unlock();
+  Fl::awake();
   return b;
 }
 
@@ -97,22 +99,27 @@ extern LINKAGE void lawnimp_whack(MoleRep m) {
   tsleep(m->vim1);
   Fl::lock();
   b->color(FL_RED);
-  w->redraw();
-  Fl::check();
+  Fl::redraw();
   Fl::unlock();
+  Fl::awake();
   tsleep(m->vim2);
   Fl::lock();
   b->hide();
-  w->redraw();
-  Fl::check();
   Fl::unlock();
+  Fl::awake();
+  Fl::lock();
   w->remove(b);
+  Fl::redraw();
+  Fl::unlock();
+  Fl::awake();
   delete b;
 }
 
 extern LINKAGE void lawnimp_free(void* w) {
+  if (text()) WR0();
+  Fl_Window* window=(Fl_Window*)w;
   Fl::lock();
-  delete (Fl_Window*)w;
-  Fl::check();
+  window->hide();
   Fl::unlock();
+  Fl::awake();
 }

@@ -13,7 +13,6 @@ typedef struct {
   int lawnsize;
   int molesize;
   void *window;
-  pthread_t thread;
 } *LawnRep;
 
 typedef struct {
@@ -25,7 +24,7 @@ typedef struct {
 } *MoleRep;
 
 extern LINKAGE void* lawnimp_new(int lawnsize, int molesize);
-extern LINKAGE void* lawnimp_run(LawnRep l);
+extern LINKAGE void  lawnimp_run(LawnRep l);
 extern LINKAGE void* lawnimp_mole(MoleRep m);
 extern LINKAGE void  lawnimp_whack(MoleRep m);
 extern LINKAGE void  lawnimp_free(void* w);
